@@ -1,0 +1,153 @@
+---
+title: EDOs
+author: ''
+date: '2021-04-20'
+slug: edos
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-04-20T08:40:33-03:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+fontsize: 14pt
+linkcolor: blue
+header-includes:
+  - \usepackage{indentfirst}
+  - \usepackage{amsmath}
+  - \usepackage{graphicx}
+  - \setlength{\parindent}{4em}
+  - \setlength{\parskip}{1.25em}
+  - \usepackage{float}
+  - \newcommand{\sen}{\mathrm{sen}}
+bibliography: library_ial.bib
+biblio-style: "apalike"
+link-citations: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = TRUE, fig.cap='Elaboração própria.')
+```
+
+# Introdução
+
+O objetivo geral desta nota é realizar simulações numéricas de equações diferenciais ordinárias com ênfase, especialmente, em aplicações econômicas. Todas as simulações são feitas utilizando-se o software **R**.
+
+Para as simulações, serão utilizados os pacotes abaixo, adicionais à base do **R**. É preciso que sejam instalados (uma única vez) e carregados antes do uso:
+
+```{r}
+# install.packages("deSolve")
+# install.packages("PhaseR")
+# install.packages("scatterplot3d")
+# install.packages("latex2exp")
+
+
+library(deSolve)       # Funções para resolver EDOs
+library(phaseR)        # Funções para elaboração dos retratos de fase
+library(scatterplot3d) # Gráficos em 3 dimensões
+library(latex2exp)     # Expressões escritas padrão LaTeX
+
+options(scipen = 99)   # Utiliza 99 casas decimais como padrão em vez de notação científica
+```
+
+
+Denota-se por equação diferencial ordinária (EDO) uma função desconhecida e a relação com suas derivadas. Como, em economia, costuma-se usar o tempo como variável independente, esta notação permanecerá ao longo do texto se não estiver disposto de outra maneira. Portanto, pode-se representar uma EDO de ordem $n$ por
+
+\begin{equation}
+ f[y(t),y^{(1)}(t),y^{(2)}(t),...,y^{(n)}(t),t ] = 0
+ (\#eq:edo)
+\end{equation} 
+
+em que $(n)$ é o grau da EDO e representa a maior ordem das derivadas da função desconhecida @Seco2018. Uma notação da forma geral pode ser descrita por:
+
+\begin{equation}
+a_n(t)y^{(n)}(t)+\dots+a_2(t)y^{(2)}(t)+a_1(t)y^{(1)}(t)+a_0(t)y(t) = g(t) 
+(\#eq:geral)
+\end{equation}
+
+
+Neste texto, não serão abordados detalhes teóricos sobre equações diferenciais e sobre os modelos apresentados. O(a) leitor(a) deve recorrer aos documentos citados em caso de interesse.
+
+# EDOs de 1^a^ ordem {#solow}
+
+EDOs de 1^a^ ordem envolvem uma equação em termos da sua primeira derivada $y'(t)$. Conforme @Gandolfo2005, pode-se encontrar uma solução de uma equação homogênea no formato $y(t) = Ae^{-bt}$, cuja estabilidade depende do sinal de $-b$. Alguns exemplos de equações na Figura \@ref(fig:exemplos). 
+
+Apesar de servir de motivação para a análise de EDOs, o objetivo desta nota não é resolver EDOs, encontrando uma função $y(t)$ que a satisfaz, mas sim identificar o comportamento de tais equações a partir de resoluções numéricas e representações gráficas. Portanto, passa-se aos detalhes básicos para as simulações.
+
+```{r, exemplos, echo=FALSE, fig.pos='H'}
+t <- seq(0,20,by = .01)
+A <- c(1,1,-1,-1)
+b <- c(.2,-.2,.2,-.2)
+
+y1 <- A[1]*exp(-b[1]*t)
+y2 <- A[2]*exp(-b[2]*t)
+y3 <- A[3]*exp(-b[3]*t)
+y4 <- A[4]*exp(-b[4]*t)
+
+par(mfrow = c(2,2))
+
+plot(t,y1,
+     type = "l",
+     xlab = "tempo",
+     ylab = "y(t)",
+     main = "Caso 1: A>0 e -b<0",
+     col = "red")
+
+plot(t,y2,
+     type = "l",
+     xlab = "tempo",
+     ylab = "y(t)",
+     main = "Caso 2: A>0 e -b>0",
+     col = "blue")
+
+plot(t,y3,
+     type = "l",
+     xlab = "tempo",
+     ylab = "y(t)",
+     main = "Caso 3: A<0 e -b<0",
+     col = "red")
+
+plot(t,y4,
+     type = "l",
+     xlab = "tempo",
+     ylab = "y(t)",
+     main = "Caso 4: A<0 e -b>0",
+     col = "blue")
+
+```
+
+
+## Estrutura básica para simulação com R
+
+Algumas equações diferenciais apresentam soluções analíticas, que podem ser resolvidas a partir de técnicas específicas. Para a economia, uma boa referência é o livro do @Gandolfo2005. Para aplicações mais detalhadas, consultar @Seco2018. Nesses casos, simples técnicas de elaboração de gráficos podem ser adotadas no **R** ou outro software. 
+
+Porém, há situações que não se deseja ou não é simples encontrar uma solução analítica. Para esses casos, o **R** possui pacotes que ajudam a encontrar e representar graficamente soluções numéricas e retratos de fase, que podem ajudar na interpretação dos modelos.
+
+O pacote utilizado para simulação e resolução de EDOs com o **R** é o **deSolve**. Um espectro maior de aplicações e parte das explicações aqui apresentadas podem ser encontradas em @Soetaert2010}. Recursos adicionais e manuais podem ser acessados digitando **?deSolve** diretamente no console^[ Alguns exemplos de representação gráfica podem ser vistos com a função *example(deSolve)*.]. 
+
+Em primeiro lugar, deve-se definir uma função própria do modelo a ser simulado em linguagem própria do **R** com, no mínimo, os seguintes parâmetros nesta ordem: 
+
+1. **Tempo** para simulação;
+2. Valor **inicial** das variáveis (estado); e
+3. **Parâmetros** do modelo.
+
+Quando da resolução, o modelo chamará essa função em cada período de tempo durante o processo de integração. **Tempo** e **valores iniciais** devem ser disponibilizados no formato de vetores (ou listas). A função **with( )**^[ Para ver exemplos da função, clique [aqui](https://statisticsglobe.com/r-with-within-function-example#:~:text=Definition%20of%20with%20%26%20within%3A,AND%20modifies%20the%20original%20data.).] permite usar as variáveis em formato de lista diretamente dentro da função sem que seja necessário indicar o nome da lista todas as vezes. Por fim, a função deve retornar uma lista (os resultados serão concatenados se estivermos interessados em mais de uma EDO). Os comandos estão detalhados abaixo.
+
+Com a função elaborada, são estabelecidos os nomes e valores dos parâmetros, a(s) condição(ões) inicial(is) e o período de tempo que se deseja fazer a simulação. Lembre-se de que, quanto maior o tempo e complexidade do modelo, maior será o nível de exigência computacional^[O tempo demandado para a análise pode ser medido com as seguintes funções concatenadas: **print(system.time(\<código da função ode\>))**.].
+
+Como exemplo de EDO de 1^a^ ordem, pode-se simular o seguinte modelo, baseado no modelo canônico de @Solow1956^[Os detalhes do modelo podem ser consultados, pelo leitor, no artigo original e os artigos que o discutiram posteriormente.] representado na equação \@ref(eq:solow).
+\begin{equation}
+  \dot{r} = sF(r,1) - nr
+  (\#eq:solow)
+\end{equation} em que $r = \frac{K}{L}$ é a razão capital-trabalho, $s$ é a taxa de poupança, $n$ é a taxa de crescimento da força de trabalho e $F(r,1)$ é uma função de produção homogênea de grau um a ser especificada. 
+
+No presente caso, uma função Cobb-Douglas na forma $F(K,L) = K^\alpha L^{1-\alpha} \Rightarrow F(r,1) = r^\alpha$ pode ser adotada para a resolução numérica. Portanto, a equação diferencial a ser simulada é:
+\begin{equation}
+  \dot{r} = sr^\alpha - nr
+  (\#eq:solow-cobb)
+\end{equation} cuja função para simuação da EDO pode ser construída por:

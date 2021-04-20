@@ -5,12 +5,263 @@
     <link>/project/</link>
       <atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
     <description>Projects</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 20 Apr 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_2.png</url>
       <title>Projects</title>
       <link>/project/</link>
     </image>
+    
+    <item>
+      <title>EDOs</title>
+      <link>/project/edos/</link>
+      <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>/project/edos/</guid>
+      <description>
+&lt;script src=&#34;/project/edos/index.en_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;introdução&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introdução&lt;/h1&gt;
+&lt;p&gt;O objetivo geral desta nota é realizar simulações numéricas de equações diferenciais ordinárias com ênfase, especialmente, em aplicações econômicas. Todas as simulações são feitas utilizando-se o software &lt;strong&gt;R&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Para as simulações, serão utilizados os pacotes abaixo, adicionais à base do &lt;strong&gt;R&lt;/strong&gt;. É preciso que sejam instalados (uma única vez) e carregados antes do uso:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# install.packages(&amp;quot;deSolve&amp;quot;)
+# install.packages(&amp;quot;PhaseR&amp;quot;)
+# install.packages(&amp;quot;scatterplot3d&amp;quot;)
+# install.packages(&amp;quot;latex2exp&amp;quot;)
+
+
+library(deSolve)       # Funções para resolver EDOs
+library(phaseR)        # Funções para elaboração dos retratos de fase
+library(scatterplot3d) # Gráficos em 3 dimensões
+library(latex2exp)     # Expressões escritas padrão LaTeX
+
+options(scipen = 99)   # Utiliza 99 casas decimais como padrão em vez de notação científica&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Denota-se por equação diferencial ordinária (EDO) uma função desconhecida e a relação com suas derivadas. Como, em economia, costuma-se usar o tempo como variável independente, esta notação permanecerá ao longo do texto se não estiver disposto de outra maneira. Portanto, pode-se representar uma EDO de ordem &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; por&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34; id=&#34;eq:edo&#34;&gt;\[\begin{equation}
+ f[y(t),y^{(1)}(t),y^{(2)}(t),...,y^{(n)}(t),t ] = 0
+ \tag{1}
+\end{equation}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;em que &lt;span class=&#34;math inline&#34;&gt;\((n)\)&lt;/span&gt; é o grau da EDO e representa a maior ordem das derivadas da função desconhecida &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Seco2018&#34; role=&#34;doc-biblioref&#34;&gt;Seco and Patrão&lt;/a&gt; (&lt;a href=&#34;#ref-Seco2018&#34; role=&#34;doc-biblioref&#34;&gt;2018&lt;/a&gt;)&lt;/span&gt;. Uma notação da forma geral pode ser descrita por:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34; id=&#34;eq:geral&#34;&gt;\[\begin{equation}
+a_n(t)y^{(n)}(t)+\dots+a_2(t)y^{(2)}(t)+a_1(t)y^{(1)}(t)+a_0(t)y(t) = g(t) 
+\tag{2}
+\end{equation}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Neste texto, não serão abordados detalhes teóricos sobre equações diferenciais e sobre os modelos apresentados. O(a) leitor(a) deve recorrer aos documentos citados em caso de interesse.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;solow&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem&lt;/h1&gt;
+&lt;p&gt;EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem envolvem uma equação em termos da sua primeira derivada &lt;span class=&#34;math inline&#34;&gt;\(y&amp;#39;(t)\)&lt;/span&gt;. Conforme &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Gandolfo2005&#34; role=&#34;doc-biblioref&#34;&gt;Gandolfo&lt;/a&gt; (&lt;a href=&#34;#ref-Gandolfo2005&#34; role=&#34;doc-biblioref&#34;&gt;2005&lt;/a&gt;)&lt;/span&gt;, pode-se encontrar uma solução de uma equação homogênea no formato &lt;span class=&#34;math inline&#34;&gt;\(y(t) = Ae^{-bt}\)&lt;/span&gt;, cuja estabilidade depende do sinal de &lt;span class=&#34;math inline&#34;&gt;\(-b\)&lt;/span&gt;. Alguns exemplos de equações na Figura &lt;a href=&#34;#fig:exemplos&#34;&gt;1&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Apesar de servir de motivação para a análise de EDOs, o objetivo desta nota não é resolver EDOs, encontrando uma função &lt;span class=&#34;math inline&#34;&gt;\(y(t)\)&lt;/span&gt; que a satisfaz, mas sim identificar o comportamento de tais equações a partir de resoluções numéricas e representações gráficas. Portanto, passa-se aos detalhes básicos para as simulações.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:exemplos&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/project/edos/index.en_files/figure-html/exemplos-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: Elaboração própria.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;estrutura-básica-para-simulação-com-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Estrutura básica para simulação com R&lt;/h2&gt;
+&lt;p&gt;Algumas equações diferenciais apresentam soluções analíticas, que podem ser resolvidas a partir de técnicas específicas. Para a economia, uma boa referência é o livro do &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Gandolfo2005&#34; role=&#34;doc-biblioref&#34;&gt;Gandolfo&lt;/a&gt; (&lt;a href=&#34;#ref-Gandolfo2005&#34; role=&#34;doc-biblioref&#34;&gt;2005&lt;/a&gt;)&lt;/span&gt;. Para aplicações mais detalhadas, consultar &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Seco2018&#34; role=&#34;doc-biblioref&#34;&gt;Seco and Patrão&lt;/a&gt; (&lt;a href=&#34;#ref-Seco2018&#34; role=&#34;doc-biblioref&#34;&gt;2018&lt;/a&gt;)&lt;/span&gt;. Nesses casos, simples técnicas de elaboração de gráficos podem ser adotadas no &lt;strong&gt;R&lt;/strong&gt; ou outro software.&lt;/p&gt;
+&lt;p&gt;Porém, há situações que não se deseja ou não é simples encontrar uma solução analítica. Para esses casos, o &lt;strong&gt;R&lt;/strong&gt; possui pacotes que ajudam a encontrar e representar graficamente soluções numéricas e retratos de fase, que podem ajudar na interpretação dos modelos.&lt;/p&gt;
+&lt;p&gt;O pacote utilizado para simulação e resolução de EDOs com o &lt;strong&gt;R&lt;/strong&gt; é o &lt;strong&gt;deSolve&lt;/strong&gt;. Um espectro maior de aplicações e parte das explicações aqui apresentadas podem ser encontradas em &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Soetaert2010&#34; role=&#34;doc-biblioref&#34;&gt;Soetaert, Petzoldt, and Setzer&lt;/a&gt; (&lt;a href=&#34;#ref-Soetaert2010&#34; role=&#34;doc-biblioref&#34;&gt;2010&lt;/a&gt;)&lt;/span&gt;}. Recursos adicionais e manuais podem ser acessados digitando &lt;strong&gt;?deSolve&lt;/strong&gt; diretamente no console&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Em primeiro lugar, deve-se definir uma função própria do modelo a ser simulado em linguagem própria do &lt;strong&gt;R&lt;/strong&gt; com, no mínimo, os seguintes parâmetros nesta ordem:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Tempo&lt;/strong&gt; para simulação;&lt;/li&gt;
+&lt;li&gt;Valor &lt;strong&gt;inicial&lt;/strong&gt; das variáveis (estado); e&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Parâmetros&lt;/strong&gt; do modelo.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Quando da resolução, o modelo chamará essa função em cada período de tempo durante o processo de integração. &lt;strong&gt;Tempo&lt;/strong&gt; e &lt;strong&gt;valores iniciais&lt;/strong&gt; devem ser disponibilizados no formato de vetores (ou listas). A função &lt;strong&gt;with( )&lt;/strong&gt;&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; permite usar as variáveis em formato de lista diretamente dentro da função sem que seja necessário indicar o nome da lista todas as vezes. Por fim, a função deve retornar uma lista (os resultados serão concatenados se estivermos interessados em mais de uma EDO). Os comandos estão detalhados abaixo.&lt;/p&gt;
+&lt;p&gt;Com a função elaborada, são estabelecidos os nomes e valores dos parâmetros, a(s) condição(ões) inicial(is) e o período de tempo que se deseja fazer a simulação. Lembre-se de que, quanto maior o tempo e complexidade do modelo, maior será o nível de exigência computacional&lt;a href=&#34;#fn3&#34; class=&#34;footnote-ref&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Como exemplo de EDO de 1&lt;sup&gt;a&lt;/sup&gt; ordem, pode-se simular o seguinte modelo, baseado no modelo canônico de &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Solow1956&#34; role=&#34;doc-biblioref&#34;&gt;Solow&lt;/a&gt; (&lt;a href=&#34;#ref-Solow1956&#34; role=&#34;doc-biblioref&#34;&gt;1956&lt;/a&gt;)&lt;/span&gt;&lt;a href=&#34;#fn4&#34; class=&#34;footnote-ref&#34; id=&#34;fnref4&#34;&gt;&lt;sup&gt;4&lt;/sup&gt;&lt;/a&gt; representado na equação &lt;a href=&#34;#eq:solow&#34;&gt;(3)&lt;/a&gt;.
+&lt;span class=&#34;math display&#34; id=&#34;eq:solow&#34;&gt;\[\begin{equation}
+  \dot{r} = sF(r,1) - nr
+  \tag{3}
+\end{equation}\]&lt;/span&gt; em que &lt;span class=&#34;math inline&#34;&gt;\(r = \frac{K}{L}\)&lt;/span&gt; é a razão capital-trabalho, &lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt; é a taxa de poupança, &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; é a taxa de crescimento da força de trabalho e &lt;span class=&#34;math inline&#34;&gt;\(F(r,1)\)&lt;/span&gt; é uma função de produção homogênea de grau um a ser especificada.&lt;/p&gt;
+&lt;p&gt;No presente caso, uma função Cobb-Douglas na forma &lt;span class=&#34;math inline&#34;&gt;\(F(K,L) = K^\alpha L^{1-\alpha} \Rightarrow F(r,1) = r^\alpha\)&lt;/span&gt; pode ser adotada para a resolução numérica. Portanto, a equação diferencial a ser simulada é:
+&lt;span class=&#34;math display&#34; id=&#34;eq:solow-cobb&#34;&gt;\[\begin{equation}
+  \dot{r} = sr^\alpha - nr
+  \tag{4}
+\end{equation}\]&lt;/span&gt; cuja função para simuação da EDO pode ser construída por:&lt;/p&gt;
+&lt;div id=&#34;refs&#34; class=&#34;references csl-bib-body hanging-indent&#34;&gt;
+&lt;div id=&#34;ref-Gandolfo2005&#34; class=&#34;csl-entry&#34;&gt;
+Gandolfo, Giancarlo. 2005. &lt;em&gt;&lt;span&gt;Economic Dynamics&lt;/span&gt;&lt;/em&gt;. Study. New York - USA: Springer US.
+&lt;/div&gt;
+&lt;div id=&#34;ref-Seco2018&#34; class=&#34;csl-entry&#34;&gt;
+Seco, Lucas, and Mauro Patrão. 2018. &lt;em&gt;&lt;span class=&#34;nocase&#34;&gt;Equa&lt;span class=&#34;nocase&#34;&gt;ç&lt;/span&gt;&lt;span class=&#34;nocase&#34;&gt;õ&lt;/span&gt;es diferenciais ordin&lt;span class=&#34;nocase&#34;&gt;á&lt;/span&gt;rias e s&lt;span class=&#34;nocase&#34;&gt;é&lt;/span&gt;ries de pot&lt;span class=&#34;nocase&#34;&gt;ê&lt;/span&gt;ncias&lt;/span&gt;&lt;/em&gt;. Bras&lt;span&gt;í&lt;/span&gt;lia - BRA: Editora Universidade de Bras&lt;span&gt;í&lt;/span&gt;lia.
+&lt;/div&gt;
+&lt;div id=&#34;ref-Soetaert2010&#34; class=&#34;csl-entry&#34;&gt;
+Soetaert, Karline, Thomas Petzoldt, and R. Woodrow Setzer. 2010. &lt;span&gt;“&lt;span class=&#34;nocase&#34;&gt;Solving differential equations in R: Package deSolve&lt;/span&gt;.”&lt;/span&gt; &lt;em&gt;Journal of Statistical Software&lt;/em&gt; 33 (9): 1–25. &lt;a href=&#34;https://doi.org/10.18637/jss.v033.i09&#34;&gt;https://doi.org/10.18637/jss.v033.i09&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-Solow1956&#34; class=&#34;csl-entry&#34;&gt;
+Solow, Robert M. 1956. &lt;span&gt;“&lt;span class=&#34;nocase&#34;&gt;A Contribution to the Theory of Economic Growth&lt;/span&gt;.”&lt;/span&gt; &lt;em&gt;The Quaterly Journal of Economics&lt;/em&gt; 70 (1): 65–95. &lt;a href=&#34;http://piketty.pse.ens.fr/files/Solow1956.pdf&#34;&gt;http://piketty.pse.ens.fr/files/Solow1956.pdf&lt;/a&gt;.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt; Alguns exemplos de representação gráfica podem ser vistos com a função &lt;em&gt;example(deSolve)&lt;/em&gt;.&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt; Para ver exemplos da função, clique &lt;a href=&#34;https://statisticsglobe.com/r-with-within-function-example#:~:text=Definition%20of%20with%20%26%20within%3A,AND%20modifies%20the%20original%20data.&#34;&gt;aqui&lt;/a&gt;.&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;O tempo demandado para a análise pode ser medido com as seguintes funções concatenadas: &lt;strong&gt;print(system.time(&amp;lt;código da função ode&amp;gt;))&lt;/strong&gt;.&lt;a href=&#34;#fnref3&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn4&#34;&gt;&lt;p&gt;Os detalhes do modelo podem ser consultados, pelo leitor, no artigo original e os artigos que o discutiram posteriormente.&lt;a href=&#34;#fnref4&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Nota sobre gráficos 3</title>
+      <link>/project/nota/</link>
+      <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>/project/nota/</guid>
+      <description>
+&lt;script src=&#34;/project/nota/index.en_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;introdução&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Introdução&lt;/h1&gt;
+&lt;p&gt;Apresentar informações estatísticas por meio de gráficos pode ser uma ferramenta importante para melhorar o entendimento de informações complexas. Para isso, deve-se elaborar um gráfico eficiente. Uma forma é mais eficiente que a outra se sua informação pode ser decodificada pela maioria dos leitores de forma mais rápida ou mais fácil de acordo com &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Robbins2004&#34; role=&#34;doc-biblioref&#34;&gt;Robbins&lt;/a&gt; (&lt;a href=&#34;#ref-Robbins2004&#34; role=&#34;doc-biblioref&#34;&gt;2004&lt;/a&gt;)&lt;/span&gt;. Portanto, cuidados são necessários para que os gráficos não sejam ineficientes, confusos ou transmitam informações erradas.&lt;/p&gt;
+&lt;p&gt;Esta nota tem por objetivo apresentar o material utilizado e as rotinas realizadas para a apresentação de dados estatísticos econômicos com o pacote &lt;strong&gt;ggplot2&lt;/strong&gt;. Esse pacote permite apresentar dados seguindo uma “gramática de gráficos,” que “&lt;em&gt;makes ggplot2 very powerful because you are not limited to a set of pre-specified graphics, but you can create new graphics that are precisely tailored for your problem&lt;/em&gt;,” conforme &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Wickham2015&#34; role=&#34;doc-biblioref&#34;&gt;Wickham&lt;/a&gt; (&lt;a href=&#34;#ref-Wickham2015&#34; role=&#34;doc-biblioref&#34;&gt;2015&lt;/a&gt;)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Em síntese, &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Wickham2015&#34; role=&#34;doc-biblioref&#34;&gt;Wickham&lt;/a&gt; (&lt;a href=&#34;#ref-Wickham2015&#34; role=&#34;doc-biblioref&#34;&gt;2015&lt;/a&gt;)&lt;/span&gt; explica essa gramática de gráficos como uma representação estatística que mapeia informações em atributos estéticos (cores, formatos, tamanhos) de objetos geométricos (pontos, linhas, barras) em um sistema específico de coordenadas. Diferentes facetas podem ser usadas para representar, numa única imagem, diferentes subconjuntos de uma tabela. E é a combinação desses elementos que forma um gráfico.&lt;/p&gt;
+&lt;p&gt;Do ponto de vista mais concreto, em primeiro lugar, é necessário instalar (uma única vez) e carregar os pacotes abaixo para realizar as rotinas no &lt;strong&gt;R&lt;/strong&gt;&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# install.packages(&amp;quot;tidyverse&amp;quot;)    Instala o pacote tidyverse, por exemplo
+
+
+library(tidyverse)      # Organização das tabelas e elaboração de gráficos
+library(RColorBrewer)   # Paletas de cores para os gráficos
+library(viridis)        # Paletas de cores para os gráficos
+library(ggthemes)       # Interfaces gráficas adicionais
+library(scales)         # Ajuste de escala dos gráficos
+library(lubridate)      # Ferramenta para ajuste de datas
+library(zoo)            # Ferramenta também para ajuste de datas
+
+
+library(sidrar)         # Acessar dados do IBGE
+#library(rbcb)           # Acessar dados do BCB
+
+options(scipen = 999)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Um bom processo de elaboração de gráficos exige que sua matéria prima esteja no formato ideal, com as tabelas devidamente organizadas. Esse processo de organização leva à chamada ``&lt;em&gt;tidy data&lt;/em&gt;’’ (por isso o nome do primeiro pacote utilizado), conforme &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-WickhamRStudio2014&#34; role=&#34;doc-biblioref&#34;&gt;Wickham&lt;/a&gt; (&lt;a href=&#34;#ref-WickhamRStudio2014&#34; role=&#34;doc-biblioref&#34;&gt;2014&lt;/a&gt;)&lt;/span&gt;. Em síntese, os dados devem ser organizados de duas formas. Cada &lt;strong&gt;valor&lt;/strong&gt; (cada célula numa tabela do &lt;em&gt;Excel&lt;/em&gt;, por exemplo) pertence a uma variável e a uma observação. &lt;strong&gt;Variável&lt;/strong&gt; contém valores que se referem a uma mesma característica ou atributo — podemos citar como exemplos a data, o valor da taxa de inflação ou da taxa de desocupação e etc. — e são representadas por colunas. Cada &lt;strong&gt;observação&lt;/strong&gt;, isto é, cada linha contém todos os valores medidos sobre uma mesma unidade, como uma região e um trimestre.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;compontentes-básicos-dos-gráficos&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Compontentes básicos dos gráficos&lt;/h1&gt;
+&lt;p&gt;Todos os gráficos feitos com o &lt;em&gt;ggplot2&lt;/em&gt; têm seis componentes básicos:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Informações (tabela);&lt;/li&gt;
+&lt;li&gt;Mapeamentos estéticos (variáveis e outras propriedades visuais);&lt;/li&gt;
+&lt;li&gt;Camadas (formato que as informações serão apresentadas, transformações estatísticas e ajustes de posicionamentos);&lt;/li&gt;
+&lt;li&gt;Escalas para cada mapeamento estético (guias para ler os valores, normalmente explicados nas legendas);&lt;/li&gt;
+&lt;li&gt;Sistema de coordenadas; e&lt;/li&gt;
+&lt;li&gt;Especificação de facetas ou subconjuntos.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Os três primeiros elementos são normalmente suficientes para análises exploratórias dos dados, em que o objetivo é conhecer melhor os dados que foram coletados. Tratam-se de gráficos usados apenas pelo pesquisador e, em geral, são insuficientes para apresentação dos resultados.&lt;/p&gt;
+&lt;p&gt;Para fins desta nota, utilizaremos em quase todos os gráficos as informações relativas à taxa de desocupação da força de trabalho (Tabela 6397), ao rendimento médio real (Tabela 5437) e à média de horas habitualmente trabalhadas por semana (Tabela 6372) por grupos de idade entre o 1&lt;sup&gt;o&lt;/sup&gt; trimestre de 2016 e o 1&lt;sup&gt;o&lt;/sup&gt; trimestre de 2020. Todas as informações foram coletadas na Pesquisa Nacional por Amostra de Domicílios Contínua Trimestral (PNADC/T), realizada pelo &lt;a href=&#34;https://sidra.ibge.gov.br/pesquisa/pnadct/tabelas&#34;&gt;IBGE&lt;/a&gt;. Os dados são baixados por meio do pacote &lt;em&gt;sidrar&lt;/em&gt;. Nesse caso, baixaremos as tabelas individualmente e, ao final, juntaremos pelas categorias em comum. As informações para identificar os elementos das tabelas que queremos podem ser acessadas pela função &lt;em&gt;info_sidra&lt;/em&gt;().&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Tabela 6397 - Taxas de desocupação e de subutilização da força de trabalho,
+## na semana de referência, das pessoas de 14 anos ou mais de idade,
+## por grupos de idade
+
+# info_sidra(6397,wb = T)
+desocupacao &amp;lt;- get_sidra(6397,
+                        period = &amp;quot;201601-202001&amp;quot;, # Seleciona trimestres
+                        geo = &amp;quot;Region&amp;quot;,           # 5 Regiões Brasileiras
+                        variable = c(4099),       
+                        format = 2)
+
+tabela1 &amp;lt;- desocupacao %&amp;gt;% 
+             rename(&amp;quot;Desocupacao&amp;quot; = Valor) %&amp;gt;%   # Renomeia a variável de interesse
+              select(`Grande Região`,Trimestre, `Grupo de idade`,Desocupacao) 
+
+head(tabela1, n = 3) # Mostra as três primeiras linhas&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Grande Região         Trimestre Grupo de idade Desocupacao
+## 2         Norte 1º trimestre 2016          Total        10.5
+## 3         Norte 1º trimestre 2016   14 a 17 anos        24.4
+## 4         Norte 1º trimestre 2016   18 a 24 anos        23.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Tabela 5437 - Rendimento médio real, habitualmente recebido por mês e
+## efetivamente recebido no mês de referência, do trabalho principal e
+## de todos os trabalhos, por grupos de idade 
+
+# info_sidra(5437,wb = T)
+rendimento &amp;lt;- get_sidra(5437,
+                        period = &amp;quot;201601-202001&amp;quot;,
+                        geo = &amp;quot;Region&amp;quot;,
+                        variable = c(5932),
+                        format = 2)
+
+tabela2 &amp;lt;- rendimento %&amp;gt;% 
+                rename(&amp;quot;Rendimento&amp;quot; = Valor) %&amp;gt;% 
+                select(`Grande Região`,Trimestre, `Grupo de idade`,Rendimento)
+
+head(tabela2, n = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Grande Região         Trimestre Grupo de idade Rendimento
+## 2         Norte 1º trimestre 2016          Total       1719
+## 3         Norte 1º trimestre 2016   14 a 17 anos        511
+## 4         Norte 1º trimestre 2016   18 a 24 anos       1077&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Tabela 6372 - Média de horas habitualmente trabalhadas por semana e
+## efetivamente trabalhadas na semana de referência, no trabalho principal
+## e em todos os trabalhos, das pessoas de 14 anos ou mais de idade,
+## por grupos de idade
+
+#info_sidra(6372,wb = T)
+horas &amp;lt;- get_sidra(6372,
+                        period = &amp;quot;201601-202001&amp;quot;,
+                        geo = c(&amp;quot;Region&amp;quot;),
+                        variable = c(8186),
+                        format = 2)
+
+tabela3 &amp;lt;- horas %&amp;gt;% 
+                rename(&amp;quot;Horas&amp;quot; = Valor) %&amp;gt;% 
+                select(`Grande Região`,Trimestre, `Grupo de idade`,Horas)
+
+head(tabela3, n = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Grande Região         Trimestre Grupo de idade Horas
+## 2         Norte 1º trimestre 2016          Total  37.6
+## 3         Norte 1º trimestre 2016   14 a 17 anos  25.9
+## 4         Norte 1º trimestre 2016   18 a 24 anos  37.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Tabela com todos os dados agrupados por `Grande Região`,
+## `Trimestre` e `Grupo de Idade`
+
+emprego &amp;lt;- tabela1 %&amp;gt;% 
+            left_join(tabela2) %&amp;gt;% 
+            left_join(tabela3)
+
+head(emprego, n = 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Grande Região         Trimestre Grupo de idade Desocupacao Rendimento Horas
+## 1         Norte 1º trimestre 2016          Total        10.5       1719  37.6
+## 2         Norte 1º trimestre 2016   14 a 17 anos        24.4        511  25.9&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Portanto, trabalharemos com a tabela chamada ``emprego’’. Um gráfico simples que relaciona horas trabalhadas e rendimento é:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(emprego,
+       aes(x = Horas, y = Rendimento)) +
+  geom_point()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/project/nota/index.en_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;307.2&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Note que o sinal de + é usado para adicionar camadas ao gráfico como padrão do pacote. Uma elaboração mais completa dos gráficos envolve, normalmente, os seis componentes básicos e serão detalhados abaixo.&lt;/p&gt;
+&lt;div id=&#34;mapeamentos-estéticos-variáveis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Mapeamentos estéticos (variáveis)&lt;/h2&gt;
+&lt;p&gt;Pode-se adicionar variáveis ao gráfico com a atribuição de cores (&lt;em&gt;colour&lt;/em&gt;) e formato (&lt;em&gt;shape&lt;/em&gt;) para variáveis categóricas e tamanho (&lt;em&gt;size&lt;/em&gt;) para variáveis contínuas, que serão acompanhados de legenda:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(emprego,
+       aes(x = Horas, y = Rendimento, shape = `Grupo de idade`)) +
+  geom_point()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/project/nota/index.en_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;div id=&#34;refs&#34; class=&#34;references csl-bib-body hanging-indent&#34;&gt;
+&lt;div id=&#34;ref-Robbins2004&#34; class=&#34;csl-entry&#34;&gt;
+Robbins, Naomi B. 2004. &lt;em&gt;&lt;span&gt;Creating More Effective Graphs&lt;/span&gt;&lt;/em&gt;. New Jersey - USA: Wiley-Interscience. &lt;a href=&#34;http://library1.nida.ac.th/termpaper6/sd/2554/19755.pdf&#34;&gt;http://library1.nida.ac.th/termpaper6/sd/2554/19755.pdf&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-WickhamRStudio2014&#34; class=&#34;csl-entry&#34;&gt;
+Wickham, Hadley. 2014. &lt;span&gt;“&lt;span&gt;Tidy Data&lt;/span&gt;.”&lt;/span&gt; &lt;em&gt;Journal of Statistical Software&lt;/em&gt; 59 (10): 1–23. &lt;a href=&#34;http://www.jstatsoft.org/&#34;&gt;http://www.jstatsoft.org/&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-Wickham2015&#34; class=&#34;csl-entry&#34;&gt;
+———. 2015. &lt;em&gt;&lt;span class=&#34;nocase&#34;&gt;Elegant Graphics for Data Analysis&lt;/span&gt;&lt;/em&gt;. &lt;a href=&#34;http://had.co.nz/ggplot2/book&#34;&gt;http://had.co.nz/ggplot2/book&lt;/a&gt;.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Ainda que nem todos sejam utilizados nesta nota, sugereimos ao leitor a consulta de informações adicionais dos pacotes para conhecer melhor suas respectivas funcionalidades.&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>External Project</title>

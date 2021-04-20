@@ -9,25 +9,25 @@ headless: true
 # Order that this section appears on the page.
 weight: 30
 
-title: Skills
+title: Habilidades
 subtitle:
 
 # Showcase personal skills or business features.
 # - Add/remove as many `feature` blocks below as you like.
 # - For available icons, see: https://wowchemy.com/docs/page-builder/#icons
 feature:
-- description: 90%
+- description: 60%
   icon: r-project
   icon_pack: fab
   name: R
-- description: 100%
+- description: 30%
   icon: chart-line
   icon_pack: fas
-  name: Statistics
-- description: 10%
-  icon: camera-retro
-  icon_pack: fas
-  name: Photography
+  name: Matemática
+- description: 80%
+  icon: mendeley
+  icon_pack: fab
+  name: Mendeley
 
 # Uncomment to use emoji icons.
 #- icon = ":smile:"

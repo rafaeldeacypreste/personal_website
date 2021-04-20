@@ -9,7 +9,7 @@ headless: true
 # Order that this section appears on the page.
 weight: 90
 
-title: Recent Publications
+title: Publicações Recentes
 subtitle: ''
 
 content:
@@ -38,5 +38,5 @@ design:
 ---
 
 {{% callout note %}}
-Quickly discover relevant content by [filtering publications](./publication/).
+Descubra rapidamente conteúdos relevantes com [filtrar publicações](./publication/).
 {{% /callout %}}

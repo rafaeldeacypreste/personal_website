@@ -1,16 +1,207 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Courses | Academic</title>
+    <title>Courses | Rafael de Acypreste</title>
     <link>/courses/</link>
       <atom:link href="/courses/index.xml" rel="self" type="application/rss+xml" />
     <description>Courses</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 24 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 20 Apr 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_2.png</url>
       <title>Courses</title>
       <link>/courses/</link>
     </image>
+    
+    <item>
+      <title>Organização de tabelas e elaboração de gráficos a partir de análises com Elan 5.7</title>
+      <link>/courses/elan/</link>
+      <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>/courses/elan/</guid>
+      <description>
+&lt;script src=&#34;/courses/elan/index.en_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Trabalho elaborado por Luana de Melo Ribas&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; e Rafael de Acypreste&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;div id=&#34;introdução&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Introdução&lt;/h1&gt;
+&lt;p&gt;Esta nota tem por objetivo explicar e exemplificar os passos para elaboração de um gráfico de linha do tempo com os informações de estudo exploratório e faz parte da dissertação de mestrado da primeira autora. É permitida a reprodução desde que citada a fonte.&lt;/p&gt;
+&lt;p&gt;Para discutir os informações observados no estudo exploratório utilizou-se análise microgenética de videogravações em contexto escolar e, para essa análise, foi usado o &lt;em&gt;software&lt;/em&gt; ELAN 5.7&lt;a href=&#34;#fn3&#34; class=&#34;footnote-ref&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt;. Para mais informações, consulte &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Lausberg2009&#34; role=&#34;doc-biblioref&#34;&gt;Lausberg and Sloetjes&lt;/a&gt; (&lt;a href=&#34;#ref-Lausberg2009&#34; role=&#34;doc-biblioref&#34;&gt;2009&lt;/a&gt;)&lt;/span&gt;. A organização de tabelas e elaboração dos gráficos foi realizada com o &lt;em&gt;software&lt;/em&gt; estatístico &lt;strong&gt;R&lt;/strong&gt;. Os passos abaixo detalham os procedimentos adotados neste último.&lt;/p&gt;
+&lt;p&gt;Inicialmente, vale ressaltar que, sempre que possível, deve-se evitar o uso de caracteres especias — como *, (), ç — e acentos tanto nos nomes das variáveis quanto nos nomes dos arquivos. Computadores, em geral, têm dificuldade para ler e interpretar esses sinais, sendo fonte comum de erros de sintaxe, em que o programa para sua execução.&lt;/p&gt;
+&lt;p&gt;Também sugerimos que todos os procedimentos para manipulação dos “dados brutos” gerados no ELAN sejam feitos diretamente no &lt;strong&gt;R&lt;/strong&gt;. Ainda que a estrutura de linguagem de programação seja pouco amigável nos primeiros usos, há algumas vantagens em relação a editores de planilha como &lt;em&gt;Excel&lt;/em&gt; ou &lt;em&gt;Calc&lt;/em&gt;:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Os passos são descritos e registrados sequencialmente;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A estrutura incremental (linha por linha) ajuda na identificação de erros;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A discriminação dos passos auxilia na memória da pesquisa; e&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;O script permite reprodutibilidade em outras pesquisas, contribuindo para o avanço da ciência.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Assim, essa nota pretende explicitar os procedimentos adotados nas informações utilizadas na dissertação e servir de guia para pesquisas futuras.&lt;/p&gt;
+&lt;p&gt;Antes de começar, vamos carregar os pacotes do &lt;strong&gt;R&lt;/strong&gt; necessários com a função &lt;strong&gt;library&lt;/strong&gt;. Caso nunca tenha sido usados em uma máquina, devem ser instalados antes do primeiro uso com a função &lt;strong&gt;install.packages&lt;/strong&gt; e, depois, carregados.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# install.packages(&amp;quot;tidyverse&amp;quot;)    Instala o pacote tidyverse, por exemplo
+
+
+library(tidyverse)      # Organização das tabelas e elaboração de gráficos
+library(readxl)         # Carregamento tabelas do Excel
+library(writexl)        # Salvamento tabelas em formato Excel
+library(RColorBrewer)   # Paletas de cores para os gráficos
+library(viridis)        # Paletas de cores para os gráficos
+library(ggthemes)       # Interfaces gráficas adicionais
+library(scales)         # Ajuste de escala dos gráficos&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;organizando-a-tabela&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Organizando a tabela&lt;/h1&gt;
+&lt;p&gt;A exportação de informações do Elan produz tabelas em alguns formatos. Para a presente nota, interessa o formato .csv&lt;a href=&#34;#fn4&#34; class=&#34;footnote-ref&#34; id=&#34;fnref4&#34;&gt;&lt;sup&gt;4&lt;/sup&gt;&lt;/a&gt;. Entretanto, as informações diponibilizados não se encontram no formato ideal para a apresentação de tabelas e elaboração de gráficos. Portanto, é necessária alguma manipulação da tabela para que as informações fiquem devidamente organizadas, isto é, para que as informações permitam uma ligação entre sua disposição física e sua semântica.&lt;/p&gt;
+&lt;p&gt;Esse processo de organização leva à chamada ``&lt;em&gt;tidy data&lt;/em&gt;’’&lt;a href=&#34;#fn5&#34; class=&#34;footnote-ref&#34; id=&#34;fnref5&#34;&gt;&lt;sup&gt;5&lt;/sup&gt;&lt;/a&gt; (por isso o nome do primeiro pacote utilizado), conforme &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-WickhamRStudio2014&#34; role=&#34;doc-biblioref&#34;&gt;Wickham&lt;/a&gt; (&lt;a href=&#34;#ref-WickhamRStudio2014&#34; role=&#34;doc-biblioref&#34;&gt;2014&lt;/a&gt;)&lt;/span&gt;. Em síntese, os informações devem ser organizados de duas formas. Cada &lt;strong&gt;valor&lt;/strong&gt; (cada célula numa tabela do &lt;em&gt;Excel&lt;/em&gt;) pertence a uma variável e uma observação. &lt;strong&gt;Variável&lt;/strong&gt; contém valores que se referem a uma mesma característica ou atributo — no presente caso, podemos citar os períodos inicial, final, duração, as pessoas, as categorias e as subcategorias — e são representadas por colunas. Cada &lt;strong&gt;observação&lt;/strong&gt;, isto é, cada linha contém todos os valores medidos sobre uma mesma unidade, como uma pessoa ou um dia — no caso das informações no Elan, cada pessoa em uma categoria e um período de tempo representa uma observação.&lt;/p&gt;
+&lt;p&gt;Podemos perceber que a forma como o ELAN disponibiliza as informações não atende ao requisito de informação &lt;em&gt;tidy&lt;/em&gt;. Portanto, o ajuste será feito no próprio &lt;strong&gt;R&lt;/strong&gt;. O primeiro passo é importar o arquivo e isso se dá indicando onde o arquivo original está salvo. Notem que o acesso a uma planilha &lt;em&gt;II_no_salao_opcao_2.csv&lt;/em&gt; precisa indicar todos os caminhos. Sugerimos que todas as tabelas sejam salvas numa mesma pasta e preferencialmente no mesmo diretório que estão salvos as informações da sessão do R&lt;a href=&#34;#fn6&#34; class=&#34;footnote-ref&#34; id=&#34;fnref6&#34;&gt;&lt;sup&gt;6&lt;/sup&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Nessa nota, são usadas distintas funções. Para informações sobre uma função, sugerimos consultar a ajuda do próprio programa, que pode ser acessada por meio do código &lt;strong&gt;?nomedafunção&lt;/strong&gt; no console, como &lt;strong&gt;?read_csv&lt;/strong&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Lê o arquivo do ELAN e salva no objeto &amp;quot;salao_csv2&amp;quot;
+
+tabela &amp;lt;- &amp;quot;C:/Users/rafae/OneDrive/Documentos/Luana/data/II_no_salao_opcao_2.csv&amp;quot;
+
+salao_csv2 &amp;lt;- read_csv(tabela,
+                       locale = locale(encoding = &amp;quot;ISO-8859-1&amp;quot;),
+                       col_types = cols(`Tempo Inicial - hh:mm:ss.ms` =
+                                          col_time(format = &amp;quot;%H:%M:%OS&amp;quot;),
+                                        `Tempo Final - hh:mm:ss.ms` =
+                                          col_time(format = &amp;quot;%H:%M:%OS&amp;quot;)))
+# &amp;quot;ISO-8859-1&amp;quot; é formato que melhor se adapta às pontuações do Português
+# Sugerimos usar esse formato ao Exportar as informações do próprio ELAN
+# O formato de tempo precisa ser ajustado a partir do comando &amp;quot;col_types&amp;quot;
+
+salao_csv2[1:3,] # Mostra as três primeiras linhas&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 10
+##   `Tempo Inicial ~ `Tempo Final - ~ `Duração - hh:m~ `MM Asp da Com ~
+##   &amp;lt;time&amp;gt;           &amp;lt;time&amp;gt;           &amp;lt;time&amp;gt;           &amp;lt;chr&amp;gt;           
+## 1 01&amp;#39;54.000&amp;quot;       01&amp;#39;55.270&amp;quot;       00&amp;#39;01&amp;quot;           observa ação ou~
+## 2 01&amp;#39;55.285&amp;quot;       01&amp;#39;57.015&amp;quot;       00&amp;#39;01&amp;quot;           interrogativo   
+## 3 01&amp;#39;57.015&amp;quot;       01&amp;#39;59.220&amp;quot;       00&amp;#39;02&amp;quot;           imperativo      
+## # ... with 6 more variables: `MS Asp da Com e Int Social` &amp;lt;chr&amp;gt;, `MM Usos dos
+## #   objetos/brinquedos` &amp;lt;chr&amp;gt;, `MS Usos dos objetos/brinquedos` &amp;lt;chr&amp;gt;, `Profa
+## #   Asp da Com e Int Social` &amp;lt;chr&amp;gt;, `Profa Usos dos objetos/brinquedos` &amp;lt;chr&amp;gt;,
+## #   X10 &amp;lt;chr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Podemos notar que as colunas indicadas com letras maiúsculas configuram o par ``pessoa/categoria’’ do ELAN, que são valores da tabela. Portanto, deveriam formar duas variáveis distintas e não várias colunas&lt;a href=&#34;#fn7&#34; class=&#34;footnote-ref&#34; id=&#34;fnref7&#34;&gt;&lt;sup&gt;7&lt;/sup&gt;&lt;/a&gt;. Uma das consequências comuns de valores serem colocados em colunas é a profusão de células vazias. Vale ressaltar que a última coluna não faz parte das informações e será excluída nos próximos passos.&lt;/p&gt;
+&lt;p&gt;Assim, vamos reorganizar a tabela para que as trilhas façam parte de apenas uma variável e excluir a coluna extra e as células vazias. Salvaremos a tabela em um novo objeto. Os passos serão adotados usando os &lt;em&gt;pipes&lt;/em&gt; — %&amp;gt;% —, em que se pode consultar mais informações sobre seu uso &lt;a href=&#34;https://magrittr.tidyverse.org/reference/pipe.html&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;salao2 &amp;lt;- 
+  salao_csv2 %&amp;gt;%           # Atribui ao objeto &amp;quot;salao&amp;quot;
+      select(-&amp;quot;X10&amp;quot;) %&amp;gt;%   # Exclui a coluna adicionada erroneamente
+      pivot_longer(cols = `MM Asp da Com e Int Social`:       # Seleciona valores da
+                          `Profa Usos dos objetos/brinquedos`,# variável temporária
+                   names_to = &amp;quot;trilha&amp;quot;,             # Local para nomes das colunas
+                   values_to = &amp;quot;subcategoria&amp;quot;)  %&amp;gt;% # Local para os valores
+      filter(subcategoria != &amp;quot;&amp;quot;) %&amp;gt;%                # Exclui as células em branco
+      arrange(trilha,subcategoria) %&amp;gt;%              # Ordem alfabética das trilhas
+      select(4,5,1,2,3)                             # Muda a ordem das colunas    
+
+salao2[1:3,]                                        # Exemplo novas colunas&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 5
+##   trilha     subcategoria `Tempo Inicial - ~ `Tempo Final - h~ `Duração - hh:mm~
+##   &amp;lt;chr&amp;gt;      &amp;lt;chr&amp;gt;        &amp;lt;time&amp;gt;             &amp;lt;time&amp;gt;            &amp;lt;time&amp;gt;           
+## 1 MM Asp da~ apontar      02&amp;#39;10.139&amp;quot;         02&amp;#39;11.009&amp;quot;        00&amp;#39;00&amp;quot;           
+## 2 MM Asp da~ apontar      03&amp;#39;41.390&amp;quot;         03&amp;#39;43.800&amp;quot;        00&amp;#39;02&amp;quot;           
+## 3 MM Asp da~ declarativo  02&amp;#39;06.810&amp;quot;         02&amp;#39;08.789&amp;quot;        00&amp;#39;01&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Agora, o último passo é colocar nomes mais sugestivos às colunas e alterar a estrutura do tipo de coluna referente ao tempo. Deixaremos o nome em formato amigável. Também faremos alguns ajustes de sintaxe do &lt;strong&gt;R&lt;/strong&gt; para que o gráfico se dê na ordem mais interessante para apresentação da pesquisa. Por fim, salvaremos a tabela organizada em uma nova planilha em formato compatível com &lt;em&gt;Excel&lt;/em&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;salao2 &amp;lt;- 
+  salao2 %&amp;gt;% 
+      rename(&amp;quot;t_inicial&amp;quot; = `Tempo Inicial - hh:mm:ss.ms`,       # Renomeia coluna
+             &amp;quot;t_final&amp;quot; = `Tempo Final - hh:mm:ss.ms`) %&amp;gt;% 
+      mutate(t_inicial = t_inicial - parse_time(&amp;quot;00:01:48&amp;quot;),    # Renova o eixo x
+             t_final = t_final - parse_time(&amp;quot;00:01:48&amp;quot;),        # para começar em zero
+             &amp;quot;pessoa&amp;quot; = str_extract(trilha,&amp;quot;MM|MS|Profa&amp;quot;),      # Ajusta informações das
+             pessoa = str_replace(pessoa,&amp;quot;Profa&amp;quot;,&amp;quot;Professora&amp;quot;), # duas novas colunas
+             pessoa = str_replace(pessoa,&amp;quot;MS&amp;quot;,&amp;quot;MaxSteel&amp;quot;),
+             pessoa = str_replace(pessoa,&amp;quot;MM&amp;quot;,&amp;quot;Mulher Maravilha&amp;quot;),
+             &amp;quot;categoria&amp;quot; = str_extract(trilha,&amp;quot;Uso.*|Asp.*&amp;quot;)) %&amp;gt;% 
+      select(-1) %&amp;gt;%                                            # Exclui coluna temporária
+      mutate(categoria = str_replace(categoria,&amp;quot;Asp da Com e Int Social&amp;quot;,&amp;quot;Aspectos da Comunicação/Interação&amp;quot;),
+             categoria = str_replace(categoria,&amp;quot;Usos&amp;quot;,&amp;quot;Uso&amp;quot;),
+             subcategoria = str_replace(subcategoria,&amp;quot;observa ação/outro&amp;quot;,&amp;quot;observa ação outro&amp;quot;),
+             subcategoria = str_replace(subcategoria,&amp;quot;poduz&amp;quot;,&amp;quot;produz&amp;quot;),
+             subcategoria = as_factor(subcategoria),
+             categoria = factor(categoria,levels = unique(categoria))) # Reordena
+
+          
+# Salva a tabela em formato .xlsx (Excel)
+write_xlsx(salao2,&amp;quot;C:/Users/rafae/OneDrive/Documentos/Luana/data/salao2.xlsx&amp;quot;)  
+
+salao2[1:3,]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 6
+##   subcategoria t_inicial  t_final   `Duração - hh:mm:~ pessoa    categoria      
+##   &amp;lt;fct&amp;gt;        &amp;lt;drtn&amp;gt;     &amp;lt;drtn&amp;gt;    &amp;lt;time&amp;gt;             &amp;lt;chr&amp;gt;     &amp;lt;fct&amp;gt;          
+## 1 apontar       22.139 s~  23.009 ~ 00&amp;#39;00&amp;quot;             Mulher M~ Aspectos da Co~
+## 2 apontar      113.390 s~ 115.800 ~ 00&amp;#39;02&amp;quot;             Mulher M~ Aspectos da Co~
+## 3 declarativo   18.810 s~  20.789 ~ 00&amp;#39;01&amp;quot;             Mulher M~ Aspectos da Co~&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Com a tabela no formato adequado, passemos à elaboração dos gráficos.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;construindo-os-gráficos&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Construindo os gráficos&lt;/h1&gt;
+&lt;p&gt;Para a base dos gráficos, usaremos a função &lt;strong&gt;geom_segment&lt;/strong&gt; do pacote &lt;strong&gt;ggplot2&lt;/strong&gt;, como se pode ver na Figura &lt;a href=&#34;#fig:inicial&#34;&gt;1&lt;/a&gt;. Como as categorias e subcategorias farão parte da explicação das linhas do tempo e parte da legenda no gráfico, sugerimos que sejam escolhidas criteriosamente pela pesquisadora e pelo pesquisador. Quanto maior a quantidade, mais informações e cores precisarão estar disponíveis no gráfico, o que pode prejudicar a inteligibilidade.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;?geom_segment                                     # Consultar informações&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;integração-inversa&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Integração Inversa&lt;/h2&gt;
+&lt;p&gt;Por fim, o gráfico pode ser customizado conforme interesse da pesquisa e salvo. As principais ferramentas utilizadas estão no pacote &lt;a href=&#34;https://ggplot2.tidyverse.org/&#34;&gt;ggplot2&lt;/a&gt;. Uma folha de resumo deste pacote pode ser encontrada &lt;a href=&#34;https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf&#34;&gt;aqui&lt;/a&gt;. Há também modelos de gráficos adicionais e cores no pacote &lt;a href=&#34;https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/&#34;&gt;&lt;strong&gt;ggthemes&lt;/strong&gt;&lt;/a&gt;. A interface apresentada na dissertação se dá abaixo.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;salao2_plot &amp;lt;-  
+  salao2 %&amp;gt;% 
+        ggplot()+                                          # Elabora gráfico
+        geom_segment(aes(x = t_inicial, xend = t_final,    # Eixo x - Tempo
+                         y = pessoa, yend = pessoa,        # Eixo y - códigos-mãe
+                         color = subcategoria),            # Informações legenda
+                     size = 10)+                           # Largura dos segmentos
+        facet_grid(categoria ~ .,                          # Divisão códigos-filho
+                   scales = &amp;quot;free_y&amp;quot;)+                  
+        theme_hc()+                                        # Tema do gráfico
+        labs(x = NULL,                                     # Nomes no gráfico
+             y = NULL,
+             title = &amp;quot;Integração Inversa&amp;quot;,
+             subtitle = &amp;quot;Relação triádica criança com autismo - objeto/brinquedo - outro&amp;quot;,
+             caption = &amp;quot;Fonte: Elaboração própria.&amp;quot;,
+             theme(legend.position = &amp;quot;bottom&amp;quot;),
+             color = NULL)+
+        theme(legend.position=&amp;quot;right&amp;quot;)+                    # Legenda à direita
+        scale_x_time(labels=time_format(&amp;quot;%H:%M:%S&amp;quot;))+      # Nomes eixo tempo
+        scale_color_manual(values = c(&amp;quot;#ffd94a&amp;quot;,&amp;quot;#c7c7c7&amp;quot;,&amp;quot;#2ca02c&amp;quot;,&amp;quot;#9467bd&amp;quot;,
+                                      &amp;quot;#ff7f0e&amp;quot;,&amp;quot;#98df8a&amp;quot;,&amp;quot;#8c564b&amp;quot;,&amp;quot;#1f77b4&amp;quot;,
+                                      &amp;quot;#e377c2&amp;quot;,&amp;quot;#9edae5&amp;quot;,&amp;quot;#d62728&amp;quot;,
+                                      &amp;quot;#ff9896&amp;quot;,&amp;quot;#7f7f7f&amp;quot;)) # Cores
+
+
+# Salva o gráfico
+ggsave(plot = salao2_plot,&amp;quot;C:/Users/rafae/OneDrive/Documentos/Luana/figures/salao2.jpg&amp;quot;,
+       width = 12, height = 8) 
+
+salao2_plot&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:inicial&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/courses/elan/index.en_files/figure-html/inicial-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;864&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: Elaboração própria.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Podemos também selecionar tempos menores para exibição dos gráficos. O &lt;em&gt;zoom&lt;/em&gt; pode ser feito com o comando &lt;strong&gt;coord_cartesian()&lt;/strong&gt;.&lt;/p&gt;
+&lt;div id=&#34;refs&#34; class=&#34;references csl-bib-body hanging-indent&#34;&gt;
+&lt;div id=&#34;ref-Lausberg2009&#34; class=&#34;csl-entry&#34;&gt;
+Lausberg, Hedda, and Han Sloetjes. 2009. &lt;span&gt;“&lt;span class=&#34;nocase&#34;&gt;Coding gestural behavior with the NEUROGES-ELAN system&lt;/span&gt;.”&lt;/span&gt; &lt;em&gt;Behavior Research Methods&lt;/em&gt; 41 (3): 841–49. &lt;a href=&#34;https://doi.org/10.3758/BRM.41.3.841&#34;&gt;https://doi.org/10.3758/BRM.41.3.841&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-WickhamRStudio2014&#34; class=&#34;csl-entry&#34;&gt;
+Wickham, Hadley. 2014. &lt;span&gt;“&lt;span&gt;Tidy Data&lt;/span&gt;.”&lt;/span&gt; &lt;em&gt;Journal of Statistical Software&lt;/em&gt; 59 (10): 1–23. &lt;a href=&#34;http://www.jstatsoft.org/&#34;&gt;http://www.jstatsoft.org/&lt;/a&gt;.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Mestranda em Psicologia do Desenvolvimento e Escolar pela Universidade de Brasília. Pode ser contatada em &lt;a href=&#34;mailto:luana.psi@hotmail.com&#34;&gt;luana.psi@hotmail.com&lt;/a&gt;.&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;Doutorando em Economia pela Universidade de Brasília. Pode ser contatado em &lt;a href=&#34;mailto:rafaeldeacyprestemr@gmail.com&#34;&gt;rafaeldeacyprestemr@gmail.com&lt;/a&gt;.&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;O &lt;em&gt;download&lt;/em&gt; está disponível em &lt;a href=&#34;https://archive.mpi.nl/tla/elan&#34; class=&#34;uri&#34;&gt;https://archive.mpi.nl/tla/elan&lt;/a&gt;. O programa foi criado pelo &lt;em&gt;Max Planck Institute for Psycholinguistics, The Language Archive, Nijmegen, The Netherlands&lt;/em&gt;.&lt;a href=&#34;#fnref3&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn4&#34;&gt;&lt;p&gt;Sugerimos utilizar o formato “ISO-8859-1” ao exportar as informações do próprio ELAN.&lt;a href=&#34;#fnref4&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn5&#34;&gt;&lt;p&gt;Em tradução livre, “informação organizada.”&lt;a href=&#34;#fnref5&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn6&#34;&gt;&lt;p&gt;O diretório local pode ser acessado digitando &lt;strong&gt;getwd()&lt;/strong&gt; no Console do &lt;strong&gt;R&lt;/strong&gt;.&lt;a href=&#34;#fnref6&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn7&#34;&gt;&lt;p&gt;A separação em duas colunas envolve um passo intermediário, que será feito por uma coluna temporária chamada “&lt;em&gt;trilha&lt;/em&gt;.”&lt;a href=&#34;#fnref7&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
   </channel>
 </rss>

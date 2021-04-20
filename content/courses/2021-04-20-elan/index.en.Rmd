@@ -1,6 +1,6 @@
 ---
-title: ELAN
-author: ''
+title: Organização de tabelas e elaboração de gráficos a partir de análises com Elan 5.7
+author: 
 date: '2021-04-20'
 slug: elan
 categories: []
@@ -15,6 +15,7 @@ image:
   focal_point: ''
   preview_only: no
 projects: []
+toc: true
 fontsize: 12pt
 linkcolor: blue
 header-includes:
@@ -32,7 +33,7 @@ link-citations: true
 knitr::opts_chunk$set(message = FALSE,warning = FALSE,echo = TRUE,fig.cap='Elaboração própria.')
 ```
 
-
+Trabalho elaborado por Luana de Melo Ribas^[Mestranda em Psicologia do Desenvolvimento e Escolar pela Universidade de Brasília. Pode ser contatada em [luana.psi@hotmail.com](mailto:luana.psi@hotmail.com).] e Rafael de Acypreste^[Doutorando em Economia pela Universidade de Brasília. Pode ser contatado em [rafaeldeacyprestemr@gmail.com](mailto:rafaeldeacyprestemr@gmail.com).]
 
 # Introdução{-}
 
@@ -68,8 +69,6 @@ library(viridis)        # Paletas de cores para os gráficos
 library(ggthemes)       # Interfaces gráficas adicionais
 library(scales)         # Ajuste de escala dos gráficos
 
-
-library(timelineS)
 ```
 
 

@@ -1,27 +1,31 @@
 ---
-bio: My research interests include distributed robotics, mobile computing and programmable
+bio: Meus interesses de pesquisa se concentram em inteligência artificial, automação e emprego
   matter.
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2009
+  - course: Doutorado em Economia Política (em andamento)
+    institution: Universidade de Brasília
+    year: 2018-atual
+  - course: Mestre em Direito
+    institution: Universidade de Brasília
+    year: 2014-2016
   - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
+    institution: Universidade de Brasília
+    year: 2008-2013
+  - course: Graudação em Matemática (em andamento)
+    institution: Universidade de Brasília
+    year: 2020-atual
 email: ""
 highlight_name: false
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
+- Inteligência Artificial
+- Economia Matemática
+- Economia Marxista
+- Structural Change and Economic Dyamics
 organizations:
-- name: Stanford University
-  url: https://www.stanford.edu/
-role: Professor of Artificial Intelligence
+- name: Departamento de Economia (FACE) - UnB
+  url: http://www.economia.unb.br/index.php/pos-graduacao
+role: Bolsista CAPES de doutorado em Economia
 social:
 - icon: envelope
   icon_pack: fas
@@ -31,22 +35,20 @@ social:
   icon: twitter
   icon_pack: fab
   label: Follow me on Twitter
-  link: https://twitter.com/GeorgeCushen
+  link: https://twitter.com/rafaelramr
 - icon: graduation-cap
   icon_pack: fas
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: https://scholar.google.co.uk/citations?view_op=list_works&hl=en&user=UUySSCIAAAAJ
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/rafaeldeacypreste
 - icon: linkedin
   icon_pack: fab
-  link: https://www.linkedin.com/
+  link: https://www.linkedin.com/in/rafael-de-acypreste-b73b9b2b/
 superuser: true
-title: Nelson Bighetti
+title: Rafael de Acypreste
 ---
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Eu, Rafael de Acypreste, sou doutorando em Economia pela Universidade de Brasília, orientado pela professora Maria de Lourdes Rollemberg Mollo. Tenho pesquisado as relações entre inteligência artificial, automação em emprego. Venho me aprofundando em trabalhos ligados à Matriz de Insumo-Produto.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
-
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Baixe meu {{< staticref "media/cv_rafael.pdf" "newtab" >}}Currículo Lattes{{< /staticref >}}.

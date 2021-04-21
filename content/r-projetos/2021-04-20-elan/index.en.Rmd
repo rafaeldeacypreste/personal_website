@@ -1,0 +1,339 @@
+---
+title: Organização de tabelas e elaboração de gráficos a partir de análises com Elan 5.7
+author: 
+date: '2021-04-21'
+slug: elan
+categories: []
+tags:
+  - R
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-04-20T12:23:56-03:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+output:
+  blogdown::html_page:
+    toc: true
+fontsize: 12pt
+linkcolor: blue
+header-includes:
+  - \usepackage{indentfirst}
+  - \usepackage{amsmath}
+  - \setlength{\parindent}{4em}
+  - \setlength{\parskip}{1.25em}
+  - \usepackage{float}
+bibliography: library_html.bib
+biblio-style: "apalike"
+link-citations: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE,warning = FALSE,echo = TRUE,fig.cap='Elaboração própria.')
+```
+
+Trabalho elaborado por Luana de Melo Ribas^[Mestranda em Psicologia do Desenvolvimento e Escolar pela Universidade de Brasília. Pode ser contatada em [luana.psi@hotmail.com](mailto:luana.psi@hotmail.com).] e Rafael de Acypreste^[Doutorando em Economia pela Universidade de Brasília. Pode ser contatado em [rafaeldeacyprestemr@gmail.com](mailto:rafaeldeacyprestemr@gmail.com).]
+
+# Introdução{-}
+
+Esta nota tem por objetivo explicar e exemplificar os passos para elaboração de um gráfico de linha do tempo com os informações de estudo exploratório e faz parte da dissertação de mestrado da primeira autora. É permitida a reprodução desde que citada a fonte.
+
+Para discutir os informações observados no estudo exploratório utilizou-se análise microgenética de videogravações em contexto escolar e, para essa análise, foi usado o *software* ELAN 5.7^[O *download* está disponível em https://archive.mpi.nl/tla/elan. O programa foi criado pelo *Max Planck Institute for Psycholinguistics, The Language Archive, Nijmegen, The Netherlands*.]. Para mais informações, consulte @Lausberg2009. A organização de tabelas e elaboração dos gráficos foi realizada com o *software* estatístico **R**. Os passos abaixo detalham os procedimentos adotados neste último.
+
+Inicialmente, vale ressaltar que, sempre que possível, deve-se evitar o uso de caracteres especias --- como *, (), ç --- e acentos tanto nos nomes das variáveis quanto nos nomes dos arquivos. Computadores, em geral, têm dificuldade para ler e interpretar esses sinais, sendo fonte comum de erros de sintaxe, em que o programa para sua execução.
+
+Também sugerimos que todos os procedimentos para manipulação dos "dados brutos" gerados no ELAN sejam feitos diretamente no **R**. Ainda que a estrutura de linguagem de programação seja pouco amigável nos primeiros usos, há algumas vantagens em relação a editores de planilha como *Excel* ou *Calc*:
+
+1. Os passos são descritos e registrados sequencialmente;
+
+2. A estrutura incremental (linha por linha) ajuda na identificação de erros;
+
+3. A discriminação dos passos auxilia na memória da pesquisa; e
+
+4. O script permite reprodutibilidade em outras pesquisas, contribuindo para o avanço da ciência.
+
+Assim, essa nota pretende explicitar os procedimentos adotados nas informações utilizadas na dissertação e servir de guia para pesquisas futuras.
+
+Antes de começar, vamos carregar os pacotes do **R** necessários com a função **library**. Caso nunca tenha sido usados em uma máquina, devem ser instalados antes do primeiro uso com a função **install.packages** e, depois, carregados.
+
+```{r}
+# install.packages("tidyverse")    Instala o pacote tidyverse, por exemplo
+
+
+library(tidyverse)      # Organização das tabelas e elaboração de gráficos
+library(readxl)         # Carregamento tabelas do Excel
+library(writexl)        # Salvamento tabelas em formato Excel
+library(RColorBrewer)   # Paletas de cores para os gráficos
+library(viridis)        # Paletas de cores para os gráficos
+library(ggthemes)       # Interfaces gráficas adicionais
+library(scales)         # Ajuste de escala dos gráficos
+
+```
+
+
+# Organizando a tabela
+
+A exportação de informações do Elan produz tabelas em alguns formatos. Para a presente nota, interessa o formato .csv^[Sugerimos utilizar o formato "ISO-8859-1" ao exportar as informações do próprio ELAN.]. Entretanto, as informações diponibilizados não se encontram no formato ideal para a apresentação de tabelas e elaboração de gráficos. Portanto, é necessária alguma manipulação da tabela para que as informações fiquem devidamente organizadas, isto é, para que as informações permitam uma ligação entre sua disposição física e sua semântica.
+
+Esse processo de organização leva à chamada ``*tidy data*''^[Em tradução livre, "informação organizada".] (por isso o nome do primeiro pacote utilizado), conforme @WickhamRStudio2014. Em síntese, os informações devem ser organizados de duas formas. Cada **valor** (cada célula numa tabela do *Excel*) pertence a uma variável e uma observação. **Variável** contém valores que se referem a uma mesma característica ou atributo --- no presente caso, podemos citar os períodos inicial, final, duração, as pessoas, as categorias e as subcategorias --- e são representadas por colunas. Cada **observação**, isto é, cada linha contém todos os valores medidos sobre uma mesma unidade, como uma pessoa ou um dia --- no caso das informações no Elan, cada pessoa em uma categoria e um período de tempo representa uma observação.
+
+Podemos perceber que a forma como o ELAN disponibiliza as informações não atende ao requisito de informação *tidy*. Portanto, o ajuste será feito no próprio **R**. O primeiro passo é importar o arquivo e isso se dá indicando onde o arquivo original está salvo. Notem que o acesso a uma planilha *II_no_salao_opcao_2.csv* precisa indicar todos os caminhos. Sugerimos que todas as tabelas sejam salvas numa mesma pasta e preferencialmente no mesmo diretório que estão salvos as informações da sessão do R^[O diretório local pode ser acessado digitando **getwd()** no Console do **R**.]. 
+
+Nessa nota, são usadas distintas funções. Para informações sobre uma função, sugerimos consultar a ajuda do próprio programa, que pode ser acessada por meio do código **?nomedafunção** no console, como **?read_csv**.
+
+```{r}
+# Lê o arquivo do ELAN e salva no objeto "salao_csv2"
+
+tabela <- "C:/Users/rafae/OneDrive/Documentos/Luana/data/II_no_salao_opcao_2.csv"
+
+salao_csv2 <- read_csv(tabela,
+                       locale = locale(encoding = "ISO-8859-1"),
+                       col_types = cols(`Tempo Inicial - hh:mm:ss.ms` =
+                                          col_time(format = "%H:%M:%OS"),
+                                        `Tempo Final - hh:mm:ss.ms` =
+                                          col_time(format = "%H:%M:%OS")))
+# "ISO-8859-1" é formato que melhor se adapta às pontuações do Português
+# Sugerimos usar esse formato ao Exportar as informações do próprio ELAN
+# O formato de tempo precisa ser ajustado a partir do comando "col_types"
+
+salao_csv2[1:3,] # Mostra as três primeiras linhas
+```
+
+Podemos notar que as colunas indicadas com letras maiúsculas configuram o par  ``pessoa/categoria'' do ELAN, que são valores da tabela. Portanto, deveriam formar duas variáveis distintas e não várias colunas^[A separação em duas colunas envolve um passo intermediário, que será feito por uma coluna temporária chamada "*trilha*".]. Uma das consequências comuns de valores serem  colocados em colunas é a profusão de células vazias. Vale ressaltar que a última coluna não faz parte das informações e será excluída nos próximos passos.
+
+Assim, vamos reorganizar a tabela para que as trilhas façam parte de apenas uma variável e excluir a coluna extra e as células vazias. Salvaremos a tabela em um novo objeto. Os passos serão adotados usando os *pipes* --- %>% ---, em que se pode consultar mais informações sobre seu uso [aqui](https://magrittr.tidyverse.org/reference/pipe.html). 
+
+```{r}
+            
+
+salao2 <- 
+  salao_csv2 %>%           # Atribui ao objeto "salao"
+      select(-"X10") %>%   # Exclui a coluna adicionada erroneamente
+      pivot_longer(cols = `MM Asp da Com e Int Social`:       # Seleciona valores da
+                          `Profa Usos dos objetos/brinquedos`,# variável temporária
+                   names_to = "trilha",             # Local para nomes das colunas
+                   values_to = "subcategoria")  %>% # Local para os valores
+      filter(subcategoria != "") %>%                # Exclui as células em branco
+      arrange(trilha,subcategoria) %>%              # Ordem alfabética das trilhas
+      select(4,5,1,2,3)                             # Muda a ordem das colunas    
+
+salao2[1:3,]                                        # Exemplo novas colunas
+```
+
+Agora, o último passo é colocar nomes mais sugestivos às colunas e alterar a estrutura do tipo de coluna referente ao tempo. Deixaremos o nome em formato amigável. Também faremos alguns ajustes de sintaxe do **R** para que o gráfico se dê na ordem mais interessante para apresentação da pesquisa. Por fim, salvaremos a tabela organizada em uma nova planilha em formato compatível com _Excel_. 
+
+```{r}
+
+salao2 <- 
+  salao2 %>% 
+      rename("t_inicial" = `Tempo Inicial - hh:mm:ss.ms`,       # Renomeia coluna
+             "t_final" = `Tempo Final - hh:mm:ss.ms`) %>% 
+      mutate(t_inicial = t_inicial - parse_time("00:01:48"),    # Renova o eixo x
+             t_final = t_final - parse_time("00:01:48"),        # para começar em zero
+             "pessoa" = str_extract(trilha,"MM|MS|Profa"),      # Ajusta informações das
+             pessoa = str_replace(pessoa,"Profa","Professora"), # duas novas colunas
+             pessoa = str_replace(pessoa,"MS","MaxSteel"),
+             pessoa = str_replace(pessoa,"MM","Mulher Maravilha"),
+             "categoria" = str_extract(trilha,"Uso.*|Asp.*")) %>% 
+      select(-1) %>%                                            # Exclui coluna temporária
+      mutate(categoria = str_replace(categoria,"Asp da Com e Int Social","Aspectos da Comunicação/Interação"),
+             categoria = str_replace(categoria,"Usos","Uso"),
+             subcategoria = str_replace(subcategoria,"observa ação/outro","observa ação outro"),
+             subcategoria = str_replace(subcategoria,"poduz","produz"),
+             subcategoria = as_factor(subcategoria),
+             categoria = factor(categoria,levels = unique(categoria))) # Reordena
+
+          
+# Salva a tabela em formato .xlsx (Excel)
+write_xlsx(salao2,"C:/Users/rafae/OneDrive/Documentos/Luana/data/salao2.xlsx")  
+
+salao2[1:3,]
+```
+
+Com a tabela no formato adequado, passemos à elaboração dos gráficos.
+
+# Construindo os gráficos
+
+Para a base dos gráficos, usaremos a função **geom_segment** do pacote **ggplot2**, como se pode ver na Figura \@ref(fig:inicial). Como as categorias e subcategorias farão parte da explicação das linhas do tempo e parte da legenda no gráfico, sugerimos que sejam escolhidas criteriosamente pela pesquisadora e pelo pesquisador. Quanto maior a quantidade, mais informações e cores precisarão estar disponíveis no gráfico, o que pode prejudicar a inteligibilidade.
+
+```{r eval=FALSE}
+?geom_segment                                     # Consultar informações
+```
+
+## Integração Inversa
+
+Por fim, o gráfico pode ser customizado conforme interesse da pesquisa e salvo. As principais ferramentas utilizadas estão no pacote [ggplot2](https://ggplot2.tidyverse.org/). Uma folha de resumo deste pacote pode ser encontrada [aqui](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf). Há também modelos de gráficos adicionais e cores no pacote [**ggthemes**](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/). A interface apresentada na dissertação se dá abaixo.
+
+```{r, inicial, fig.width=9}
+
+salao2_plot <-  
+  salao2 %>% 
+        ggplot()+                                          # Elabora gráfico
+        geom_segment(aes(x = t_inicial, xend = t_final,    # Eixo x - Tempo
+                         y = pessoa, yend = pessoa,        # Eixo y - códigos-mãe
+                         color = subcategoria),            # Informações legenda
+                     size = 10)+                           # Largura dos segmentos
+        facet_grid(categoria ~ .,                          # Divisão códigos-filho
+                   scales = "free_y")+                  
+        theme_hc()+                                        # Tema do gráfico
+        labs(x = NULL,                                     # Nomes no gráfico
+             y = NULL,
+             title = "Integração Inversa",
+             subtitle = "Relação triádica criança com autismo - objeto/brinquedo - outro",
+             caption = "Fonte: Elaboração própria.",
+             theme(legend.position = "bottom"),
+             color = NULL)+
+        theme(legend.position="right")+                    # Legenda à direita
+        scale_x_time(labels=time_format("%H:%M:%S"))+      # Nomes eixo tempo
+        scale_color_manual(values = c("#ffd94a","#c7c7c7","#2ca02c","#9467bd",
+                                      "#ff7f0e","#98df8a","#8c564b","#1f77b4",
+                                      "#e377c2","#9edae5","#d62728",
+                                      "#ff9896","#7f7f7f")) # Cores
+
+
+# Salva o gráfico
+ggsave(plot = salao2_plot,"C:/Users/rafae/OneDrive/Documentos/Luana/figures/salao2.jpg",
+       width = 12, height = 8) 
+
+salao2_plot
+```
+
+Podemos também selecionar tempos menores para exibição dos gráficos. O *zoom* pode ser feito com o comando **coord_cartesian()**.
+
+## Classe Especial
+
+Passos semelhantes foram adotados para as informações da Classe Especial. 
+Os resultados são visualizados na figura \@ref(fig:animais).
+
+
+```{r, include=FALSE}
+
+  # informações para a classe especial
+
+animais_csv2 <- read_csv("C:/Users/rafae/OneDrive/Documentos/Luana/data/CE_animais_dormindo_opcao_2.csv",
+                         locale = locale(encoding = "ISO-8859-1"),
+                         col_types = cols(`Tempo Inicial - hh:mm:ss.ms` = col_time(format = "%H:%M:%OS"),
+                                          `Tempo Final - hh:mm:ss.ms` = col_time(format = "%H:%M:%OS")))
+
+
+animais2 <- 
+    animais_csv2 %>% 
+              select(-"X8") %>% 
+              pivot_longer(cols = `Profa Asp da Com e Int Social`:`MK Asp da Com e Int Social`,
+                           names_to = "trilha",
+                           values_to = "subcategoria") %>% 
+              filter(!is.na(subcategoria)) %>%
+              arrange(trilha,subcategoria) %>% 
+              select(4,5,1,2,3) %>%
+              rename("t_inicial" = `Tempo Inicial - hh:mm:ss.ms`,
+                     "t_final" = `Tempo Final - hh:mm:ss.ms`) %>% 
+              mutate(t_inicial = parse_time(as.character(t_inicial),"%H:%M:%OS"),
+                     t_final = parse_time(as.character(t_final),"%H:%M:%OS"),
+                     "pessoa" = str_extract(trilha,"MK|Profa"),
+                     pessoa = str_replace(pessoa,"Profa","Professora"),
+                     pessoa = str_replace(pessoa,"MK","Mickey"),
+                     "categoria" = str_extract(trilha,"Uso.*|Asp.*")) %>% 
+              select(-1) %>% 
+              mutate(categoria = str_replace(categoria,"Asp da Com e Int Social","Aspectos da Comunicação/Interação"),
+                     subcategoria = as_factor(subcategoria))
+
+
+write_xlsx(animais2,"C:/Users/rafae/OneDrive/Documentos/Luana/data/animais2.xlsx") 
+
+
+```
+
+```{r, animais,echo=FALSE, fig.width=9}
+# Gráfico para a classe especial
+animais2_plot  <- 
+    animais2 %>% 
+      ggplot(aes(color = subcategoria))+
+        geom_segment(aes(x = t_inicial, xend = t_final,
+                         y = pessoa, yend = pessoa),
+                     size = 10)+
+        facet_grid(categoria ~ .,
+                   scales = "free_y")+
+        theme_hc()+
+        labs(x = NULL,
+             y = NULL,
+             title = "Classe Especial",
+             subtitle = "Relação triádica criança com autismo - objeto/brinquedo - outro",
+             caption = "Fonte: Elaboração própria.",
+             theme(legend.position = "bottom"),
+             color = NULL)+
+        theme(legend.position="right")+
+        #guides(color=guide_legend(nrow=4,byrow=F))+
+        scale_x_time(labels=time_format("%H:%M:%S"))+
+        #scale_color_tableau(palette = 'Tableau 20')
+        scale_color_manual(values = c("#ffd94a","#e377c2","#ff7f0e",
+                                      "#9edae5","#1f77b4","#8c564b","#98df8a",
+                                      "#9467bd","#2ca02c","#d62728",
+                                      "#ff9896","#7f7f7f"))
+
+ggsave(plot = animais2_plot,"C:/Users/rafae/OneDrive/Documentos/Luana/figures/animais2_plot.jpg",
+       width = 12, height = 8)
+
+animais2_plot
+```
+
+## Formatos adicionais
+
+Por fim, a título de exemplo, seria possível elaborar com outro *layout* de gráfico e paleta de cores como nas Figuras \@ref(fig:exemplo1) e \@ref(fig:exemplo2):
+
+```{r, exemplo1, echo=FALSE,fig.pos='H', fig.width=9}
+
+salao2 %>% 
+        ggplot()+                                        # Elabora gráfico
+        geom_segment(aes(x = t_inicial, xend = t_final,  # Eixo x - Tempo
+                         y = pessoa, yend = pessoa,      # Eixo y - códigos-mãe
+                         color = subcategoria),          # Informações legenda
+                     size = 10)+                         # Largura dos segmentos
+        facet_grid(categoria ~ .,                        # Divisão códigos-filho
+                   scales = "free_y")+                  
+       labs(x = NULL,                                   # Nomes no gráfico
+             y = NULL,
+             title = "Integração Inversa",
+             subtitle = "Relação triádica criança com autismo - objeto/brinquedo - outro",
+             caption = "Fonte: Elaboração própria.",
+             theme(legend.position = "bottom"),
+             color = NULL)+
+        theme(legend.position="right")+                  # Legenda à direita
+        theme_calc()+
+        theme(legend.position="right")+
+        scale_x_time(labels=time_format("%H:%M:%S"))+
+        scale_color_viridis(option = "A",discrete = T)
+```
+
+
+```{r, exemplo2, echo=FALSE,fig.pos='H', fig.width=9}
+
+    animais2 %>% 
+      ggplot(aes(color = subcategoria))+
+        geom_segment(aes(x = t_inicial, xend = t_final,
+                         y = pessoa, yend = pessoa),
+                     size = 10)+
+        facet_grid(categoria ~ .,
+                   scales = "free_y")+
+        labs(x = NULL,
+             y = NULL,
+             title = "Classe Especial",
+             subtitle = "Relação triádica criança com autismo - objeto/brinquedo - outro",
+             caption = "Fonte: Elaboração própria.",
+             theme(legend.position = "bottom"),
+             color = NULL)+
+        theme_minimal()+
+        theme(legend.position="right")+
+        #guides(color=guide_legend(nrow=4,byrow=F))+
+        scale_x_time(labels=time_format("%H:%M:%S"))+
+        #scale_color_tableau(palette = 'Tableau 20')
+        scale_color_viridis(option = "D",discrete = T)
+        #scale_color_brewer(palette = "Paired")
+```
+
+
+# Referências
+

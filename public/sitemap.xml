@@ -11,8 +11,20 @@
     <loc>/event/</loc>
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
   </url><url>
-    <loc>/courses/</loc>
+    <loc>/r-projetos/elan/</loc>
     <lastmod>2021-04-20T12:23:56-03:00</lastmod>
+  </url><url>
+    <loc>/tag/r/</loc>
+    <lastmod>2021-04-21T08:25:16-03:00</lastmod>
+  </url><url>
+    <loc>/r-projetos/</loc>
+    <lastmod>2021-04-21T08:25:16-03:00</lastmod>
+  </url><url>
+    <loc>/r-projetos/edos/</loc>
+    <lastmod>2021-04-21T08:02:11-03:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2021-04-21T08:25:16-03:00</lastmod>
   </url><url>
     <loc>/project/edos/</loc>
     <lastmod>2021-04-20T08:40:33-03:00</lastmod>
@@ -20,35 +32,11 @@
     <loc>/project/nota/</loc>
     <lastmod>2021-04-20T08:37:26-03:00</lastmod>
   </url><url>
-    <loc>/courses/elan/</loc>
-    <lastmod>2021-04-20T12:23:56-03:00</lastmod>
-  </url><url>
     <loc>/project/</loc>
     <lastmod>2021-04-20T08:40:33-03:00</lastmod>
   </url><url>
-    <loc>/categories/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>/post/2020-12-01-r-rmarkdown/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>/tag/plot/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>/post/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>/category/r/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>/tag/r-markdown/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>/tag/regression/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
+    <loc>/r-projetos/alinear-basica/</loc>
+    <lastmod>2021-04-21T08:25:16-03:00</lastmod>
   </url><url>
     <loc>/slides/</loc>
     <lastmod>2019-02-05T00:00:00+00:00</lastmod>
@@ -59,6 +47,10 @@
     <loc>/admin/</loc>
   </url><url>
     <loc>/authors/</loc>
+  </url><url>
+    <loc>/categories/</loc>
+  </url><url>
+    <loc>/post/</loc>
   </url><url>
     <loc>/publication_types/</loc>
   </url><url>

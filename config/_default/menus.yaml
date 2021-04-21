@@ -10,17 +10,17 @@ main:
   - name: Posts
     url: '#posts'
     weight: 20
-  - name: Projetos
+  - name: R Projetos
     url: '#projects'
     weight: 30
+  # - name: R Projetos
+  #   url: r-projetos/
+  #   weight: 40
   - name: Vídeos
     url: '#talks'
-    weight: 40
-  - name: Publicações
-    url: '#featured'
     weight: 50
-  - name: Cursos
-    url: courses/
+  - name: Publicações
+    url: '#publications'
     weight: 60
   - name: Contato
     url: '#contact'

@@ -1,0 +1,182 @@
+---
+title: Resoluções de equações lineares e eliminação gaussiana
+author: ''
+date: '2021-04-20'
+slug: alinear-basica
+categories: []
+tags:
+  - R
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-04-21T08:25:16-03:00'
+featured: no
+output:
+  blogdown::html_page:
+    toc: true
+    toc_depth: 3
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+fontsize: 12pt
+linkcolor: blue
+header-includes:
+  - \usepackage{indentfirst}
+  - \usepackage{amsmath}
+  - \setlength{\parindent}{4em}
+  - \setlength{\parskip}{1.25em}
+  - \usepackage{float}
+bibliography: library_ial.bib
+biblio-style: "apalike"
+link-citations: true
+---
+
+<script src="{{< blogdown/postref >}}index.en_files/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#sistema-de-equações-lineares">Sistema de equações lineares</a></li>
+<li><a href="#referências">Referências</a></li>
+</ul>
+</div>
+
+<div id="sistema-de-equações-lineares" class="section level1">
+<h1>Sistema de equações lineares</h1>
+<p>Um dos pacotes para a solução de sistemas de equações lineares é o <a href="https://cran.r-project.org/web/packages/matlib/matlib.pdf"><strong>matlib</strong></a>, que é bastante útil para o estudo de Álgebra Linear e estatísticas multivariadas. O pacote precisa ser instalado antes do primeiro uso. Após, basta carregar com a função <em>library</em>()<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<pre class="r"><code># install.packages(&quot;matlib&quot;)
+library(matlib)</code></pre>
+<p>O objetivo desta nota é apresentar, por meio de exemplos baseados no livro de <span class="citation"><a href="#ref-Boldrini1980" role="doc-biblioref">Boldrini et al.</a> (<a href="#ref-Boldrini1980" role="doc-biblioref">1980</a>)</span>, algumas das funcionalidades do pacote. Um possível sistema com duas equações é dado por:</p>
+<pre class="r"><code>A &lt;- matrix(c(2,-7,1,4,−1,-10,-5,16), nrow= 4, ncol = 2)
+b &lt;- matrix(c(3,-12,1,8),ncol = 1)
+
+showEqn(A,b) # Mostra a estrutura do sistema de equações</code></pre>
+<pre><code>##  2*x1  - 1*x2  =    3 
+## -7*x1 - 10*x2  =  -12 
+##  1*x1  - 5*x2  =    1 
+##  4*x1 + 16*x2  =    8</code></pre>
+<pre class="r"><code>plotEqn(A,b) # Desenha as retas num gráfico com duas variáveis</code></pre>
+<pre><code>##  2*x[1]  - 1*x[2]  =    3 
+## -7*x[1] - 10*x[2]  =  -12 
+##    x[1]  - 5*x[2]  =    1 
+##  4*x[1] + 16*x[2]  =    8</code></pre>
+<div class="figure"><span id="fig:SEL"></span>
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/SEL-1.png" alt="Elaboração própria." width="672" />
+<p class="caption">
+Figure 1: Elaboração própria.
+</p>
+</div>
+<p>A partir da Figura <a href="#fig:SEL">1</a>, pode-se perceber que há duas equações que são combinações lineares das demais.</p>
+<p>Também é possível elaborar um sistema com três variáveis, resolver e fazer sua representação gráfica<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>:</p>
+<pre class="r"><code>A &lt;- matrix(c(1,2,1,4,5,-3,3,4,-2), ncol = 3)
+b &lt;- c(1,4,5)
+
+showEqn(A,b) # Mostra a estrutura do sistema de equações</code></pre>
+<pre><code>## 1*x1 + 4*x2 + 3*x3  =  1 
+## 2*x1 + 5*x2 + 4*x3  =  4 
+## 1*x1 - 3*x2 - 2*x3  =  5</code></pre>
+<pre class="r"><code>ampliada &lt;- cbind(A,b)                      # Matriz ampliada do sistema
+echelon(ampliada,verbose = T,fractions = T) # Resolve por eliminação gaussiana</code></pre>
+<pre><code>## 
+## Initial matrix:
+##               b 
+## [1,]  1  4  3  1
+## [2,]  2  5  4  4
+## [3,]  1 -3 -2  5
+## 
+## row: 1 
+## 
+##  exchange rows 1 and 2 
+##               b 
+## [1,]  2  5  4  4
+## [2,]  1  4  3  1
+## [3,]  1 -3 -2  5
+## 
+##  multiply row 1 by 1/2 
+##                  b  
+## [1,]   1 5/2   2   2
+## [2,]   1   4   3   1
+## [3,]   1  -3  -2   5
+## 
+##  subtract row 1 from row 2 
+##                  b  
+## [1,]   1 5/2   2   2
+## [2,]   0 3/2   1  -1
+## [3,]   1  -3  -2   5
+## 
+##  subtract row 1 from row 3 
+##                        b    
+## [1,]     1   5/2     2     2
+## [2,]     0   3/2     1    -1
+## [3,]     0 -11/2    -4     3
+## 
+## row: 2 
+## 
+##  exchange rows 2 and 3 
+##                        b    
+## [1,]     1   5/2     2     2
+## [2,]     0 -11/2    -4     3
+## [3,]     0   3/2     1    -1
+## 
+##  multiply row 2 by -2/11 
+##                        b    
+## [1,]     1   5/2     2     2
+## [2,]     0     1  8/11 -6/11
+## [3,]     0   3/2     1    -1
+## 
+##  multiply row 2 by 5/2 and subtract from row 1 
+##                        b    
+## [1,]     1     0  2/11 37/11
+## [2,]     0     1  8/11 -6/11
+## [3,]     0   3/2     1    -1
+## 
+##  multiply row 2 by 3/2 and subtract from row 3 
+##                        b    
+## [1,]     1     0  2/11 37/11
+## [2,]     0     1  8/11 -6/11
+## [3,]     0     0 -1/11 -2/11
+## 
+## row: 3 
+## 
+##  multiply row 3 by -11 
+##                        b    
+## [1,]     1     0  2/11 37/11
+## [2,]     0     1  8/11 -6/11
+## [3,]     0     0     1     2
+## 
+##  multiply row 3 by 2/11 and subtract from row 1 
+##                        b    
+## [1,]     1     0     0     3
+## [2,]     0     1  8/11 -6/11
+## [3,]     0     0     1     2
+## 
+##  multiply row 3 by 8/11 and subtract from row 2 
+##               b 
+## [1,]  1  0  0  3
+## [2,]  0  1  0 -2
+## [3,]  0  0  1  2</code></pre>
+<pre class="r"><code>plotEqn3d(A,b) # Desenha as retas num gráfico em três dimensões numa popup</code></pre>
+<p>Outra forma de resolver o sistema se dá com o comando <strong>solve</strong>, desde que o sistema seja possível e determinado:</p>
+<pre class="r"><code>A &lt;- matrix(c(1,2,1,4,5,-3,3,4,-2), ncol = 3)
+b &lt;- c(1,4,5)
+
+solve(A,b)</code></pre>
+<pre><code>## [1]  3 -2  2</code></pre>
+<p>Este pequeno resumo pode ajudar na resolução de sistemas simples ligados à álgebra linear, auxiliando no aprendizado e na resolução de exercícios.</p>
+</div>
+<div id="referências" class="section level1 unnumbered">
+<h1>Referências</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Boldrini1980" class="csl-entry">
+Boldrini, José Luiz, Sueli I. Rodrigues Costa, Vera Lúcia Figueiredo, and Henri G. Wetzler. 1980. <em><span>Algebra Linear</span></em>. 3a ed. S<span>ã</span>o Paulo - BRA: Harper <span>&amp;</span> Row do Bra.
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Para acessar detalhes das funções do pacote, basta digitar <em>?nome da função</em>. Na aba ajuda, aparecerão informações da função e, normalmente, algumas aplicações<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>A representação gráfica é mostrada apenas em <em>pop-up</em> quando o código é rodado no <strong>R</strong>. O leitor pode copiar os códigos desta nota e rodar em sua própria máquina para verivicar o resultado.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

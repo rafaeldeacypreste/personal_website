@@ -9,19 +9,20 @@ education:
   - course: Mestre em Direito
     institution: Universidade de Brasília
     year: 2014-2016
-  - course: BSc in Artificial Intelligence
+  - course: Graduação em Direito
     institution: Universidade de Brasília
     year: 2008-2013
   - course: Graudação em Matemática (em andamento)
     institution: Universidade de Brasília
     year: 2020-atual
-email: ""
+email: "rafaeldeacyprestemr@gmail.com"
 highlight_name: false
 interests:
-- Inteligência Artificial
 - Economia Matemática
 - Economia Marxista
+- Inteligência Artificial
 - Structural Change and Economic Dyamics
+- Matriz Insumo-Produto
 organizations:
 - name: Departamento de Economia (FACE) - UnB
   url: http://www.economia.unb.br/index.php/pos-graduacao
@@ -45,6 +46,9 @@ social:
 - icon: linkedin
   icon_pack: fab
   link: https://www.linkedin.com/in/rafael-de-acypreste-b73b9b2b/
+- icon: r-project
+  icon_pack: fab
+  link: https://rpubs.com/rafaeldeacypreste
 superuser: true
 title: Rafael de Acypreste
 ---

@@ -96,10 +96,10 @@
 # About widget
 
 - id: interests
-  translation: Interests
+  translation: Interesses
 
 - id: education
-  translation: Education
+  translation: Formação
 
 - id: user_profile_latest
   translation: Latest

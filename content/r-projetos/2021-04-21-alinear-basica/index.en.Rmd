@@ -1,0 +1,90 @@
+---
+title: Resoluções de equações lineares e eliminação gaussiana
+author: ''
+date: '2021-04-20'
+slug: alinear-basica
+categories: []
+tags:
+  - R
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-04-21T08:25:16-03:00'
+featured: no
+output:
+  blogdown::html_page:
+    toc: true
+    toc_depth: 3
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+fontsize: 12pt
+linkcolor: blue
+header-includes:
+  - \usepackage{indentfirst}
+  - \usepackage{amsmath}
+  - \setlength{\parindent}{4em}
+  - \setlength{\parskip}{1.25em}
+  - \usepackage{float}
+bibliography: library_ial.bib
+biblio-style: "apalike"
+link-citations: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE,warning = FALSE,echo = TRUE,fig.cap='Elaboração própria.')
+
+library(rgl)
+knitr::knit_hooks$set(webgl = hook_webgl)
+```
+
+
+# Sistema de equações lineares
+
+Um dos pacotes para a solução de sistemas de equações lineares é o [**matlib**](https://cran.r-project.org/web/packages/matlib/matlib.pdf), que é bastante útil para o estudo de Álgebra Linear e estatísticas multivariadas. O pacote precisa ser instalado antes do primeiro uso. Após, basta carregar com a função *library*()^[Para acessar detalhes das funções do pacote, basta digitar *?nome da função*. Na aba ajuda, aparecerão informações da função e, normalmente, algumas aplicações].
+
+```{r}
+# install.packages("matlib")
+library(matlib)
+```
+
+O objetivo desta nota é apresentar, por meio de exemplos baseados no livro de @Boldrini1980, algumas das funcionalidades do pacote. Um possível sistema com duas equações é dado por:
+
+```{r, SEL}
+A <- matrix(c(2,-7,1,4,−1,-10,-5,16), nrow= 4, ncol = 2)
+b <- matrix(c(3,-12,1,8),ncol = 1)
+
+showEqn(A,b) # Mostra a estrutura do sistema de equações
+plotEqn(A,b) # Desenha as retas num gráfico com duas variáveis
+```
+A partir da Figura \@ref(fig:SEL), pode-se perceber que há duas equações que são combinações lineares das demais.
+
+Também é possível elaborar um sistema com três variáveis, resolver e fazer sua representação gráfica^[A representação gráfica é mostrada apenas em *pop-up* quando o código é rodado no **R**. O leitor pode copiar os códigos desta nota e rodar em sua própria máquina para verivicar o resultado.]:
+
+
+```{r, dev='pdf', fig.show='hold'}
+A <- matrix(c(1,2,1,4,5,-3,3,4,-2), ncol = 3)
+b <- c(1,4,5)
+
+showEqn(A,b) # Mostra a estrutura do sistema de equações
+ampliada <- cbind(A,b)                      # Matriz ampliada do sistema
+echelon(ampliada,verbose = T,fractions = T) # Resolve por eliminação gaussiana
+
+
+plotEqn3d(A,b) # Desenha as retas num gráfico em três dimensões numa popup
+```
+Outra forma de resolver o sistema se dá com o comando **solve**, desde que o sistema seja possível e determinado:
+
+```{r}
+A <- matrix(c(1,2,1,4,5,-3,3,4,-2), ncol = 3)
+b <- c(1,4,5)
+
+solve(A,b)
+```
+
+Este pequeno resumo pode ajudar na resolução de sistemas simples ligados à álgebra linear, auxiliando no aprendizado e na resolução de exercícios. 
+
+# Referências
+

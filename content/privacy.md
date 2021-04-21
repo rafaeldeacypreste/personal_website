@@ -10,4 +10,4 @@ share: false
 title: Privacy Policy
 ---
 
-...
+É permitida a reprodução total ou parcial do conteúdo, desde que citada a fonte.

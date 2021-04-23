@@ -21,7 +21,7 @@ interests:
 - Economia Matemática
 - Economia Marxista
 - Inteligência Artificial
-- Structural Change and Economic Dyamics
+- Structural Economic Dyamics
 - Matriz Insumo-Produto
 organizations:
 - name: Departamento de Economia (FACE) - UnB

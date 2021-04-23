@@ -39,6 +39,8 @@ link-citations: true
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = TRUE, fig.cap='Elaboração própria.')
 ```
 
+Rafael de Acypreste^[Doutorando em Economia pela Universidade de Brasília. Pode ser contatado em [rafaeldeacyprestemr@gmail.com](mailto:rafaeldeacyprestemr@gmail.com).] e Theo Antunes^[Doutor em Economia pela Universidade de Brasília. Pode ser contatado em [theosantunes@gmail.com ](mailto:theosantunes@gmail.com ).]
+
 # Introdução
 
 O objetivo geral desta nota é realizar simulações numéricas de equações diferenciais ordinárias com ênfase, especialmente, em aplicações econômicas. Todas as simulações são feitas utilizando-se o software **R**. Este trabalho teve como referência os trabalhos realizados pelo professor [Júlio Fernando](https://www.jfcostasantos.com/post/modelo-is-lm-dinamico/) Costa Santos^[Professor Adjunto do Instituto de Economia e Relações Internacionais da Universidade Federal de Uberlândia (UFU)]

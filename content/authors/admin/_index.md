@@ -6,7 +6,7 @@ education:
   - course: Doutorado em Economia Política (em andamento)
     institution: Universidade de Brasília
     year: 2018-atual
-  - course: Mestre em Direito
+  - course: Mestrado em Direito
     institution: Universidade de Brasília
     year: 2014-2016
   - course: Graduação em Direito

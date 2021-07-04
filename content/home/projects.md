@@ -31,6 +31,8 @@ content:
     tag: R
   - name: Matriz Insumo Produto
     tag: MIP
+  - name: Introdução à Economia Política
+    tag: Intro Eco Pol
 
 design:
   # Choose how many columns the section has. Valid values: '1' or '2'.

@@ -1,0 +1,384 @@
+---
+title: Primeira Lista de Exercícios 
+author: ''
+date: '2021-07-04'
+slug: 1a-lista
+categories: []
+tags:
+  - R
+  - Intro Eco Pol
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-07-04T12:32:44-03:00'
+featured: no
+output:
+  blogdown::html_page:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+fontsize: 14pt
+linkcolor: blue
+header-includes:
+  - \usepackage{indentfirst}
+  - \usepackage{amsmath}
+  - \usepackage{graphicx}
+  - \setlength{\parindent}{4em}
+  - \setlength{\parskip}{1.25em}
+  - \usepackage{float}
+  - \newcommand{\sen}{\mathrm{sen}}
+bibliography: library_html.bib
+biblio-style: "apalike"
+link-citations: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE,
+                      warning = FALSE,
+                      include = FALSE,
+                      echo = TRUE,
+                      fig.cap='Elaboração própria.')
+```
+
+# Introdução{-}
+
+Esta nota tem por objetivo exercitar o ferramental básico para entender comandos comuns que serão necessários nas próximas aulas^[A primeira elaboração desses materiais se deu para o curso de Introdução à Economia Política, oferecida por mim no Departamento de Economia da Universidade de Brasília no 1^o^ semestre de 2021]. A maior parte dos conteúdos serão relacionados às funcionalidades do `R` que são úteis para cientistas sociais. **O curso não supõe conhecimento prévio de R**, ainda que contatos anteriores permitirão um avanço mais rápido e concreto no curso.
+
+Trata-se de um trabalho experimental e inicial, que foi desenvolvido a partir de minha experiência concreta. Por favor, me indique eventuais erros e incongruências. Além disso, há trabalhos mais bem qualificados e em que me baseio para elaborar esses exercícios, como @Wickham2016, @Wickham2015 e @WickhamRStudio2014, cuja leitura é recomendada. Os textos em português de @Vale2021 e @SauloGuerra2021 também são fontes recomendadas de consulta.
+
+
+# Por que usar o `R`?
+
+Para quem nunca teve contato com alguma linguagem de programação, este início costuma ser pouco amigável. Entretanto, há algumas vantagens em relação a editores de planilha como *Excel* ou *Calc* para acesso, manipulação e elaboração de gráficos e apresentações:
+
+1. Os passos são descritos e registrados sequencialmente;
+
+2. A estrutura incremental (linha por linha) ajuda na identificação de erros;
+
+3. A discriminação dos passos auxilia na memória da pesquisa; e
+
+4. O script permite reprodutibilidade em outras pesquisas, contribuindo para o avanço da ciência.
+
+Portanto, todo o esforço inical e prática constante^[Uma boa estratégia é tentar adaptar o `R` às rotinas próprias, acadêmicas ou não, em substituição ao *Excel*, por exemplo. Além de ser uma ferramenta gratuita, pode ser usada como editor de texto, de apresentações e de gráficos. Entre outras razões, tais funcionalidades fazem com que o *software* seja bastante utilizado por estatísticos e cientistas sociais em geral.] permitem uma adaptação rápida à linguagem e o acesso a dados estatísticos nacionais e internacionais que auxiliam na aprendizagem dos temas tratados. Essas habilidades também podem ajudar para trabalhos de outras disciplinas ou de conclusão de curso.
+
+
+# Download e Instalação
+
+## `R` {#R}
+
+O primeiro passo é baixar e instalar o `R` em seu computador a partir de https://cran.r-project.org/. Faça o *download* de uma versão `base` adaptada ao seu sistema operacional. É recomendável utilizar uma versão *4.0* ou superior, para evitar problemas com pacotes no futuro. Instale o progama em seu computador, seguindo as configurações-padrão.
+
+## `RStudio`
+
+Após os passos indicados na seção \@ref(R), deve-se baixar e instalar o `RStudio`, cuja versão gratuita para *desktop* está disponível em: https://www.rstudio.com/products/rstudio/download/. Com isso, tem-se uma interface mais organizada e ferramentas auxiliares para o uso do `R`. 
+
+Caso tenham dúvidas na instalação, este vídeo a partir de 3min:30s pode ser útil: https://www.youtube.com/watch?v=WVogdSlk7gY.
+
+# Primeiros comandos
+
+Tradicionalmente, o primeiro programa que se faz em uma nova linguagem é dizer `Alô, mundo!`. No `R`, a função `print()` faz esse trabalho. Caso o comando esteja em um *Rscript*, basta selecionar ou manter o cursos sobre a(s) linha(s) que se deseja executar e acessar o comando "Run", cujo atalho é CTRL+ENTER.
+
+
+```{r, include = TRUE}
+  # O resultado será exibido no console
+print("Alô, mundo!")
+```
+
+
+O estilo de programação usado aqui e nos `Rscripts` segue parte das orientações para identação e organização dos códigos apresentados por @HadleyWickham2021. Como o R apresenta estrutura mais flexível, seguir padrões contribui para que seu código seja lido com mais facilidade por outras pessoas.
+
+## Ajuda do programa
+
+O `R` apresenta uma série de funções que são utilizadas para executar ações desejadas. Basta assinalar o nome da função sem parênteses, precidido de uma interrogação `?`. Em geral, encontram-se a estrutura da função, seus atributos, detalhes e alguns exemplos. Este é um expediente que deve ser usado com frequência, especialmente por quem está tendo seus primeiros contatos com a linguagem
+
+```{r, include = TRUE, eval=FALSE}
+  # Um painel no RStudio exibirá ajuda
+?c
+```
+
+## Começando um novo projeto
+
+Um fluxo de trabalho interessante é iniciar um novo projeto no `R` para cada trabalho. Com isso, os arquivos ficarão todos organizados numa mesma pasta, facilitando a importação de dados e salvamento de arquivos. Isso pode ser feito no `RStudio` a partir de `File > New Project`. Ademais, é possível consultar o diretório de trabalho com a função `getwd()`:
+
+```{r, include = TRUE}
+  # Descobre onde o projeto está trabalhando
+getwd() 
+```
+
+# Exercícios
+
+Considerando o que foi dito acima e os capítulos dos livros de @Vale2021 e @SauloGuerra2021 indicados no plano de curso, resolva os exercícios abaixo.
+
+## Noções básicas de programação I
+
+Resolva as seguintes questões envolvendo noções básicas. Parte dos exercícios é cumulativa, de modo que se sugere que os exercícios sejam resolvidos de modo sequencial e integral. Também é interessante que comece a resolvê-los em um novo `Rproject` e um novo `Rscript`.
+
+1. Crie seu primeiro programa na linguagem `R`, conforme explicado acima. Execute a linha do código com os comandos `Ctrl + Enter` (ou `Cmd+Return` para Mac). 
+
+```{r}
+print("Hello, world!")
+```
+2. A partir da ajuda e exemplos, busque as seguintes informações:
+
+    a. Ajuda para as funções `sum(); colSums(); sqrt(); lm(); setwd(); cbind(); data.frame()`.
+
+```{r, eval = FALSE}
+?sum()
+?colSums()
+?sqrt()
+?lm()
+?setwd()
+?cbind()
+?data.frame()
+```
+
+    b. Exemplos das funções `sum` e `colSums`. 
+
+```{r, eval = FALSE}
+example(sum)
+example(colSums)
+example(cbind)
+```
+
+3. Descubra em qual diretório seu projeto está lendo e salvando arquivos.
+
+```{r}
+getwd()
+```
+
+
+4. Crie os seguintes objetos com nomes distintos:
+    a. Número de disciplinas que está cursando neste semestre.
+    b. O nome do(a) professor(a) que está lacionando armazenando em um objeto com o mesmo nome da disciplina cursada.
+
+```{r}
+  # a) Criação de um objeto "n"
+n_disciplinas <- 2
+
+n_disciplinas
+
+# b)
+
+algebra_linera <- "Irina"
+
+algebra_linera
+
+analise_1 <- "Liliane"
+
+analise_1
+
+```
+
+5. Escreva programas que manipulem as operações matemáticas básicas pelo menos uma vez.
+
+```{r}
+100 + 2
+100 - 2
+
+100 * 2
+100 / 2
+
+100 ** 2
+100 ^ 2
+```
+
+6. Crie uma sequência de 2000 a 2021 de duas formas distintas.
+
+```{r}
+2000:2021
+
+seq(2000, 2021)
+
+seq(2000, 2021, length = 22)
+```
+
+7. Repita a sequência da questão anterior três vezes.
+
+```{r}
+rep(2000:2021, times = 3)
+```
+
+8. Quais são os resultados das seguintes análises lógicas: `TRUE & FALSE | FALSE`, `TRUE | FALSE | FALSE`, `TRUE | FALSE & FALSE` e `(TRUE | FALSE) & FALSE`? Teste no `R` se você acertou o resultado.
+
+```{r}
+TRUE & FALSE | FALSE
+
+TRUE | FALSE | FALSE
+
+TRUE | FALSE & FALSE
+
+(TRUE | FALSE) & FALSE
+
+```
+9. Crie vetores que contenham as seguintes informações do seu atual semestre. Dê nomes intuitivos:
+
+    a. Os nomes das disciplinas
+    b. A quantidade de estudantes em cada disciplina
+    c. O código de horários de acordo com o SIGAA
+    d. As menções que você espera alcançar
+
+```{r}
+disciplinas <- c("Álbegra Linear", "Análise 1", "Estágio Docente")
+disciplinas
+
+numero_estudantes <- c(70, 60, 30)
+numero_estudantes
+
+codigos_horarios <- c("235T45", "24M12", "235T45")
+codigos_horarios
+
+mencoes <- c("SS", "SS", "MS")
+mencoes
+```
+
+
+10. Faça as seguintes cálculos com o vetor do número de estudantes:
+    a. Suponha que cada estudante receba 60 horas complementares por disciplina. Quantas horas seriam disponibilizadas em cada turma?
+    b. Quantas seriam disponibilizadas em todas as turmas?
+    c. Qual é a média de estudantes em suas turmas?
+    
+```{r}
+
+  # a)
+horas <- numero_estudantes * 60
+horas
+
+  # b)
+sum(horas)
+
+sum(numero_estudantes * 60)       # Jeito menos recomendado 
+
+  # c) 
+mean(numero_estudantes)
+
+```
+11. Reescreva o vetor do número de estudantes, colocando as quantidades entre aspas. Qual é a classe do vetor criado?
+
+```{r}
+numero_estudantes_2 <- c("70", "60", "30")
+class(numero_estudantes_2)
+```
+12. **Desafio**: qual é a posição no vetor das turmas que têm mais estudantes do que a média de todas as turmas?
+
+```{r}
+  # Descobre o número de estudantes das turmas que atendem à restrição
+numero_estudantes[numero_estudantes > mean(numero_estudantes)]
+
+  # Descobre a localização das turmas 
+which(numero_estudantes == 70)
+which(numero_estudantes == 60)
+```
+
+13. Utilize a função data.frame para criar uma tabela com as informações da questão anterior. Nomeie as colunas com nomes indicativos do conteúdo.
+
+```{r}
+data.frame(
+  "Disciplinas"          = disciplinas,
+  "Número de estudantes" = numero_estudantes,
+  "Códigos dos horários" =       codigos_horarios,
+  "Menções desejadas"    =        mencoes,
+  check.names = FALSE
+)
+
+```
+
+
+
+14. Impute a tabela gerada na questão anterior para um objeto chamado `meu_sigaa`. Visualize a tabela em outra aba.
+
+```{r}
+  # Primeira forma
+meu_sigaa <- 
+  data.frame(
+  "Disciplinas"          = disciplinas,
+  "Número de estudantes" = numero_estudantes,
+  "Códigos dos horários" =       codigos_horarios,
+  "Menções desejadas"    =        mencoes,
+  check.names = FALSE
+)
+
+  # Segunda forma
+meu_sigaa <- data.frame(
+  "Disciplinas"          = disciplinas,
+  "Número de estudantes" = numero_estudantes,
+  "Códigos dos horários" =       codigos_horarios,
+  "Menções desejadas"    =        mencoes,
+  check.names = FALSE
+)
+
+# View(meu_sigaa)
+
+```
+
+
+15. A partir da tabela `meu_sigaa`:
+
+    a. Leia apenas a primeira linha.
+```{r}
+meu_sigaa[1, ]
+```
+    
+    b. Leia apenas a primeira coluna, filtrando por seu nome (atente-se para erros de leituras de caracteres especiais nos nomes das colunas).
+```{r}
+meu_sigaa[, "Disciplinas"]
+```
+    
+    c. Retorne o número de estudantes da disciplina de Introdução à Economia Política.
+```{r}
+# Note que o nome com espaços e caracteres especiais gera erro na leitura dos dados. Portanto, devem ser evitados pelo menos no RBase
+
+meu_sigaa[3, "Número de estudantes"]
+
+meu_sigaa[3, 2]
+```
+    
+16. Certifique-se de que instalou corretamente os seguintes pacotes: `tidyverse`, `ggthemes`, `scales`, `writexl`, `sidrar` e `devtools`.   
+
+```{r}
+# install.packages("tidyverse")
+# install.packages("ggthemes")
+# install.packages("scales")
+# install.packages("writexl")
+# install.packages("sidrar")
+# install.packages("devtools")
+
+  # O pacote para o World Inequality Database (WID) ainda não está disponível
+  # no repositório oficial do R (CRAN)
+# devtools::install_github("WIDworld/wid-r-tool")
+```
+
+
+
+17. Use a ajuda do `R` para acessar informações sobre as funções `get_sidra` e `info_sidra`.
+
+```{r, eval = FALSE}
+library(sidrar)
+?get_sidra
+?info_sidra
+
+```
+
+
+
+
+
+
+
+
+
+## Importação de dados
+
+
+
+## Manipulação de tabelas 
+
+
+
+
+# Referências {-}

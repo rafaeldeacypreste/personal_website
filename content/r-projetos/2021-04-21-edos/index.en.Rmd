@@ -15,6 +15,7 @@ output:
   blogdown::html_page:
     toc: true
     toc_depth: 3
+    number_sections: true
 image:
   caption: ''
   focal_point: ''

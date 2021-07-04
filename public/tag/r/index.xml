@@ -5,12 +5,183 @@
     <link>/tag/r/</link>
       <atom:link href="/tag/r/index.xml" rel="self" type="application/rss+xml" />
     <description>R</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 21 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 04 Jul 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/media/icon_hu079f5f191f910f3be9bbdec4dba5765d_88394_512x512_fill_lanczos_center_2.png</url>
       <title>R</title>
       <link>/tag/r/</link>
     </image>
+    
+    <item>
+      <title>Primeira Lista de Exercícios</title>
+      <link>/r-projetos/1a-lista/</link>
+      <pubDate>Sun, 04 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>/r-projetos/1a-lista/</guid>
+      <description>
+&lt;script src=&#34;/r-projetos/1a-lista/index.en_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introdução&#34;&gt;Introdução&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#por-que-usar-o-r&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Por que usar o &lt;code&gt;R&lt;/code&gt;?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#download-e-instalação&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Download e Instalação&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#R&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; &lt;code&gt;R&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#rstudio&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; &lt;code&gt;RStudio&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#primeiros-comandos&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; Primeiros comandos&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#ajuda-do-programa&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; Ajuda do programa&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#começando-um-novo-projeto&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; Começando um novo projeto&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exercícios&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; Exercícios&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#noções-básicas-de-programação-i&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1&lt;/span&gt; Noções básicas de programação I&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#importação-de-dados&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2&lt;/span&gt; Importação de dados&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#manipulação-de-tabelas&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.3&lt;/span&gt; Manipulação de tabelas&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#referências&#34;&gt;Referências&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;introdução&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Introdução&lt;/h1&gt;
+&lt;p&gt;Esta nota tem por objetivo exercitar o ferramental básico para entender comandos comuns que serão necessários nas próximas aulas&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. A maior parte dos conteúdos serão relacionados às funcionalidades do &lt;code&gt;R&lt;/code&gt; que são úteis para cientistas sociais. &lt;strong&gt;O curso não supõe conhecimento prévio de R&lt;/strong&gt;, ainda que contatos anteriores permitirão um avanço mais rápido e concreto no curso.&lt;/p&gt;
+&lt;p&gt;Trata-se de um trabalho experimental e inicial, que foi desenvolvido a partir de minha experiência concreta. Por favor, me indique eventuais erros e incongruências. Além disso, há trabalhos mais bem qualificados e em que me baseio para elaborar esses exercícios, como &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Wickham2016&#34; role=&#34;doc-biblioref&#34;&gt;Wickham and Grolemund&lt;/a&gt; (&lt;a href=&#34;#ref-Wickham2016&#34; role=&#34;doc-biblioref&#34;&gt;2016&lt;/a&gt;)&lt;/span&gt;, &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Wickham2015&#34; role=&#34;doc-biblioref&#34;&gt;Wickham&lt;/a&gt; (&lt;a href=&#34;#ref-Wickham2015&#34; role=&#34;doc-biblioref&#34;&gt;2015&lt;/a&gt;)&lt;/span&gt; e &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-WickhamRStudio2014&#34; role=&#34;doc-biblioref&#34;&gt;Wickham&lt;/a&gt; (&lt;a href=&#34;#ref-WickhamRStudio2014&#34; role=&#34;doc-biblioref&#34;&gt;2014&lt;/a&gt;)&lt;/span&gt;, cuja leitura é recomendada. Os textos em português de &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;Vale&lt;/a&gt; (&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;)&lt;/span&gt; e &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;Saulo Guerra et al.&lt;/a&gt; (&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;)&lt;/span&gt; também são fontes recomendadas de consulta.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;por-que-usar-o-r&#34; class=&#34;section level1&#34; number=&#34;1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Por que usar o &lt;code&gt;R&lt;/code&gt;?&lt;/h1&gt;
+&lt;p&gt;Para quem nunca teve contato com alguma linguagem de programação, este início costuma ser pouco amigável. Entretanto, há algumas vantagens em relação a editores de planilha como &lt;em&gt;Excel&lt;/em&gt; ou &lt;em&gt;Calc&lt;/em&gt; para acesso, manipulação e elaboração de gráficos e apresentações:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Os passos são descritos e registrados sequencialmente;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A estrutura incremental (linha por linha) ajuda na identificação de erros;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A discriminação dos passos auxilia na memória da pesquisa; e&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;O script permite reprodutibilidade em outras pesquisas, contribuindo para o avanço da ciência.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Portanto, todo o esforço inical e prática constante&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; permitem uma adaptação rápida à linguagem e o acesso a dados estatísticos nacionais e internacionais que auxiliam na aprendizagem dos temas tratados. Essas habilidades também podem ajudar para trabalhos de outras disciplinas ou de conclusão de curso.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;download-e-instalação&#34; class=&#34;section level1&#34; number=&#34;2&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Download e Instalação&lt;/h1&gt;
+&lt;div id=&#34;R&#34; class=&#34;section level2&#34; number=&#34;2.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; &lt;code&gt;R&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;O primeiro passo é baixar e instalar o &lt;code&gt;R&lt;/code&gt; em seu computador a partir de &lt;a href=&#34;https://cran.r-project.org/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/&lt;/a&gt;. Faça o &lt;em&gt;download&lt;/em&gt; de uma versão &lt;code&gt;base&lt;/code&gt; adaptada ao seu sistema operacional. É recomendável utilizar uma versão &lt;em&gt;4.0&lt;/em&gt; ou superior, para evitar problemas com pacotes no futuro. Instale o progama em seu computador, seguindo as configurações-padrão.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;rstudio&#34; class=&#34;section level2&#34; number=&#34;2.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; &lt;code&gt;RStudio&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Após os passos indicados na seção &lt;a href=&#34;#R&#34;&gt;2.1&lt;/a&gt;, deve-se baixar e instalar o &lt;code&gt;RStudio&lt;/code&gt;, cuja versão gratuita para &lt;em&gt;desktop&lt;/em&gt; está disponível em: &lt;a href=&#34;https://www.rstudio.com/products/rstudio/download/&#34; class=&#34;uri&#34;&gt;https://www.rstudio.com/products/rstudio/download/&lt;/a&gt;. Com isso, tem-se uma interface mais organizada e ferramentas auxiliares para o uso do &lt;code&gt;R&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Caso tenham dúvidas na instalação, este vídeo a partir de 3min:30s pode ser útil: &lt;a href=&#34;https://www.youtube.com/watch?v=WVogdSlk7gY&#34; class=&#34;uri&#34;&gt;https://www.youtube.com/watch?v=WVogdSlk7gY&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;primeiros-comandos&#34; class=&#34;section level1&#34; number=&#34;3&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; Primeiros comandos&lt;/h1&gt;
+&lt;p&gt;Tradicionalmente, o primeiro programa que se faz em uma nova linguagem é dizer &lt;code&gt;Alô, mundo!&lt;/code&gt;. No &lt;code&gt;R&lt;/code&gt;, a função &lt;code&gt;print()&lt;/code&gt; faz esse trabalho. Caso o comando esteja em um &lt;em&gt;Rscript&lt;/em&gt;, basta selecionar ou manter o cursos sobre a(s) linha(s) que se deseja executar e acessar o comando “Run,” cujo atalho é CTRL+ENTER.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  # O resultado será exibido no console
+print(&amp;quot;Alô, mundo!&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Alô, mundo!&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;O estilo de programação usado aqui e nos &lt;code&gt;Rscripts&lt;/code&gt; segue parte das orientações para identação e organização dos códigos apresentados por &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-HadleyWickham2021&#34; role=&#34;doc-biblioref&#34;&gt;Hadley Wickham&lt;/a&gt; (&lt;a href=&#34;#ref-HadleyWickham2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;)&lt;/span&gt;. Como o R apresenta estrutura mais flexível, seguir padrões contribui para que seu código seja lido com mais facilidade por outras pessoas.&lt;/p&gt;
+&lt;div id=&#34;ajuda-do-programa&#34; class=&#34;section level2&#34; number=&#34;3.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; Ajuda do programa&lt;/h2&gt;
+&lt;p&gt;O &lt;code&gt;R&lt;/code&gt; apresenta uma série de funções que são utilizadas para executar ações desejadas. Basta assinalar o nome da função sem parênteses, precidido de uma interrogação &lt;code&gt;?&lt;/code&gt;. Em geral, encontram-se a estrutura da função, seus atributos, detalhes e alguns exemplos. Este é um expediente que deve ser usado com frequência, especialmente por quem está tendo seus primeiros contatos com a linguagem&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  # Um painel no RStudio exibirá ajuda
+?c&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;começando-um-novo-projeto&#34; class=&#34;section level2&#34; number=&#34;3.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; Começando um novo projeto&lt;/h2&gt;
+&lt;p&gt;Um fluxo de trabalho interessante é iniciar um novo projeto no &lt;code&gt;R&lt;/code&gt; para cada trabalho. Com isso, os arquivos ficarão todos organizados numa mesma pasta, facilitando a importação de dados e salvamento de arquivos. Isso pode ser feito no &lt;code&gt;RStudio&lt;/code&gt; a partir de &lt;code&gt;File &amp;gt; New Project&lt;/code&gt;. Ademais, é possível consultar o diretório de trabalho com a função &lt;code&gt;getwd()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  # Descobre onde o projeto está trabalhando
+getwd() &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;C:/Users/rafae/OneDrive/Documentos/personal_website/content/r-projetos/2021-07-04-1a-lista&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exercícios&#34; class=&#34;section level1&#34; number=&#34;4&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; Exercícios&lt;/h1&gt;
+&lt;p&gt;Considerando o que foi dito acima e os capítulos dos livros de &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;Vale&lt;/a&gt; (&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;)&lt;/span&gt; e &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;Saulo Guerra et al.&lt;/a&gt; (&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;)&lt;/span&gt; indicados no plano de curso, resolva os exercícios abaixo.&lt;/p&gt;
+&lt;div id=&#34;noções-básicas-de-programação-i&#34; class=&#34;section level2&#34; number=&#34;4.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1&lt;/span&gt; Noções básicas de programação I&lt;/h2&gt;
+&lt;p&gt;Resolva as seguintes questões envolvendo noções básicas. Parte dos exercícios é cumulativa, de modo que se sugere que os exercícios sejam resolvidos de modo sequencial e integral. Também é interessante que comece a resolvê-los em um novo &lt;code&gt;Rproject&lt;/code&gt; e um novo &lt;code&gt;Rscript&lt;/code&gt;.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Crie seu primeiro programa na linguagem &lt;code&gt;R&lt;/code&gt;, conforme explicado acima. Execute a linha do código com os comandos &lt;code&gt;Ctrl + Enter&lt;/code&gt; (ou &lt;code&gt;Cmd+Return&lt;/code&gt; para Mac).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A partir da ajuda e exemplos, busque as seguintes informações:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;&lt;p&gt;Ajuda para as funções &lt;code&gt;sum(); colSums(); sqrt(); lm(); setwd(); cbind(); data.frame()&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Exemplos das funções &lt;code&gt;sum&lt;/code&gt; e &lt;code&gt;colSums&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Descubra em qual diretório seu projeto está lendo e salvando arquivos.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Crie os seguintes objetos com nomes distintos:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;Número de disciplinas que está cursando neste semestre.&lt;/li&gt;
+&lt;li&gt;O nome do(a) professor(a) que está lacionando armazenando em um objeto com o mesmo nome da disciplina cursada.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Escreva programas que manipulem as operações matemáticas básicas pelo menos uma vez.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Crie uma sequência de 2000 a 2021 de duas formas distintas.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Repita a sequência da questão anterior três vezes.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Quais são os resultados das seguintes análises lógicas: &lt;code&gt;TRUE &amp;amp; FALSE | FALSE&lt;/code&gt;, &lt;code&gt;TRUE | FALSE | FALSE&lt;/code&gt;, &lt;code&gt;TRUE | FALSE &amp;amp; FALSE&lt;/code&gt; e &lt;code&gt;(TRUE | FALSE) &amp;amp; FALSE&lt;/code&gt;? Teste no &lt;code&gt;R&lt;/code&gt; se você acertou o resultado.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Crie vetores que contenham as seguintes informações do seu atual semestre. Dê nomes intuitivos:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;Os nomes das disciplinas&lt;/li&gt;
+&lt;li&gt;A quantidade de estudantes em cada disciplina&lt;/li&gt;
+&lt;li&gt;O código de horários de acordo com o SIGAA&lt;/li&gt;
+&lt;li&gt;As menções que você espera alcançar&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Faça as seguintes cálculos com o vetor do número de estudantes:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;Suponha que cada estudante receba 60 horas complementares por disciplina. Quantas horas seriam disponibilizadas em cada turma?&lt;/li&gt;
+&lt;li&gt;Quantas seriam disponibilizadas em todas as turmas?&lt;/li&gt;
+&lt;li&gt;Qual é a média de estudantes em suas turmas?&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Reescreva o vetor do número de estudantes, colocando as quantidades entre aspas. Qual é a classe do vetor criado?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Desafio&lt;/strong&gt;: qual é a posição no vetor das turmas que têm mais estudantes do que a média de todas as turmas?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Utilize a função data.frame para criar uma tabela com as informações da questão anterior. Nomeie as colunas com nomes indicativos do conteúdo.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Impute a tabela gerada na questão anterior para um objeto chamado &lt;code&gt;meu_sigaa&lt;/code&gt;. Visualize a tabela em outra aba.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A partir da tabela &lt;code&gt;meu_sigaa&lt;/code&gt;:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;&lt;p&gt;Leia apenas a primeira linha.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Leia apenas a primeira coluna, filtrando por seu nome (atente-se para erros de leituras de caracteres especiais nos nomes das colunas).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Retorne o número de estudantes da disciplina de Introdução à Economia Política.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Certifique-se de que instalou corretamente os seguintes pacotes: &lt;code&gt;tidyverse&lt;/code&gt;, &lt;code&gt;ggthemes&lt;/code&gt;, &lt;code&gt;scales&lt;/code&gt;, &lt;code&gt;writexl&lt;/code&gt;, &lt;code&gt;sidrar&lt;/code&gt; e &lt;code&gt;devtools&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Use a ajuda do &lt;code&gt;R&lt;/code&gt; para acessar informações sobre as funções &lt;code&gt;get_sidra&lt;/code&gt; e &lt;code&gt;info_sidra&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;importação-de-dados&#34; class=&#34;section level2&#34; number=&#34;4.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2&lt;/span&gt; Importação de dados&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div id=&#34;manipulação-de-tabelas&#34; class=&#34;section level2&#34; number=&#34;4.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3&lt;/span&gt; Manipulação de tabelas&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;referências&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Referências&lt;/h1&gt;
+&lt;div id=&#34;refs&#34; class=&#34;references csl-bib-body hanging-indent&#34;&gt;
+&lt;div id=&#34;ref-HadleyWickham2021&#34; class=&#34;csl-entry&#34;&gt;
+Hadley Wickham. 2021. &lt;em&gt;&lt;span class=&#34;nocase&#34;&gt;The tidyverse style guide&lt;/span&gt;&lt;/em&gt;. &lt;a href=&#34;https://style.tidyverse.org/&#34;&gt;https://style.tidyverse.org/&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-SauloGuerra2021&#34; class=&#34;csl-entry&#34;&gt;
+Saulo Guerra, Paulo Felipe de Oliveira, Robert McDonnell, and Sillas Gonzaga. 2021. &lt;em&gt;&lt;span class=&#34;nocase&#34;&gt;Ci&lt;span class=&#34;nocase&#34;&gt;ê&lt;/span&gt;ncia de Dados com R - Introdu&lt;span class=&#34;nocase&#34;&gt;ç&lt;/span&gt;&lt;span class=&#34;nocase&#34;&gt;ã&lt;/span&gt;o&lt;/span&gt;&lt;/em&gt;. Instituto Brasileiro de Pesquisa e An&lt;span&gt;á&lt;/span&gt;lise de Dados. &lt;a href=&#34;http://sillasgonzaga.com/material/cdr/&#34;&gt;http://sillasgonzaga.com/material/cdr/&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-Vale2021&#34; class=&#34;csl-entry&#34;&gt;
+Vale, Vinícius A. 2021. &lt;span&gt;“&lt;span class=&#34;nocase&#34;&gt;Introdu&lt;span class=&#34;nocase&#34;&gt;ç&lt;/span&gt;&lt;span class=&#34;nocase&#34;&gt;ã&lt;/span&gt;o ao R&lt;/span&gt;.”&lt;/span&gt; &lt;a href=&#34;https://viniciusavale.com/IntroR/Intro-R.html&#34;&gt;https://viniciusavale.com/IntroR/Intro-R.html&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-WickhamRStudio2014&#34; class=&#34;csl-entry&#34;&gt;
+Wickham, Hadley. 2014. &lt;span&gt;“&lt;span&gt;Tidy Data&lt;/span&gt;.”&lt;/span&gt; &lt;em&gt;Journal of Statistical Software&lt;/em&gt; 59 (10): 1–23. &lt;a href=&#34;http://www.jstatsoft.org/&#34;&gt;http://www.jstatsoft.org/&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-Wickham2015&#34; class=&#34;csl-entry&#34;&gt;
+———. 2015. &lt;em&gt;&lt;span class=&#34;nocase&#34;&gt;Elegant Graphics for Data Analysis&lt;/span&gt;&lt;/em&gt;. &lt;a href=&#34;http://had.co.nz/ggplot2/book&#34;&gt;http://had.co.nz/ggplot2/book&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-Wickham2016&#34; class=&#34;csl-entry&#34;&gt;
+Wickham, Hadley, and Garrett Grolemund. 2016. &lt;em&gt;&lt;span class=&#34;nocase&#34;&gt;R for data science: import, tidy, transform, visualize, and model data&lt;/span&gt;&lt;/em&gt;. &#34; O’Reilly Media, Inc.&#34;.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;A primeira elaboração desses materiais se deu para o curso de Introdução à Economia Política, oferecida por mim no Departamento de Economia da Universidade de Brasília no 1&lt;sup&gt;o&lt;/sup&gt; semestre de 2021&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;Uma boa estratégia é tentar adaptar o &lt;code&gt;R&lt;/code&gt; às rotinas próprias, acadêmicas ou não, em substituição ao &lt;em&gt;Excel&lt;/em&gt;, por exemplo. Além de ser uma ferramenta gratuita, pode ser usada como editor de texto, de apresentações e de gráficos. Entre outras razões, tais funcionalidades fazem com que o &lt;em&gt;software&lt;/em&gt; seja bastante utilizado por estatísticos e cientistas sociais em geral.&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Organização de tabelas e elaboração de gráficos a partir de análises com Elan 5.7</title>
@@ -253,35 +424,35 @@ Wickham, Hadley. 2014. &lt;span&gt;“&lt;span&gt;Tidy Data&lt;/span&gt;.”&lt;
 
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#introdução&#34;&gt;Introdução&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#solow&#34;&gt;EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;#introdução&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Introdução&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#solow&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#estrutura-básica-para-simulação-com-r&#34;&gt;Estrutura básica para simulação com R&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#interrupção-automática-da-simulação&#34;&gt;Interrupção automática da simulação&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#estrutura-básica-para-simulação-com-r&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; Estrutura básica para simulação com R&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#interrupção-automática-da-simulação&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; Interrupção automática da simulação&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#edo2&#34;&gt;EDOs de 2&lt;sup&gt;a&lt;/sup&gt; ordem&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;#edo2&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; EDOs de 2&lt;sup&gt;a&lt;/sup&gt; ordem&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#equação-com-coeficientes-constantes&#34;&gt;Equação com coeficientes constantes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#equação-de-laguerre&#34;&gt;Equação de Laguerre&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#equação-de-euler&#34;&gt;Equação de Euler&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#equação-com-coeficientes-constantes&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; Equação com coeficientes constantes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#equação-de-laguerre&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; Equação de Laguerre&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#equação-de-euler&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.3&lt;/span&gt; Equação de Euler&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#simultaneas&#34;&gt;Equações diferenciais simultâneas&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#análise-de-estabilidade&#34;&gt;Análise de estabilidade&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;#simultaneas&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; Equações diferenciais simultâneas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#análise-de-estabilidade&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5&lt;/span&gt; Análise de estabilidade&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#estabilidade-de-edo-de-1a-ordem&#34;&gt;Estabilidade de EDO de 1&lt;sup&gt;a&lt;/sup&gt; ordem&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;#estabilidade-de-edo-de-1a-ordem&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.1&lt;/span&gt; Estabilidade de EDO de 1&lt;sup&gt;a&lt;/sup&gt; ordem&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#retrato-de-fase&#34;&gt;Retrato de fase&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#retrato-de-fase&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.1.1&lt;/span&gt; Retrato de fase&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#estabilidade-de-sistema-de-duas-edos-de-1a-ordem---equilíbrio-dinâmico&#34;&gt;Estabilidade de sistema de duas EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem - equilíbrio dinâmico&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#estabilidade-de-sistema-de-duas-edos-de-1a-ordem---ponto-de-sela&#34;&gt;Estabilidade de sistema de duas EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem - ponto de sela&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#estabilidade-de-sistema-de-duas-edos-de-1a-ordem---equilíbrio-dinâmico&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.2&lt;/span&gt; Estabilidade de sistema de duas EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem - equilíbrio dinâmico&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#estabilidade-de-sistema-de-duas-edos-de-1a-ordem---ponto-de-sela&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.3&lt;/span&gt; Estabilidade de sistema de duas EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem - ponto de sela&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#referências&#34;&gt;Referências&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
 &lt;p&gt;Rafael de Acypreste&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; e Theo Antunes&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;div id=&#34;introdução&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Introdução&lt;/h1&gt;
+&lt;div id=&#34;introdução&#34; class=&#34;section level1&#34; number=&#34;1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Introdução&lt;/h1&gt;
 &lt;p&gt;O objetivo geral desta nota é realizar simulações numéricas de equações diferenciais ordinárias com ênfase, especialmente, em aplicações econômicas. Todas as simulações são feitas utilizando-se o software &lt;strong&gt;R&lt;/strong&gt;. Este trabalho teve como referência os trabalhos realizados pelo professor &lt;a href=&#34;https://www.jfcostasantos.com/post/modelo-is-lm-dinamico/&#34;&gt;Júlio Fernando&lt;/a&gt; Costa Santos&lt;a href=&#34;#fn3&#34; class=&#34;footnote-ref&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Para as simulações, serão utilizados os pacotes abaixo, adicionais à base do &lt;strong&gt;R&lt;/strong&gt;. É preciso que sejam instalados (uma única vez) e carregados antes do uso:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# install.packages(&amp;quot;deSolve&amp;quot;)
@@ -299,27 +470,27 @@ options(scipen = 99)   # Utiliza 99 casas decimais como padrão em vez de notaç
 &lt;p&gt;Denota-se por equação diferencial ordinária (EDO) uma função desconhecida e a relação com suas derivadas. Como, em economia, costuma-se usar o tempo como variável independente, esta notação permanecerá ao longo do texto se não estiver disposto de outra maneira. Portanto, pode-se representar uma EDO de ordem &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; por&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34; id=&#34;eq:edo&#34;&gt;\[\begin{equation}
  f[y(t),y^{(1)}(t),y^{(2)}(t),...,y^{(n)}(t),t ] = 0
- \tag{1}
+ \tag{1.1}
 \end{equation}\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;em que &lt;span class=&#34;math inline&#34;&gt;\((n)\)&lt;/span&gt; é o grau da EDO e representa a maior ordem das derivadas da função desconhecida &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Seco2018&#34; role=&#34;doc-biblioref&#34;&gt;Seco and Patrão&lt;/a&gt; (&lt;a href=&#34;#ref-Seco2018&#34; role=&#34;doc-biblioref&#34;&gt;2018&lt;/a&gt;)&lt;/span&gt;. Uma notação da forma geral pode ser descrita por:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34; id=&#34;eq:geral&#34;&gt;\[\begin{equation}
 a_n(t)y^{(n)}(t)+\dots+a_2(t)y^{(2)}(t)+a_1(t)y^{(1)}(t)+a_0(t)y(t) = g(t) 
-\tag{2}
+\tag{1.2}
 \end{equation}\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Neste texto, não serão abordados detalhes teóricos sobre equações diferenciais e sobre os modelos apresentados. O(a) leitor(a) deve recorrer aos documentos citados em caso de interesse.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;solow&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem&lt;/h1&gt;
-&lt;p&gt;EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem envolvem uma equação em termos da sua primeira derivada &lt;span class=&#34;math inline&#34;&gt;\(y&amp;#39;(t)\)&lt;/span&gt;. Conforme &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Gandolfo2005&#34; role=&#34;doc-biblioref&#34;&gt;Gandolfo&lt;/a&gt; (&lt;a href=&#34;#ref-Gandolfo2005&#34; role=&#34;doc-biblioref&#34;&gt;2005&lt;/a&gt;)&lt;/span&gt;, pode-se encontrar uma solução de uma equação homogênea no formato &lt;span class=&#34;math inline&#34;&gt;\(y(t) = Ae^{-bt}\)&lt;/span&gt;, cuja estabilidade depende do sinal de &lt;span class=&#34;math inline&#34;&gt;\(-b\)&lt;/span&gt;. Alguns exemplos de equações na Figura &lt;a href=&#34;#fig:exemplos&#34;&gt;1&lt;/a&gt;.&lt;/p&gt;
+&lt;div id=&#34;solow&#34; class=&#34;section level1&#34; number=&#34;2&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem&lt;/h1&gt;
+&lt;p&gt;EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem envolvem uma equação em termos da sua primeira derivada &lt;span class=&#34;math inline&#34;&gt;\(y&amp;#39;(t)\)&lt;/span&gt;. Conforme &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Gandolfo2005&#34; role=&#34;doc-biblioref&#34;&gt;Gandolfo&lt;/a&gt; (&lt;a href=&#34;#ref-Gandolfo2005&#34; role=&#34;doc-biblioref&#34;&gt;2005&lt;/a&gt;)&lt;/span&gt;, pode-se encontrar uma solução de uma equação homogênea no formato &lt;span class=&#34;math inline&#34;&gt;\(y(t) = Ae^{-bt}\)&lt;/span&gt;, cuja estabilidade depende do sinal de &lt;span class=&#34;math inline&#34;&gt;\(-b\)&lt;/span&gt;. Alguns exemplos de equações na Figura &lt;a href=&#34;#fig:exemplos&#34;&gt;2.1&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Apesar de servir de motivação para a análise de EDOs, o objetivo desta nota não é resolver EDOs, encontrando uma função &lt;span class=&#34;math inline&#34;&gt;\(y(t)\)&lt;/span&gt; que a satisfaz, mas sim identificar o comportamento de tais equações a partir de resoluções numéricas e representações gráficas. Portanto, passa-se aos detalhes básicos para as simulações.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:exemplos&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;/r-projetos/edos/index.en_files/figure-html/exemplos-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
-Figure 1: Elaboração própria.
+Figure 2.1: Elaboração própria.
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;estrutura-básica-para-simulação-com-r&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Estrutura básica para simulação com R&lt;/h2&gt;
+&lt;div id=&#34;estrutura-básica-para-simulação-com-r&#34; class=&#34;section level2&#34; number=&#34;2.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; Estrutura básica para simulação com R&lt;/h2&gt;
 &lt;p&gt;Algumas equações diferenciais apresentam soluções analíticas, que podem ser resolvidas a partir de técnicas específicas. Para a economia, uma boa referência é o livro do &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Gandolfo2005&#34; role=&#34;doc-biblioref&#34;&gt;Gandolfo&lt;/a&gt; (&lt;a href=&#34;#ref-Gandolfo2005&#34; role=&#34;doc-biblioref&#34;&gt;2005&lt;/a&gt;)&lt;/span&gt;. Para aplicações mais detalhadas, consultar &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Seco2018&#34; role=&#34;doc-biblioref&#34;&gt;Seco and Patrão&lt;/a&gt; (&lt;a href=&#34;#ref-Seco2018&#34; role=&#34;doc-biblioref&#34;&gt;2018&lt;/a&gt;)&lt;/span&gt;. Nesses casos, simples técnicas de elaboração de gráficos podem ser adotadas no &lt;strong&gt;R&lt;/strong&gt; ou outro software.&lt;/p&gt;
 &lt;p&gt;Porém, há situações que não se deseja ou não é simples encontrar uma solução analítica. Para esses casos, o &lt;strong&gt;R&lt;/strong&gt; possui pacotes que ajudam a encontrar e representar graficamente soluções numéricas e retratos de fase, que podem ajudar na interpretação dos modelos.&lt;/p&gt;
 &lt;p&gt;O pacote utilizado para simulação e resolução de EDOs com o &lt;strong&gt;R&lt;/strong&gt; é o &lt;strong&gt;deSolve&lt;/strong&gt;. Um espectro maior de aplicações e parte das explicações aqui apresentadas podem ser encontradas em &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Soetaert2010&#34; role=&#34;doc-biblioref&#34;&gt;Soetaert, Petzoldt, and Setzer&lt;/a&gt; (&lt;a href=&#34;#ref-Soetaert2010&#34; role=&#34;doc-biblioref&#34;&gt;2010&lt;/a&gt;)&lt;/span&gt;}. Recursos adicionais e manuais podem ser acessados digitando &lt;strong&gt;?deSolve&lt;/strong&gt; diretamente no console&lt;a href=&#34;#fn4&#34; class=&#34;footnote-ref&#34; id=&#34;fnref4&#34;&gt;&lt;sup&gt;4&lt;/sup&gt;&lt;/a&gt;.&lt;/p&gt;
@@ -331,15 +502,15 @@ Figure 1: Elaboração própria.
 &lt;/ol&gt;
 &lt;p&gt;Quando da resolução, o modelo chamará essa função em cada período de tempo durante o processo de integração. &lt;strong&gt;Tempo&lt;/strong&gt; e &lt;strong&gt;valores iniciais&lt;/strong&gt; devem ser disponibilizados no formato de vetores (ou listas). A função &lt;strong&gt;with( )&lt;/strong&gt;&lt;a href=&#34;#fn5&#34; class=&#34;footnote-ref&#34; id=&#34;fnref5&#34;&gt;&lt;sup&gt;5&lt;/sup&gt;&lt;/a&gt; permite usar as variáveis em formato de lista diretamente dentro da função sem que seja necessário indicar o nome da lista todas as vezes. Por fim, a função deve retornar uma lista (os resultados serão concatenados se estivermos interessados em mais de uma EDO). Os comandos estão detalhados abaixo.&lt;/p&gt;
 &lt;p&gt;Com a função elaborada, são estabelecidos os nomes e valores dos parâmetros, a(s) condição(ões) inicial(is) e o período de tempo que se deseja fazer a simulação. Lembre-se de que, quanto maior o tempo e complexidade do modelo, maior será o nível de exigência computacional&lt;a href=&#34;#fn6&#34; class=&#34;footnote-ref&#34; id=&#34;fnref6&#34;&gt;&lt;sup&gt;6&lt;/sup&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Como exemplo de EDO de 1&lt;sup&gt;a&lt;/sup&gt; ordem, pode-se simular o seguinte modelo, baseado no modelo canônico de &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Solow1956&#34; role=&#34;doc-biblioref&#34;&gt;Solow&lt;/a&gt; (&lt;a href=&#34;#ref-Solow1956&#34; role=&#34;doc-biblioref&#34;&gt;1956&lt;/a&gt;)&lt;/span&gt;&lt;a href=&#34;#fn7&#34; class=&#34;footnote-ref&#34; id=&#34;fnref7&#34;&gt;&lt;sup&gt;7&lt;/sup&gt;&lt;/a&gt; representado na equação &lt;a href=&#34;#eq:solow&#34;&gt;(3)&lt;/a&gt;.
+&lt;p&gt;Como exemplo de EDO de 1&lt;sup&gt;a&lt;/sup&gt; ordem, pode-se simular o seguinte modelo, baseado no modelo canônico de &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Solow1956&#34; role=&#34;doc-biblioref&#34;&gt;Solow&lt;/a&gt; (&lt;a href=&#34;#ref-Solow1956&#34; role=&#34;doc-biblioref&#34;&gt;1956&lt;/a&gt;)&lt;/span&gt;&lt;a href=&#34;#fn7&#34; class=&#34;footnote-ref&#34; id=&#34;fnref7&#34;&gt;&lt;sup&gt;7&lt;/sup&gt;&lt;/a&gt; representado na equação &lt;a href=&#34;#eq:solow&#34;&gt;(2.1)&lt;/a&gt;.
 &lt;span class=&#34;math display&#34; id=&#34;eq:solow&#34;&gt;\[\begin{equation}
   \dot{r} = sF(r,1) - nr
-  \tag{3}
+  \tag{2.1}
 \end{equation}\]&lt;/span&gt; em que &lt;span class=&#34;math inline&#34;&gt;\(r = \frac{K}{L}\)&lt;/span&gt; é a razão capital-trabalho, &lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt; é a taxa de poupança, &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; é a taxa de crescimento da força de trabalho e &lt;span class=&#34;math inline&#34;&gt;\(F(r,1)\)&lt;/span&gt; é uma função de produção homogênea de grau um a ser especificada.&lt;/p&gt;
 &lt;p&gt;No presente caso, uma função Cobb-Douglas na forma &lt;span class=&#34;math inline&#34;&gt;\(F(K,L) = K^\alpha L^{1-\alpha} \Rightarrow F(r,1) = r^\alpha\)&lt;/span&gt; pode ser adotada para a resolução numérica. Portanto, a equação diferencial a ser simulada é:
 &lt;span class=&#34;math display&#34; id=&#34;eq:solow-cobb&#34;&gt;\[\begin{equation}
   \dot{r} = sr^\alpha - nr
-  \tag{4}
+  \tag{2.2}
 \end{equation}\]&lt;/span&gt; cuja função para simuação da EDO pode ser construída por:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  ### Função em R que representa a EDO
   solow_edo &amp;lt;- function(tempo, inicial, parametros){  # Parâmetros da função
@@ -383,10 +554,10 @@ head(solow, n=3)                  # Exibe três primeiros&lt;/code&gt;&lt;/pre&g
 ## [349,]  348 2.904818
 ## [350,]  349 2.904819
 ## [351,]  350 2.904820&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;O gráfico resultado do modelo está descrito na Figura &lt;a href=&#34;#fig:solow&#34;&gt;2&lt;/a&gt;, sob o título “Modelo de Solow.”&lt;/p&gt;
+&lt;p&gt;O gráfico resultado do modelo está descrito na Figura &lt;a href=&#34;#fig:solow&#34;&gt;2.2&lt;/a&gt;, sob o título “Modelo de Solow.”&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;interrupção-automática-da-simulação&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Interrupção automática da simulação&lt;/h2&gt;
+&lt;div id=&#34;interrupção-automática-da-simulação&#34; class=&#34;section level2&#34; number=&#34;2.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; Interrupção automática da simulação&lt;/h2&gt;
 &lt;p&gt;Caso o interesse seja só a fase inicial de uma equação ou se tenha uma EDO convergente, é possível usar a funcionalidade &lt;em&gt;root&lt;/em&gt; da função &lt;strong&gt;lsodar&lt;/strong&gt;&lt;a href=&#34;#fn8&#34; class=&#34;footnote-ref&#34; id=&#34;fnref8&#34;&gt;&lt;sup&gt;8&lt;/sup&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;A simulação será interrompida no momento em que as variáveis de estado estiverem a uma distância entre si menor que um parâmetro pré-definido (no exemplo, uma variação da ordem de 10&lt;sup&gt;-4&lt;/sup&gt;). Assim, a função raiz calcula, em primeiro lugar, a taxa de variação e, depois, a diferença entre a soma dos valores absolutos e a tolerância definida:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  ### Critério de parada
@@ -409,7 +580,7 @@ tail(solow_raiz, n=3)                   # Compare com os três últimos sem para
 ## [202,] 201.0000 2.901594
 ## [203,] 202.0000 2.901698
 ## [204,] 202.6914 2.901768&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Por fim, os gráficos estão na Figura &lt;a href=&#34;#fig:solow&#34;&gt;2&lt;/a&gt;. Note que a função &lt;strong&gt;matplot()&lt;/strong&gt;&lt;a href=&#34;#fn9&#34; class=&#34;footnote-ref&#34; id=&#34;fnref9&#34;&gt;&lt;sup&gt;9&lt;/sup&gt;&lt;/a&gt; foi usada para ter uma interface melhor adaptada à plotagem lado a lado e a lidar com mais de uma variável no mesmo gráfico. Nesta nota, serão dados exemplos também com a função &lt;strong&gt;plot()&lt;/strong&gt;, da base do R.&lt;/p&gt;
+&lt;p&gt;Por fim, os gráficos estão na Figura &lt;a href=&#34;#fig:solow&#34;&gt;2.2&lt;/a&gt;. Note que a função &lt;strong&gt;matplot()&lt;/strong&gt;&lt;a href=&#34;#fn9&#34; class=&#34;footnote-ref&#34; id=&#34;fnref9&#34;&gt;&lt;sup&gt;9&lt;/sup&gt;&lt;/a&gt; foi usada para ter uma interface melhor adaptada à plotagem lado a lado e a lidar com mais de uma variável no mesmo gráfico. Nesta nota, serão dados exemplos também com a função &lt;strong&gt;plot()&lt;/strong&gt;, da base do R.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mfrow=c(1,2))     # Define gráficos a seguir em 1 linha e 2 colunas
 
   ### Série original
@@ -434,13 +605,13 @@ matplot(x = solow_raiz[,1],
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:solow&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;/r-projetos/edos/index.en_files/figure-html/solow-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;624&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
-Figure 2: Elaboração própria.
+Figure 2.2: Elaboração própria.
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id=&#34;edo2&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;EDOs de 2&lt;sup&gt;a&lt;/sup&gt; ordem&lt;/h1&gt;
+&lt;div id=&#34;edo2&#34; class=&#34;section level1&#34; number=&#34;3&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; EDOs de 2&lt;sup&gt;a&lt;/sup&gt; ordem&lt;/h1&gt;
 &lt;p&gt;EDOs de 2&lt;sup&gt;a&lt;/sup&gt; ordem envolvem a segunda derivada da função principal. Vale notar que, para fins computacionais, EDOs de 2&lt;sup&gt;a&lt;/sup&gt; ordem precisam ser escritas sob a forma de um sistema de equações de EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem&lt;a href=&#34;#fn10&#34; class=&#34;footnote-ref&#34; id=&#34;fnref10&#34;&gt;&lt;sup&gt;10&lt;/sup&gt;&lt;/a&gt;, bem como duas condições iniciais. Assim, uma EDO no formato
 &lt;span class=&#34;math display&#34; id=&#34;eq:transformacao1&#34;&gt;\[\begin{equation}
 \begin{split}
@@ -448,7 +619,7 @@ Figure 2: Elaboração própria.
  y(t_0) &amp;amp; = y_{0}\\
  y&amp;#39;(t_0) &amp;amp; = y&amp;#39;_{0}
 \end{split}
- \tag{5}
+ \tag{3.1}
 \end{equation}\]&lt;/span&gt; pode ser reescrita como
 &lt;span class=&#34;math display&#34; id=&#34;eq:transformacao&#34;&gt;\[\begin{equation}
 \begin{split}
@@ -457,19 +628,19 @@ Figure 2: Elaboração própria.
  y(t_0) &amp;amp; = y_{0}\\
  y_1(t_0) &amp;amp; = y&amp;#39;_{0}
 \end{split}
-\tag{6}
+\tag{3.2}
 \end{equation}\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;A título de exemplo, pode-se simular o modelo de acelerador de segunda ordem exposto em &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Gandolfo2005&#34; role=&#34;doc-biblioref&#34;&gt;Gandolfo&lt;/a&gt; (&lt;a href=&#34;#ref-Gandolfo2005&#34; role=&#34;doc-biblioref&#34;&gt;2005&lt;/a&gt;)&lt;/span&gt;. A EDO do modelo é
 &lt;span class=&#34;math display&#34; id=&#34;eq:acelerador1&#34;&gt;\[\begin{equation}
   K&amp;#39;&amp;#39; + \beta K&amp;#39;+ \alpha \beta K  = \alpha \beta K^*
-  \tag{7}
+  \tag{3.3}
 \end{equation}\]&lt;/span&gt; em que &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; é o estoque corrente de capital, &lt;span class=&#34;math inline&#34;&gt;\(K^*\)&lt;/span&gt; é o estoque desejado de capital, &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt; denota a velocidade de ajuste do investimento real ao investimento desejado. Por fim, &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; é a velocidade de ajuste entre o estoque real e o desejado.&lt;/p&gt;
-&lt;p&gt;É possível ampliar o sistema com &lt;span class=&#34;math inline&#34;&gt;\(K^* = kY\)&lt;/span&gt;, em que &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; é a relação capital-produto e &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; é o produto da economia. Assim, a equação &lt;a href=&#34;#eq:acelerador1&#34;&gt;(7)&lt;/a&gt; pode ser reescrita, após manipulações algébricas, como
+&lt;p&gt;É possível ampliar o sistema com &lt;span class=&#34;math inline&#34;&gt;\(K^* = kY\)&lt;/span&gt;, em que &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; é a relação capital-produto e &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; é o produto da economia. Assim, a equação &lt;a href=&#34;#eq:acelerador1&#34;&gt;(3.3)&lt;/a&gt; pode ser reescrita, após manipulações algébricas, como
 &lt;span class=&#34;math display&#34; id=&#34;eq:acelerador2&#34;&gt;\[\begin{equation}
   K&amp;#39;&amp;#39; + \beta \left(1-\frac{\alpha k}{1 - b}\right) K&amp;#39;+ \alpha \beta K  = \alpha \beta k\frac{a}{1 - b}
-  \tag{8}
+  \tag{3.4}
 \end{equation}\]&lt;/span&gt; em que os termos &lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt; e &lt;span class=&#34;math inline&#34;&gt;\(b\)&lt;/span&gt; se referem a uma versão macroeconômica simples de uma função de consumo no formato &lt;span class=&#34;math inline&#34;&gt;\(C = a + bY\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;A versão em sistema de EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem da equação &lt;a href=&#34;#eq:acelerador2&#34;&gt;(8)&lt;/a&gt; pode ser feita considerando &lt;span class=&#34;math inline&#34;&gt;\(I = K&amp;#39;\)&lt;/span&gt; o investimento e isolando as derivadas no lado esquerdo das equações:
+&lt;p&gt;A versão em sistema de EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem da equação &lt;a href=&#34;#eq:acelerador2&#34;&gt;(3.4)&lt;/a&gt; pode ser feita considerando &lt;span class=&#34;math inline&#34;&gt;\(I = K&amp;#39;\)&lt;/span&gt; o investimento e isolando as derivadas no lado esquerdo das equações:
 &lt;span class=&#34;math display&#34; id=&#34;eq:acelerador-sistema&#34;&gt;\[\begin{equation}
 \begin{split}
  K&amp;#39; &amp;amp; = I \\
@@ -477,7 +648,7 @@ Figure 2: Elaboração própria.
  K(t_0) &amp;amp; = K_{0}\\
  K&amp;#39;(t_0) &amp;amp; = I&amp;#39;(t_0) = I_{0}
 \end{split}
-\tag{9}
+\tag{3.5}
 \end{equation}\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Diante disso, segue-se passos semelhantes à resolução de EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem. Em primeiro lugar, cria-se a função, agora com duas equações e duas saídas de dados.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  ### EDO do Acelerador de 2a ordem
@@ -491,7 +662,7 @@ acel_edo &amp;lt;-     function(tempo, inicial, parametros){
         list(c(dK,dI))   # Retorna dois valores
       })
     }&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Em seguida, definem-se os parâmetros e o gráfico para representá-los na Figura &lt;a href=&#34;#fig:acelerador&#34;&gt;3&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Em seguida, definem-se os parâmetros e o gráfico para representá-los na Figura &lt;a href=&#34;#fig:acelerador&#34;&gt;3.1&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tempo &amp;lt;- seq(0,200, by = 0.5)
 
 inicial &amp;lt;- c(K = 1, I = 0)
@@ -523,12 +694,12 @@ abline(h = 30,           # Acrescenta linha tracejada para o equilíbrio
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:acelerador&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;/r-projetos/edos/index.en_files/figure-html/acelerador-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;624&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
-Figure 3: Elaboração própria.
+Figure 3.1: Elaboração própria.
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Por fim, note que as EDOs de ordem superiores podem ser resolvidas adotando uma combinação dos procedimentos explicitados acima.&lt;/p&gt;
-&lt;div id=&#34;equação-com-coeficientes-constantes&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Equação com coeficientes constantes&lt;/h2&gt;
+&lt;div id=&#34;equação-com-coeficientes-constantes&#34; class=&#34;section level2&#34; number=&#34;3.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; Equação com coeficientes constantes&lt;/h2&gt;
 &lt;p&gt;Equações com coeficientes constantes apresentam apenas a equação principal e suas derivadas variáveis no tempo. Um exemplo é a função &lt;span class=&#34;math inline&#34;&gt;\(y&amp;#39;&amp;#39;(t) + 2y&amp;#39;(t) + y(t) = 0\)&lt;/span&gt;. Sua versão em sistema de EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem pode ser feita considerando &lt;span class=&#34;math inline&#34;&gt;\(y_1(t) = y(t)&amp;#39;\)&lt;/span&gt;, isolando as derivadas no lado esquerdo das equações e adotando uma das soluções canônicas, conforme :
 &lt;span class=&#34;math display&#34; id=&#34;eq:cte&#34;&gt;\[\begin{equation}
 \begin{split}
@@ -537,9 +708,9 @@ Figure 3: Elaboração própria.
  y(0) &amp;amp; = 0\\
  y&amp;#39;(0) &amp;amp; = y_1 = 1
 \end{split}
-\tag{10}
+\tag{3.6}
 \end{equation}\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Diante disso, segue-se passos semelhantes à resolução de EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem. Em primeiro lugar, cria-se a função, agora com duas equações e duas saídas de dados. O gráfico está representado na Figura &lt;a href=&#34;#fig:constante&#34;&gt;4&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Diante disso, segue-se passos semelhantes à resolução de EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem. Em primeiro lugar, cria-se a função, agora com duas equações e duas saídas de dados. O gráfico está representado na Figura &lt;a href=&#34;#fig:constante&#34;&gt;3.2&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  ### EDO de equação de coeficientes constantes
 raizes_iguais &amp;lt;-  function(t, inicial, parametros){
   with(as.list(c(inicial, parametros)),{
@@ -576,12 +747,12 @@ plot(raizes_iguais_edo[,&amp;quot;time&amp;quot;], raizes_iguais_edo[,&amp;quot;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:constante&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;/r-projetos/edos/index.en_files/figure-html/constante-1.png&#34; alt=&#34;Coeficientes Constantes&#34; width=&#34;624&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
-Figure 4: Coeficientes Constantes
+Figure 3.2: Coeficientes Constantes
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id=&#34;equação-de-laguerre&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Equação de Laguerre&lt;/h2&gt;
+&lt;div id=&#34;equação-de-laguerre&#34; class=&#34;section level2&#34; number=&#34;3.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; Equação de Laguerre&lt;/h2&gt;
 &lt;p&gt;A equação de Laguerre tem aplicabilidade na Física quântica e em outras áreas da Matemática e Física. Exemplos de aplicações estão em . Um dos exemplos está na versão do orbital &lt;em&gt;s&lt;/em&gt; de um átomo de hidrogênio em seu menor nível de energia. A equação de Laguerre, nesse caso, é dada por &lt;span class=&#34;math inline&#34;&gt;\(xy&amp;#39;&amp;#39;(x)+(1-x)y&amp;#39;(x) + y(x) = 0\)&lt;/span&gt;. Sua versão em sistema de EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem pode ser feita considerando &lt;span class=&#34;math inline&#34;&gt;\(y_1(x) = y(x)&amp;#39;\)&lt;/span&gt; e isolando as derivadas no lado esquerdo das equações e adotando uma das soluções canônicas:
 &lt;span class=&#34;math display&#34; id=&#34;eq:laguerre&#34;&gt;\[\begin{equation}
 \begin{split}
@@ -590,9 +761,9 @@ Figure 4: Coeficientes Constantes
  y(x_0) &amp;amp; = 0\\
  y&amp;#39;(x_0) &amp;amp; = y_1 = 1
 \end{split}
-\tag{11}
+\tag{3.7}
 \end{equation}\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Diante disso, segue-se passos semelhantes à resolução de EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem. Em primeiro lugar, cria-se a função, agora com duas equações e duas saídas de dados. O gráfico está representado na Figura &lt;a href=&#34;#fig:laguerre&#34;&gt;5&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Diante disso, segue-se passos semelhantes à resolução de EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem. Em primeiro lugar, cria-se a função, agora com duas equações e duas saídas de dados. O gráfico está representado na Figura &lt;a href=&#34;#fig:laguerre&#34;&gt;3.3&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  ### EDO de equação de Laguerre
 laguerre &amp;lt;-  function(x, inicial, parametros){
   with(as.list(c(inicial, parametros)),{
@@ -631,12 +802,12 @@ plot(laguerre_edo[,&amp;quot;time&amp;quot;], laguerre_edo[,&amp;quot;y&amp;quot
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:laguerre&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;/r-projetos/edos/index.en_files/figure-html/laguerre-1.png&#34; alt=&#34;Equação de Laguerre&#34; width=&#34;624&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
-Figure 5: Equação de Laguerre
+Figure 3.3: Equação de Laguerre
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id=&#34;equação-de-euler&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Equação de Euler&lt;/h2&gt;
+&lt;div id=&#34;equação-de-euler&#34; class=&#34;section level2&#34; number=&#34;3.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.3&lt;/span&gt; Equação de Euler&lt;/h2&gt;
 &lt;p&gt;Um exemplo da chamada ``equação de Euler&#34; é dado pela função &lt;span class=&#34;math inline&#34;&gt;\(t^2y&amp;#39;&amp;#39;(t) + 2ty&amp;#39;(t) - 2y(t) = t^5\)&lt;/span&gt;, conforme . Sua versão em sistema de EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem pode ser feita considerando &lt;span class=&#34;math inline&#34;&gt;\(y_1(t) = y(t)&amp;#39;\)&lt;/span&gt; e isolando as derivadas no lado esquerdo das equações e adotando uma das soluções canônicas, conforme:
 &lt;span class=&#34;math display&#34; id=&#34;eq:euler&#34;&gt;\[\begin{equation}
 \begin{split}
@@ -645,9 +816,9 @@ Figure 5: Equação de Laguerre
  y(0) &amp;amp; = 1\\
  y&amp;#39;(0) &amp;amp; = y_1 = 0
 \end{split}
-\tag{12}
+\tag{3.8}
 \end{equation}\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Diante disso, segue-se passos semelhantes à resolução de EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem. Em primeiro lugar, cria-se a função, agora com duas equações e duas saídas de dados. O gráfico está representado na Figura &lt;a href=&#34;#fig:euler&#34;&gt;6&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Diante disso, segue-se passos semelhantes à resolução de EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem. Em primeiro lugar, cria-se a função, agora com duas equações e duas saídas de dados. O gráfico está representado na Figura &lt;a href=&#34;#fig:euler&#34;&gt;3.4&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  ### EDO de equação de Euler
 euler &amp;lt;-  function(t, inicial, parametros){
   with(as.list(c(inicial, parametros)),{
@@ -684,14 +855,14 @@ plot(euler_edo[,&amp;quot;time&amp;quot;],euler_edo[,&amp;quot;y&amp;quot;],
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:euler&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;/r-projetos/edos/index.en_files/figure-html/euler-1.png&#34; alt=&#34;Equação de Euler&#34; width=&#34;624&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
-Figure 6: Equação de Euler
+Figure 3.4: Equação de Euler
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id=&#34;simultaneas&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Equações diferenciais simultâneas&lt;/h1&gt;
-&lt;p&gt;O caso de um sistema com duas EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem pode ser resolvido de maneira semelhante ao modelo de 2&lt;sup&gt;a&lt;/sup&gt; ordem apresentado na seção &lt;a href=&#34;#edo2&#34;&gt;&lt;strong&gt;??&lt;/strong&gt;&lt;/a&gt;. Portanto, aqui será apresentada uma solução numérica para um sistema de três EDOs simultâneas trabalhado por &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Ma2012&#34; role=&#34;doc-biblioref&#34;&gt;Ma and Bangura&lt;/a&gt; (&lt;a href=&#34;#ref-Ma2012&#34; role=&#34;doc-biblioref&#34;&gt;2012&lt;/a&gt;)&lt;/span&gt;. Trata-se de um sistema econômico e financeiro que combina taxa de juro, de investimento e de inflação. Os detalhes do modelo devem ser avaliados no artigo original.&lt;/p&gt;
+&lt;div id=&#34;simultaneas&#34; class=&#34;section level1&#34; number=&#34;4&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; Equações diferenciais simultâneas&lt;/h1&gt;
+&lt;p&gt;O caso de um sistema com duas EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem pode ser resolvido de maneira semelhante ao modelo de 2&lt;sup&gt;a&lt;/sup&gt; ordem apresentado na seção &lt;a href=&#34;#edo2&#34;&gt;3&lt;/a&gt;. Portanto, aqui será apresentada uma solução numérica para um sistema de três EDOs simultâneas trabalhado por &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Ma2012&#34; role=&#34;doc-biblioref&#34;&gt;Ma and Bangura&lt;/a&gt; (&lt;a href=&#34;#ref-Ma2012&#34; role=&#34;doc-biblioref&#34;&gt;2012&lt;/a&gt;)&lt;/span&gt;. Trata-se de um sistema econômico e financeiro que combina taxa de juro, de investimento e de inflação. Os detalhes do modelo devem ser avaliados no artigo original.&lt;/p&gt;
 &lt;p&gt;O sistema fincaneiro (caótico) representado no modelo é tal que:
 &lt;span class=&#34;math display&#34; id=&#34;eq:financeiro&#34;&gt;\[\begin{equation}
 \begin{split}
@@ -699,7 +870,7 @@ Figure 6: Equação de Euler
  \dot{y} &amp;amp; = 1 - by - x^2 \\
  \dot{z} &amp;amp; = -x + cz
 \end{split}
-\tag{13}
+\tag{4.1}
 \end{equation}\]&lt;/span&gt; em que &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; expressa a taxa de juro, &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; representa a demanda por investimento e &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;, o índice de preços. Ademais, &lt;span class=&#34;math inline&#34;&gt;\(a \geq 0\)&lt;/span&gt; é o volume de poupança, &lt;span class=&#34;math inline&#34;&gt;\(b \geq 0\)&lt;/span&gt; é o custo unitário do investimento e &lt;span class=&#34;math inline&#34;&gt;\(c \geq 0\)&lt;/span&gt; é a elasticidade da demanda por bens.&lt;/p&gt;
 &lt;p&gt;Para a simulação numérica, usam-se os seguintes valores iniciais e parâmetros sugeridos pelos autores: &lt;span class=&#34;math inline&#34;&gt;\(x_0 = 0.03\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(y_0 = 0.15\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(z_0 = 0.25\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(a = 5\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(b = 0.15\)&lt;/span&gt; e &lt;span class=&#34;math inline&#34;&gt;\(c = 0\)&lt;/span&gt;. Com isso, a função é formada por:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  ### EDO do sistema financeiro caótico
@@ -712,7 +883,7 @@ financial_edo &amp;lt;- function(tempo, inicial, parametros) {
     list(c(dx,dy,dz))
   })
 }&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;O modelo pode com as três variáveis ser simulado na Figura &lt;a href=&#34;#fig:financial&#34;&gt;7&lt;/a&gt; por meio do pacote &lt;strong&gt;scatterplot3d&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;O modelo pode com as três variáveis ser simulado na Figura &lt;a href=&#34;#fig:financial&#34;&gt;4.1&lt;/a&gt; por meio do pacote &lt;strong&gt;scatterplot3d&lt;/strong&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tempo &amp;lt;- seq(0,100,by = .01)
 
 inicial &amp;lt;- c(x = .03,
@@ -739,10 +910,10 @@ scatterplot3d(financial[,-1],    # Exclui a coluna tempo para que apenas
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:financial&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;/r-projetos/edos/index.en_files/figure-html/financial-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;624&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
-Figure 7: Elaboração própria.
+Figure 4.1: Elaboração própria.
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;A partir da resolução de todo o sistema, pode-se avaliar apenas a relação entre duas variáveis como na Figura &lt;a href=&#34;#fig:juro&#34;&gt;8&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;A partir da resolução de todo o sistema, pode-se avaliar apenas a relação entre duas variáveis como na Figura &lt;a href=&#34;#fig:juro&#34;&gt;4.2&lt;/a&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  ### Relação entre juro e demanda por investimento
 plot(x = financial[,&amp;quot;x&amp;quot;],
      y = financial[,&amp;quot;y&amp;quot;],
@@ -753,10 +924,10 @@ plot(x = financial[,&amp;quot;x&amp;quot;],
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:juro&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;/r-projetos/edos/index.en_files/figure-html/juro-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;624&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
-Figure 8: Elaboração própria.
+Figure 4.2: Elaboração própria.
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;A relação entre inflação e juro está na Figura &lt;a href=&#34;#fig:inflacaojuro&#34;&gt;9&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A relação entre inflação e juro está na Figura &lt;a href=&#34;#fig:inflacaojuro&#34;&gt;4.3&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  # Relação entre juro e preço
 matplot(x = financial[,&amp;quot;time&amp;quot;],
         y = financial[,c(&amp;quot;x&amp;quot;,&amp;quot;z&amp;quot;)],
@@ -773,12 +944,12 @@ legend(&amp;quot;bottomleft&amp;quot;,         # Local no gráfico
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:inflacaojuro&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;/r-projetos/edos/index.en_files/figure-html/inflacaojuro-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;624&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
-Figure 9: Elaboração própria.
+Figure 4.3: Elaboração própria.
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id=&#34;análise-de-estabilidade&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Análise de estabilidade&lt;/h1&gt;
+&lt;div id=&#34;análise-de-estabilidade&#34; class=&#34;section level1&#34; number=&#34;5&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;5&lt;/span&gt; Análise de estabilidade&lt;/h1&gt;
 &lt;p&gt;A análise de estabilidade com o pacote &lt;strong&gt;phaseR&lt;/strong&gt; apresenta, de maneira gráfica, um diagrama de fase de uma EDO ou sistema de EDOs de modo a avaliar trajetórias iniciais distintas ou consequências de perturbações no modelo dinâmico.&lt;/p&gt;
 &lt;p&gt;Este pacote depende de uma função que represente a EDO a partir da estrutura &lt;strong&gt;deSolve&lt;/strong&gt;, vista nas seções anteriores. Os nomes dos parâmetros até agora foram adotados para que ficassem mais intuitivos. Entretanto, para o retrato de fase, os nomes dos parâmetros que aparecem na função da EDO devem ser os mesmos aceitos pelo próprio pacote &lt;strong&gt;deSolve&lt;/strong&gt; conforme:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
@@ -786,9 +957,9 @@ Figure 9: Elaboração própria.
 &lt;li&gt;Os valores iniciais devem estar contidos num vetor &lt;strong&gt;y&lt;/strong&gt;; e&lt;/li&gt;
 &lt;li&gt;Os parâmetros, indicados em um vetor &lt;strong&gt;parameters&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div id=&#34;estabilidade-de-edo-de-1a-ordem&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Estabilidade de EDO de 1&lt;sup&gt;a&lt;/sup&gt; ordem&lt;/h2&gt;
-&lt;p&gt;Como primeiro exemplo, tem-se a análise do modelo de Solow, apresentado na seção &lt;a href=&#34;#solow&#34;&gt;&lt;strong&gt;??&lt;/strong&gt;&lt;/a&gt;. Reorganizando os nomes da função e dos parâmetros, os comandos são:&lt;/p&gt;
+&lt;div id=&#34;estabilidade-de-edo-de-1a-ordem&#34; class=&#34;section level2&#34; number=&#34;5.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.1&lt;/span&gt; Estabilidade de EDO de 1&lt;sup&gt;a&lt;/sup&gt; ordem&lt;/h2&gt;
+&lt;p&gt;Como primeiro exemplo, tem-se a análise do modelo de Solow, apresentado na seção &lt;a href=&#34;#solow&#34;&gt;2&lt;/a&gt;. Reorganizando os nomes da função e dos parâmetros, os comandos são:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  ### EDO com os nomes padrão dos parâmetros
 solow_edo &amp;lt;- function(t,y,parameters){
   with(as.list(c(y,parameters)),{
@@ -804,7 +975,7 @@ solow_edo &amp;lt;- function(t,y,parameters){
 t &amp;lt;- seq(0,300,1)
 y &amp;lt;- c(r = 1)
 parameters &amp;lt;- c(s= 0.1, alpha = 0.35, n=0.05)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Após os ajustes na nomenclatura, é possível acrescentar o campo de fluxos (ou de velocidades) com a função &lt;em&gt;flowField&lt;/em&gt;(). Ademais, pode-se simular algumas trajetórias com a função &lt;em&gt;trajectory&lt;/em&gt;() a partir de pontos iniciais distintos conforme a Figura &lt;a href=&#34;#fig:fase&#34;&gt;10&lt;/a&gt;. O gráfico base deve conter o ajuste “&lt;em&gt;add = FALSE&lt;/em&gt;.” Caso contrário, será adicionado a outro gráfico pré-existente, gerando problemas de configuração.&lt;/p&gt;
+&lt;p&gt;Após os ajustes na nomenclatura, é possível acrescentar o campo de fluxos (ou de velocidades) com a função &lt;em&gt;flowField&lt;/em&gt;(). Ademais, pode-se simular algumas trajetórias com a função &lt;em&gt;trajectory&lt;/em&gt;() a partir de pontos iniciais distintos conforme a Figura &lt;a href=&#34;#fig:fase&#34;&gt;5.1&lt;/a&gt;. O gráfico base deve conter o ajuste “&lt;em&gt;add = FALSE&lt;/em&gt;.” Caso contrário, será adicionado a outro gráfico pré-existente, gerando problemas de configuração.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  ### Gráfico com o campo de fluxos
 flowField(solow_edo,                # EDO
           xlim   = c(0,300),        # Limite para o eixo do tempo
@@ -828,12 +999,12 @@ trajectory(solow_edo,
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:fase&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;/r-projetos/edos/index.en_files/figure-html/fase-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;624&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
-Figure 10: Elaboração própria.
+Figure 5.1: Elaboração própria.
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;retrato-de-fase&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Retrato de fase&lt;/h3&gt;
-&lt;p&gt;Pode-se também fazer o retrado de fase como na Figura &lt;a href=&#34;#fig:retrato&#34;&gt;11&lt;/a&gt;, em que a variável em nível está representada no eixo horizontal e sua derivada no eixo vertical. Com isso, visualiza-se pontos de equilíbrio e suas estabilidades.&lt;/p&gt;
+&lt;div id=&#34;retrato-de-fase&#34; class=&#34;section level3&#34; number=&#34;5.1.1&#34;&gt;
+&lt;h3&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.1.1&lt;/span&gt; Retrato de fase&lt;/h3&gt;
+&lt;p&gt;Pode-se também fazer o retrado de fase como na Figura &lt;a href=&#34;#fig:retrato&#34;&gt;5.2&lt;/a&gt;, em que a variável em nível está representada no eixo horizontal e sua derivada no eixo vertical. Com isso, visualiza-se pontos de equilíbrio e suas estabilidades.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  ### Retrato de fase
 phasePortrait(solow_edo,
               ylim   = c(0, 4),        # Limite da variável dependente
@@ -846,22 +1017,22 @@ phasePortrait(solow_edo,
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:retrato&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;/r-projetos/edos/index.en_files/figure-html/retrato-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;624&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
-Figure 11: Elaboração própria.
+Figure 5.2: Elaboração própria.
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id=&#34;estabilidade-de-sistema-de-duas-edos-de-1a-ordem---equilíbrio-dinâmico&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Estabilidade de sistema de duas EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem - equilíbrio dinâmico&lt;/h2&gt;
+&lt;div id=&#34;estabilidade-de-sistema-de-duas-edos-de-1a-ordem---equilíbrio-dinâmico&#34; class=&#34;section level2&#34; number=&#34;5.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.2&lt;/span&gt; Estabilidade de sistema de duas EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem - equilíbrio dinâmico&lt;/h2&gt;
 &lt;p&gt;Procedimentos semelhantes podem ser adotados para um sistema com duas equações. Para um exemplo de sistema homogêneo de EDOs cujo equilíbrio é estável, utiliza-se exemplo sugerido por &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Gandolfo2005&#34; role=&#34;doc-biblioref&#34;&gt;Gandolfo&lt;/a&gt; (&lt;a href=&#34;#ref-Gandolfo2005&#34; role=&#34;doc-biblioref&#34;&gt;2005&lt;/a&gt;)&lt;/span&gt; no capítulo 18 (exercício 3), cuja esturutra é:
 &lt;span class=&#34;math display&#34; id=&#34;eq:gandolfo18&#34;&gt;\[\begin{equation}
 \begin{split}
  \dot{x} &amp;amp; = -2x + 4y \\
  \dot{y} &amp;amp; = -x + y
 \end{split}
-\tag{14}
+\tag{5.1}
 \end{equation}\]&lt;/span&gt;
-Além das informações disponíveis para o caso de uma variável (dimensão) apresentado acima, é possível desenhar as isolinhas nulas, que representam o formato geométrico onde a derivada de uma função é zero. Elas podem ser elaboradas com a função &lt;em&gt;nullclines&lt;/em&gt;(). Note que, agora, os valores iniciais para a trajetória devem ser oferecidos em formato de matriz, representando os pares ordenados. O resultado pode ser visto na Figura &lt;a href=&#34;#fig:estavel&#34;&gt;12&lt;/a&gt;.&lt;/p&gt;
+Além das informações disponíveis para o caso de uma variável (dimensão) apresentado acima, é possível desenhar as isolinhas nulas, que representam o formato geométrico onde a derivada de uma função é zero. Elas podem ser elaboradas com a função &lt;em&gt;nullclines&lt;/em&gt;(). Note que, agora, os valores iniciais para a trajetória devem ser oferecidos em formato de matriz, representando os pares ordenados. O resultado pode ser visto na Figura &lt;a href=&#34;#fig:estavel&#34;&gt;5.3&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;    ### EDO do sistema
 gandolfo_edo_estavel &amp;lt;- function(t,y,parameters){
   x &amp;lt;- y[1]      # Valores iniciais em formato de vetor
@@ -900,7 +1071,7 @@ trajectory(gandolfo_edo_estavel,
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:estavel&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;/r-projetos/edos/index.en_files/figure-html/estavel-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;624&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
-Figure 12: Elaboração própria.
+Figure 5.3: Elaboração própria.
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  ### Matriz com as condições iniciais
@@ -911,17 +1082,17 @@ y0&lt;/code&gt;&lt;/pre&gt;
 ## [3,]   -5    0
 ## [4,]    4   -1&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;div id=&#34;estabilidade-de-sistema-de-duas-edos-de-1a-ordem---ponto-de-sela&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Estabilidade de sistema de duas EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem - ponto de sela&lt;/h2&gt;
+&lt;div id=&#34;estabilidade-de-sistema-de-duas-edos-de-1a-ordem---ponto-de-sela&#34; class=&#34;section level2&#34; number=&#34;5.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.3&lt;/span&gt; Estabilidade de sistema de duas EDOs de 1&lt;sup&gt;a&lt;/sup&gt; ordem - ponto de sela&lt;/h2&gt;
 &lt;p&gt;Para um exemplo de sistema de EDOs cujo equilíbrio é caracterizado por uma trajetória de sela, pode-se adotar o sistema homogêneo sugerido por &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Gandolfo2005&#34; role=&#34;doc-biblioref&#34;&gt;Gandolfo&lt;/a&gt; (&lt;a href=&#34;#ref-Gandolfo2005&#34; role=&#34;doc-biblioref&#34;&gt;2005&lt;/a&gt;)&lt;/span&gt; no capítulo 18 ( exercício 1) cuja esturutra é:
 &lt;span class=&#34;math display&#34; id=&#34;eq:gandolfo18-2&#34;&gt;\[\begin{equation}
 \begin{split}
  \dot{x} &amp;amp; = -2x + 4y \\
  \dot{y} &amp;amp; = -x + y
 \end{split}
-\tag{15}
+\tag{5.2}
 \end{equation}\]&lt;/span&gt;
-É possível perceber que se trata de uma trajetória de sela, cujas trajetórias estáveis e instáveis podem ser elaboradas com a função &lt;em&gt;drawManifolds&lt;/em&gt;(). O resultado pode ser visto na Figura &lt;a href=&#34;#fig:sela&#34;&gt;13&lt;/a&gt;.&lt;/p&gt;
+É possível perceber que se trata de uma trajetória de sela, cujas trajetórias estáveis e instáveis podem ser elaboradas com a função &lt;em&gt;drawManifolds&lt;/em&gt;(). O resultado pode ser visto na Figura &lt;a href=&#34;#fig:sela&#34;&gt;5.4&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  ### EDO
 gandolfo_edo &amp;lt;- function(t,y,parameters){
   
@@ -965,7 +1136,7 @@ trajectory(gandolfo_edo,
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:sela&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;/r-projetos/edos/index.en_files/figure-html/sela-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
-Figure 13: Elaboração própria.
+Figure 5.4: Elaboração própria.
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Em linhas gerais, essas são as informações mais comuns na análise de sistemas dinâmicos no campo da Economia. Funções e tratamentos adicionais podem ser avaliados nos itens referenciados abaixo.&lt;/p&gt;

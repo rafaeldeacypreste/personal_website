@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Intro Eco Pol | Rafael de Acypreste</title>
+    <link>/tag/intro-eco-pol/</link>
+      <atom:link href="/tag/intro-eco-pol/index.xml" rel="self" type="application/rss+xml" />
+    <description>Intro Eco Pol</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 04 Jul 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/media/icon_hu079f5f191f910f3be9bbdec4dba5765d_88394_512x512_fill_lanczos_center_2.png</url>
+      <title>Intro Eco Pol</title>
+      <link>/tag/intro-eco-pol/</link>
+    </image>
+    
+    <item>
+      <title>Primeira Lista de Exercícios</title>
+      <link>/r-projetos/1a-lista/</link>
+      <pubDate>Sun, 04 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>/r-projetos/1a-lista/</guid>
+      <description>
+&lt;script src=&#34;/r-projetos/1a-lista/index.en_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introdução&#34;&gt;Introdução&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#por-que-usar-o-r&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Por que usar o &lt;code&gt;R&lt;/code&gt;?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#download-e-instalação&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Download e Instalação&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#R&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.1&lt;/span&gt; &lt;code&gt;R&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#rstudio&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2.2&lt;/span&gt; &lt;code&gt;RStudio&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#primeiros-comandos&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; Primeiros comandos&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#ajuda-do-programa&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; Ajuda do programa&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#começando-um-novo-projeto&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; Começando um novo projeto&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exercícios&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; Exercícios&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#noções-básicas-de-programação-i&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1&lt;/span&gt; Noções básicas de programação I&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#importação-de-dados&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2&lt;/span&gt; Importação de dados&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#manipulação-de-tabelas&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.3&lt;/span&gt; Manipulação de tabelas&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#referências&#34;&gt;Referências&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;introdução&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Introdução&lt;/h1&gt;
+&lt;p&gt;Esta nota tem por objetivo exercitar o ferramental básico para entender comandos comuns que serão necessários nas próximas aulas&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. A maior parte dos conteúdos serão relacionados às funcionalidades do &lt;code&gt;R&lt;/code&gt; que são úteis para cientistas sociais. &lt;strong&gt;O curso não supõe conhecimento prévio de R&lt;/strong&gt;, ainda que contatos anteriores permitirão um avanço mais rápido e concreto no curso.&lt;/p&gt;
+&lt;p&gt;Trata-se de um trabalho experimental e inicial, que foi desenvolvido a partir de minha experiência concreta. Por favor, me indique eventuais erros e incongruências. Além disso, há trabalhos mais bem qualificados e em que me baseio para elaborar esses exercícios, como &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Wickham2016&#34; role=&#34;doc-biblioref&#34;&gt;Wickham and Grolemund&lt;/a&gt; (&lt;a href=&#34;#ref-Wickham2016&#34; role=&#34;doc-biblioref&#34;&gt;2016&lt;/a&gt;)&lt;/span&gt;, &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Wickham2015&#34; role=&#34;doc-biblioref&#34;&gt;Wickham&lt;/a&gt; (&lt;a href=&#34;#ref-Wickham2015&#34; role=&#34;doc-biblioref&#34;&gt;2015&lt;/a&gt;)&lt;/span&gt; e &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-WickhamRStudio2014&#34; role=&#34;doc-biblioref&#34;&gt;Wickham&lt;/a&gt; (&lt;a href=&#34;#ref-WickhamRStudio2014&#34; role=&#34;doc-biblioref&#34;&gt;2014&lt;/a&gt;)&lt;/span&gt;, cuja leitura é recomendada. Os textos em português de &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;Vale&lt;/a&gt; (&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;)&lt;/span&gt; e &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;Saulo Guerra et al.&lt;/a&gt; (&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;)&lt;/span&gt; também são fontes recomendadas de consulta.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;por-que-usar-o-r&#34; class=&#34;section level1&#34; number=&#34;1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Por que usar o &lt;code&gt;R&lt;/code&gt;?&lt;/h1&gt;
+&lt;p&gt;Para quem nunca teve contato com alguma linguagem de programação, este início costuma ser pouco amigável. Entretanto, há algumas vantagens em relação a editores de planilha como &lt;em&gt;Excel&lt;/em&gt; ou &lt;em&gt;Calc&lt;/em&gt; para acesso, manipulação e elaboração de gráficos e apresentações:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Os passos são descritos e registrados sequencialmente;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A estrutura incremental (linha por linha) ajuda na identificação de erros;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A discriminação dos passos auxilia na memória da pesquisa; e&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;O script permite reprodutibilidade em outras pesquisas, contribuindo para o avanço da ciência.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Portanto, todo o esforço inical e prática constante&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; permitem uma adaptação rápida à linguagem e o acesso a dados estatísticos nacionais e internacionais que auxiliam na aprendizagem dos temas tratados. Essas habilidades também podem ajudar para trabalhos de outras disciplinas ou de conclusão de curso.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;download-e-instalação&#34; class=&#34;section level1&#34; number=&#34;2&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Download e Instalação&lt;/h1&gt;
+&lt;div id=&#34;R&#34; class=&#34;section level2&#34; number=&#34;2.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.1&lt;/span&gt; &lt;code&gt;R&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;O primeiro passo é baixar e instalar o &lt;code&gt;R&lt;/code&gt; em seu computador a partir de &lt;a href=&#34;https://cran.r-project.org/&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org/&lt;/a&gt;. Faça o &lt;em&gt;download&lt;/em&gt; de uma versão &lt;code&gt;base&lt;/code&gt; adaptada ao seu sistema operacional. É recomendável utilizar uma versão &lt;em&gt;4.0&lt;/em&gt; ou superior, para evitar problemas com pacotes no futuro. Instale o progama em seu computador, seguindo as configurações-padrão.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;rstudio&#34; class=&#34;section level2&#34; number=&#34;2.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;2.2&lt;/span&gt; &lt;code&gt;RStudio&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Após os passos indicados na seção &lt;a href=&#34;#R&#34;&gt;2.1&lt;/a&gt;, deve-se baixar e instalar o &lt;code&gt;RStudio&lt;/code&gt;, cuja versão gratuita para &lt;em&gt;desktop&lt;/em&gt; está disponível em: &lt;a href=&#34;https://www.rstudio.com/products/rstudio/download/&#34; class=&#34;uri&#34;&gt;https://www.rstudio.com/products/rstudio/download/&lt;/a&gt;. Com isso, tem-se uma interface mais organizada e ferramentas auxiliares para o uso do &lt;code&gt;R&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Caso tenham dúvidas na instalação, este vídeo a partir de 3min:30s pode ser útil: &lt;a href=&#34;https://www.youtube.com/watch?v=WVogdSlk7gY&#34; class=&#34;uri&#34;&gt;https://www.youtube.com/watch?v=WVogdSlk7gY&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;primeiros-comandos&#34; class=&#34;section level1&#34; number=&#34;3&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; Primeiros comandos&lt;/h1&gt;
+&lt;p&gt;Tradicionalmente, o primeiro programa que se faz em uma nova linguagem é dizer &lt;code&gt;Alô, mundo!&lt;/code&gt;. No &lt;code&gt;R&lt;/code&gt;, a função &lt;code&gt;print()&lt;/code&gt; faz esse trabalho. Caso o comando esteja em um &lt;em&gt;Rscript&lt;/em&gt;, basta selecionar ou manter o cursos sobre a(s) linha(s) que se deseja executar e acessar o comando “Run,” cujo atalho é CTRL+ENTER.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  # O resultado será exibido no console
+print(&amp;quot;Alô, mundo!&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Alô, mundo!&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;O estilo de programação usado aqui e nos &lt;code&gt;Rscripts&lt;/code&gt; segue parte das orientações para identação e organização dos códigos apresentados por &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-HadleyWickham2021&#34; role=&#34;doc-biblioref&#34;&gt;Hadley Wickham&lt;/a&gt; (&lt;a href=&#34;#ref-HadleyWickham2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;)&lt;/span&gt;. Como o R apresenta estrutura mais flexível, seguir padrões contribui para que seu código seja lido com mais facilidade por outras pessoas.&lt;/p&gt;
+&lt;div id=&#34;ajuda-do-programa&#34; class=&#34;section level2&#34; number=&#34;3.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; Ajuda do programa&lt;/h2&gt;
+&lt;p&gt;O &lt;code&gt;R&lt;/code&gt; apresenta uma série de funções que são utilizadas para executar ações desejadas. Basta assinalar o nome da função sem parênteses, precidido de uma interrogação &lt;code&gt;?&lt;/code&gt;. Em geral, encontram-se a estrutura da função, seus atributos, detalhes e alguns exemplos. Este é um expediente que deve ser usado com frequência, especialmente por quem está tendo seus primeiros contatos com a linguagem&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  # Um painel no RStudio exibirá ajuda
+?c&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;começando-um-novo-projeto&#34; class=&#34;section level2&#34; number=&#34;3.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; Começando um novo projeto&lt;/h2&gt;
+&lt;p&gt;Um fluxo de trabalho interessante é iniciar um novo projeto no &lt;code&gt;R&lt;/code&gt; para cada trabalho. Com isso, os arquivos ficarão todos organizados numa mesma pasta, facilitando a importação de dados e salvamento de arquivos. Isso pode ser feito no &lt;code&gt;RStudio&lt;/code&gt; a partir de &lt;code&gt;File &amp;gt; New Project&lt;/code&gt;. Ademais, é possível consultar o diretório de trabalho com a função &lt;code&gt;getwd()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  # Descobre onde o projeto está trabalhando
+getwd() &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;C:/Users/rafae/OneDrive/Documentos/personal_website/content/r-projetos/2021-07-04-1a-lista&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exercícios&#34; class=&#34;section level1&#34; number=&#34;4&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; Exercícios&lt;/h1&gt;
+&lt;p&gt;Considerando o que foi dito acima e os capítulos dos livros de &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;Vale&lt;/a&gt; (&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;)&lt;/span&gt; e &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;Saulo Guerra et al.&lt;/a&gt; (&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;)&lt;/span&gt; indicados no plano de curso, resolva os exercícios abaixo.&lt;/p&gt;
+&lt;div id=&#34;noções-básicas-de-programação-i&#34; class=&#34;section level2&#34; number=&#34;4.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1&lt;/span&gt; Noções básicas de programação I&lt;/h2&gt;
+&lt;p&gt;Resolva as seguintes questões envolvendo noções básicas. Parte dos exercícios é cumulativa, de modo que se sugere que os exercícios sejam resolvidos de modo sequencial e integral. Também é interessante que comece a resolvê-los em um novo &lt;code&gt;Rproject&lt;/code&gt; e um novo &lt;code&gt;Rscript&lt;/code&gt;.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Crie seu primeiro programa na linguagem &lt;code&gt;R&lt;/code&gt;, conforme explicado acima. Execute a linha do código com os comandos &lt;code&gt;Ctrl + Enter&lt;/code&gt; (ou &lt;code&gt;Cmd+Return&lt;/code&gt; para Mac).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A partir da ajuda e exemplos, busque as seguintes informações:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;&lt;p&gt;Ajuda para as funções &lt;code&gt;sum(); colSums(); sqrt(); lm(); setwd(); cbind(); data.frame()&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Exemplos das funções &lt;code&gt;sum&lt;/code&gt; e &lt;code&gt;colSums&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Descubra em qual diretório seu projeto está lendo e salvando arquivos.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Crie os seguintes objetos com nomes distintos:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;Número de disciplinas que está cursando neste semestre.&lt;/li&gt;
+&lt;li&gt;O nome do(a) professor(a) que está lacionando armazenando em um objeto com o mesmo nome da disciplina cursada.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Escreva programas que manipulem as operações matemáticas básicas pelo menos uma vez.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Crie uma sequência de 2000 a 2021 de duas formas distintas.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Repita a sequência da questão anterior três vezes.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Quais são os resultados das seguintes análises lógicas: &lt;code&gt;TRUE &amp;amp; FALSE | FALSE&lt;/code&gt;, &lt;code&gt;TRUE | FALSE | FALSE&lt;/code&gt;, &lt;code&gt;TRUE | FALSE &amp;amp; FALSE&lt;/code&gt; e &lt;code&gt;(TRUE | FALSE) &amp;amp; FALSE&lt;/code&gt;? Teste no &lt;code&gt;R&lt;/code&gt; se você acertou o resultado.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Crie vetores que contenham as seguintes informações do seu atual semestre. Dê nomes intuitivos:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;Os nomes das disciplinas&lt;/li&gt;
+&lt;li&gt;A quantidade de estudantes em cada disciplina&lt;/li&gt;
+&lt;li&gt;O código de horários de acordo com o SIGAA&lt;/li&gt;
+&lt;li&gt;As menções que você espera alcançar&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Faça as seguintes cálculos com o vetor do número de estudantes:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;Suponha que cada estudante receba 60 horas complementares por disciplina. Quantas horas seriam disponibilizadas em cada turma?&lt;/li&gt;
+&lt;li&gt;Quantas seriam disponibilizadas em todas as turmas?&lt;/li&gt;
+&lt;li&gt;Qual é a média de estudantes em suas turmas?&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Reescreva o vetor do número de estudantes, colocando as quantidades entre aspas. Qual é a classe do vetor criado?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Desafio&lt;/strong&gt;: qual é a posição no vetor das turmas que têm mais estudantes do que a média de todas as turmas?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Utilize a função data.frame para criar uma tabela com as informações da questão anterior. Nomeie as colunas com nomes indicativos do conteúdo.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Impute a tabela gerada na questão anterior para um objeto chamado &lt;code&gt;meu_sigaa&lt;/code&gt;. Visualize a tabela em outra aba.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A partir da tabela &lt;code&gt;meu_sigaa&lt;/code&gt;:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;&lt;p&gt;Leia apenas a primeira linha.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Leia apenas a primeira coluna, filtrando por seu nome (atente-se para erros de leituras de caracteres especiais nos nomes das colunas).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Retorne o número de estudantes da disciplina de Introdução à Economia Política.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Certifique-se de que instalou corretamente os seguintes pacotes: &lt;code&gt;tidyverse&lt;/code&gt;, &lt;code&gt;ggthemes&lt;/code&gt;, &lt;code&gt;scales&lt;/code&gt;, &lt;code&gt;writexl&lt;/code&gt;, &lt;code&gt;sidrar&lt;/code&gt; e &lt;code&gt;devtools&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Use a ajuda do &lt;code&gt;R&lt;/code&gt; para acessar informações sobre as funções &lt;code&gt;get_sidra&lt;/code&gt; e &lt;code&gt;info_sidra&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;importação-de-dados&#34; class=&#34;section level2&#34; number=&#34;4.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2&lt;/span&gt; Importação de dados&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div id=&#34;manipulação-de-tabelas&#34; class=&#34;section level2&#34; number=&#34;4.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3&lt;/span&gt; Manipulação de tabelas&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;referências&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Referências&lt;/h1&gt;
+&lt;div id=&#34;refs&#34; class=&#34;references csl-bib-body hanging-indent&#34;&gt;
+&lt;div id=&#34;ref-HadleyWickham2021&#34; class=&#34;csl-entry&#34;&gt;
+Hadley Wickham. 2021. &lt;em&gt;&lt;span class=&#34;nocase&#34;&gt;The tidyverse style guide&lt;/span&gt;&lt;/em&gt;. &lt;a href=&#34;https://style.tidyverse.org/&#34;&gt;https://style.tidyverse.org/&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-SauloGuerra2021&#34; class=&#34;csl-entry&#34;&gt;
+Saulo Guerra, Paulo Felipe de Oliveira, Robert McDonnell, and Sillas Gonzaga. 2021. &lt;em&gt;&lt;span class=&#34;nocase&#34;&gt;Ci&lt;span class=&#34;nocase&#34;&gt;ê&lt;/span&gt;ncia de Dados com R - Introdu&lt;span class=&#34;nocase&#34;&gt;ç&lt;/span&gt;&lt;span class=&#34;nocase&#34;&gt;ã&lt;/span&gt;o&lt;/span&gt;&lt;/em&gt;. Instituto Brasileiro de Pesquisa e An&lt;span&gt;á&lt;/span&gt;lise de Dados. &lt;a href=&#34;http://sillasgonzaga.com/material/cdr/&#34;&gt;http://sillasgonzaga.com/material/cdr/&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-Vale2021&#34; class=&#34;csl-entry&#34;&gt;
+Vale, Vinícius A. 2021. &lt;span&gt;“&lt;span class=&#34;nocase&#34;&gt;Introdu&lt;span class=&#34;nocase&#34;&gt;ç&lt;/span&gt;&lt;span class=&#34;nocase&#34;&gt;ã&lt;/span&gt;o ao R&lt;/span&gt;.”&lt;/span&gt; &lt;a href=&#34;https://viniciusavale.com/IntroR/Intro-R.html&#34;&gt;https://viniciusavale.com/IntroR/Intro-R.html&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-WickhamRStudio2014&#34; class=&#34;csl-entry&#34;&gt;
+Wickham, Hadley. 2014. &lt;span&gt;“&lt;span&gt;Tidy Data&lt;/span&gt;.”&lt;/span&gt; &lt;em&gt;Journal of Statistical Software&lt;/em&gt; 59 (10): 1–23. &lt;a href=&#34;http://www.jstatsoft.org/&#34;&gt;http://www.jstatsoft.org/&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-Wickham2015&#34; class=&#34;csl-entry&#34;&gt;
+———. 2015. &lt;em&gt;&lt;span class=&#34;nocase&#34;&gt;Elegant Graphics for Data Analysis&lt;/span&gt;&lt;/em&gt;. &lt;a href=&#34;http://had.co.nz/ggplot2/book&#34;&gt;http://had.co.nz/ggplot2/book&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-Wickham2016&#34; class=&#34;csl-entry&#34;&gt;
+Wickham, Hadley, and Garrett Grolemund. 2016. &lt;em&gt;&lt;span class=&#34;nocase&#34;&gt;R for data science: import, tidy, transform, visualize, and model data&lt;/span&gt;&lt;/em&gt;. &#34; O’Reilly Media, Inc.&#34;.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;A primeira elaboração desses materiais se deu para o curso de Introdução à Economia Política, oferecida por mim no Departamento de Economia da Universidade de Brasília no 1&lt;sup&gt;o&lt;/sup&gt; semestre de 2021&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;Uma boa estratégia é tentar adaptar o &lt;code&gt;R&lt;/code&gt; às rotinas próprias, acadêmicas ou não, em substituição ao &lt;em&gt;Excel&lt;/em&gt;, por exemplo. Além de ser uma ferramenta gratuita, pode ser usada como editor de texto, de apresentações e de gráficos. Entre outras razões, tais funcionalidades fazem com que o &lt;em&gt;software&lt;/em&gt; seja bastante utilizado por estatísticos e cientistas sociais em geral.&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

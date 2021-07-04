@@ -1,0 +1,1374 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.1.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Rafael de Acypreste" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Introdução1 Por que usar o R?2 Download e Instalação2.1 R2.2 RStudio3 Primeiros comandos3.1 Ajuda do programa3.2 Começando um novo projeto4 Exercícios4." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/r-projetos/1a-lista/" />
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.9a66e344a68eb664b392d406a3f80726.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/index.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu079f5f191f910f3be9bbdec4dba5765d_88394_32x32_fill_lanczos_center_2.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu079f5f191f910f3be9bbdec4dba5765d_88394_180x180_fill_lanczos_center_2.png" />
+
+  <link rel="canonical" href="/r-projetos/1a-lista/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="Rafael de Acypreste" />
+  <meta property="og:url" content="/r-projetos/1a-lista/" />
+  <meta property="og:title" content="Primeira Lista de Exercícios | Rafael de Acypreste" />
+  <meta property="og:description" content="Introdução1 Por que usar o R?2 Download e Instalação2.1 R2.2 RStudio3 Primeiros comandos3.1 Ajuda do programa3.2 Começando um novo projeto4 Exercícios4." /><meta property="og:image" content="/media/icon_hu079f5f191f910f3be9bbdec4dba5765d_88394_512x512_fill_lanczos_center_2.png" />
+    <meta property="twitter:image" content="/media/icon_hu079f5f191f910f3be9bbdec4dba5765d_88394_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2021-07-04T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2021-07-04T12:32:44-03:00">
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Primeira Lista de Exercícios | Rafael de Acypreste</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="3bdcbec96ce111acfaa35569090381c3" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.226a9011996d125bf3fe4a5f22353a49.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Rafael de Acypreste</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Rafael de Acypreste</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>R Projetos</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#talks"><span>Vídeos</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publicações</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contato</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+          
+          <li class="nav-item d-none d-lg-inline-flex">
+            <a class="nav-link" href="https://twitter.com/rafaelramr" data-toggle="tooltip" data-placement="bottom" title="Follow me on Twitter" target="_blank" rel="noopener" aria-label="Follow me on Twitter">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
+            </a>
+          </li>
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Primeira Lista de Exercícios</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Jul 4, 2021
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+<script src="/r-projetos/1a-lista/index.en_files/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#introdução">Introdução</a></li>
+<li><a href="#por-que-usar-o-r"><span class="toc-section-number">1</span> Por que usar o <code>R</code>?</a></li>
+<li><a href="#download-e-instalação"><span class="toc-section-number">2</span> Download e Instalação</a>
+<ul>
+<li><a href="#R"><span class="toc-section-number">2.1</span> <code>R</code></a></li>
+<li><a href="#rstudio"><span class="toc-section-number">2.2</span> <code>RStudio</code></a></li>
+</ul></li>
+<li><a href="#primeiros-comandos"><span class="toc-section-number">3</span> Primeiros comandos</a>
+<ul>
+<li><a href="#ajuda-do-programa"><span class="toc-section-number">3.1</span> Ajuda do programa</a></li>
+<li><a href="#começando-um-novo-projeto"><span class="toc-section-number">3.2</span> Começando um novo projeto</a></li>
+</ul></li>
+<li><a href="#exercícios"><span class="toc-section-number">4</span> Exercícios</a>
+<ul>
+<li><a href="#noções-básicas-de-programação-i"><span class="toc-section-number">4.1</span> Noções básicas de programação I</a></li>
+<li><a href="#importação-de-dados"><span class="toc-section-number">4.2</span> Importação de dados</a></li>
+<li><a href="#manipulação-de-tabelas"><span class="toc-section-number">4.3</span> Manipulação de tabelas</a></li>
+</ul></li>
+<li><a href="#referências">Referências</a></li>
+</ul>
+</div>
+
+<div id="introdução" class="section level1 unnumbered">
+<h1>Introdução</h1>
+<p>Esta nota tem por objetivo exercitar o ferramental básico para entender comandos comuns que serão necessários nas próximas aulas<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. A maior parte dos conteúdos serão relacionados às funcionalidades do <code>R</code> que são úteis para cientistas sociais. <strong>O curso não supõe conhecimento prévio de R</strong>, ainda que contatos anteriores permitirão um avanço mais rápido e concreto no curso.</p>
+<p>Trata-se de um trabalho experimental e inicial, que foi desenvolvido a partir de minha experiência concreta. Por favor, me indique eventuais erros e incongruências. Além disso, há trabalhos mais bem qualificados e em que me baseio para elaborar esses exercícios, como <span class="citation"><a href="#ref-Wickham2016" role="doc-biblioref">Wickham and Grolemund</a> (<a href="#ref-Wickham2016" role="doc-biblioref">2016</a>)</span>, <span class="citation"><a href="#ref-Wickham2015" role="doc-biblioref">Wickham</a> (<a href="#ref-Wickham2015" role="doc-biblioref">2015</a>)</span> e <span class="citation"><a href="#ref-WickhamRStudio2014" role="doc-biblioref">Wickham</a> (<a href="#ref-WickhamRStudio2014" role="doc-biblioref">2014</a>)</span>, cuja leitura é recomendada. Os textos em português de <span class="citation"><a href="#ref-Vale2021" role="doc-biblioref">Vale</a> (<a href="#ref-Vale2021" role="doc-biblioref">2021</a>)</span> e <span class="citation"><a href="#ref-SauloGuerra2021" role="doc-biblioref">Saulo Guerra et al.</a> (<a href="#ref-SauloGuerra2021" role="doc-biblioref">2021</a>)</span> também são fontes recomendadas de consulta.</p>
+</div>
+<div id="por-que-usar-o-r" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Por que usar o <code>R</code>?</h1>
+<p>Para quem nunca teve contato com alguma linguagem de programação, este início costuma ser pouco amigável. Entretanto, há algumas vantagens em relação a editores de planilha como <em>Excel</em> ou <em>Calc</em> para acesso, manipulação e elaboração de gráficos e apresentações:</p>
+<ol style="list-style-type: decimal">
+<li><p>Os passos são descritos e registrados sequencialmente;</p></li>
+<li><p>A estrutura incremental (linha por linha) ajuda na identificação de erros;</p></li>
+<li><p>A discriminação dos passos auxilia na memória da pesquisa; e</p></li>
+<li><p>O script permite reprodutibilidade em outras pesquisas, contribuindo para o avanço da ciência.</p></li>
+</ol>
+<p>Portanto, todo o esforço inical e prática constante<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> permitem uma adaptação rápida à linguagem e o acesso a dados estatísticos nacionais e internacionais que auxiliam na aprendizagem dos temas tratados. Essas habilidades também podem ajudar para trabalhos de outras disciplinas ou de conclusão de curso.</p>
+</div>
+<div id="download-e-instalação" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Download e Instalação</h1>
+<div id="R" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> <code>R</code></h2>
+<p>O primeiro passo é baixar e instalar o <code>R</code> em seu computador a partir de <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>. Faça o <em>download</em> de uma versão <code>base</code> adaptada ao seu sistema operacional. É recomendável utilizar uma versão <em>4.0</em> ou superior, para evitar problemas com pacotes no futuro. Instale o progama em seu computador, seguindo as configurações-padrão.</p>
+</div>
+<div id="rstudio" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> <code>RStudio</code></h2>
+<p>Após os passos indicados na seção <a href="#R">2.1</a>, deve-se baixar e instalar o <code>RStudio</code>, cuja versão gratuita para <em>desktop</em> está disponível em: <a href="https://www.rstudio.com/products/rstudio/download/" class="uri">https://www.rstudio.com/products/rstudio/download/</a>. Com isso, tem-se uma interface mais organizada e ferramentas auxiliares para o uso do <code>R</code>.</p>
+<p>Caso tenham dúvidas na instalação, este vídeo a partir de 3min:30s pode ser útil: <a href="https://www.youtube.com/watch?v=WVogdSlk7gY" class="uri">https://www.youtube.com/watch?v=WVogdSlk7gY</a>.</p>
+</div>
+</div>
+<div id="primeiros-comandos" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Primeiros comandos</h1>
+<p>Tradicionalmente, o primeiro programa que se faz em uma nova linguagem é dizer <code>Alô, mundo!</code>. No <code>R</code>, a função <code>print()</code> faz esse trabalho. Caso o comando esteja em um <em>Rscript</em>, basta selecionar ou manter o cursos sobre a(s) linha(s) que se deseja executar e acessar o comando “Run,” cujo atalho é CTRL+ENTER.</p>
+<pre class="r"><code>  # O resultado será exibido no console
+print(&quot;Alô, mundo!&quot;)</code></pre>
+<pre><code>## [1] &quot;Alô, mundo!&quot;</code></pre>
+<p>O estilo de programação usado aqui e nos <code>Rscripts</code> segue parte das orientações para identação e organização dos códigos apresentados por <span class="citation"><a href="#ref-HadleyWickham2021" role="doc-biblioref">Hadley Wickham</a> (<a href="#ref-HadleyWickham2021" role="doc-biblioref">2021</a>)</span>. Como o R apresenta estrutura mais flexível, seguir padrões contribui para que seu código seja lido com mais facilidade por outras pessoas.</p>
+<div id="ajuda-do-programa" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Ajuda do programa</h2>
+<p>O <code>R</code> apresenta uma série de funções que são utilizadas para executar ações desejadas. Basta assinalar o nome da função sem parênteses, precidido de uma interrogação <code>?</code>. Em geral, encontram-se a estrutura da função, seus atributos, detalhes e alguns exemplos. Este é um expediente que deve ser usado com frequência, especialmente por quem está tendo seus primeiros contatos com a linguagem</p>
+<pre class="r"><code>  # Um painel no RStudio exibirá ajuda
+?c</code></pre>
+</div>
+<div id="começando-um-novo-projeto" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Começando um novo projeto</h2>
+<p>Um fluxo de trabalho interessante é iniciar um novo projeto no <code>R</code> para cada trabalho. Com isso, os arquivos ficarão todos organizados numa mesma pasta, facilitando a importação de dados e salvamento de arquivos. Isso pode ser feito no <code>RStudio</code> a partir de <code>File &gt; New Project</code>. Ademais, é possível consultar o diretório de trabalho com a função <code>getwd()</code>:</p>
+<pre class="r"><code>  # Descobre onde o projeto está trabalhando
+getwd() </code></pre>
+<pre><code>## [1] &quot;C:/Users/rafae/OneDrive/Documentos/personal_website/content/r-projetos/2021-07-04-1a-lista&quot;</code></pre>
+</div>
+</div>
+<div id="exercícios" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Exercícios</h1>
+<p>Considerando o que foi dito acima e os capítulos dos livros de <span class="citation"><a href="#ref-Vale2021" role="doc-biblioref">Vale</a> (<a href="#ref-Vale2021" role="doc-biblioref">2021</a>)</span> e <span class="citation"><a href="#ref-SauloGuerra2021" role="doc-biblioref">Saulo Guerra et al.</a> (<a href="#ref-SauloGuerra2021" role="doc-biblioref">2021</a>)</span> indicados no plano de curso, resolva os exercícios abaixo.</p>
+<div id="noções-básicas-de-programação-i" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Noções básicas de programação I</h2>
+<p>Resolva as seguintes questões envolvendo noções básicas. Parte dos exercícios é cumulativa, de modo que se sugere que os exercícios sejam resolvidos de modo sequencial e integral. Também é interessante que comece a resolvê-los em um novo <code>Rproject</code> e um novo <code>Rscript</code>.</p>
+<ol style="list-style-type: decimal">
+<li><p>Crie seu primeiro programa na linguagem <code>R</code>, conforme explicado acima. Execute a linha do código com os comandos <code>Ctrl + Enter</code> (ou <code>Cmd+Return</code> para Mac).</p></li>
+<li><p>A partir da ajuda e exemplos, busque as seguintes informações:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Ajuda para as funções <code>sum(); colSums(); sqrt(); lm(); setwd(); cbind(); data.frame()</code>.</p></li>
+<li><p>Exemplos das funções <code>sum</code> e <code>colSums</code>.</p></li>
+</ol></li>
+<li><p>Descubra em qual diretório seu projeto está lendo e salvando arquivos.</p></li>
+<li><p>Crie os seguintes objetos com nomes distintos:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Número de disciplinas que está cursando neste semestre.</li>
+<li>O nome do(a) professor(a) que está lacionando armazenando em um objeto com o mesmo nome da disciplina cursada.</li>
+</ol></li>
+<li><p>Escreva programas que manipulem as operações matemáticas básicas pelo menos uma vez.</p></li>
+<li><p>Crie uma sequência de 2000 a 2021 de duas formas distintas.</p></li>
+<li><p>Repita a sequência da questão anterior três vezes.</p></li>
+<li><p>Quais são os resultados das seguintes análises lógicas: <code>TRUE &amp; FALSE | FALSE</code>, <code>TRUE | FALSE | FALSE</code>, <code>TRUE | FALSE &amp; FALSE</code> e <code>(TRUE | FALSE) &amp; FALSE</code>? Teste no <code>R</code> se você acertou o resultado.</p></li>
+<li><p>Crie vetores que contenham as seguintes informações do seu atual semestre. Dê nomes intuitivos:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Os nomes das disciplinas</li>
+<li>A quantidade de estudantes em cada disciplina</li>
+<li>O código de horários de acordo com o SIGAA</li>
+<li>As menções que você espera alcançar</li>
+</ol></li>
+<li><p>Faça as seguintes cálculos com o vetor do número de estudantes:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Suponha que cada estudante receba 60 horas complementares por disciplina. Quantas horas seriam disponibilizadas em cada turma?</li>
+<li>Quantas seriam disponibilizadas em todas as turmas?</li>
+<li>Qual é a média de estudantes em suas turmas?</li>
+</ol></li>
+<li><p>Reescreva o vetor do número de estudantes, colocando as quantidades entre aspas. Qual é a classe do vetor criado?</p></li>
+<li><p><strong>Desafio</strong>: qual é a posição no vetor das turmas que têm mais estudantes do que a média de todas as turmas?</p></li>
+<li><p>Utilize a função data.frame para criar uma tabela com as informações da questão anterior. Nomeie as colunas com nomes indicativos do conteúdo.</p></li>
+<li><p>Impute a tabela gerada na questão anterior para um objeto chamado <code>meu_sigaa</code>. Visualize a tabela em outra aba.</p></li>
+<li><p>A partir da tabela <code>meu_sigaa</code>:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Leia apenas a primeira linha.</p></li>
+<li><p>Leia apenas a primeira coluna, filtrando por seu nome (atente-se para erros de leituras de caracteres especiais nos nomes das colunas).</p></li>
+<li><p>Retorne o número de estudantes da disciplina de Introdução à Economia Política.</p></li>
+</ol></li>
+<li><p>Certifique-se de que instalou corretamente os seguintes pacotes: <code>tidyverse</code>, <code>ggthemes</code>, <code>scales</code>, <code>writexl</code>, <code>sidrar</code> e <code>devtools</code>.</p></li>
+<li><p>Use a ajuda do <code>R</code> para acessar informações sobre as funções <code>get_sidra</code> e <code>info_sidra</code>.</p></li>
+</ol>
+</div>
+<div id="importação-de-dados" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Importação de dados</h2>
+</div>
+<div id="manipulação-de-tabelas" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Manipulação de tabelas</h2>
+</div>
+</div>
+<div id="referências" class="section level1 unnumbered">
+<h1>Referências</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-HadleyWickham2021" class="csl-entry">
+Hadley Wickham. 2021. <em><span class="nocase">The tidyverse style guide</span></em>. <a href="https://style.tidyverse.org/">https://style.tidyverse.org/</a>.
+</div>
+<div id="ref-SauloGuerra2021" class="csl-entry">
+Saulo Guerra, Paulo Felipe de Oliveira, Robert McDonnell, and Sillas Gonzaga. 2021. <em><span class="nocase">Ci<span class="nocase">ê</span>ncia de Dados com R - Introdu<span class="nocase">ç</span><span class="nocase">ã</span>o</span></em>. Instituto Brasileiro de Pesquisa e An<span>á</span>lise de Dados. <a href="http://sillasgonzaga.com/material/cdr/">http://sillasgonzaga.com/material/cdr/</a>.
+</div>
+<div id="ref-Vale2021" class="csl-entry">
+Vale, Vinícius A. 2021. <span>“<span class="nocase">Introdu<span class="nocase">ç</span><span class="nocase">ã</span>o ao R</span>.”</span> <a href="https://viniciusavale.com/IntroR/Intro-R.html">https://viniciusavale.com/IntroR/Intro-R.html</a>.
+</div>
+<div id="ref-WickhamRStudio2014" class="csl-entry">
+Wickham, Hadley. 2014. <span>“<span>Tidy Data</span>.”</span> <em>Journal of Statistical Software</em> 59 (10): 1–23. <a href="http://www.jstatsoft.org/">http://www.jstatsoft.org/</a>.
+</div>
+<div id="ref-Wickham2015" class="csl-entry">
+———. 2015. <em><span class="nocase">Elegant Graphics for Data Analysis</span></em>. <a href="http://had.co.nz/ggplot2/book">http://had.co.nz/ggplot2/book</a>.
+</div>
+<div id="ref-Wickham2016" class="csl-entry">
+Wickham, Hadley, and Garrett Grolemund. 2016. <em><span class="nocase">R for data science: import, tidy, transform, visualize, and model data</span></em>. " O’Reilly Media, Inc.".
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>A primeira elaboração desses materiais se deu para o curso de Introdução à Economia Política, oferecida por mim no Departamento de Economia da Universidade de Brasília no 1<sup>o</sup> semestre de 2021<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Uma boa estratégia é tentar adaptar o <code>R</code> às rotinas próprias, acadêmicas ou não, em substituição ao <em>Excel</em>, por exemplo. Além de ser uma ferramenta gratuita, pode ser usada como editor de texto, de apresentações e de gráficos. Entre outras razões, tais funcionalidades fazem com que o <em>software</em> seja bastante utilizado por estatísticos e cientistas sociais em geral.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/r/">R</a>
+  
+  <a class="badge badge-light" href="/tag/intro-eco-pol/">Intro Eco Pol</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/r-projetos/1a-lista/&amp;text=Primeira%20Lista%20de%20Exerc%c3%adcios" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/r-projetos/1a-lista/&amp;t=Primeira%20Lista%20de%20Exerc%c3%adcios" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Primeira%20Lista%20de%20Exerc%c3%adcios&amp;body=/r-projetos/1a-lista/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/r-projetos/1a-lista/&amp;title=Primeira%20Lista%20de%20Exerc%c3%adcios" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Primeira%20Lista%20de%20Exerc%c3%adcios%20/r-projetos/1a-lista/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="avatar mr-3 avatar-circle" src="/author/rafael-de-acypreste/avatar_hu72f0bb965e93f661611c8dbd9818b740_13077_270x270_fill_q75_lanczos_center.jpg" alt="Rafael de Acypreste">
+    
+
+    <div class="media-body">
+      <h5 class="card-title">Rafael de Acypreste</h5>
+      <h6 class="card-subtitle">Bolsista CAPES de doutorado em Economia</h6>
+      <p class="card-text">Meus interesses de pesquisa se concentram em inteligência artificial, automação e emprego matter.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/rafaelramr" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.co.uk/citations?view_op=list_works&amp;hl=en&amp;user=UUySSCIAAAAJ" target="_blank" rel="noopener">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/rafaeldeacypreste" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/rafael-de-acypreste-b73b9b2b/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://rpubs.com/rafaeldeacypreste" target="_blank" rel="noopener">
+        <i class="fab fa-r-project"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/python.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    <script src="/js/bootstrap.bundle.min.6aed84840afc03ab4d5750157f69c120.js"></script>
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.b61a8f62b6e5c0cd322c8158c5b5dfb6.js"></script>
+
+    
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+
+</body>
+</html>

@@ -33,12 +33,14 @@
     </item>
     
     <item>
-      <title>Primeira Lista de Exercícios</title>
+      <title>Aulas iniciais e primeira lista de exercícios</title>
       <link>/r-projetos/1a-lista/</link>
       <pubDate>Sun, 04 Jul 2021 00:00:00 +0000</pubDate>
       <guid>/r-projetos/1a-lista/</guid>
       <description>
 &lt;script src=&#34;/r-projetos/1a-lista/index.en_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/r-projetos/1a-lista/index.en_files/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/r-projetos/1a-lista/index.en_files/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
 
 &lt;div id=&#34;TOC&#34;&gt;
 &lt;ul&gt;
@@ -54,11 +56,22 @@
 &lt;li&gt;&lt;a href=&#34;#ajuda-do-programa&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; Ajuda do programa&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#começando-um-novo-projeto&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; Começando um novo projeto&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#exercícios&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; Exercícios&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;#exercícios-parte-i&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; Exercícios parte I&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#noções-básicas-de-programação-i&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1&lt;/span&gt; Noções básicas de programação I&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#importação-de-dados&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2&lt;/span&gt; Importação de dados&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#manipulação-de-tabelas&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.3&lt;/span&gt; Manipulação de tabelas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#noções-básicas-de-programação&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1&lt;/span&gt; Noções básicas de programação&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#importacao&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2&lt;/span&gt; Importação de dados&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#manipulação-e-exportação-de-dados&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5&lt;/span&gt; Manipulação e exportação de dados&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#apresentação-típica&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.1&lt;/span&gt; Apresentação típica&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#transposta-da-apresentação-típica&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.2&lt;/span&gt; Transposta da apresentação típica&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#tidy-data&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.3&lt;/span&gt; Tidy data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#resumo-para-dados-organizados&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;5.4&lt;/span&gt; Resumo para dados organizados&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exercícios-parte-ii&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6&lt;/span&gt; Exercícios parte II&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#manipulação-de-dados&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.1&lt;/span&gt; Manipulação de dados&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exportação-de-dados&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;6.2&lt;/span&gt; Exportação de dados&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#referências&#34;&gt;Referências&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -66,19 +79,19 @@
 
 &lt;div id=&#34;introdução&#34; class=&#34;section level1 unnumbered&#34;&gt;
 &lt;h1&gt;Introdução&lt;/h1&gt;
-&lt;p&gt;Esta nota tem por objetivo exercitar o ferramental básico para entender comandos comuns que serão necessários nas próximas aulas&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. A maior parte dos conteúdos serão relacionados às funcionalidades do &lt;code&gt;R&lt;/code&gt; que são úteis para cientistas sociais. &lt;strong&gt;O curso não supõe conhecimento prévio de R&lt;/strong&gt;, ainda que contatos anteriores permitirão um avanço mais rápido e concreto no curso.&lt;/p&gt;
+&lt;p&gt;Esta nota tem por objetivo exercitar o ferramental básico para entender comandos que serão necessários nas próximas aulas&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. A maior parte dos conteúdos serão relacionados às funcionalidades do &lt;code&gt;R&lt;/code&gt; que são úteis para cientistas sociais. &lt;strong&gt;O curso não supõe conhecimento prévio de R&lt;/strong&gt;, ainda que contatos anteriores permitirão um avanço mais rápido e concreto no curso.&lt;/p&gt;
 &lt;p&gt;Trata-se de um trabalho experimental e inicial, que foi desenvolvido a partir de minha experiência concreta. Por favor, me indique eventuais erros e incongruências. Além disso, há trabalhos mais bem qualificados e em que me baseio para elaborar esses exercícios, como &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Wickham2016&#34; role=&#34;doc-biblioref&#34;&gt;Wickham and Grolemund&lt;/a&gt; (&lt;a href=&#34;#ref-Wickham2016&#34; role=&#34;doc-biblioref&#34;&gt;2016&lt;/a&gt;)&lt;/span&gt;, &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Wickham2015&#34; role=&#34;doc-biblioref&#34;&gt;Wickham&lt;/a&gt; (&lt;a href=&#34;#ref-Wickham2015&#34; role=&#34;doc-biblioref&#34;&gt;2015&lt;/a&gt;)&lt;/span&gt; e &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-WickhamRStudio2014&#34; role=&#34;doc-biblioref&#34;&gt;Wickham&lt;/a&gt; (&lt;a href=&#34;#ref-WickhamRStudio2014&#34; role=&#34;doc-biblioref&#34;&gt;2014&lt;/a&gt;)&lt;/span&gt;, cuja leitura é recomendada. Os textos em português de &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;Vale&lt;/a&gt; (&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;)&lt;/span&gt; e &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;Saulo Guerra et al.&lt;/a&gt; (&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;)&lt;/span&gt; também são fontes recomendadas de consulta.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;por-que-usar-o-r&#34; class=&#34;section level1&#34; number=&#34;1&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Por que usar o &lt;code&gt;R&lt;/code&gt;?&lt;/h1&gt;
-&lt;p&gt;Para quem nunca teve contato com alguma linguagem de programação, este início costuma ser pouco amigável. Entretanto, há algumas vantagens em relação a editores de planilha como &lt;em&gt;Excel&lt;/em&gt; ou &lt;em&gt;Calc&lt;/em&gt; para acesso, manipulação e elaboração de gráficos e apresentações:&lt;/p&gt;
+&lt;p&gt;Para quem nunca teve contato com alguma linguagem de programação, este início costuma ser pouco amigável. Entretanto, há algumas vantagens em relação a editores de planilha como &lt;em&gt;Excel&lt;/em&gt; ou &lt;em&gt;Calc&lt;/em&gt; para acesso e manipulação de dados e elaboração de gráficos e apresentações:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;p&gt;Os passos são descritos e registrados sequencialmente;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;A estrutura incremental (linha por linha) ajuda na identificação de erros;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;A discriminação dos passos auxilia na memória da pesquisa; e&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;O script permite reprodutibilidade em outras pesquisas, contribuindo para o avanço da ciência.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Portanto, todo o esforço inical e prática constante&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; permitem uma adaptação rápida à linguagem e o acesso a dados estatísticos nacionais e internacionais que auxiliam na aprendizagem dos temas tratados. Essas habilidades também podem ajudar para trabalhos de outras disciplinas ou de conclusão de curso.&lt;/p&gt;
+&lt;p&gt;Portanto, todo o esforço inical e prática constante&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; permitem uma adaptação rápida à linguagem e o acesso a dados estatísticos nacionais e internacionais que auxiliam na aprendizagem dos temas tratados na disciplina. Essas habilidades também podem ajudar para trabalhos de outras disciplinas ou de conclusão de curso.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;download-e-instalação&#34; class=&#34;section level1&#34; number=&#34;2&#34;&gt;
 &lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Download e Instalação&lt;/h1&gt;
@@ -97,12 +110,11 @@
 &lt;p&gt;Tradicionalmente, o primeiro programa que se faz em uma nova linguagem é dizer &lt;code&gt;Alô, mundo!&lt;/code&gt;. No &lt;code&gt;R&lt;/code&gt;, a função &lt;code&gt;print()&lt;/code&gt; faz esse trabalho. Caso o comando esteja em um &lt;em&gt;Rscript&lt;/em&gt;, basta selecionar ou manter o cursos sobre a(s) linha(s) que se deseja executar e acessar o comando “Run,” cujo atalho é CTRL+ENTER.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  # O resultado será exibido no console
 print(&amp;quot;Alô, mundo!&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Alô, mundo!&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;O estilo de programação usado aqui e nos &lt;code&gt;Rscripts&lt;/code&gt; segue parte das orientações para identação e organização dos códigos apresentados por &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-HadleyWickham2021&#34; role=&#34;doc-biblioref&#34;&gt;Hadley Wickham&lt;/a&gt; (&lt;a href=&#34;#ref-HadleyWickham2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;)&lt;/span&gt;. Como o R apresenta estrutura mais flexível, seguir padrões contribui para que seu código seja lido com mais facilidade por outras pessoas.&lt;/p&gt;
+&lt;p&gt;O estilo de programação usado aqui e nos &lt;code&gt;Rscripts&lt;/code&gt; segue parte das orientações para indentação e organização dos códigos apresentados por &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-HadleyWickham2021&#34; role=&#34;doc-biblioref&#34;&gt;Hadley Wickham&lt;/a&gt; (&lt;a href=&#34;#ref-HadleyWickham2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;)&lt;/span&gt;. Como o &lt;code&gt;R&lt;/code&gt; apresenta estrutura mais flexível, seguir padrões contribui para que seu código seja lido com mais facilidade por outras pessoas.&lt;/p&gt;
 &lt;div id=&#34;ajuda-do-programa&#34; class=&#34;section level2&#34; number=&#34;3.1&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; Ajuda do programa&lt;/h2&gt;
 &lt;p&gt;O &lt;code&gt;R&lt;/code&gt; apresenta uma série de funções que são utilizadas para executar ações desejadas. Basta assinalar o nome da função sem parênteses, precidido de uma interrogação &lt;code&gt;?&lt;/code&gt;. Em geral, encontram-se a estrutura da função, seus atributos, detalhes e alguns exemplos. Este é um expediente que deve ser usado com frequência, especialmente por quem está tendo seus primeiros contatos com a linguagem&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  # Um painel no RStudio exibirá ajuda
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  # Um painel no RStudio exibirá ajuda sobre a função de concatenar
 ?c&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;começando-um-novo-projeto&#34; class=&#34;section level2&#34; number=&#34;3.2&#34;&gt;
@@ -110,15 +122,14 @@ print(&amp;quot;Alô, mundo!&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Um fluxo de trabalho interessante é iniciar um novo projeto no &lt;code&gt;R&lt;/code&gt; para cada trabalho. Com isso, os arquivos ficarão todos organizados numa mesma pasta, facilitando a importação de dados e salvamento de arquivos. Isso pode ser feito no &lt;code&gt;RStudio&lt;/code&gt; a partir de &lt;code&gt;File &amp;gt; New Project&lt;/code&gt;. Ademais, é possível consultar o diretório de trabalho com a função &lt;code&gt;getwd()&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  # Descobre onde o projeto está trabalhando
 getwd() &lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;C:/Users/rafae/OneDrive/Documentos/personal_website/content/r-projetos/2021-07-04-1a-lista&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id=&#34;exercícios&#34; class=&#34;section level1&#34; number=&#34;4&#34;&gt;
-&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; Exercícios&lt;/h1&gt;
-&lt;p&gt;Considerando o que foi dito acima e os capítulos dos livros de &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;Vale&lt;/a&gt; (&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;)&lt;/span&gt; e &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;Saulo Guerra et al.&lt;/a&gt; (&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;)&lt;/span&gt; indicados no plano de curso, resolva os exercícios abaixo.&lt;/p&gt;
-&lt;div id=&#34;noções-básicas-de-programação-i&#34; class=&#34;section level2&#34; number=&#34;4.1&#34;&gt;
-&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1&lt;/span&gt; Noções básicas de programação I&lt;/h2&gt;
-&lt;p&gt;Resolva as seguintes questões envolvendo noções básicas. Parte dos exercícios é cumulativa, de modo que se sugere que os exercícios sejam resolvidos de modo sequencial e integral. Também é interessante que comece a resolvê-los em um novo &lt;code&gt;Rproject&lt;/code&gt; e um novo &lt;code&gt;Rscript&lt;/code&gt;.&lt;/p&gt;
+&lt;div id=&#34;exercícios-parte-i&#34; class=&#34;section level1&#34; number=&#34;4&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; Exercícios parte I&lt;/h1&gt;
+&lt;p&gt;Considerando o que foi dito acima e os livros indicados no plano de curso, resolva os exercícios abaixo.&lt;/p&gt;
+&lt;div id=&#34;noções-básicas-de-programação&#34; class=&#34;section level2&#34; number=&#34;4.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1&lt;/span&gt; Noções básicas de programação&lt;/h2&gt;
+&lt;p&gt;Resolva as seguintes questões envolvendo noções básicas. A parte teórica está explicada em &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;Vale&lt;/a&gt; (&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;, seções 1-10)&lt;/span&gt; e &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;Saulo Guerra et al.&lt;/a&gt; (&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;, seções 1-2)&lt;/span&gt;. Parte dos exercícios é cumulativa, de modo que é recomendável resolver os exercícios de modo sequencial e integral. Também é interessante sejam resolvidos em um novo &lt;code&gt;Rproject&lt;/code&gt; e um novo &lt;code&gt;Rscript&lt;/code&gt;.&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;p&gt;Crie seu primeiro programa na linguagem &lt;code&gt;R&lt;/code&gt;, conforme explicado acima. Execute a linha do código com os comandos &lt;code&gt;Ctrl + Enter&lt;/code&gt; (ou &lt;code&gt;Cmd+Return&lt;/code&gt; para Mac).&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;A partir da ajuda e exemplos, busque as seguintes informações:&lt;/p&gt;
@@ -130,29 +141,29 @@ getwd() &lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;p&gt;Crie os seguintes objetos com nomes distintos:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
 &lt;li&gt;Número de disciplinas que está cursando neste semestre.&lt;/li&gt;
-&lt;li&gt;O nome do(a) professor(a) que está lacionando armazenando em um objeto com o mesmo nome da disciplina cursada.&lt;/li&gt;
+&lt;li&gt;O nome do(a) professor(a) que está lecionando armazenado em um objeto com o mesmo nome da disciplina cursada.&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Escreva programas que manipulem as operações matemáticas básicas pelo menos uma vez.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Crie uma sequência de 2000 a 2021 de duas formas distintas.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Repita a sequência da questão anterior três vezes.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Escreva programas que manipulem as operações matemáticas básicas pelo menos uma vez com os números &lt;code&gt;50&lt;/code&gt; e &lt;code&gt;65&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Crie uma sequência de &lt;code&gt;2000&lt;/code&gt; a &lt;code&gt;2021&lt;/code&gt; de duas formas distintas.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Repita a sequência criada na questão anterior por três vezes.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Quais são os resultados das seguintes análises lógicas: &lt;code&gt;TRUE &amp;amp; FALSE | FALSE&lt;/code&gt;, &lt;code&gt;TRUE | FALSE | FALSE&lt;/code&gt;, &lt;code&gt;TRUE | FALSE &amp;amp; FALSE&lt;/code&gt; e &lt;code&gt;(TRUE | FALSE) &amp;amp; FALSE&lt;/code&gt;? Teste no &lt;code&gt;R&lt;/code&gt; se você acertou o resultado.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Crie vetores que contenham as seguintes informações do seu atual semestre. Dê nomes intuitivos:&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Crie vetores que contenham as seguintes informações do seu atual semestre. Dê nomes intuitivos para:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
 &lt;li&gt;Os nomes das disciplinas&lt;/li&gt;
 &lt;li&gt;A quantidade de estudantes em cada disciplina&lt;/li&gt;
-&lt;li&gt;O código de horários de acordo com o SIGAA&lt;/li&gt;
+&lt;li&gt;Os códigos de horários de acordo com o SIGAA&lt;/li&gt;
 &lt;li&gt;As menções que você espera alcançar&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Faça as seguintes cálculos com o vetor do número de estudantes:&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Faça as seguintes cálculos com o vetor do número de estudantes do exercício anterior:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
-&lt;li&gt;Suponha que cada estudante receba 60 horas complementares por disciplina. Quantas horas seriam disponibilizadas em cada turma?&lt;/li&gt;
-&lt;li&gt;Quantas seriam disponibilizadas em todas as turmas?&lt;/li&gt;
 &lt;li&gt;Qual é a média de estudantes em suas turmas?&lt;/li&gt;
+&lt;li&gt;Suponha que cada estudante receba 60 horas complementares por disciplina. Quantas horas seriam disponibilizadas em cada turma?&lt;/li&gt;
+&lt;li&gt;Quantas horas seriam disponibilizadas em todas as turmas juntas?&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Reescreva o vetor do número de estudantes, colocando as quantidades entre aspas. Qual é a classe do vetor criado?&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Desafio&lt;/strong&gt;: qual é a posição no vetor das turmas que têm mais estudantes do que a média de todas as turmas?&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Utilize a função data.frame para criar uma tabela com as informações da questão anterior. Nomeie as colunas com nomes indicativos do conteúdo.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Impute a tabela gerada na questão anterior para um objeto chamado &lt;code&gt;meu_sigaa&lt;/code&gt;. Visualize a tabela em outra aba.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Utilize a função &lt;code&gt;data.frame&lt;/code&gt; para criar uma tabela com as informações da questão anterior. Nomeie as colunas com nomes indicativos do conteúdo.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Impute a tabela gerada na questão anterior para um objeto chamado &lt;code&gt;meu_sigaa&lt;/code&gt;. Visualize a tabela em outra aba do &lt;code&gt;RStudio&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;A partir da tabela &lt;code&gt;meu_sigaa&lt;/code&gt;:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
 &lt;li&gt;&lt;p&gt;Leia apenas a primeira linha.&lt;/p&gt;&lt;/li&gt;
@@ -161,13 +172,326 @@ getwd() &lt;/code&gt;&lt;/pre&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Certifique-se de que instalou corretamente os seguintes pacotes: &lt;code&gt;tidyverse&lt;/code&gt;, &lt;code&gt;ggthemes&lt;/code&gt;, &lt;code&gt;scales&lt;/code&gt;, &lt;code&gt;writexl&lt;/code&gt;, &lt;code&gt;sidrar&lt;/code&gt; e &lt;code&gt;devtools&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Use a ajuda do &lt;code&gt;R&lt;/code&gt; para acessar informações sobre as funções &lt;code&gt;get_sidra&lt;/code&gt; e &lt;code&gt;info_sidra&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Busque informações sobre a tabela 6320, depositada no &lt;em&gt;Sistema IBGE de Recuperação Automática - SIDRA&lt;/em&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
-&lt;div id=&#34;importação-de-dados&#34; class=&#34;section level2&#34; number=&#34;4.2&#34;&gt;
+&lt;div id=&#34;importacao&#34; class=&#34;section level2&#34; number=&#34;4.2&#34;&gt;
 &lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2&lt;/span&gt; Importação de dados&lt;/h2&gt;
+&lt;p&gt;Sobre importação dos dados, serão tratados tanto dados baixados manualmente de alguma fonte externa ou acessados internamente por meio de algum pacote específico capaz de acessar bancos de dados de interesse.&lt;/p&gt;
+&lt;p&gt;A parte teórica está explicada em &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;Vale&lt;/a&gt; (&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;, seções 11 e 13)&lt;/span&gt; e &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;Saulo Guerra et al.&lt;/a&gt; (&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;, seção 3)&lt;/span&gt;. Lembre-se de carregar os pacotes sempre que iniciar uma nova sessão no &lt;code&gt;R&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  # Pacotes para esta questão
+library(readxl)         # Carregamento tabelas do Excel
+library(sidrar)         # Repositório IBGE
+library(wid)            # World Inequality Database 
+
+
+  # Pacotes úteis para as próximas questões
+library(tidyverse)      # Organização das tabelas e elaboração de gráficos
+library(ggthemes)       # Interfaces gráficas adicionais
+library(scales)         # Ajuste de escala dos gráficos
+library(writexl)        # Salvamento tabelas em formato Excel
+library(zoo)            # Ajuste de datas&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Após, resolva as seguintes questões.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Acesse o site do &lt;a href=&#34;https://www.ibge.gov.br/pt/inicio.html&#34;&gt;IBGE&lt;/a&gt;, localize uma estatística social ou econômica de seu interesse, baixe um arquivo em formato &lt;code&gt;.xls&lt;/code&gt; ou &lt;code&gt;.xlsx&lt;/code&gt; e salve na mesma pasta em que está seu projeto. Em seguida:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;&lt;p&gt;Escreva uma função para fazer a leitura da tabela a partir do caminho relativo em seu computador.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Indique a planilha a ser importada utilizando o seu nome no arquivo original.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Crie um vetor com o(s) nome(s) das colunas e importe a tabela com o(s) novo(s) nome(s).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Dê um nome sugestivo à tabela importada, atribuindo-a a um objeto dentro do &lt;code&gt;R&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Desafio&lt;/strong&gt;: acesse o &lt;a href=&#34;https://www3.bcb.gov.br/sgspub/localizarseries/localizarSeries.do?method=prepararTelaLocalizarSeries&#34;&gt;Sistema Gerenciador de Séries Temporais&lt;/a&gt; do Banco Central do Brasil (BCB) e baixe uma série organizada pelo próprio BCB em formato &lt;code&gt;.csv&lt;/code&gt;. Salve a tabela na mesma pasta em que está seu projeto. Em seguida:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;&lt;p&gt;Escreva uma função para fazer a leitura da tabela a partir do caminho relativo em seu computador.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Crie um vetor com o(s) nome(s) das colunas e importe a tabela com o(s) novo(s) nome(s).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Possivelmente o tipo das colunas não condiz com os dados efetivamente. Reescreva a função, indicando os tipos das colunas.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Dê um nome sugestivo à tabela importada, atribuindo-a a um objeto dentro do &lt;code&gt;R&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Utilizando o pacote &lt;code&gt;sidrar&lt;/code&gt;, localize informações sobre alguma série coletada pelo &lt;a href=&#34;https://sidra.ibge.gov.br/acervo#/S/Q&#34;&gt;IBGE&lt;/a&gt; e relacionada ao mercado de trabalho. Em seguida:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;&lt;p&gt;Consulte as séries disponíveis com a função própria do pacote a partir de uma palavra-chave.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Acesse as informações da série de interesse no próprio console ou no navegador de internet.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Faça um teste importando a série apenas pelo seu número.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Refaça o procedimento do &lt;strong&gt;item c&lt;/strong&gt;, agora especificando os demais parâmetros de interesse e atribuindo a um objeto específico.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Consulte o dicionário de códigos da &lt;a href=&#34;https://wid.world/codes-dictionary/&#34;&gt;&lt;em&gt;World Inequality Database&lt;/em&gt;&lt;/a&gt; e importe com a função &lt;code&gt;download_wid&lt;/code&gt; os seguintes dados:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Desafio&lt;/strong&gt;: coeficiente de GINI da distribuição de renda para o Brasil e para algum outro país a sua escolha, para fazer a comparação. Impute a um objeto.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Fração (&lt;em&gt;share&lt;/em&gt;) da renda apropriada pelo 1% mais rico e pelos 50% mais pobres do ponto de vista dos indivíduos em um país da América Latina, um da Europa e um da Ásia.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/div&gt;
-&lt;div id=&#34;manipulação-de-tabelas&#34; class=&#34;section level2&#34; number=&#34;4.3&#34;&gt;
-&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3&lt;/span&gt; Manipulação de tabelas&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div id=&#34;manipulação-e-exportação-de-dados&#34; class=&#34;section level1&#34; number=&#34;5&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;5&lt;/span&gt; Manipulação e exportação de dados&lt;/h1&gt;
+&lt;p&gt;Nem sempre os dados importados ao &lt;code&gt;R&lt;/code&gt; vêm no formato ideal. Enquanto os pacotes &lt;code&gt;sidrar&lt;/code&gt; e &lt;code&gt;wid&lt;/code&gt; fornecem tabelas no formato convencionalmente denominado de &lt;em&gt;tidy data&lt;/em&gt;&lt;a href=&#34;#fn3&#34; class=&#34;footnote-ref&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt; &lt;span class=&#34;citation&#34;&gt;(&lt;a href=&#34;#ref-WickhamRStudio2014&#34; role=&#34;doc-biblioref&#34;&gt;Wickham 2014&lt;/a&gt;)&lt;/span&gt;, outras fontes de dados ou tabelas baixadas manualmente costumam não apresentar a devida consistência.&lt;/p&gt;
+&lt;p&gt;Em síntese, os informações devem ser organizados de duas formas. Cada &lt;strong&gt;valor&lt;/strong&gt; (cada célula numa tabela do &lt;em&gt;Excel&lt;/em&gt;) pertence a uma &lt;span style=&#34;color: red;&#34;&gt; variável &lt;/span&gt; e a uma &lt;span style=&#34;color: blue;&#34;&gt; observação&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt; Variável&lt;/span&gt; contém valores que se referem a uma mesma característica ou atributo — em dados sobre mercado de trabalho, pode-se citar como exemplos região, data, taxa de desocupação — e são representadas por colunas.&lt;/p&gt;
+&lt;p&gt;Cada &lt;span style=&#34;color: blue;&#34;&gt; observação&lt;/span&gt;, isto é, cada linha contém todos os valores medidos sobre uma mesma unidade, configurando um único item entre os atributos — um exemplo poderia ser a taxa de desocupação no Centro-Oeste no 1&lt;sup&gt;o&lt;/sup&gt; trimestre de 2020.&lt;/p&gt;
+&lt;div id=&#34;apresentação-típica&#34; class=&#34;section level2&#34; number=&#34;5.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.1&lt;/span&gt; Apresentação típica&lt;/h2&gt;
+&lt;p&gt;Uma forma de apresentação típica de dados econômicos, mas que não estão no formato ideal é representada por&lt;/p&gt;
+&lt;table style=&#34;NAborder-bottom: 0; margin-left: auto; margin-right: auto;&#34; class=&#34;table&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Grande Região
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+1º trimestre 2016
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+1º trimestre 2020
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Nordeste
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+12.8
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+15.6
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Sul
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.5
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Centro-Oeste
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9.7
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.6
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;
+&lt;td style=&#34;padding: 0; &#34; colspan=&#34;100%&#34;&gt;
+&lt;span style=&#34;font-style: italic;&#34;&gt;Note: &lt;/span&gt; &lt;sup&gt;&lt;/sup&gt; Taxa de Desocupação (PNADC/T - IBGE)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;p&gt;em que se pode notar que há três variáveis (região, período e taxa de desocupação), mas que não estão divididos em colunas separadas. No exemplo, o período apenas nomeia duas colunas.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;transposta-da-apresentação-típica&#34; class=&#34;section level2&#34; number=&#34;5.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.2&lt;/span&gt; Transposta da apresentação típica&lt;/h2&gt;
+&lt;p&gt;Não é incomum utilizar-se a versão transposta da tabela apresentada em &lt;a href=&#34;#tab:exemplo&#34;&gt;&lt;strong&gt;??&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;table style=&#34;NAborder-bottom: 0; margin-left: auto; margin-right: auto;&#34; class=&#34;table&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Trimestre
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Nordeste
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Sul
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Centro-Oeste
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1º trimestre 2016
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+12.8
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9.7
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1º trimestre 2020
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+15.6
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.6
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;
+&lt;td style=&#34;padding: 0; &#34; colspan=&#34;100%&#34;&gt;
+&lt;span style=&#34;font-style: italic;&#34;&gt;Note: &lt;/span&gt; &lt;sup&gt;&lt;/sup&gt; Taxa de Desocupação (PNADC/T - IBGE)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;p&gt;Nesse caso, as regiões estão erroneamente utilizadas como nomes das colunas.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tidy-data&#34; class=&#34;section level2&#34; number=&#34;5.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.3&lt;/span&gt; Tidy data&lt;/h2&gt;
+&lt;p&gt;O formato mais adequado para organização dos dados e elaboração de gráficos também é conhecido como formato &lt;span style=&#34;color: green;&#34;&gt; longer&lt;/span&gt;, em que se pode usar a função &lt;code&gt;pivot_longer&lt;/code&gt; do pacote &lt;code&gt;tidyverse&lt;/code&gt;. Para os dados apresentados acima, a organização é dada por&lt;/p&gt;
+&lt;table style=&#34;NAborder-bottom: 0; margin-left: auto; margin-right: auto;&#34; class=&#34;table&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Trimestre
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Grande Região
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Desocupação (%)
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1º trimestre 2016
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Nordeste
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+12.8
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1º trimestre 2016
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Sul
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.3
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1º trimestre 2016
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Centro-Oeste
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9.7
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1º trimestre 2020
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Nordeste
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+15.6
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1º trimestre 2020
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Sul
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.5
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1º trimestre 2020
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Centro-Oeste
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.6
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;
+&lt;td style=&#34;padding: 0; &#34; colspan=&#34;100%&#34;&gt;
+&lt;span style=&#34;font-style: italic;&#34;&gt;Note: &lt;/span&gt; &lt;sup&gt;&lt;/sup&gt; Taxa de Desocupação (PNADC/T - IBGE)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;p&gt;Mesmo que pareça estranho, há algumas razões para organizar os dados assim:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Pode-se descrever relações funcionais entre &lt;span style=&#34;color: red;&#34;&gt; variáveis&lt;/span&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ex.: evolução da taxa de desocupação no tempo.&lt;/li&gt;
+&lt;li&gt;Melhor fazer entre colunas.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Pode-se fazer comparações entre grupos de &lt;span style=&#34;color: blue;&#34;&gt; observações&lt;/span&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ex.: como está o desemprego entre regiões?&lt;/li&gt;
+&lt;li&gt;Melhor fazer entre linhas.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;resumo-para-dados-organizados&#34; class=&#34;section level2&#34; number=&#34;5.4&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;5.4&lt;/span&gt; Resumo para dados organizados&lt;/h2&gt;
+&lt;p&gt;Para dados organizados, vale a seguinte regra de bolso:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Cada &lt;span style=&#34;color: red;&#34;&gt; variável&lt;/span&gt; forma uma coluna;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cada &lt;span style=&#34;color: blue;&#34;&gt; observação&lt;/span&gt; forma uma linha; e&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cada unidade observacional forma uma &lt;span style=&#34;color: green;&#34;&gt; tabela&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Para bais detalhes sobre o tema, deve-se consultar &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-WickhamRStudio2014&#34; role=&#34;doc-biblioref&#34;&gt;Wickham&lt;/a&gt; (&lt;a href=&#34;#ref-WickhamRStudio2014&#34; role=&#34;doc-biblioref&#34;&gt;2014&lt;/a&gt;)&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exercícios-parte-ii&#34; class=&#34;section level1&#34; number=&#34;6&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;6&lt;/span&gt; Exercícios parte II&lt;/h1&gt;
+&lt;p&gt;Com base no explicado acima e nas referências &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;Vale&lt;/a&gt; (&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;, seções 12, 14 e 15)&lt;/span&gt; e &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;Saulo Guerra et al.&lt;/a&gt; (&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;, seções 4-6)&lt;/span&gt;, resolva os seguintes exercícios usando as funções do pacote &lt;code&gt;tidyverse&lt;/code&gt;.&lt;/p&gt;
+&lt;div id=&#34;manipulação-de-dados&#34; class=&#34;section level2&#34; number=&#34;6.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.1&lt;/span&gt; Manipulação de dados&lt;/h2&gt;
+&lt;p&gt;Utilize a tabela baixada do IBGE na questão &lt;a href=&#34;#importacao&#34;&gt;4.2&lt;/a&gt; para as manipulações a seguir.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Impute a tabela baixada para um outro objeto, excluindo as colunas menos importantes na análise, tais como a de Unidade de Medida, Nível Territorial, Variável e etc.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Renomeie a coluna de valores para um que seja mais intuitivo a respeito dos dados escolhidos. Não use expressões ou caracteres especiais.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Faça ao menos uma operação com a coluna dos dados baixados para alterar a unidade de medida e manter intuição econômica ao mesmo tempo.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Por meio das funções &lt;code&gt;group_by&lt;/code&gt; e &lt;code&gt;summarise&lt;/code&gt;, faça alguns cálculos com a variável numérica baixada agrupando por, pelo menos, outra coluna da tabela. Pode ser o cálculo da média, valores mínimos e máximos, desvio padrão e etc. Atribua a um novo objeto.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Filtre os dados relacionados apenas aos últimos dois períodos — ano, trimestre e etc. — disponíveis. Também não é necessário imputar a um novo objeto.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Desafio 1&lt;/strong&gt;: Use a função &lt;code&gt;pivot_wider&lt;/code&gt; para distribuir as informações da variável numérica em colunas de acordo com os distintos períodos de tempo filtrados na questão anterior.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Desafio 2&lt;/strong&gt;: A partir da tabela no formato &lt;em&gt;wider&lt;/em&gt;, retorne-a ao formato &lt;em&gt;longer&lt;/em&gt;, utilizando a função &lt;code&gt;pivot_longer&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Baixe outra tabela do IBGE com dados que apresentem atributos compatíveis com a tabela baixada na questão &lt;a href=&#34;#importacao&#34;&gt;4.2&lt;/a&gt;. Depois disso, use a função &lt;code&gt;left_join&lt;/code&gt; para juntar as duas tabelas. Certifique-se de que todas as colunas compatíveis foram lidas e devidamente acopladas.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A partir das funções &lt;code&gt;str_replace&lt;/code&gt; e &lt;code&gt;as.yearqtr&lt;/code&gt; (pacote &lt;code&gt;zoo&lt;/code&gt;), transforme a coluna de data no formato de &lt;code&gt;Date&lt;/code&gt; ou equivalente.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exportação-de-dados&#34; class=&#34;section level2&#34; number=&#34;6.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;6.2&lt;/span&gt; Exportação de dados&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Exporte todos as tabelas geradas nos exercícios anteriores para o formato &lt;code&gt;.csv&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Exporte todos as tabelas geradas nos exercícios anteriores para o formato &lt;code&gt;.xlsx&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;referências&#34; class=&#34;section level1 unnumbered&#34;&gt;
@@ -198,6 +522,7 @@ Wickham, Hadley, and Garrett Grolemund. 2016. &lt;em&gt;&lt;span class=&#34;noca
 &lt;ol&gt;
 &lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;A primeira elaboração desses materiais se deu para o curso de Introdução à Economia Política, oferecida por mim no Departamento de Economia da Universidade de Brasília no 1&lt;sup&gt;o&lt;/sup&gt; semestre de 2021&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;Uma boa estratégia é tentar adaptar o &lt;code&gt;R&lt;/code&gt; às rotinas próprias, acadêmicas ou não, em substituição ao &lt;em&gt;Excel&lt;/em&gt;, por exemplo. Além de ser uma ferramenta gratuita, pode ser usada como editor de texto, de apresentações e de gráficos. Entre outras razões, tais funcionalidades fazem com que o &lt;em&gt;software&lt;/em&gt; seja bastante utilizado por estatísticos e cientistas sociais em geral.&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;Em tradução livre, “informação organizada.”&lt;a href=&#34;#fnref3&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 </description>

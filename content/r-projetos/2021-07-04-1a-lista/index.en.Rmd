@@ -1,5 +1,5 @@
 ---
-title: Primeira Lista de Exercícios 
+title: Aulas iniciais e primeira lista de exercícios 
 author: ''
 date: '2021-07-04'
 slug: 1a-lista
@@ -42,63 +42,64 @@ link-citations: true
 knitr::opts_chunk$set(message = FALSE,
                       warning = FALSE,
                       include = FALSE,
+                      eval = FALSE,
                       echo = TRUE,
                       fig.cap='Elaboração própria.')
 ```
 
-# Introdução{-}
+# Introdução {.unnumbered}
 
-Esta nota tem por objetivo exercitar o ferramental básico para entender comandos comuns que serão necessários nas próximas aulas^[A primeira elaboração desses materiais se deu para o curso de Introdução à Economia Política, oferecida por mim no Departamento de Economia da Universidade de Brasília no 1^o^ semestre de 2021]. A maior parte dos conteúdos serão relacionados às funcionalidades do `R` que são úteis para cientistas sociais. **O curso não supõe conhecimento prévio de R**, ainda que contatos anteriores permitirão um avanço mais rápido e concreto no curso.
+Esta nota tem por objetivo exercitar o ferramental básico para entender comandos que serão necessários nas próximas aulas[^1]. A maior parte dos conteúdos serão relacionados às funcionalidades do `R` que são úteis para cientistas sociais. **O curso não supõe conhecimento prévio de R**, ainda que contatos anteriores permitirão um avanço mais rápido e concreto no curso.
+
+[^1]: A primeira elaboração desses materiais se deu para o curso de Introdução à Economia Política, oferecida por mim no Departamento de Economia da Universidade de Brasília no 1^o^ semestre de 2021
 
 Trata-se de um trabalho experimental e inicial, que foi desenvolvido a partir de minha experiência concreta. Por favor, me indique eventuais erros e incongruências. Além disso, há trabalhos mais bem qualificados e em que me baseio para elaborar esses exercícios, como @Wickham2016, @Wickham2015 e @WickhamRStudio2014, cuja leitura é recomendada. Os textos em português de @Vale2021 e @SauloGuerra2021 também são fontes recomendadas de consulta.
 
-
 # Por que usar o `R`?
 
-Para quem nunca teve contato com alguma linguagem de programação, este início costuma ser pouco amigável. Entretanto, há algumas vantagens em relação a editores de planilha como *Excel* ou *Calc* para acesso, manipulação e elaboração de gráficos e apresentações:
+Para quem nunca teve contato com alguma linguagem de programação, este início costuma ser pouco amigável. Entretanto, há algumas vantagens em relação a editores de planilha como *Excel* ou *Calc* para acesso e manipulação de dados e elaboração de gráficos e apresentações:
 
-1. Os passos são descritos e registrados sequencialmente;
+1.  Os passos são descritos e registrados sequencialmente;
 
-2. A estrutura incremental (linha por linha) ajuda na identificação de erros;
+2.  A estrutura incremental (linha por linha) ajuda na identificação de erros;
 
-3. A discriminação dos passos auxilia na memória da pesquisa; e
+3.  A discriminação dos passos auxilia na memória da pesquisa; e
 
-4. O script permite reprodutibilidade em outras pesquisas, contribuindo para o avanço da ciência.
+4.  O script permite reprodutibilidade em outras pesquisas, contribuindo para o avanço da ciência.
 
-Portanto, todo o esforço inical e prática constante^[Uma boa estratégia é tentar adaptar o `R` às rotinas próprias, acadêmicas ou não, em substituição ao *Excel*, por exemplo. Além de ser uma ferramenta gratuita, pode ser usada como editor de texto, de apresentações e de gráficos. Entre outras razões, tais funcionalidades fazem com que o *software* seja bastante utilizado por estatísticos e cientistas sociais em geral.] permitem uma adaptação rápida à linguagem e o acesso a dados estatísticos nacionais e internacionais que auxiliam na aprendizagem dos temas tratados. Essas habilidades também podem ajudar para trabalhos de outras disciplinas ou de conclusão de curso.
+Portanto, todo o esforço inical e prática constante[^2] permitem uma adaptação rápida à linguagem e o acesso a dados estatísticos nacionais e internacionais que auxiliam na aprendizagem dos temas tratados na disciplina. Essas habilidades também podem ajudar para trabalhos de outras disciplinas ou de conclusão de curso.
 
+[^2]: Uma boa estratégia é tentar adaptar o `R` às rotinas próprias, acadêmicas ou não, em substituição ao *Excel*, por exemplo. Além de ser uma ferramenta gratuita, pode ser usada como editor de texto, de apresentações e de gráficos. Entre outras razões, tais funcionalidades fazem com que o *software* seja bastante utilizado por estatísticos e cientistas sociais em geral.
 
 # Download e Instalação
 
 ## `R` {#R}
 
-O primeiro passo é baixar e instalar o `R` em seu computador a partir de https://cran.r-project.org/. Faça o *download* de uma versão `base` adaptada ao seu sistema operacional. É recomendável utilizar uma versão *4.0* ou superior, para evitar problemas com pacotes no futuro. Instale o progama em seu computador, seguindo as configurações-padrão.
+O primeiro passo é baixar e instalar o `R` em seu computador a partir de <https://cran.r-project.org/>. Faça o *download* de uma versão `base` adaptada ao seu sistema operacional. É recomendável utilizar uma versão *4.0* ou superior, para evitar problemas com pacotes no futuro. Instale o progama em seu computador, seguindo as configurações-padrão.
 
 ## `RStudio`
 
-Após os passos indicados na seção \@ref(R), deve-se baixar e instalar o `RStudio`, cuja versão gratuita para *desktop* está disponível em: https://www.rstudio.com/products/rstudio/download/. Com isso, tem-se uma interface mais organizada e ferramentas auxiliares para o uso do `R`. 
+Após os passos indicados na seção \@ref(R), deve-se baixar e instalar o `RStudio`, cuja versão gratuita para *desktop* está disponível em: <https://www.rstudio.com/products/rstudio/download/>. Com isso, tem-se uma interface mais organizada e ferramentas auxiliares para o uso do `R`.
 
-Caso tenham dúvidas na instalação, este vídeo a partir de 3min:30s pode ser útil: https://www.youtube.com/watch?v=WVogdSlk7gY.
+Caso tenham dúvidas na instalação, este vídeo a partir de 3min:30s pode ser útil: <https://www.youtube.com/watch?v=WVogdSlk7gY>.
 
 # Primeiros comandos
 
 Tradicionalmente, o primeiro programa que se faz em uma nova linguagem é dizer `Alô, mundo!`. No `R`, a função `print()` faz esse trabalho. Caso o comando esteja em um *Rscript*, basta selecionar ou manter o cursos sobre a(s) linha(s) que se deseja executar e acessar o comando "Run", cujo atalho é CTRL+ENTER.
-
 
 ```{r, include = TRUE}
   # O resultado será exibido no console
 print("Alô, mundo!")
 ```
 
-
-O estilo de programação usado aqui e nos `Rscripts` segue parte das orientações para identação e organização dos códigos apresentados por @HadleyWickham2021. Como o R apresenta estrutura mais flexível, seguir padrões contribui para que seu código seja lido com mais facilidade por outras pessoas.
+O estilo de programação usado aqui e nos `Rscripts` segue parte das orientações para indentação e organização dos códigos apresentados por @HadleyWickham2021. Como o `R` apresenta estrutura mais flexível, seguir padrões contribui para que seu código seja lido com mais facilidade por outras pessoas.
 
 ## Ajuda do programa
 
 O `R` apresenta uma série de funções que são utilizadas para executar ações desejadas. Basta assinalar o nome da função sem parênteses, precidido de uma interrogação `?`. Em geral, encontram-se a estrutura da função, seus atributos, detalhes e alguns exemplos. Este é um expediente que deve ser usado com frequência, especialmente por quem está tendo seus primeiros contatos com a linguagem
 
 ```{r, include = TRUE, eval=FALSE}
-  # Um painel no RStudio exibirá ajuda
+  # Um painel no RStudio exibirá ajuda sobre a função de concatenar
 ?c
 ```
 
@@ -111,22 +112,23 @@ Um fluxo de trabalho interessante é iniciar um novo projeto no `R` para cada tr
 getwd() 
 ```
 
-# Exercícios
+# Exercícios parte I
 
-Considerando o que foi dito acima e os capítulos dos livros de @Vale2021 e @SauloGuerra2021 indicados no plano de curso, resolva os exercícios abaixo.
+Considerando o que foi dito acima e os livros indicados no plano de curso, resolva os exercícios abaixo.
 
-## Noções básicas de programação I
+## Noções básicas de programação
 
-Resolva as seguintes questões envolvendo noções básicas. Parte dos exercícios é cumulativa, de modo que se sugere que os exercícios sejam resolvidos de modo sequencial e integral. Também é interessante que comece a resolvê-los em um novo `Rproject` e um novo `Rscript`.
+Resolva as seguintes questões envolvendo noções básicas. A parte teórica está explicada em  @Vale2021 [, seções 1-10] e @SauloGuerra2021 [, seções 1-2]. Parte dos exercícios é cumulativa, de modo que é recomendável resolver os exercícios de modo sequencial e integral. Também é interessante sejam resolvidos em um novo `Rproject` e um novo `Rscript`.
 
-1. Crie seu primeiro programa na linguagem `R`, conforme explicado acima. Execute a linha do código com os comandos `Ctrl + Enter` (ou `Cmd+Return` para Mac). 
+1.  Crie seu primeiro programa na linguagem `R`, conforme explicado acima. Execute a linha do código com os comandos `Ctrl + Enter` (ou `Cmd+Return` para Mac).
 
 ```{r}
 print("Hello, world!")
 ```
-2. A partir da ajuda e exemplos, busque as seguintes informações:
 
-    a. Ajuda para as funções `sum(); colSums(); sqrt(); lm(); setwd(); cbind(); data.frame()`.
+2.  A partir da ajuda e exemplos, busque as seguintes informações:
+
+    a.  Ajuda para as funções `sum(); colSums(); sqrt(); lm(); setwd(); cbind(); data.frame()`.
 
 ```{r, eval = FALSE}
 ?sum()
@@ -146,16 +148,16 @@ example(colSums)
 example(cbind)
 ```
 
-3. Descubra em qual diretório seu projeto está lendo e salvando arquivos.
+3.  Descubra em qual diretório seu projeto está lendo e salvando arquivos.
 
 ```{r}
 getwd()
 ```
 
+4.  Crie os seguintes objetos com nomes distintos:
 
-4. Crie os seguintes objetos com nomes distintos:
-    a. Número de disciplinas que está cursando neste semestre.
-    b. O nome do(a) professor(a) que está lacionando armazenando em um objeto com o mesmo nome da disciplina cursada.
+    a.  Número de disciplinas que está cursando neste semestre.
+    b.  O nome do(a) professor(a) que está lecionando armazenado em um objeto com o mesmo nome da disciplina cursada.
 
 ```{r}
   # a) Criação de um objeto "n"
@@ -175,7 +177,7 @@ analise_1
 
 ```
 
-5. Escreva programas que manipulem as operações matemáticas básicas pelo menos uma vez.
+5.  Escreva programas que manipulem as operações matemáticas básicas pelo menos uma vez com os números `50` e `65`.
 
 ```{r}
 100 + 2
@@ -188,7 +190,7 @@ analise_1
 100 ^ 2
 ```
 
-6. Crie uma sequência de 2000 a 2021 de duas formas distintas.
+6.  Crie uma sequência de `2000` a `2021` de duas formas distintas.
 
 ```{r}
 2000:2021
@@ -198,13 +200,13 @@ seq(2000, 2021)
 seq(2000, 2021, length = 22)
 ```
 
-7. Repita a sequência da questão anterior três vezes.
+7.  Repita a sequência criada na questão anterior por três vezes.
 
 ```{r}
 rep(2000:2021, times = 3)
 ```
 
-8. Quais são os resultados das seguintes análises lógicas: `TRUE & FALSE | FALSE`, `TRUE | FALSE | FALSE`, `TRUE | FALSE & FALSE` e `(TRUE | FALSE) & FALSE`? Teste no `R` se você acertou o resultado.
+8.  Quais são os resultados das seguintes análises lógicas: `TRUE & FALSE | FALSE`, `TRUE | FALSE | FALSE`, `TRUE | FALSE & FALSE` e `(TRUE | FALSE) & FALSE`? Teste no `R` se você acertou o resultado.
 
 ```{r}
 TRUE & FALSE | FALSE
@@ -216,12 +218,13 @@ TRUE | FALSE & FALSE
 (TRUE | FALSE) & FALSE
 
 ```
-9. Crie vetores que contenham as seguintes informações do seu atual semestre. Dê nomes intuitivos:
 
-    a. Os nomes das disciplinas
-    b. A quantidade de estudantes em cada disciplina
-    c. O código de horários de acordo com o SIGAA
-    d. As menções que você espera alcançar
+9.  Crie vetores que contenham as seguintes informações do seu atual semestre. Dê nomes intuitivos para:
+
+    a.  Os nomes das disciplinas
+    b.  A quantidade de estudantes em cada disciplina
+    c.  Os códigos de horários de acordo com o SIGAA
+    d.  As menções que você espera alcançar
 
 ```{r}
 disciplinas <- c("Álbegra Linear", "Análise 1", "Estágio Docente")
@@ -237,12 +240,12 @@ mencoes <- c("SS", "SS", "MS")
 mencoes
 ```
 
+10. Faça as seguintes cálculos com o vetor do número de estudantes do exercício anterior:
 
-10. Faça as seguintes cálculos com o vetor do número de estudantes:
-    a. Suponha que cada estudante receba 60 horas complementares por disciplina. Quantas horas seriam disponibilizadas em cada turma?
-    b. Quantas seriam disponibilizadas em todas as turmas?
-    c. Qual é a média de estudantes em suas turmas?
-    
+    a.  Qual é a média de estudantes em suas turmas?
+    b.  Suponha que cada estudante receba 60 horas complementares por disciplina. Quantas horas seriam disponibilizadas em cada turma?
+    c.  Quantas horas seriam disponibilizadas em todas as turmas juntas?
+
 ```{r}
 
   # a)
@@ -258,12 +261,14 @@ sum(numero_estudantes * 60)       # Jeito menos recomendado
 mean(numero_estudantes)
 
 ```
+
 11. Reescreva o vetor do número de estudantes, colocando as quantidades entre aspas. Qual é a classe do vetor criado?
 
 ```{r}
 numero_estudantes_2 <- c("70", "60", "30")
 class(numero_estudantes_2)
 ```
+
 12. **Desafio**: qual é a posição no vetor das turmas que têm mais estudantes do que a média de todas as turmas?
 
 ```{r}
@@ -275,7 +280,7 @@ which(numero_estudantes == 70)
 which(numero_estudantes == 60)
 ```
 
-13. Utilize a função data.frame para criar uma tabela com as informações da questão anterior. Nomeie as colunas com nomes indicativos do conteúdo.
+13. Utilize a função `data.frame` para criar uma tabela com as informações da questão anterior. Nomeie as colunas com nomes indicativos do conteúdo.
 
 ```{r}
 data.frame(
@@ -288,9 +293,7 @@ data.frame(
 
 ```
 
-
-
-14. Impute a tabela gerada na questão anterior para um objeto chamado `meu_sigaa`. Visualize a tabela em outra aba.
+14. Impute a tabela gerada na questão anterior para um objeto chamado `meu_sigaa`. Visualize a tabela em outra aba do `RStudio`.
 
 ```{r}
   # Primeira forma
@@ -316,29 +319,31 @@ meu_sigaa <- data.frame(
 
 ```
 
-
 15. A partir da tabela `meu_sigaa`:
 
-    a. Leia apenas a primeira linha.
-```{r}
-meu_sigaa[1, ]
-```
-    
-    b. Leia apenas a primeira coluna, filtrando por seu nome (atente-se para erros de leituras de caracteres especiais nos nomes das colunas).
-```{r}
-meu_sigaa[, "Disciplinas"]
-```
-    
-    c. Retorne o número de estudantes da disciplina de Introdução à Economia Política.
-```{r}
-# Note que o nome com espaços e caracteres especiais gera erro na leitura dos dados. Portanto, devem ser evitados pelo menos no RBase
+    a.  Leia apenas a primeira linha.
 
-meu_sigaa[3, "Número de estudantes"]
+    ```{r}
+    meu_sigaa[1, ]
+    ```
 
-meu_sigaa[3, 2]
-```
-    
-16. Certifique-se de que instalou corretamente os seguintes pacotes: `tidyverse`, `ggthemes`, `scales`, `writexl`, `sidrar` e `devtools`.   
+    b.  Leia apenas a primeira coluna, filtrando por seu nome (atente-se para erros de leituras de caracteres especiais nos nomes das colunas).
+
+    ```{r}
+    meu_sigaa[, "Disciplinas"]
+    ```
+
+    c.  Retorne o número de estudantes da disciplina de Introdução à Economia Política.
+
+    ```{r}
+    # Note que o nome com espaços e caracteres especiais gera erro na leitura dos dados. Portanto, devem ser evitados pelo menos no RBase
+
+    meu_sigaa[3, "Número de estudantes"]
+
+    meu_sigaa[3, 2]
+    ```
+
+16. Certifique-se de que instalou corretamente os seguintes pacotes: `tidyverse`, `ggthemes`, `scales`, `writexl`, `sidrar` e `devtools`.
 
 ```{r}
 # install.packages("tidyverse")
@@ -353,8 +358,6 @@ meu_sigaa[3, 2]
 # devtools::install_github("WIDworld/wid-r-tool")
 ```
 
-
-
 17. Use a ajuda do `R` para acessar informações sobre as funções `get_sidra` e `info_sidra`.
 
 ```{r, eval = FALSE}
@@ -364,21 +367,507 @@ library(sidrar)
 
 ```
 
+18. Busque informações sobre a tabela 6320, depositada no *Sistema IBGE de Recuperação Automática - SIDRA*.
+
+## Importação de dados {#importacao}
+
+Sobre importação dos dados, serão tratados tanto dados baixados manualmente de alguma fonte externa ou acessados internamente por meio de algum pacote específico capaz de acessar bancos de dados de interesse. 
+
+A parte teórica está explicada em  @Vale2021 [, seções 11 e 13] e @SauloGuerra2021 [, seção 3]. Lembre-se de carregar os pacotes sempre que iniciar uma nova sessão no `R`.
+
+```{r, include = TRUE}
+
+  # Pacotes para esta questão
+library(readxl)         # Carregamento tabelas do Excel
+library(sidrar)         # Repositório IBGE
+library(wid)            # World Inequality Database 
+
+
+  # Pacotes úteis para as próximas questões
+library(tidyverse)      # Organização das tabelas e elaboração de gráficos
+library(ggthemes)       # Interfaces gráficas adicionais
+library(scales)         # Ajuste de escala dos gráficos
+library(writexl)        # Salvamento tabelas em formato Excel
+library(zoo)            # Ajuste de datas
+
+```
+
+
+Após, resolva as seguintes questões.
+
+1. Acesse o site do [IBGE](https://www.ibge.gov.br/pt/inicio.html), localize uma estatística social ou econômica de seu interesse, baixe um arquivo em formato `.xls` ou `.xlsx` e salve na mesma pasta em que está seu projeto. Em seguida:
+  
+    a. Escreva uma função para fazer a leitura da tabela a partir do caminho relativo em seu computador.
+    
+```{r}
+read_xls("dados/pof_seguranca_alimentar.xls")
+```
+    
+    b. Indique a planilha a ser importada utilizando o seu nome no arquivo original.
+```{r}
+read_xls("dados/pof_seguranca_alimentar.xls",
+         sheet = "5.2")
+```
+    
+    c. Crie um vetor com o(s) nome(s) das colunas e importe a tabela com o(s) novo(s) nome(s).
+```{r}
+nomes_colunas <-
+  c(
+    "regiao_e_UF",
+    "total",
+    "seguranca_alimentar",
+    "inseguraca_alimentar",
+    "leve",
+    "moderada",
+    "grave"
+  )
+
+  # Importando com os nomes
+read_xls(
+  "dados/pof_seguranca_alimentar.xls",
+  sheet     = "5.2",
+  skip      = 5,
+  col_names = nomes_colunas
+)
+```
+    
+    d. Dê um nome sugestivo à tabela importada, atribuindo-a a um objeto dentro do `R`.
+```{r}
+seguranca_alimentar_2017_18 <-
+  read_xls(
+    "dados/pof_seguranca_alimentar.xls",
+    sheet     = "5.2",
+    skip      = 5,
+    col_names = nomes_colunas
+  )
+```
+    
+    
+2. **Desafio**: acesse o [Sistema Gerenciador de Séries Temporais](https://www3.bcb.gov.br/sgspub/localizarseries/localizarSeries.do?method=prepararTelaLocalizarSeries) do Banco Central do Brasil (BCB) e baixe uma série organizada pelo próprio BCB em formato `.csv`. Salve a tabela na mesma pasta em que está seu projeto. Em seguida:
+  
+    a. Escreva uma função para fazer a leitura da tabela a partir do caminho relativo em seu computador.
+```{r}
+# 20400 - Endividamento das famílias com o Sistema Financeiro Nacional
+# exceto crédito habitacional em relação à renda acumulada dos últimos doze meses
+
+read_csv2("dados/20400-Endividamento_das_famílias.csv")
+```
+    
+    b. Crie um vetor com o(s) nome(s) das colunas e importe a tabela com o(s) novo(s) nome(s).
+```{r}
+nomes_colunas <- c("mês", "endividamento")
+
+  # O ideal é usar skip para não importar os nomes antigos
+read_csv2(
+  "dados/20400-Endividamento_das_famílias.csv",
+  skip      = 1,
+  col_names = nomes_colunas
+)
+
+```
+    
+    c. Possivelmente o tipo das colunas não condiz com os dados efetivamente. Reescreva a função, indicando os tipos das colunas.
+```{r}
+read_csv2(
+  "dados/20400-Endividamento_das_famílias.csv",
+  skip = 1,
+  col_names = nomes_colunas,
+  col_types = cols("c", "n")
+) 
+
+```
+    
+    d. Dê um nome sugestivo à tabela importada, atribuindo-a a um objeto dentro do `R`.
+```{r}
+endividamento_familias <-
+  read_csv2(
+    "dados/20400-Endividamento_das_famílias.csv",
+    skip = 1,
+    col_names = nomes_colunas,
+    col_types = cols("c", "n")
+  ) 
+```
+    
+
+3. Utilizando o pacote `sidrar`, localize informações sobre alguma série coletada pelo [IBGE](https://sidra.ibge.gov.br/acervo#/S/Q) e relacionada ao mercado de trabalho. Em seguida:
+
+    a. Consulte as séries disponíveis com a função própria do pacote a partir de uma palavra-chave.
+```{r}
+search_sidra("horas trabalhadas")
+
+# [51] "Tabela 6371 - Média de horas habitualmente trabalhadas por semana e efetivamente trabalhadas
+# na semana de referência, no trabalho principal e em todos os trabalhos, das pessoas de 14 anos ou mais de idade, por sexo"
+```
+    
+    b. Acesse as informações da série de interesse no próprio console ou no navegador de internet.
+    
+```{r, eval = FALSE}
+info_sidra(6371, wb = TRUE)
+```
+    
+    c. Faça um teste importando a série apenas pelo seu número.
+```{r, eval = FALSE}
+get_sidra(6371)
+```
+    
+    d. Refaça o procedimento do **item c**, agora especificando os demais parâmetros de interesse e atribuindo a um objeto específico.
+
+```{r, eval = FALSE}
+horas_trabalhadas <-
+  get_sidra(
+    6371,
+    period = "201901-202101",
+    variable = "8186",  # Média de horas habitualmente trabalhadas
+    classific =  c("/C2/"),
+    category = list(c(4, 5)),   # Apenas homens e mulheres separadamente
+    format = 2
+  )
+
+horas_trabalhadas
+```
 
 
 
+4. Consulte o dicionário de códigos da [*World Inequality Database*](https://wid.world/codes-dictionary/) e importe com a função `download_wid` os seguintes dados:
+
+    a. **Desafio**: coeficiente de GINI da distribuição de renda para o Brasil e para algum outro país a sua escolha, para fazer a comparação. Impute a um objeto. 
+    
+```{r, eval = FALSE}
+gini_br_us <-
+  download_wid(
+    indicators = c("gptinc"),
+    areas = c("US", "BR"),
+    ages = "992",
+    # Indivíduos com mais de 20 anos
+    pop = "j"        #renda dividida igualmente entre o casal
+  )
+```
+    
+    b. Fração (*share*) da renda apropriada pelo 1% mais rico e pelos 50% mais pobres do ponto de vista dos indivíduos em um país da América Latina, um da Europa e um da Ásia. 
+    
+```{r, eval = FALSE}
+desigualdade_renda_br_us <-
+  download_wid(
+    indicators = c("sptinc"),
+    areas = c("AR", "IT", "CN"),
+    perc = c("p0p50", "p99p100"),
+    ages = "992",
+    pop = "j"
+  ) 
+
+```
+
+
+# Manipulação e exportação de dados
+
+Nem sempre os dados importados ao `R` vêm no formato ideal. Enquanto os pacotes `sidrar` e `wid` fornecem tabelas no formato  convencionalmente denominado de *tidy data*^[Em tradução livre, "informação organizada".] [@WickhamRStudio2014], outras fontes de dados ou tabelas baixadas manualmente costumam não apresentar a devida consistência. 
+ 
+Em síntese, os informações devem ser organizados de duas formas. Cada **valor** (cada célula numa tabela do *Excel*) pertence a uma <span style="color: red;"> variável </span> e a uma <span style="color: blue;"> observação</span>. 
+
+<span style="color: red;"> Variável</span> contém valores que se referem a uma mesma característica ou atributo --- em dados sobre mercado de trabalho, pode-se citar como exemplos região, data, taxa de desocupação --- e são representadas por colunas. 
+
+Cada <span style="color: blue;"> observação</span>, isto é, cada linha contém todos os valores medidos sobre uma mesma unidade, configurando um único item entre os atributos --- um exemplo poderia ser a taxa de desocupação no Centro-Oeste no 1^o^ trimestre de 2020. 
+
+## Apresentação típica
+
+Uma forma de apresentação típica de dados econômicos, mas que não estão no formato ideal é representada por
+
+```{r, eval = TRUE, echo=FALSE}
+library(sidrar)
+library(tidyverse)
+library(ggthemes)
+library(kableExtra)
+
+## Tabela 6397 - Taxas de desocupação e de subutilização da força de trabalho, na semana de referência, das pessoas de 14 anos ou mais de idade, por grupos de idade
+
+
+desocupacao <- get_sidra(6397,
+                        period = "201601-202001",
+                        geo = "Region",
+                        variable = c(4099),
+                        format = 2)
+
+tabela1 <- desocupacao %>% 
+                rename("Desocupacao" = Valor) %>% 
+                select(`Grande Região`,Trimestre, `Grupo de idade`,Desocupacao)
+
+## Tabela 5437 - Rendimento médio real, habitualmente recebido por mês e efetivamente recebido no mês de referência, do trabalho principal e de todos os trabalhos, por grupos de idade (Vide Notas)
+
+
+rendimento <- get_sidra(5437,
+                        period = "201601-202001",
+                        geo = "Region",
+                        variable = c(5932),
+                        format = 2)
+
+tabela2 <- rendimento %>% 
+                rename("Rendimento" = Valor) %>% 
+                select(`Grande Região`,Trimestre, `Grupo de idade`,Rendimento)
+
+## Tabela 6372 - Média de horas habitualmente trabalhadas por semana e efetivamente trabalhadas na semana de referência, no trabalho principal e em todos os trabalhos, das pessoas de 14 anos ou mais de idade, por grupos de idade
+
+
+horas <- get_sidra(6372,
+                        period = "201601-202001",
+                        geo = c("Region"),
+                        variable = c(8186),
+                        format = 2)
+
+tabela3 <- horas %>% 
+                rename("Horas" = Valor) %>% 
+                select(`Grande Região`,Trimestre, `Grupo de idade`,Horas)
+
+### Tabela com todos os dados
+
+emprego <- tabela1 %>% 
+            left_join(tabela2) %>% 
+            left_join(tabela3)
+```
+
+```{r exemplo, eval = TRUE, include = TRUE, echo = FALSE}
+tab1 <- emprego %>%
+  filter(
+    `Grupo de idade` == "Total",
+    Trimestre %in% c("1º trimestre 2016", "1º trimestre 2020"),
+    `Grande Região` %in% c("Nordeste", "Sul", "Centro-Oeste")
+  ) %>%
+  select(1, 2, "Desocupação" = Desocupacao) %>%
+  pivot_wider(names_from = Trimestre, values_from = Desocupação)
+
+kbl(tab1,
+    format = "html",
+    digits = 1,
+    booktabs = TRUE) %>%
+  footnote(
+    general = "Taxa de Desocupação (PNADC/T - IBGE)",
+    footnote_as_chunk = T,
+    threeparttable = T
+  ) %>%
+  kable_styling()
+```
+
+em que se pode notar que há três variáveis (região, período e taxa de desocupação), mas que não estão divididos em colunas separadas. No exemplo, o período apenas nomeia duas colunas.
+
+## Transposta da apresentação típica
+
+Não é incomum utilizar-se a versão transposta da tabela apresentada em \@ref(tab:exemplo).
+
+```{r, eval = TRUE, include = TRUE, echo=FALSE}
+tab2 <- emprego %>%
+  filter(
+    `Grupo de idade` == "Total",
+    Trimestre %in% c("1º trimestre 2016", "1º trimestre 2020"),
+    `Grande Região` %in% c("Nordeste", "Sul", "Centro-Oeste")
+  ) %>%
+  select(1, 2, "Desocupação" = Desocupacao) %>%
+  pivot_wider(names_from = `Grande Região`,
+              values_from = Desocupação)
+
+kbl(tab2,
+    digits = 1,
+    booktabs = T) %>%
+  footnote(
+    general = "Taxa de Desocupação (PNADC/T - IBGE)",
+    footnote_as_chunk = T,
+    threeparttable = T
+  ) %>%
+  kable_styling()
+```
+
+Nesse caso, as regiões estão erroneamente utilizadas como nomes das colunas.
+
+## Tidy data
+
+O formato mais adequado para organização dos dados e elaboração de gráficos também é conhecido como formato <span style="color: green;"> longer</span>, em que se pode usar a função `pivot_longer` do pacote `tidyverse`. Para os dados apresentados acima, a organização é dada por 
+
+```{r, eval = TRUE, include=TRUE, echo=FALSE}
+tab <- emprego %>%
+  filter(
+    `Grupo de idade` == "Total",
+    Trimestre %in% c("1º trimestre 2016", "1º trimestre 2020"),
+    `Grande Região` %in% c("Nordeste", "Sul", "Centro-Oeste")
+  ) %>%
+  select(2, 1, "Desocupação (%)" = Desocupacao) %>%
+  arrange(Trimestre)
+
+kbl(
+  tab,
+  digits = 1,
+  booktabs = T
+) %>%
+  footnote(
+    general = "Taxa de Desocupação (PNADC/T - IBGE)",
+    footnote_as_chunk = T,
+    threeparttable = T
+  ) %>%
+  kable_styling()
+```
+
+Mesmo que pareça estranho, há algumas razões para organizar os dados assim:
+
+1. Pode-se descrever relações funcionais entre <span style="color: red;"> variáveis</span>.
+      
+      * Ex.: evolução da taxa de desocupação no tempo. 
+      * Melhor fazer entre colunas.
+
+2. Pode-se fazer comparações entre grupos de <span style="color: blue;"> observações</span>:
+      
+      * Ex.: como está o desemprego entre regiões? 
+      * Melhor fazer entre linhas.
+
+## Resumo para dados organizados 
+
+Para dados organizados, vale a seguinte regra de bolso:
+
+1. Cada <span style="color: red;"> variável</span> forma uma coluna;
+
+2. Cada <span style="color: blue;"> observação</span> forma uma linha; e
+
+3. Cada unidade observacional forma uma <span style="color: green;"> tabela</span>.
+
+Para bais detalhes sobre o tema, deve-se consultar @WickhamRStudio2014.
+
+# Exercícios parte II
+
+Com base no explicado acima e nas referências @Vale2021 [, seções 12, 14 e 15] e @SauloGuerra2021 [, seções 4-6], resolva os seguintes exercícios usando as funções do pacote `tidyverse`.
+
+## Manipulação  de dados
+
+Utilize a tabela baixada do IBGE na questão \@ref(importacao) para as manipulações a seguir.
+
+1. Impute a tabela baixada para um outro objeto, excluindo as colunas menos importantes na análise, tais como a de Unidade de Medida, Nível Territorial, Variável e etc.
+
+```{r}
+horas_trabalhadas <-
+  get_sidra(
+    6371,
+    period = "201901-202101",
+    variable = "8186",  # Média de horas habitualmente trabalhadas
+    classific =  c("/C2/"),
+    category = list(c(4, 5)),   # Apenas homens e mulheres separadamente
+    format = 2
+  )
+
+
+horas_trabalho <-
+  horas_trabalhadas %>%
+    select(5, 7, 3)
+```
 
 
 
+2. Renomeie a coluna de valores para um que seja mais intuitivo a respeito dos dados escolhidos. Não use expressões ou caracteres especiais.
+
+```{r}
+horas_trabalho <- 
+  horas_trabalho %>% 
+    rename("Horas_trabalhadas" = Valor)
+
+```
 
 
-## Importação de dados
+3. Faça ao menos uma operação com a coluna dos dados baixados para alterar a unidade de medida e manter intuição econômica ao mesmo tempo.
+
+```{r}
+  # Horas anuais de trabalho
+horas_trabalho <- 
+  horas_trabalho %>% 
+    mutate(Horas_trabalhadas = Horas_trabalhadas * 52)
+
+```
+
+4. Por meio das funções `group_by` e `summarise`, faça alguns cálculos com a variável numérica baixada agrupando por, pelo menos, outra coluna da tabela. Pode ser o cálculo da média, valores mínimos e máximos, desvio padrão e etc. Atribua a um novo objeto.
+
+```{r}
+horas_trabalho %>% 
+  group_by(Sexo) %>% 
+  summarise(media_anual = mean(Horas_trabalhadas))
+```
+
+
+5. Filtre os dados relacionados apenas aos últimos dois períodos --- ano, trimestre e etc. --- disponíveis. Também não é necessário imputar a um novo objeto.
+
+```{r}
+horas_trabalho %>% 
+  filter(Trimestre %in% c("4º trimestre 2020", "1º trimestre 2021"))
+```
+
+
+6. **Desafio 1**: Use a função `pivot_wider` para distribuir as informações da variável numérica em colunas de acordo com os distintos períodos de tempo filtrados na questão anterior.
+
+```{r}
+horas_trabalho <-
+  horas_trabalho %>%
+    pivot_wider(names_from  = "Trimestre",
+                values_from = "Horas_trabalhadas")
+```
+
+
+7. **Desafio 2**: A partir da tabela no formato *wider*, retorne-a ao formato *longer*, utilizando a função `pivot_longer`.
+
+```{r}
+horas_trabalho <-  
+  horas_trabalho %>% 
+    pivot_longer(cols      = `1º trimestre 2019`:`1º trimestre 2021`,
+                 names_to  = "Periodo",
+                 values_to = "Horas_trabalhadas")
+
+```
 
 
 
-## Manipulação de tabelas 
+8. Baixe outra tabela do IBGE com dados que apresentem atributos compatíveis com a tabela baixada na questão \@ref(importacao). Depois disso, use a função `left_join` para juntar as duas tabelas. Certifique-se de que todas as colunas compatíveis foram lidas e devidamente acopladas.
+
+```{r}
+
+  # Rendimento por sexo
+rendimento_sexo <-
+  get_sidra(
+    5429,
+    period = "201901-202101",
+    variable = "5928",  # Média de horas habitualmente trabalhadas
+    classific =  c("/C2/"),
+    category = list(c(4, 5)),   # Apenas homens e mulheres separadamente
+    format = 2
+  )
+
+
+rendimento_sexo <- 
+  rendimento_sexo %>%
+    select(5, 7, 3) %>% 
+    rename("Periodo"    = Trimestre,
+           "Rendimento" = Valor)
+
+```
+
+```{r}
+colnames(horas_trabalho)
+
+horas_rendimento <-   
+  horas_trabalho %>% 
+    left_join(rendimento_sexo)
+```
+
+
+9. A partir das funções `str_replace` e `as.yearqtr` (pacote `zoo`), transforme a coluna de data no formato de `Date` ou equivalente.
+
+```{r}
+
+horas_rendimento <-
+  horas_rendimento %>%
+  mutate(
+    Periodo = str_replace(Periodo, "º trimestre ", "-"),
+    Periodo = as.yearqtr(Periodo, format = "%q-%Y")
+  )
+  
+```
 
 
 
+## Exportação de dados
 
-# Referências {-}
+1. Exporte todos as tabelas geradas nos exercícios anteriores para o formato `.csv`.
+
+2. Exporte todos as tabelas geradas nos exercícios anteriores para o formato `.xlsx`.
+
+# Referências {.unnumbered}

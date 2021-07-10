@@ -1,6 +1,5 @@
 ---
-bio: Meus interesses de pesquisa se concentram em inteligência artificial, automação e emprego
-  matter.
+bio: Meus interesses de pesquisa se concentram nas relações entre automação e emprego.
 education:
   courses:
   - course: Doutorado em Economia Política (em andamento)

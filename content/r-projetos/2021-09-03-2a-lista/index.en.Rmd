@@ -1,0 +1,814 @@
+---
+title: Manipulação de dados, gráficos e segunda lista de exercícios
+author: ''
+date: '2021-09-03'
+slug: 2a-lista
+categories: []
+tags:
+  - Intro Eco Pol
+  - R
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-09-03T19:12:32-03:00'
+featured: no
+output:
+  blogdown::html_page:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+fontsize: 14pt
+linkcolor: blue
+header-includes:
+  - \usepackage{indentfirst}
+  - \usepackage{amsmath}
+  - \usepackage{graphicx}
+  - \setlength{\parindent}{4em}
+  - \setlength{\parskip}{1.25em}
+  - \usepackage{float}
+  - \newcommand{\sen}{\mathrm{sen}}
+bibliography: library_html.bib
+biblio-style: "apalike"
+link-citations: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE,
+                      warning = FALSE,
+                      include = TRUE,
+                      echo    = TRUE,
+                      fig.cap = 'Elaboração própria.')
+```
+
+
+# Introdução {.unnumbered}
+
+Esta nota tem por objetivo exercitar o ferramental básico para manipular tabelas e elaborar gráficos para uma análise exploratória dos dados. São duas ações que devem caminhar juntas, especialmente porque dados efetivamente organizadas tornam a elaboração de gráficos um procedimento mais direto e simples.
+
+Vale lembrar que tabelas devem ser sucintas e gráficos devem contar uma história da maneira mais simples possível. Portanto, a preocupação não deve ser com uma completude, certamente inalcançável.
+
+Suas tabelas, gráficos e textos terão atingido a melhor versão quando não há mais nada que lhes possa ser retirado. 
+
+
+
+
+<!-- Conteúdo para a segunda lista -->
+
+# Manipulação e exportação de dados
+
+Nem sempre os dados importados ao `R` vêm no formato ideal. Enquanto os pacotes `sidrar` e `wid` fornecem tabelas no formato  convencionalmente denominado de *tidy data*^[Em tradução livre, "informação organizada".] [@WickhamRStudio2014], outras fontes de dados ou tabelas baixadas manualmente costumam não apresentar a devida consistência. 
+ 
+Em síntese, cada **valor** (cada célula numa tabela do *Excel*, por exemplo) pertence a uma <span style="color: red;"> variável </span> e a uma <span style="color: blue;"> observação</span>. 
+
+<span style="color: red;"> Variável</span> contém valores que se referem a uma mesma característica ou atributo --- em dados sobre mercado de trabalho, pode-se citar como exemplos região, data, taxa de desocupação. Nesse caso, cada variável deve ser representada por uma única coluna. 
+
+Cada <span style="color: blue;"> observação</span> (linha) contém todos os valores medidos sobre uma mesma unidade, configurando um único item entre os atributos (ou colunas) --- um exemplo poderia ser a taxa de desocupação no Centro-Oeste no 1^o^ trimestre de 2020. 
+
+Os erros mais comuns são aqueles em que uma variável está espalhada em várias colunas. Ajustar esses dados passa a ser o primeiro passo para a análise exploratória.
+
+## Apresentação típica
+
+Uma forma de apresentação típica de dados econômicos, mas que não estão no formato ideal é representada por
+
+```{r, echo=FALSE}
+library(sidrar)
+library(tidyverse)
+library(ggthemes)
+library(kableExtra)
+library(zoo)
+
+## Tabela 6397 - Taxas de desocupação e de subutilização da força de trabalho, na semana de referência, das pessoas de 14 anos ou mais de idade, por grupos de idade
+
+
+desocupacao <- get_sidra(6397,
+                        period = "201601-202001",
+                        geo = "Region",
+                        variable = c(4099),
+                        format = 2)
+
+tabela1 <- desocupacao %>% 
+                rename("Desocupacao" = Valor) %>% 
+                select(`Grande Região`,Trimestre, `Grupo de idade`,Desocupacao)
+
+## Tabela 5437 - Rendimento médio real, habitualmente recebido por mês e efetivamente recebido no mês de referência, do trabalho principal e de todos os trabalhos, por grupos de idade (Vide Notas)
+
+
+rendimento <- get_sidra(5437,
+                        period = "201601-202001",
+                        geo = "Region",
+                        variable = c(5932),
+                        format = 2)
+
+tabela2 <- rendimento %>% 
+                rename("Rendimento" = Valor) %>% 
+                select(`Grande Região`,Trimestre, `Grupo de idade`,Rendimento)
+
+## Tabela 6372 - Média de horas habitualmente trabalhadas por semana e efetivamente trabalhadas na semana de referência, no trabalho principal e em todos os trabalhos, das pessoas de 14 anos ou mais de idade, por grupos de idade
+
+
+horas <- get_sidra(6372,
+                        period = "201601-202001",
+                        geo = c("Region"),
+                        variable = c(8186),
+                        format = 2)
+
+tabela3 <- horas %>% 
+                rename("Horas" = Valor) %>% 
+                select(`Grande Região`,Trimestre, `Grupo de idade`,Horas)
+
+### Tabela com todos os dados
+
+emprego <- tabela1 %>% 
+            left_join(tabela2) %>% 
+            left_join(tabela3)
+```
+
+```{r exemplo, include = TRUE, echo = FALSE}
+tab1 <- emprego %>%
+  filter(
+    `Grupo de idade` == "Total",
+    Trimestre %in% c("1º trimestre 2016", "1º trimestre 2020"),
+    `Grande Região` %in% c("Nordeste", "Sul", "Centro-Oeste")
+  ) %>%
+  select(1, 2, "Desocupação" = Desocupacao) %>%
+  pivot_wider(names_from = Trimestre, values_from = Desocupação)
+
+kbl(tab1,
+    format = "html",
+    digits = 1,
+    booktabs = TRUE) %>%
+  footnote(
+    general = "Taxa de Desocupação (PNADC/T - IBGE)",
+    footnote_as_chunk = T,
+    threeparttable = T
+  ) %>%
+  kable_styling()
+```
+
+em que se pode notar que há três variáveis (região, período e taxa de desocupação), mas que não estão divididos em colunas separadas. 
+
+No exemplo, o período deve constituir uma variável e, portanto, uma coluna. Entretanto, os dados para o período são utilizados erroneamente como nomes de colunas.
+
+## Transposta da apresentação típica
+
+Não é incomum utilizar-se a versão transposta da tabela apresentada acima.
+
+```{r, include = TRUE, echo=FALSE}
+tab2 <- emprego %>%
+  filter(
+    `Grupo de idade` == "Total",
+    Trimestre %in% c("1º trimestre 2016", "1º trimestre 2020"),
+    `Grande Região` %in% c("Nordeste", "Sul", "Centro-Oeste")
+  ) %>%
+  select(1, 2, "Desocupação" = Desocupacao) %>%
+  pivot_wider(names_from = `Grande Região`,
+              values_from = Desocupação)
+
+kbl(tab2,
+    digits = 1,
+    booktabs = T) %>%
+  footnote(
+    general = "Taxa de Desocupação (PNADC/T - IBGE)",
+    footnote_as_chunk = T,
+    threeparttable = T
+  ) %>%
+  kable_styling()
+```
+
+Nesse caso, as regiões estão erroneamente utilizadas como nomes das colunas.
+
+## Tidy data
+
+O formato mais adequado para organização dos dados e elaboração de gráficos também é conhecido como formato <span style="color: green;"> longer</span>, em que se pode usar a função `pivot_longer` do pacote `tidyverse`. Para os dados apresentados acima, a organização é dada por 
+
+```{r, include=TRUE, echo=FALSE}
+tab <- emprego %>%
+  filter(
+    `Grupo de idade` == "Total",
+    Trimestre %in% c("1º trimestre 2016", "1º trimestre 2020"),
+    `Grande Região` %in% c("Nordeste", "Sul", "Centro-Oeste")
+  ) %>%
+  select(2, 1, "Desocupação (%)" = Desocupacao) %>%
+  arrange(Trimestre)
+
+kbl(
+  tab,
+  digits = 1,
+  booktabs = T
+) %>%
+  footnote(
+    general = "Taxa de Desocupação (PNADC/T - IBGE)",
+    footnote_as_chunk = T,
+    threeparttable = T
+  ) %>%
+  kable_styling()
+```
+
+Mesmo que pareça estranho, há duas boas razões para organizar os dados assim:
+
+1. Pode-se descrever relações funcionais entre <span style="color: red;"> variáveis</span>.
+      
+      * Ex.: evolução da taxa de desocupação no tempo. 
+      * Melhor fazer entre colunas.
+
+2. Pode-se fazer comparações entre grupos de <span style="color: blue;"> observações</span>:
+      
+      * Ex.: como está o desemprego entre regiões? 
+      * Melhor fazer entre linhas.
+
+## Resumo para dados organizados 
+
+Para dados organizados, vale a seguinte regra de bolso:
+
+1. Cada **variável** forma uma coluna;
+
+2. Cada **observação** forma uma linha; e
+
+3. Cada unidade observacional forma uma **tabela**.
+
+Se quiser mais detalhes sobre o tema, é interessante consultar @WickhamRStudio2014. Com os dados organizados, pode-se elaborar tabelas e gráficos de maneira correta e mais intuitiva.
+
+# Elaboração de gráficos
+
+Apresentar informações estatísticas por meio de gráficos pode ser uma ferramenta importante para melhorar o entendimento de informações complexas. Para isso, deve-se elaborar um gráfico eficiente. 
+
+Um gráfico é mais eficiente que o outro se sua informação pode ser decodificada pela maioria dos leitores de forma mais rápida ou mais fácil de acordo com @Robbins2004. 
+
+Portanto, cuidados são necessários para que os gráficos não sejam ineficientes, confusos ou transmitam informações erradas. De maneira sintética, os gráficos podem seguir as seguintes diretrizes:
+
+1. Chamar a atenção para o que é importante nos seus dados (as pessoas procuram os destaques e diferenças em primeiro lugar);
+2. Simplificar e reduzir as informações periféricas; e
+3. Identificar as hierarquias dos dados e refleti-las nos gráficos.
+
+Todos esses passos devem ser disponibilizados ao público leitor demandando o mínimo de esforço para decodificação. Por isso, é também importante usar a linguagem mais simples possível. 
+
+Portanto, de maneira geral, busca-se remover informações redundantes, como cores, textos, elementos decorativos e etc. que não dizem respeito diretamente às suas informações. Em resumo, **use o mínimo de tinta**.
+
+Feitas essas considerações inciais, seguem algumas rotinas realizadas para a apresentação de dados estatísticos econômicos com o pacote [`ggplot2`](https://ggplot2.tidyverse.org/). 
+
+Esse pacote permite apresentar dados seguindo uma "gramática de gráficos" , que "*makes ggplot2 very powerful because you are not limited to a set of pre-specified graphics, but you can create new graphics that are precisely tailored for your problem*" [@Wickham2015].
+
+
+Em síntese, @Wickham2015 explica essa gramática de gráficos como uma representação estatística que mapeia informações em atributos estéticos (cores, formatos, tamanhos) de objetos geométricos (pontos, linhas, barras) em um sistema específico de coordenadas. 
+
+Diferentes facetas podem ser usadas para representar, numa única imagem, diferentes subconjuntos de uma tabela. E é a combinação desses elementos que forma um gráfico.
+
+Do ponto de vista mais concreto, em primeiro lugar, é necessário instalar (uma única vez) e carregar os pacotes abaixo para realizar as rotinas no `R`^[Ainda que nem todos sejam utilizados nesta nota, sugere-se a consulta de informações adicionais dos pacotes para conhecer melhor suas respectivas funcionalidades.].
+
+```{r}
+# install.packages("tidyverse")    Instala o pacote tidyverse, por exemplo
+
+
+library(tidyverse)      # Organização das tabelas e elaboração de gráficos
+library(RColorBrewer)   # Paletas de cores para os gráficos
+library(viridis)        # Paletas de cores para os gráficos
+library(ggthemes)       # Interfaces gráficas adicionais
+library(scales)         # Ajuste de escala dos gráficos
+library(lubridate)      # Ferramenta para ajuste de datas
+library(zoo)            # Ferramenta também para ajuste de datas
+
+
+library(sidrar)         # Acessar dados do IBGE
+
+
+options(scipen = 999)
+```
+
+Por fim, lembre-se de que um bom processo de elaboração de gráficos exige que sua matéria prima esteja no formato ideal, com as tabelas devidamente organizadas. 
+
+# Compontentes básicos dos gráficos
+
+Todos os gráficos feitos com o `ggplot2` têm seis componentes básicos:
+
+1. Informações (tabela);
+2. Mapeamentos estéticos (variáveis e outras propriedades visuais); 
+3. Camadas (formato que as informações serão apresentadas, transformações estatísticas e ajustes de posicionamentos);
+4. Escalas para cada mapeamento estético (guias para ler os valores, normalmente explicados nas legendas);
+5. Sistema de coordenadas; e
+6. Especificação de facetas ou subconjuntos.
+
+Os três primeiros elementos são normalmente suficientes para análises exploratórias dos dados, em que o objetivo é conhecer melhor os dados que foram coletados. Tratam-se de gráficos usados apenas pelo(a) pesquisador(a) e, em geral, são insuficientes para apresentação dos resultados. 
+
+Para fins desta nota, serão utilizados em quase todos os gráficos as informações relativas à taxa de desocupação da força de trabalho (Tabela 6397), ao rendimento médio real (Tabela 5437) e à média de horas habitualmente trabalhadas por semana (Tabela 6372) por grupos de idade entre o 1^o^ trimestre de 2016 e o 1^o^ trimestre de 2020. Todas as informações foram coletadas na Pesquisa Nacional por Amostra de Domicílios Contínua Trimestral (PNADC/T), realizada pelo [IBGE](https://sidra.ibge.gov.br/pesquisa/pnadct/tabelas). 
+
+Os dados são baixados por meio do pacote `sidrar`. Nesse caso, as tabelas são baixadas individualmente e, ao final, juntadas pelas categorias em comum. As informações para identificar os elementos das tabelas que queremos podem ser acessadas pela função `info_sidra()`. 
+
+```{r}
+## Tabela 6397 - Taxas de desocupação e de subutilização da força de trabalho,
+## na semana de referência, das pessoas de 14 anos ou mais de idade,
+## por grupos de idade
+
+# info_sidra(6397,wb = T)
+desocupacao <- get_sidra(
+  6397,
+  period   = "201601-202001",  # Seleciona trimestres
+  geo      = "Region",         # 5 Regiões Brasileiras
+  variable = c(4099),
+  format   = 2
+)
+
+tabela1 <- desocupacao %>%
+  rename("Desocupacao" = Valor) %>%   # Renomeia a variável de interesse
+  select(`Grande Região`, Trimestre, `Grupo de idade`, Desocupacao)
+
+head(tabela1, n = 3) # Mostra as três primeiras linhas
+
+## Tabela 5437 - Rendimento médio real, habitualmente recebido por mês e
+## efetivamente recebido no mês de referência, do trabalho principal e
+## de todos os trabalhos, por grupos de idade 
+
+# info_sidra(5437,wb = T)
+rendimento <- get_sidra(
+  5437,
+  period   = "201601-202001",
+  geo      = "Region",
+  variable = c(5932),
+  format   = 2
+)
+
+tabela2 <- rendimento %>%
+  rename("Rendimento" = Valor) %>%
+  select(`Grande Região`, Trimestre, `Grupo de idade`, Rendimento)
+
+head(tabela2, n = 3)
+
+## Tabela 6372 - Média de horas habitualmente trabalhadas por semana e
+## efetivamente trabalhadas na semana de referência, no trabalho principal
+## e em todos os trabalhos, das pessoas de 14 anos ou mais de idade,
+## por grupos de idade
+
+#info_sidra(6372,wb = T)
+horas <- get_sidra(
+  6372,
+  period   = "201601-202001",
+  geo      = c("Region"),
+  variable = c(8186),
+  format   = 2
+)
+
+tabela3 <- horas %>%
+  rename("Horas" = Valor) %>%
+  select(`Grande Região`, Trimestre, `Grupo de idade`, Horas)
+
+head(tabela3, n = 3)
+
+## Tabela com todos os dados agrupados por `Grande Região`,
+## `Trimestre` e `Grupo de Idade`
+
+emprego <- tabela1 %>%
+  left_join(tabela2) %>%
+  left_join(tabela3)
+
+head(emprego, n = 2)
+```
+
+
+Portanto, a tabela chamada ``emprego'' será a principal base para os gráficos. 
+
+Um gráfico simples e muito comum é o de *disperção*, que é útil para relações entre duas variáveis quantitativas, como a relação entre horas trabalhadas e rendimento:
+
+```{r}
+  # Gráfico de pontos
+ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point()
+```
+
+Note que o sinal de `+` é usado para adicionar camadas ao gráfico como padrão do pacote. Uma elaboração mais completa dos gráficos envolve, normalmente, os seis componentes básicos e serão detalhados abaixo. 
+
+## Mapeamentos estéticos (variáveis)
+
+Pode-se adicionar variáveis ao gráfico com a atribuição de cores (*colour*) e formato (*shape*) para variáveis categóricas e tamanho (*size*) para variáveis contínuas, que serão acompanhados de legenda. 
+
+Estes elementos também podem ser utilizados de maneira cumulativa, contribuindo para uma visualização mais rápida.
+
+Note-se que é interessante maximizar a densidade de dados no gráfico. Se você tem poucos dados, utilize pontos, formatos ou linhas maiores. Vá reduzindo as geometrias à medida que seu conjunto de dados aumente, como o exemplo abaixo.
+
+Vale notar que as estéticas passadas para o termo `ggplot()` valem para todas as camadas. As informações passadas como estéticas dos `geoms` valem apenas para a geometria específica.
+
+```{r, fig.height= 4, fig.width=7}
+ggplot(emprego,
+       aes(x     = Horas,
+           y     = Rendimento,
+           shape = `Grupo de idade`)) + # Diferencia elementos pelo formato
+  geom_point(size = 2.3)                # Amplia a representação dos pontos 
+```
+
+Se a intenção é dar uma cor fixa para um determinado valor, usa-se o argumento fora do padrão `aes()` e na geometria de interesse. 
+
+```{r, fig.height= 3, fig.width=7}
+ggplot(emprego,
+       aes(x     = Horas,
+           y     = Rendimento,
+           shape = `Grupo de idade`)) +
+  geom_point(color = "red",            # Adiciona uma cor a todas as informações
+             size  = 2.3)
+```
+
+Por outro lado, se seus dados começarem a representar muitas observações distintas, deve-se espalhar as informações em distintos gráficos comparáveis.
+
+Nesse caso, pode-se adicionar variáveis categóricas por meio de facetas, que dividem o gráfico em subconjuntos. A forma mais simples é de modo *wrapped*, com o nome da variável precedido de um `~`:
+
+```{r, fig.height=5, fig.width=7}
+ggplot(emprego,
+       aes(x     = Horas,
+           y     = Rendimento,
+           color = `Grupo de idade`)) + # Diferencia elementos pelas cores
+  geom_point(shape = 1,                 # Formato fixo de círculo
+             size  = 3)+  
+  facet_wrap(~`Grande Região`)
+```
+
+## Geometrias (geoms)
+
+O pacote também fornece algumas geometrias diferentes que podem ser adaptadas às características dos dados a serem apresentados. Elas representam o "tipo" de gráfico que se quer apresentar. Note que é possível usar mais de uma geometria. 
+
+Cada tipo de dado tem sua geometria mais adequada e a página [*from data to vis*](https://www.data-to-viz.com/) apresenta um organograma didático sobre as melhores geometrias para sua necessidade.
+
+Um primeiro exemplo sobre o uso múltiplo de geometrias consiste em adicionar uma linha de regressão linear com o respectivo intervalo de confiança para os dados:
+
+```{r}
+ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(size  = 2.5,
+             alpha = 0.4)+      # Alpha indica transparência dos pontos
+  geom_smooth(method = "lm")    # Adicion linha de regressão       
+
+```
+
+Histogramas e polígonos de frequência podem ser interessantes para mostrar a distribuição de uma única variável numérica. O temanho dos intervalos pode ser estabelecido com o argumento `binwidth`:
+
+```{r, fig.show="hold", out.width="50%"}
+ggplot(emprego,
+       aes(x = Rendimento)) +
+  geom_histogram(fill = "blue",
+                 binwidth = 200)  # Tamanho do intervalo
+
+ggplot(emprego,
+       aes(x = Rendimento)) +
+  geom_freqpoly(color = "red",
+                size  = 2)
+```
+
+Variáveis categóricas são automaticamente dispostas em ordem alfabética, mas podem ser reorganizadas conforme alguma variável quantitativa de referência com a função `reorder()`. Abaixo, um exemplo dessa alteração num *boxplot*.
+
+```{r, fig.width = 6}
+ggplot(emprego,
+       aes(x = reorder(`Grupo de idade`,
+                       Desocupacao),     # Critério para reordenar
+           y =  Desocupacao)) +
+  geom_boxplot()
+```
+
+
+
+## Eixos e escalas
+
+Os eixos podem ser customizados com alterações dos nomes (*labels*) e de seus tamanhos^[A opção apresentada exclui as informações fora do intervalo. Para apenas aplicar um *zoom* sem que dados sejam eliminados, deve-se usar a opção `coord_cartesian()`.] de modo a ficaram mais intuitivos e explicativos ao leitor. 
+
+Para alterar nomes das regiões, pode-se usar a função `labs()`.
+
+```{r}
+ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(size = 2)+
+  labs(x = "Horas de Trabalho",
+       y = "Renda habitual")
+
+```
+
+A área de exibição dos eixos pode ser ajustada pelas funções `xlim()` e `ylim()`.
+
+```{r,fig.width=7,warning=T}
+ggplot(emprego,
+       aes(x      = `Grande Região`,
+           y      = Rendimento,
+           colour = `Grupo de idade`)) +
+  geom_jitter(width = 0.3) +   # Acrescenta variações para reduzir sobreposições
+  labs(
+    x      = NULL,
+    y      = NULL,
+    title  = "Renda por Região (R$)",
+    colour = "Idade"           # Título da legenda
+  ) +
+  ylim(c(700, 3100))           # Limite ao eixo y
+```
+
+
+As escalas também podem ser alteradas para padrões distintos de cores. Lembre-se de que a escolha de cores deve sempre ser feita de maneira intencional.
+
+Pode-se usar as cores para distinguir variáveis *categóricas*, cujos valores não podem ser manipulados algebricamente. 
+
+Nesse caso, deve-se utilizar uma escala de cores qualitativa, em que não existe relação de ordem ou destaque de uma cor em relação às demais. Um exemplo está em [*Color Brewer*](https://colorbrewer2.org/#type=qualitative&scheme=Accent&n=3). Há algumas escalas também disponíveis no ggplot2 como a apresentada na figura \@ref(fig:paleta).
+
+Também é possível usar cores para *destacar*, em que alguns poucos elementos realçados podem contribuir para a história que se quer representar. Isso pode ser feito com escalas de destaque está no livro de [Claus O. Wilke](https://clauswilke.com/dataviz/color-basics.html#color-as-a-tool-to-highlight).
+
+```{r paleta, fig.width= 6}
+ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(aes(colour = `Grupo de idade`)) +
+  scale_y_log10() +                              # Escala do eixo y na base log_10
+  scale_colour_brewer(palette = "Set1")          # Paleta de cores
+```
+
+Pode-se também fazer uma mudança de coordenadas para melhorar a visualização ou adaptar nomes mais longos de variáveis:
+
+```{r,fig.show="hold", out.width="50%"}
+  # Horas de trabalho no eixo horizontal
+ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(size = 2) +
+  labs(x = "Horas de Trabalho",
+       y = "Renda habitual")
+
+  # Horas de trabalho no eixo vertical
+ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(size = 2) +
+  labs(x = "Horas de Trabalho",
+       y = "Renda habitual") +
+  coord_flip()                  # Altera os eixos
+```
+
+
+Por fim, o pacote também permite a visualização de mapas. A parte mais sensível é encontrar as coordenadas. Aqui, a apresentação será restrita a um mapa disponibilizado pelo pacote **maps**:
+
+```{r}
+  # Download das coordenadas para formar o mapa do Brasil
+brasil <- map_data("world", "brazil") %>%
+  select(lon = long, lat, group, id = subregion)
+
+
+ggplot(brasil,
+       aes(lon, lat)) +
+  geom_polygon(aes(group = group),
+               fill   = NA,        # Mapa sem preenchimento
+               colour = "black") + # Cor das bordas
+  coord_quickmap()
+```
+
+
+## Temas
+
+Temas alteram as propriedades estéticas dos gráficos sem que sejam alteradas as formas como as informações são apresentadas em geometrias ou como os eixos são escalonados. Há alguns temas já prontos, tanto do pacote `ggplot2`, quanto de extensões como o [`ggthemes`](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/).
+
+```{r,fig.show="hold", out.width="50%"}
+ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(size  = 2,
+             alpha = 0.4)+
+  geom_smooth(method = "lm")+
+  theme_stata()              # Escolhe um tema pré-organizado
+
+ggplot(emprego,
+       aes(x = Rendimento)) +
+  geom_freqpoly(color = "red")+
+  theme_excel()              # Escolhe um tema pré-organizado
+
+```
+
+
+## Séries de tempo e casos mais avançados
+
+Para séries de tempo, é interessante o uso de gráficos de linha, que ligam os pontos da esquerda para a direita, ou gráfico de trajeto, que liga os pontos conforme a ordem que aparecem na tabela. 
+
+A forma como o SIDRA disponibiliza as tabelas oferece datas em formato de caracteres, o que prejudica a representação contínua em um dos eixos. Para isso, precisa-se transformar a informação para formato de data. Como os dados são trimestrais, faremos a transformação usando os pacotes `tidyverse` e [`zoo`](https://cran.r-project.org/web/packages/zoo/vignettes/zoo-quickref.pdf).
+
+
+```{r}
+  # Ajuste para o formato de datas
+emprego_data <- emprego %>%
+  mutate(
+    Trimestre = str_replace(Trimestre, "º trimestre ", "-"), # Ajuste da escrita
+    Trimestre = as.yearqtr(Trimestre, format = "%q-%Y")      # Conversão para o formato de data trimestral
+  )
+
+head(emprego_data, n = 3)
+```
+
+Por fim, desejam-se apenas os dados de desocupados agregados para o Brasil em ordem cronológica como exemplo. Isso pode ser feito por:
+
+```{r, fig.width= 6}
+emprego_data %>% 
+  filter(`Grupo de idade` == "Total") %>%     # Seleciona Total 
+  ggplot(aes(x     = Trimestre,
+             y     = Desocupacao,
+             color = `Grande Região`)) +
+  geom_line(size = 1.25)
+
+```
+
+
+
+# Exercícios parte II
+
+Com base no explicado acima e nas referências @Vale2021 [, seções 12, 14 e 15] e @SauloGuerra2021 [, seções 4-6], resolva os seguintes exercícios usando as funções do pacote `tidyverse`.
+
+## Manipulação  de dados
+
+Utilize a tabela baixada do IBGE na [lista anterior](https://rafaeldeacypreste.netlify.app/r-projetos/1a-lista/) para as manipulações a seguir.
+
+1. Impute a tabela baixada para outro objeto, excluindo as colunas menos importantes na análise, tais como a de "Unidade de Medida", "Nível Territorial", "Variável" e etc.
+
+```{r, include=FALSE}
+horas_trabalhadas <-
+  get_sidra(
+    6371,
+    period    = "201901-202101",
+    variable  = "8186",          # Média de horas habitualmente trabalhadas
+    classific =  c("/C2/"),
+    category  = list(c(4, 5)),   # Apenas homens e mulheres separadamente
+    format    = 2
+  )
+
+
+horas_trabalho <-
+  horas_trabalhadas %>%
+    select(5, 7, 3)
+```
+
+
+
+2. Renomeie a coluna de valores para um que seja mais intuitivo a respeito dos dados escolhidos. Não use expressões ou caracteres especiais.
+
+```{r, include=FALSE}
+horas_trabalho <- 
+  horas_trabalho %>% 
+    rename("Horas_trabalhadas" = Valor)
+
+```
+
+
+3. Faça ao menos uma operação com a coluna dos dados baixados para alterar a unidade de medida e manter intuição econômica ao mesmo tempo.
+
+```{r,  include=FALSE}
+  # Horas anuais de trabalho
+horas_trabalho <- 
+  horas_trabalho %>% 
+    mutate(Horas_trabalhadas = Horas_trabalhadas * 52)
+
+```
+
+4. Por meio das funções `group_by` e `summarise`, faça alguns cálculos com a variável numérica baixada agrupando por, pelo menos, outra coluna da tabela. Pode ser o cálculo da média, valores mínimos e máximos, desvio padrão e etc. Não é necessário atribuir a um novo objeto.
+
+```{r, include=FALSE}
+horas_trabalho %>% 
+  group_by(Sexo) %>% 
+  summarise(media_anual = mean(Horas_trabalhadas))
+```
+
+
+5. Filtre os dados relacionados apenas aos últimos dois períodos --- ano, trimestre e etc. --- disponíveis. Também não é necessário imputar a um novo objeto.
+
+```{r, eval=FALSE, include=FALSE}
+horas_trabalho %>% 
+  filter(Trimestre %in% c("4º trimestre 2020", "1º trimestre 2021"))
+```
+
+
+6. **Desafio 1**: Use a função `pivot_wider` para distribuir as informações da variável numérica em colunas de acordo com os distintos períodos de tempo filtrados na questão anterior.
+
+```{r,  include=FALSE}
+horas_trabalho <-
+  horas_trabalho %>%
+    pivot_wider(names_from  = "Trimestre",
+                values_from = "Horas_trabalhadas")
+```
+
+
+7. **Desafio 2**: A partir da tabela no formato *wider*, retorne-a ao formato *longer*, utilizando a função `pivot_longer`.
+
+```{r, include=FALSE}
+horas_trabalho <-
+  horas_trabalho %>%
+    pivot_longer(
+      cols      = `1º trimestre 2019`:`1º trimestre 2021`,
+      names_to  = "Periodo",
+      values_to = "Horas_trabalhadas"
+    )
+
+```
+
+
+
+8. Baixe outra tabela do IBGE com dados que apresentem atributos compatíveis com a tabela baixada na questão `3` da lista anterior. Depois disso, use a função `left_join` para juntar as duas tabelas. Certifique-se de que todas as colunas compatíveis foram lidas e devidamente acopladas.
+
+```{r, include=FALSE}
+
+  # Rendimento por sexo
+rendimento_sexo <-
+  get_sidra(
+    5429,
+    period    = "201901-202101",
+    variable  = "5928",          # Média de horas habitualmente trabalhadas
+    classific =  c("/C2/"),
+    category  = list(c(4, 5)),   # Apenas homens e mulheres separadamente
+    format    = 2
+  )
+
+
+rendimento_sexo <- 
+  rendimento_sexo %>%
+    select(5, 7, 3) %>% 
+    rename("Periodo"    = Trimestre,
+           "Rendimento" = Valor)
+
+```
+
+```{r,  include=FALSE}
+colnames(horas_trabalho)
+
+horas_rendimento <-   
+  horas_trabalho %>% 
+    left_join(rendimento_sexo)
+```
+
+
+9.*Desafio 3*:  A partir das funções `str_replace` e `as.yearqtr` (pacote `zoo`), transforme a coluna de data no formato de `Date` ou equivalente.
+
+```{r, include=FALSE}
+
+horas_rendimento <-
+  horas_rendimento %>%
+  mutate(
+    Periodo = str_replace(Periodo, "º trimestre ", "-"),
+    Periodo = as.yearqtr(Periodo, format = "%q-%Y")
+  )
+  
+```
+
+
+
+## Exportação de dados
+
+1. Exporte todos as tabelas geradas nos exercícios anteriores para o formato `.csv`.
+
+2. Exporte todos as tabelas geradas nos exercícios anteriores para o formato `.xlsx`.
+
+
+
+
+## Elaboração de gráficos
+
+1. Elabore um gráfico de pontos com os dados da tabela elaborada na questão `8` acima.
+
+```{r, include=FALSE}
+horas_rendimento %>% 
+  ggplot(aes(x = Horas_trabalhadas,
+             y = Rendimento)) +
+    geom_point()
+```
+
+2. Altere o formato dos pontos gráfico elaborado na questão acima para representar uma terceira variável.
+
+```{r, include=FALSE}
+horas_rendimento %>% 
+  ggplot(aes(x = Horas_trabalhadas,
+             y = Rendimento)) +
+    geom_point(aes(shape = Sexo))
+```
+      
+3. Utilize as facetas para separar as informações por uma quarta variável. Se o formato (*shape*) não se adaptar a uma variável contínua, mude o argumento de *shape* para *colour*.
+
+```{r, include=FALSE}
+horas_rendimento %>% 
+  ggplot(aes(x = Periodo,
+             y = Rendimento)) +
+    geom_point(aes(color = Horas_trabalhadas))+
+    facet_wrap(Sexo ~ .)
+  
+```
+
+4. Dê nome aos eixos e à legenda, título e informações extras (*caption*) ao gráfico da questão anterior.  
+
+```{r, include=FALSE}
+horas_rendimento %>% 
+  ggplot(aes(x = Periodo,
+             y = Rendimento)) +
+    geom_point(aes(color = Horas_trabalhadas))+
+    facet_wrap(Sexo ~ .)+
+    labs(
+    x       = "Trimestre",
+    y       = "Salário Médio (R$)",
+    title   = "Salário médio no Brasil",
+    colour  = "Horas médias \n de trabalho",
+    caption = "Fonte: PNADC Trimestral. Elaboração própria"
+  )
+```
+
+<span style="color: green;"> Parabéns por ter chegado até aqui! </span> Espero que esses contatos inciais te motivem a continuar usando essa ferramenta potente para análise concreta da realidade concreta.
+
+# Referências {.unnumbered}

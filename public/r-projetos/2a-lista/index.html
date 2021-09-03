@@ -1,0 +1,1944 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.1.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Rafael de Acypreste" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Introdução1 Manipulação e exportação de dados1.1 Apresentação típica1.2 Transposta da apresentação típica1.3 Tidy data1.4 Resumo para dados organizados2 Elaboração de gráficos3 Compontentes básicos dos gráficos3." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/r-projetos/2a-lista/" />
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.9a66e344a68eb664b392d406a3f80726.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/index.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu079f5f191f910f3be9bbdec4dba5765d_88394_32x32_fill_lanczos_center_2.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu079f5f191f910f3be9bbdec4dba5765d_88394_180x180_fill_lanczos_center_2.png" />
+
+  <link rel="canonical" href="/r-projetos/2a-lista/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="Rafael de Acypreste" />
+  <meta property="og:url" content="/r-projetos/2a-lista/" />
+  <meta property="og:title" content="Manipulação de dados, gráficos e segunda lista de exercícios | Rafael de Acypreste" />
+  <meta property="og:description" content="Introdução1 Manipulação e exportação de dados1.1 Apresentação típica1.2 Transposta da apresentação típica1.3 Tidy data1.4 Resumo para dados organizados2 Elaboração de gráficos3 Compontentes básicos dos gráficos3." /><meta property="og:image" content="/media/icon_hu079f5f191f910f3be9bbdec4dba5765d_88394_512x512_fill_lanczos_center_2.png" />
+    <meta property="twitter:image" content="/media/icon_hu079f5f191f910f3be9bbdec4dba5765d_88394_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2021-09-03T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2021-09-03T19:12:32-03:00">
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Manipulação de dados, gráficos e segunda lista de exercícios | Rafael de Acypreste</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="9aa3ba092fd2401a95f9674466c6143e" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.226a9011996d125bf3fe4a5f22353a49.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Rafael de Acypreste</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Rafael de Acypreste</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>R Projetos</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#talks"><span>Vídeos</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publicações</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contato</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+          
+          <li class="nav-item d-none d-lg-inline-flex">
+            <a class="nav-link" href="https://twitter.com/rafaelramr" data-toggle="tooltip" data-placement="bottom" title="Follow me on Twitter" target="_blank" rel="noopener" aria-label="Follow me on Twitter">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
+            </a>
+          </li>
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Manipulação de dados, gráficos e segunda lista de exercícios</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Sep 3, 2021
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+<script src="/r-projetos/2a-lista/index.en_files/header-attrs/header-attrs.js"></script>
+<script src="/r-projetos/2a-lista/index.en_files/kePrint/kePrint.js"></script>
+<link href="/r-projetos/2a-lista/index.en_files/lightable/lightable.css" rel="stylesheet" />
+
+<div id="TOC">
+<ul>
+<li><a href="#introdução">Introdução</a></li>
+<li><a href="#manipulação-e-exportação-de-dados"><span class="toc-section-number">1</span> Manipulação e exportação de dados</a>
+<ul>
+<li><a href="#apresentação-típica"><span class="toc-section-number">1.1</span> Apresentação típica</a></li>
+<li><a href="#transposta-da-apresentação-típica"><span class="toc-section-number">1.2</span> Transposta da apresentação típica</a></li>
+<li><a href="#tidy-data"><span class="toc-section-number">1.3</span> Tidy data</a></li>
+<li><a href="#resumo-para-dados-organizados"><span class="toc-section-number">1.4</span> Resumo para dados organizados</a></li>
+</ul></li>
+<li><a href="#elaboração-de-gráficos"><span class="toc-section-number">2</span> Elaboração de gráficos</a></li>
+<li><a href="#compontentes-básicos-dos-gráficos"><span class="toc-section-number">3</span> Compontentes básicos dos gráficos</a>
+<ul>
+<li><a href="#mapeamentos-estéticos-variáveis"><span class="toc-section-number">3.1</span> Mapeamentos estéticos (variáveis)</a></li>
+<li><a href="#geometrias-geoms"><span class="toc-section-number">3.2</span> Geometrias (geoms)</a></li>
+<li><a href="#eixos-e-escalas"><span class="toc-section-number">3.3</span> Eixos e escalas</a></li>
+<li><a href="#temas"><span class="toc-section-number">3.4</span> Temas</a></li>
+<li><a href="#séries-de-tempo-e-casos-mais-avançados"><span class="toc-section-number">3.5</span> Séries de tempo e casos mais avançados</a></li>
+</ul></li>
+<li><a href="#exercícios-parte-ii"><span class="toc-section-number">4</span> Exercícios parte II</a>
+<ul>
+<li><a href="#manipulação-de-dados"><span class="toc-section-number">4.1</span> Manipulação de dados</a></li>
+<li><a href="#exportação-de-dados"><span class="toc-section-number">4.2</span> Exportação de dados</a></li>
+<li><a href="#elaboração-de-gráficos-1"><span class="toc-section-number">4.3</span> Elaboração de gráficos</a></li>
+</ul></li>
+<li><a href="#referências">Referências</a></li>
+</ul>
+</div>
+
+<div id="introdução" class="section level1 unnumbered">
+<h1>Introdução</h1>
+<p>Esta nota tem por objetivo exercitar o ferramental básico para manipular tabelas e elaborar gráficos para uma análise exploratória dos dados. São duas ações que devem caminhar juntas, especialmente porque dados efetivamente organizadas tornam a elaboração de gráficos um procedimento mais direto e simples.</p>
+<p>Vale lembrar que tabelas devem ser sucintas e gráficos devem contar uma história da maneira mais simples possível. Portanto, a preocupação não deve ser com uma completude, certamente inalcançável.</p>
+<p>Suas tabelas, gráficos e textos terão atingido a melhor versão quando não há mais nada que lhes possa ser retirado.</p>
+<!-- Conteúdo para a segunda lista -->
+</div>
+<div id="manipulação-e-exportação-de-dados" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Manipulação e exportação de dados</h1>
+<p>Nem sempre os dados importados ao <code>R</code> vêm no formato ideal. Enquanto os pacotes <code>sidrar</code> e <code>wid</code> fornecem tabelas no formato convencionalmente denominado de <em>tidy data</em><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> <span class="citation">(<a href="#ref-WickhamRStudio2014" role="doc-biblioref">Wickham 2014</a>)</span>, outras fontes de dados ou tabelas baixadas manualmente costumam não apresentar a devida consistência.</p>
+<p>Em síntese, cada <strong>valor</strong> (cada célula numa tabela do <em>Excel</em>, por exemplo) pertence a uma <span style="color: red;"> variável </span> e a uma <span style="color: blue;"> observação</span>.</p>
+<p><span style="color: red;"> Variável</span> contém valores que se referem a uma mesma característica ou atributo — em dados sobre mercado de trabalho, pode-se citar como exemplos região, data, taxa de desocupação. Nesse caso, cada variável deve ser representada por uma única coluna.</p>
+<p>Cada <span style="color: blue;"> observação</span> (linha) contém todos os valores medidos sobre uma mesma unidade, configurando um único item entre os atributos (ou colunas) — um exemplo poderia ser a taxa de desocupação no Centro-Oeste no 1<sup>o</sup> trimestre de 2020.</p>
+<p>Os erros mais comuns são aqueles em que uma variável está espalhada em várias colunas. Ajustar esses dados passa a ser o primeiro passo para a análise exploratória.</p>
+<div id="apresentação-típica" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Apresentação típica</h2>
+<p>Uma forma de apresentação típica de dados econômicos, mas que não estão no formato ideal é representada por</p>
+<table style="NAborder-bottom: 0; margin-left: auto; margin-right: auto;" class="table">
+<thead>
+<tr>
+<th style="text-align:left;">
+Grande Região
+</th>
+<th style="text-align:right;">
+1º trimestre 2016
+</th>
+<th style="text-align:right;">
+1º trimestre 2020
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Nordeste
+</td>
+<td style="text-align:right;">
+12.8
+</td>
+<td style="text-align:right;">
+15.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sul
+</td>
+<td style="text-align:right;">
+7.3
+</td>
+<td style="text-align:right;">
+7.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Centro-Oeste
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+10.6
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<span style="font-style: italic;">Note: </span> <sup></sup> Taxa de Desocupação (PNADC/T - IBGE)
+</td>
+</tr>
+</tfoot>
+</table>
+<p>em que se pode notar que há três variáveis (região, período e taxa de desocupação), mas que não estão divididos em colunas separadas.</p>
+<p>No exemplo, o período deve constituir uma variável e, portanto, uma coluna. Entretanto, os dados para o período são utilizados erroneamente como nomes de colunas.</p>
+</div>
+<div id="transposta-da-apresentação-típica" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Transposta da apresentação típica</h2>
+<p>Não é incomum utilizar-se a versão transposta da tabela apresentada acima.</p>
+<table style="NAborder-bottom: 0; margin-left: auto; margin-right: auto;" class="table">
+<thead>
+<tr>
+<th style="text-align:left;">
+Trimestre
+</th>
+<th style="text-align:right;">
+Nordeste
+</th>
+<th style="text-align:right;">
+Sul
+</th>
+<th style="text-align:right;">
+Centro-Oeste
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1º trimestre 2016
+</td>
+<td style="text-align:right;">
+12.8
+</td>
+<td style="text-align:right;">
+7.3
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1º trimestre 2020
+</td>
+<td style="text-align:right;">
+15.6
+</td>
+<td style="text-align:right;">
+7.5
+</td>
+<td style="text-align:right;">
+10.6
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<span style="font-style: italic;">Note: </span> <sup></sup> Taxa de Desocupação (PNADC/T - IBGE)
+</td>
+</tr>
+</tfoot>
+</table>
+<p>Nesse caso, as regiões estão erroneamente utilizadas como nomes das colunas.</p>
+</div>
+<div id="tidy-data" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Tidy data</h2>
+<p>O formato mais adequado para organização dos dados e elaboração de gráficos também é conhecido como formato <span style="color: green;"> longer</span>, em que se pode usar a função <code>pivot_longer</code> do pacote <code>tidyverse</code>. Para os dados apresentados acima, a organização é dada por</p>
+<table style="NAborder-bottom: 0; margin-left: auto; margin-right: auto;" class="table">
+<thead>
+<tr>
+<th style="text-align:left;">
+Trimestre
+</th>
+<th style="text-align:left;">
+Grande Região
+</th>
+<th style="text-align:right;">
+Desocupação (%)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1º trimestre 2016
+</td>
+<td style="text-align:left;">
+Nordeste
+</td>
+<td style="text-align:right;">
+12.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1º trimestre 2016
+</td>
+<td style="text-align:left;">
+Sul
+</td>
+<td style="text-align:right;">
+7.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1º trimestre 2016
+</td>
+<td style="text-align:left;">
+Centro-Oeste
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1º trimestre 2020
+</td>
+<td style="text-align:left;">
+Nordeste
+</td>
+<td style="text-align:right;">
+15.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1º trimestre 2020
+</td>
+<td style="text-align:left;">
+Sul
+</td>
+<td style="text-align:right;">
+7.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1º trimestre 2020
+</td>
+<td style="text-align:left;">
+Centro-Oeste
+</td>
+<td style="text-align:right;">
+10.6
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<span style="font-style: italic;">Note: </span> <sup></sup> Taxa de Desocupação (PNADC/T - IBGE)
+</td>
+</tr>
+</tfoot>
+</table>
+<p>Mesmo que pareça estranho, há duas boas razões para organizar os dados assim:</p>
+<ol style="list-style-type: decimal">
+<li><p>Pode-se descrever relações funcionais entre <span style="color: red;"> variáveis</span>.</p>
+<ul>
+<li>Ex.: evolução da taxa de desocupação no tempo.</li>
+<li>Melhor fazer entre colunas.</li>
+</ul></li>
+<li><p>Pode-se fazer comparações entre grupos de <span style="color: blue;"> observações</span>:</p>
+<ul>
+<li>Ex.: como está o desemprego entre regiões?</li>
+<li>Melhor fazer entre linhas.</li>
+</ul></li>
+</ol>
+</div>
+<div id="resumo-para-dados-organizados" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Resumo para dados organizados</h2>
+<p>Para dados organizados, vale a seguinte regra de bolso:</p>
+<ol style="list-style-type: decimal">
+<li><p>Cada <strong>variável</strong> forma uma coluna;</p></li>
+<li><p>Cada <strong>observação</strong> forma uma linha; e</p></li>
+<li><p>Cada unidade observacional forma uma <strong>tabela</strong>.</p></li>
+</ol>
+<p>Se quiser mais detalhes sobre o tema, é interessante consultar <span class="citation"><a href="#ref-WickhamRStudio2014" role="doc-biblioref">Wickham</a> (<a href="#ref-WickhamRStudio2014" role="doc-biblioref">2014</a>)</span>. Com os dados organizados, pode-se elaborar tabelas e gráficos de maneira correta e mais intuitiva.</p>
+</div>
+</div>
+<div id="elaboração-de-gráficos" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Elaboração de gráficos</h1>
+<p>Apresentar informações estatísticas por meio de gráficos pode ser uma ferramenta importante para melhorar o entendimento de informações complexas. Para isso, deve-se elaborar um gráfico eficiente.</p>
+<p>Um gráfico é mais eficiente que o outro se sua informação pode ser decodificada pela maioria dos leitores de forma mais rápida ou mais fácil de acordo com <span class="citation"><a href="#ref-Robbins2004" role="doc-biblioref">Robbins</a> (<a href="#ref-Robbins2004" role="doc-biblioref">2004</a>)</span>.</p>
+<p>Portanto, cuidados são necessários para que os gráficos não sejam ineficientes, confusos ou transmitam informações erradas. De maneira sintética, os gráficos podem seguir as seguintes diretrizes:</p>
+<ol style="list-style-type: decimal">
+<li>Chamar a atenção para o que é importante nos seus dados (as pessoas procuram os destaques e diferenças em primeiro lugar);</li>
+<li>Simplificar e reduzir as informações periféricas; e</li>
+<li>Identificar as hierarquias dos dados e refleti-las nos gráficos.</li>
+</ol>
+<p>Todos esses passos devem ser disponibilizados ao público leitor demandando o mínimo de esforço para decodificação. Por isso, é também importante usar a linguagem mais simples possível.</p>
+<p>Portanto, de maneira geral, busca-se remover informações redundantes, como cores, textos, elementos decorativos e etc. que não dizem respeito diretamente às suas informações. Em resumo, <strong>use o mínimo de tinta</strong>.</p>
+<p>Feitas essas considerações inciais, seguem algumas rotinas realizadas para a apresentação de dados estatísticos econômicos com o pacote <a href="https://ggplot2.tidyverse.org/"><code>ggplot2</code></a>.</p>
+<p>Esse pacote permite apresentar dados seguindo uma “gramática de gráficos” , que “<em>makes ggplot2 very powerful because you are not limited to a set of pre-specified graphics, but you can create new graphics that are precisely tailored for your problem</em>” <span class="citation">(<a href="#ref-Wickham2015" role="doc-biblioref">Wickham 2015</a>)</span>.</p>
+<p>Em síntese, <span class="citation"><a href="#ref-Wickham2015" role="doc-biblioref">Wickham</a> (<a href="#ref-Wickham2015" role="doc-biblioref">2015</a>)</span> explica essa gramática de gráficos como uma representação estatística que mapeia informações em atributos estéticos (cores, formatos, tamanhos) de objetos geométricos (pontos, linhas, barras) em um sistema específico de coordenadas.</p>
+<p>Diferentes facetas podem ser usadas para representar, numa única imagem, diferentes subconjuntos de uma tabela. E é a combinação desses elementos que forma um gráfico.</p>
+<p>Do ponto de vista mais concreto, em primeiro lugar, é necessário instalar (uma única vez) e carregar os pacotes abaixo para realizar as rotinas no <code>R</code><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
+<pre class="r"><code># install.packages(&quot;tidyverse&quot;)    Instala o pacote tidyverse, por exemplo
+
+
+library(tidyverse)      # Organização das tabelas e elaboração de gráficos
+library(RColorBrewer)   # Paletas de cores para os gráficos
+library(viridis)        # Paletas de cores para os gráficos
+library(ggthemes)       # Interfaces gráficas adicionais
+library(scales)         # Ajuste de escala dos gráficos
+library(lubridate)      # Ferramenta para ajuste de datas
+library(zoo)            # Ferramenta também para ajuste de datas
+
+
+library(sidrar)         # Acessar dados do IBGE
+
+
+options(scipen = 999)</code></pre>
+<p>Por fim, lembre-se de que um bom processo de elaboração de gráficos exige que sua matéria prima esteja no formato ideal, com as tabelas devidamente organizadas.</p>
+</div>
+<div id="compontentes-básicos-dos-gráficos" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Compontentes básicos dos gráficos</h1>
+<p>Todos os gráficos feitos com o <code>ggplot2</code> têm seis componentes básicos:</p>
+<ol style="list-style-type: decimal">
+<li>Informações (tabela);</li>
+<li>Mapeamentos estéticos (variáveis e outras propriedades visuais);</li>
+<li>Camadas (formato que as informações serão apresentadas, transformações estatísticas e ajustes de posicionamentos);</li>
+<li>Escalas para cada mapeamento estético (guias para ler os valores, normalmente explicados nas legendas);</li>
+<li>Sistema de coordenadas; e</li>
+<li>Especificação de facetas ou subconjuntos.</li>
+</ol>
+<p>Os três primeiros elementos são normalmente suficientes para análises exploratórias dos dados, em que o objetivo é conhecer melhor os dados que foram coletados. Tratam-se de gráficos usados apenas pelo(a) pesquisador(a) e, em geral, são insuficientes para apresentação dos resultados.</p>
+<p>Para fins desta nota, serão utilizados em quase todos os gráficos as informações relativas à taxa de desocupação da força de trabalho (Tabela 6397), ao rendimento médio real (Tabela 5437) e à média de horas habitualmente trabalhadas por semana (Tabela 6372) por grupos de idade entre o 1<sup>o</sup> trimestre de 2016 e o 1<sup>o</sup> trimestre de 2020. Todas as informações foram coletadas na Pesquisa Nacional por Amostra de Domicílios Contínua Trimestral (PNADC/T), realizada pelo <a href="https://sidra.ibge.gov.br/pesquisa/pnadct/tabelas">IBGE</a>.</p>
+<p>Os dados são baixados por meio do pacote <code>sidrar</code>. Nesse caso, as tabelas são baixadas individualmente e, ao final, juntadas pelas categorias em comum. As informações para identificar os elementos das tabelas que queremos podem ser acessadas pela função <code>info_sidra()</code>.</p>
+<pre class="r"><code>## Tabela 6397 - Taxas de desocupação e de subutilização da força de trabalho,
+## na semana de referência, das pessoas de 14 anos ou mais de idade,
+## por grupos de idade
+
+# info_sidra(6397,wb = T)
+desocupacao &lt;- get_sidra(
+  6397,
+  period   = &quot;201601-202001&quot;,  # Seleciona trimestres
+  geo      = &quot;Region&quot;,         # 5 Regiões Brasileiras
+  variable = c(4099),
+  format   = 2
+)
+
+tabela1 &lt;- desocupacao %&gt;%
+  rename(&quot;Desocupacao&quot; = Valor) %&gt;%   # Renomeia a variável de interesse
+  select(`Grande Região`, Trimestre, `Grupo de idade`, Desocupacao)
+
+head(tabela1, n = 3) # Mostra as três primeiras linhas</code></pre>
+<pre><code>##   Grande Região         Trimestre Grupo de idade Desocupacao
+## 2         Norte 1º trimestre 2016          Total        10.5
+## 3         Norte 1º trimestre 2016   14 a 17 anos        24.4
+## 4         Norte 1º trimestre 2016   18 a 24 anos        23.2</code></pre>
+<pre class="r"><code>## Tabela 5437 - Rendimento médio real, habitualmente recebido por mês e
+## efetivamente recebido no mês de referência, do trabalho principal e
+## de todos os trabalhos, por grupos de idade 
+
+# info_sidra(5437,wb = T)
+rendimento &lt;- get_sidra(
+  5437,
+  period   = &quot;201601-202001&quot;,
+  geo      = &quot;Region&quot;,
+  variable = c(5932),
+  format   = 2
+)
+
+tabela2 &lt;- rendimento %&gt;%
+  rename(&quot;Rendimento&quot; = Valor) %&gt;%
+  select(`Grande Região`, Trimestre, `Grupo de idade`, Rendimento)
+
+head(tabela2, n = 3)</code></pre>
+<pre><code>##   Grande Região         Trimestre Grupo de idade Rendimento
+## 2         Norte 1º trimestre 2016          Total       1799
+## 3         Norte 1º trimestre 2016   14 a 17 anos        534
+## 4         Norte 1º trimestre 2016   18 a 24 anos       1127</code></pre>
+<pre class="r"><code>## Tabela 6372 - Média de horas habitualmente trabalhadas por semana e
+## efetivamente trabalhadas na semana de referência, no trabalho principal
+## e em todos os trabalhos, das pessoas de 14 anos ou mais de idade,
+## por grupos de idade
+
+#info_sidra(6372,wb = T)
+horas &lt;- get_sidra(
+  6372,
+  period   = &quot;201601-202001&quot;,
+  geo      = c(&quot;Region&quot;),
+  variable = c(8186),
+  format   = 2
+)
+
+tabela3 &lt;- horas %&gt;%
+  rename(&quot;Horas&quot; = Valor) %&gt;%
+  select(`Grande Região`, Trimestre, `Grupo de idade`, Horas)
+
+head(tabela3, n = 3)</code></pre>
+<pre><code>##   Grande Região         Trimestre Grupo de idade Horas
+## 2         Norte 1º trimestre 2016          Total  37.6
+## 3         Norte 1º trimestre 2016   14 a 17 anos  25.9
+## 4         Norte 1º trimestre 2016   18 a 24 anos  37.0</code></pre>
+<pre class="r"><code>## Tabela com todos os dados agrupados por `Grande Região`,
+## `Trimestre` e `Grupo de Idade`
+
+emprego &lt;- tabela1 %&gt;%
+  left_join(tabela2) %&gt;%
+  left_join(tabela3)
+
+head(emprego, n = 2)</code></pre>
+<pre><code>##   Grande Região         Trimestre Grupo de idade Desocupacao Rendimento Horas
+## 1         Norte 1º trimestre 2016          Total        10.5       1799  37.6
+## 2         Norte 1º trimestre 2016   14 a 17 anos        24.4        534  25.9</code></pre>
+<p>Portanto, a tabela chamada ``emprego’’ será a principal base para os gráficos.</p>
+<p>Um gráfico simples e muito comum é o de <em>disperção</em>, que é útil para relações entre duas variáveis quantitativas, como a relação entre horas trabalhadas e rendimento:</p>
+<pre class="r"><code>  # Gráfico de pontos
+ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point()</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-6"></span>
+<img src="/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-6-1.png" alt="Elaboração própria." width="672" />
+<p class="caption">
+Figure 3.1: Elaboração própria.
+</p>
+</div>
+<p>Note que o sinal de <code>+</code> é usado para adicionar camadas ao gráfico como padrão do pacote. Uma elaboração mais completa dos gráficos envolve, normalmente, os seis componentes básicos e serão detalhados abaixo.</p>
+<div id="mapeamentos-estéticos-variáveis" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Mapeamentos estéticos (variáveis)</h2>
+<p>Pode-se adicionar variáveis ao gráfico com a atribuição de cores (<em>colour</em>) e formato (<em>shape</em>) para variáveis categóricas e tamanho (<em>size</em>) para variáveis contínuas, que serão acompanhados de legenda.</p>
+<p>Estes elementos também podem ser utilizados de maneira cumulativa, contribuindo para uma visualização mais rápida.</p>
+<p>Note-se que é interessante maximizar a densidade de dados no gráfico. Se você tem poucos dados, utilize pontos, formatos ou linhas maiores. Vá reduzindo as geometrias à medida que seu conjunto de dados aumente, como o exemplo abaixo.</p>
+<p>Vale notar que as estéticas passadas para o termo <code>ggplot()</code> valem para todas as camadas. As informações passadas como estéticas dos <code>geoms</code> valem apenas para a geometria específica.</p>
+<pre class="r"><code>ggplot(emprego,
+       aes(x     = Horas,
+           y     = Rendimento,
+           shape = `Grupo de idade`)) + # Diferencia elementos pelo formato
+  geom_point(size = 2.3)                # Amplia a representação dos pontos </code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-7"></span>
+<img src="/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-7-1.png" alt="Elaboração própria." width="672" />
+<p class="caption">
+Figure 3.2: Elaboração própria.
+</p>
+</div>
+<p>Se a intenção é dar uma cor fixa para um determinado valor, usa-se o argumento fora do padrão <code>aes()</code> e na geometria de interesse.</p>
+<pre class="r"><code>ggplot(emprego,
+       aes(x     = Horas,
+           y     = Rendimento,
+           shape = `Grupo de idade`)) +
+  geom_point(color = &quot;red&quot;,            # Adiciona uma cor a todas as informações
+             size  = 2.3)</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-8"></span>
+<img src="/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-8-1.png" alt="Elaboração própria." width="672" />
+<p class="caption">
+Figure 3.3: Elaboração própria.
+</p>
+</div>
+<p>Por outro lado, se seus dados começarem a representar muitas observações distintas, deve-se espalhar as informações em distintos gráficos comparáveis.</p>
+<p>Nesse caso, pode-se adicionar variáveis categóricas por meio de facetas, que dividem o gráfico em subconjuntos. A forma mais simples é de modo <em>wrapped</em>, com o nome da variável precedido de um <code>~</code>:</p>
+<pre class="r"><code>ggplot(emprego,
+       aes(x     = Horas,
+           y     = Rendimento,
+           color = `Grupo de idade`)) + # Diferencia elementos pelas cores
+  geom_point(shape = 1,                 # Formato fixo de círculo
+             size  = 3)+  
+  facet_wrap(~`Grande Região`)</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-9"></span>
+<img src="/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-9-1.png" alt="Elaboração própria." width="672" />
+<p class="caption">
+Figure 3.4: Elaboração própria.
+</p>
+</div>
+</div>
+<div id="geometrias-geoms" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Geometrias (geoms)</h2>
+<p>O pacote também fornece algumas geometrias diferentes que podem ser adaptadas às características dos dados a serem apresentados. Elas representam o “tipo” de gráfico que se quer apresentar. Note que é possível usar mais de uma geometria.</p>
+<p>Cada tipo de dado tem sua geometria mais adequada e a página <a href="https://www.data-to-viz.com/"><em>from data to vis</em></a> apresenta um organograma didático sobre as melhores geometrias para sua necessidade.</p>
+<p>Um primeiro exemplo sobre o uso múltiplo de geometrias consiste em adicionar uma linha de regressão linear com o respectivo intervalo de confiança para os dados:</p>
+<pre class="r"><code>ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(size  = 2.5,
+             alpha = 0.4)+      # Alpha indica transparência dos pontos
+  geom_smooth(method = &quot;lm&quot;)    # Adicion linha de regressão       </code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-10"></span>
+<img src="/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-10-1.png" alt="Elaboração própria." width="672" />
+<p class="caption">
+Figure 3.5: Elaboração própria.
+</p>
+</div>
+<p>Histogramas e polígonos de frequência podem ser interessantes para mostrar a distribuição de uma única variável numérica. O temanho dos intervalos pode ser estabelecido com o argumento <code>binwidth</code>:</p>
+<pre class="r"><code>ggplot(emprego,
+       aes(x = Rendimento)) +
+  geom_histogram(fill = &quot;blue&quot;,
+                 binwidth = 200)  # Tamanho do intervalo
+
+ggplot(emprego,
+       aes(x = Rendimento)) +
+  geom_freqpoly(color = &quot;red&quot;,
+                size  = 2)</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-11"></span>
+<img src="/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-11-1.png" alt="Elaboração própria." width="50%" /><img src="/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-11-2.png" alt="Elaboração própria." width="50%" />
+<p class="caption">
+Figure 3.6: Elaboração própria.
+</p>
+</div>
+<p>Variáveis categóricas são automaticamente dispostas em ordem alfabética, mas podem ser reorganizadas conforme alguma variável quantitativa de referência com a função <code>reorder()</code>. Abaixo, um exemplo dessa alteração num <em>boxplot</em>.</p>
+<pre class="r"><code>ggplot(emprego,
+       aes(x = reorder(`Grupo de idade`,
+                       Desocupacao),     # Critério para reordenar
+           y =  Desocupacao)) +
+  geom_boxplot()</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-12"></span>
+<img src="/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-12-1.png" alt="Elaboração própria." width="576" />
+<p class="caption">
+Figure 3.7: Elaboração própria.
+</p>
+</div>
+</div>
+<div id="eixos-e-escalas" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Eixos e escalas</h2>
+<p>Os eixos podem ser customizados com alterações dos nomes (<em>labels</em>) e de seus tamanhos<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> de modo a ficaram mais intuitivos e explicativos ao leitor.</p>
+<p>Para alterar nomes das regiões, pode-se usar a função <code>labs()</code>.</p>
+<pre class="r"><code>ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(size = 2)+
+  labs(x = &quot;Horas de Trabalho&quot;,
+       y = &quot;Renda habitual&quot;)</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-13"></span>
+<img src="/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-13-1.png" alt="Elaboração própria." width="672" />
+<p class="caption">
+Figure 3.8: Elaboração própria.
+</p>
+</div>
+<p>A área de exibição dos eixos pode ser ajustada pelas funções <code>xlim()</code> e <code>ylim()</code>.</p>
+<pre class="r"><code>ggplot(emprego,
+       aes(x      = `Grande Região`,
+           y      = Rendimento,
+           colour = `Grupo de idade`)) +
+  geom_jitter(width = 0.3) +   # Acrescenta variações para reduzir sobreposições
+  labs(
+    x      = NULL,
+    y      = NULL,
+    title  = &quot;Renda por Região (R$)&quot;,
+    colour = &quot;Idade&quot;           # Título da legenda
+  ) +
+  ylim(c(700, 3100))           # Limite ao eixo y</code></pre>
+<pre><code>## Warning: Removed 106 rows containing missing values (geom_point).</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-14"></span>
+<img src="/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-14-1.png" alt="Elaboração própria." width="672" />
+<p class="caption">
+Figure 3.9: Elaboração própria.
+</p>
+</div>
+<p>As escalas também podem ser alteradas para padrões distintos de cores. Lembre-se de que a escolha de cores deve sempre ser feita de maneira intencional.</p>
+<p>Pode-se usar as cores para distinguir variáveis <em>categóricas</em>, cujos valores não podem ser manipulados algebricamente.</p>
+<p>Nesse caso, deve-se utilizar uma escala de cores qualitativa, em que não existe relação de ordem ou destaque de uma cor em relação às demais. Um exemplo está em <a href="https://colorbrewer2.org/#type=qualitative&amp;scheme=Accent&amp;n=3"><em>Color Brewer</em></a>. Há algumas escalas também disponíveis no ggplot2 como a apresentada na figura <a href="#fig:paleta">3.10</a>.</p>
+<p>Também é possível usar cores para <em>destacar</em>, em que alguns poucos elementos realçados podem contribuir para a história que se quer representar. Isso pode ser feito com escalas de destaque está no livro de <a href="https://clauswilke.com/dataviz/color-basics.html#color-as-a-tool-to-highlight">Claus O. Wilke</a>.</p>
+<pre class="r"><code>ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(aes(colour = `Grupo de idade`)) +
+  scale_y_log10() +                              # Escala do eixo y na base log_10
+  scale_colour_brewer(palette = &quot;Set1&quot;)          # Paleta de cores</code></pre>
+<div class="figure"><span id="fig:paleta"></span>
+<img src="/r-projetos/2a-lista/index.en_files/figure-html/paleta-1.png" alt="Elaboração própria." width="576" />
+<p class="caption">
+Figure 3.10: Elaboração própria.
+</p>
+</div>
+<p>Pode-se também fazer uma mudança de coordenadas para melhorar a visualização ou adaptar nomes mais longos de variáveis:</p>
+<pre class="r"><code>  # Horas de trabalho no eixo horizontal
+ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(size = 2) +
+  labs(x = &quot;Horas de Trabalho&quot;,
+       y = &quot;Renda habitual&quot;)
+
+  # Horas de trabalho no eixo vertical
+ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(size = 2) +
+  labs(x = &quot;Horas de Trabalho&quot;,
+       y = &quot;Renda habitual&quot;) +
+  coord_flip()                  # Altera os eixos</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-15"></span>
+<img src="/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-15-1.png" alt="Elaboração própria." width="50%" /><img src="/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-15-2.png" alt="Elaboração própria." width="50%" />
+<p class="caption">
+Figure 3.11: Elaboração própria.
+</p>
+</div>
+<p>Por fim, o pacote também permite a visualização de mapas. A parte mais sensível é encontrar as coordenadas. Aqui, a apresentação será restrita a um mapa disponibilizado pelo pacote <strong>maps</strong>:</p>
+<pre class="r"><code>  # Download das coordenadas para formar o mapa do Brasil
+brasil &lt;- map_data(&quot;world&quot;, &quot;brazil&quot;) %&gt;%
+  select(lon = long, lat, group, id = subregion)
+
+
+ggplot(brasil,
+       aes(lon, lat)) +
+  geom_polygon(aes(group = group),
+               fill   = NA,        # Mapa sem preenchimento
+               colour = &quot;black&quot;) + # Cor das bordas
+  coord_quickmap()</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-16"></span>
+<img src="/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-16-1.png" alt="Elaboração própria." width="672" />
+<p class="caption">
+Figure 3.12: Elaboração própria.
+</p>
+</div>
+</div>
+<div id="temas" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Temas</h2>
+<p>Temas alteram as propriedades estéticas dos gráficos sem que sejam alteradas as formas como as informações são apresentadas em geometrias ou como os eixos são escalonados. Há alguns temas já prontos, tanto do pacote <code>ggplot2</code>, quanto de extensões como o <a href="https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/"><code>ggthemes</code></a>.</p>
+<pre class="r"><code>ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(size  = 2,
+             alpha = 0.4)+
+  geom_smooth(method = &quot;lm&quot;)+
+  theme_stata()              # Escolhe um tema pré-organizado
+
+ggplot(emprego,
+       aes(x = Rendimento)) +
+  geom_freqpoly(color = &quot;red&quot;)+
+  theme_excel()              # Escolhe um tema pré-organizado</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-17"></span>
+<img src="/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-17-1.png" alt="Elaboração própria." width="50%" /><img src="/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-17-2.png" alt="Elaboração própria." width="50%" />
+<p class="caption">
+Figure 3.13: Elaboração própria.
+</p>
+</div>
+</div>
+<div id="séries-de-tempo-e-casos-mais-avançados" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Séries de tempo e casos mais avançados</h2>
+<p>Para séries de tempo, é interessante o uso de gráficos de linha, que ligam os pontos da esquerda para a direita, ou gráfico de trajeto, que liga os pontos conforme a ordem que aparecem na tabela.</p>
+<p>A forma como o SIDRA disponibiliza as tabelas oferece datas em formato de caracteres, o que prejudica a representação contínua em um dos eixos. Para isso, precisa-se transformar a informação para formato de data. Como os dados são trimestrais, faremos a transformação usando os pacotes <code>tidyverse</code> e <a href="https://cran.r-project.org/web/packages/zoo/vignettes/zoo-quickref.pdf"><code>zoo</code></a>.</p>
+<pre class="r"><code>  # Ajuste para o formato de datas
+emprego_data &lt;- emprego %&gt;%
+  mutate(
+    Trimestre = str_replace(Trimestre, &quot;º trimestre &quot;, &quot;-&quot;), # Ajuste da escrita
+    Trimestre = as.yearqtr(Trimestre, format = &quot;%q-%Y&quot;)      # Conversão para o formato de data trimestral
+  )
+
+head(emprego_data, n = 3)</code></pre>
+<pre><code>##   Grande Região Trimestre Grupo de idade Desocupacao Rendimento Horas
+## 1         Norte   2016 Q1          Total        10.5       1799  37.6
+## 2         Norte   2016 Q1   14 a 17 anos        24.4        534  25.9
+## 3         Norte   2016 Q1   18 a 24 anos        23.2       1127  37.0</code></pre>
+<p>Por fim, desejam-se apenas os dados de desocupados agregados para o Brasil em ordem cronológica como exemplo. Isso pode ser feito por:</p>
+<pre class="r"><code>emprego_data %&gt;% 
+  filter(`Grupo de idade` == &quot;Total&quot;) %&gt;%     # Seleciona Total 
+  ggplot(aes(x     = Trimestre,
+             y     = Desocupacao,
+             color = `Grande Região`)) +
+  geom_line(size = 1.25)</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-19"></span>
+<img src="/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-19-1.png" alt="Elaboração própria." width="576" />
+<p class="caption">
+Figure 3.14: Elaboração própria.
+</p>
+</div>
+</div>
+</div>
+<div id="exercícios-parte-ii" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Exercícios parte II</h1>
+<p>Com base no explicado acima e nas referências <span class="citation"><a href="#ref-Vale2021" role="doc-biblioref">Vale</a> (<a href="#ref-Vale2021" role="doc-biblioref">2021</a>, seções 12, 14 e 15)</span> e <span class="citation"><a href="#ref-SauloGuerra2021" role="doc-biblioref">Saulo Guerra et al.</a> (<a href="#ref-SauloGuerra2021" role="doc-biblioref">2021</a>, seções 4-6)</span>, resolva os seguintes exercícios usando as funções do pacote <code>tidyverse</code>.</p>
+<div id="manipulação-de-dados" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Manipulação de dados</h2>
+<p>Utilize a tabela baixada do IBGE na <a href="https://rafaeldeacypreste.netlify.app/r-projetos/1a-lista/">lista anterior</a> para as manipulações a seguir.</p>
+<ol style="list-style-type: decimal">
+<li><p>Impute a tabela baixada para outro objeto, excluindo as colunas menos importantes na análise, tais como a de “Unidade de Medida,” “Nível Territorial,” “Variável” e etc.</p></li>
+<li><p>Renomeie a coluna de valores para um que seja mais intuitivo a respeito dos dados escolhidos. Não use expressões ou caracteres especiais.</p></li>
+<li><p>Faça ao menos uma operação com a coluna dos dados baixados para alterar a unidade de medida e manter intuição econômica ao mesmo tempo.</p></li>
+<li><p>Por meio das funções <code>group_by</code> e <code>summarise</code>, faça alguns cálculos com a variável numérica baixada agrupando por, pelo menos, outra coluna da tabela. Pode ser o cálculo da média, valores mínimos e máximos, desvio padrão e etc. Não é necessário atribuir a um novo objeto.</p></li>
+<li><p>Filtre os dados relacionados apenas aos últimos dois períodos — ano, trimestre e etc. — disponíveis. Também não é necessário imputar a um novo objeto.</p></li>
+<li><p><strong>Desafio 1</strong>: Use a função <code>pivot_wider</code> para distribuir as informações da variável numérica em colunas de acordo com os distintos períodos de tempo filtrados na questão anterior.</p></li>
+<li><p><strong>Desafio 2</strong>: A partir da tabela no formato <em>wider</em>, retorne-a ao formato <em>longer</em>, utilizando a função <code>pivot_longer</code>.</p></li>
+<li><p>Baixe outra tabela do IBGE com dados que apresentem atributos compatíveis com a tabela baixada na questão <code>3</code> da lista anterior. Depois disso, use a função <code>left_join</code> para juntar as duas tabelas. Certifique-se de que todas as colunas compatíveis foram lidas e devidamente acopladas.</p></li>
+</ol>
+<p>9.<em>Desafio 3</em>: A partir das funções <code>str_replace</code> e <code>as.yearqtr</code> (pacote <code>zoo</code>), transforme a coluna de data no formato de <code>Date</code> ou equivalente.</p>
+</div>
+<div id="exportação-de-dados" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Exportação de dados</h2>
+<ol style="list-style-type: decimal">
+<li><p>Exporte todos as tabelas geradas nos exercícios anteriores para o formato <code>.csv</code>.</p></li>
+<li><p>Exporte todos as tabelas geradas nos exercícios anteriores para o formato <code>.xlsx</code>.</p></li>
+</ol>
+</div>
+<div id="elaboração-de-gráficos-1" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Elaboração de gráficos</h2>
+<ol style="list-style-type: decimal">
+<li><p>Elabore um gráfico de pontos com os dados da tabela elaborada na questão <code>8</code> acima.</p></li>
+<li><p>Altere o formato dos pontos gráfico elaborado na questão acima para representar uma terceira variável.</p></li>
+<li><p>Utilize as facetas para separar as informações por uma quarta variável. Se o formato (<em>shape</em>) não se adaptar a uma variável contínua, mude o argumento de <em>shape</em> para <em>colour</em>.</p></li>
+<li><p>Dê nome aos eixos e à legenda, título e informações extras (<em>caption</em>) ao gráfico da questão anterior.</p></li>
+</ol>
+<p><span style="color: green;"> Parabéns por ter chegado até aqui! </span> Espero que esses contatos inciais te motivem a continuar usando essa ferramenta potente para análise concreta da realidade concreta.</p>
+</div>
+</div>
+<div id="referências" class="section level1 unnumbered">
+<h1>Referências</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Robbins2004" class="csl-entry">
+Robbins, Naomi B. 2004. <em><span>Creating More Effective Graphs</span></em>. New Jersey - USA: Wiley-Interscience. <a href="http://library1.nida.ac.th/termpaper6/sd/2554/19755.pdf">http://library1.nida.ac.th/termpaper6/sd/2554/19755.pdf</a>.
+</div>
+<div id="ref-SauloGuerra2021" class="csl-entry">
+Saulo Guerra, Paulo Felipe de Oliveira, Robert McDonnell, and Sillas Gonzaga. 2021. <em><span class="nocase">Ci<span class="nocase">ê</span>ncia de Dados com R - Introdu<span class="nocase">ç</span><span class="nocase">ã</span>o</span></em>. Instituto Brasileiro de Pesquisa e An<span>á</span>lise de Dados. <a href="http://sillasgonzaga.com/material/cdr/">http://sillasgonzaga.com/material/cdr/</a>.
+</div>
+<div id="ref-Vale2021" class="csl-entry">
+Vale, Vinícius A. 2021. <span>“<span class="nocase">Introdu<span class="nocase">ç</span><span class="nocase">ã</span>o ao R</span>.”</span> <a href="https://viniciusavale.com/IntroR/Intro-R.html">https://viniciusavale.com/IntroR/Intro-R.html</a>.
+</div>
+<div id="ref-WickhamRStudio2014" class="csl-entry">
+Wickham, Hadley. 2014. <span>“<span>Tidy Data</span>.”</span> <em>Journal of Statistical Software</em> 59 (10): 1–23. <a href="http://www.jstatsoft.org/">http://www.jstatsoft.org/</a>.
+</div>
+<div id="ref-Wickham2015" class="csl-entry">
+———. 2015. <em><span class="nocase">Elegant Graphics for Data Analysis</span></em>. <a href="http://had.co.nz/ggplot2/book">http://had.co.nz/ggplot2/book</a>.
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Em tradução livre, “informação organizada.”<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Ainda que nem todos sejam utilizados nesta nota, sugere-se a consulta de informações adicionais dos pacotes para conhecer melhor suas respectivas funcionalidades.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>A opção apresentada exclui as informações fora do intervalo. Para apenas aplicar um <em>zoom</em> sem que dados sejam eliminados, deve-se usar a opção <code>coord_cartesian()</code>.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/intro-eco-pol/">Intro Eco Pol</a>
+  
+  <a class="badge badge-light" href="/tag/r/">R</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/r-projetos/2a-lista/&amp;text=Manipula%c3%a7%c3%a3o%20de%20dados,%20gr%c3%a1ficos%20e%20segunda%20lista%20de%20exerc%c3%adcios" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/r-projetos/2a-lista/&amp;t=Manipula%c3%a7%c3%a3o%20de%20dados,%20gr%c3%a1ficos%20e%20segunda%20lista%20de%20exerc%c3%adcios" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Manipula%c3%a7%c3%a3o%20de%20dados,%20gr%c3%a1ficos%20e%20segunda%20lista%20de%20exerc%c3%adcios&amp;body=/r-projetos/2a-lista/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/r-projetos/2a-lista/&amp;title=Manipula%c3%a7%c3%a3o%20de%20dados,%20gr%c3%a1ficos%20e%20segunda%20lista%20de%20exerc%c3%adcios" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Manipula%c3%a7%c3%a3o%20de%20dados,%20gr%c3%a1ficos%20e%20segunda%20lista%20de%20exerc%c3%adcios%20/r-projetos/2a-lista/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="avatar mr-3 avatar-circle" src="/author/rafael-de-acypreste/avatar_hu72f0bb965e93f661611c8dbd9818b740_13077_270x270_fill_q75_lanczos_center.jpg" alt="Rafael de Acypreste">
+    
+
+    <div class="media-body">
+      <h5 class="card-title">Rafael de Acypreste</h5>
+      <h6 class="card-subtitle">Bolsista CAPES de doutorado em Economia</h6>
+      <p class="card-text">Meus interesses de pesquisa se concentram nas relações entre automação e emprego.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/rafaelramr" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.co.uk/citations?view_op=list_works&amp;hl=en&amp;user=UUySSCIAAAAJ" target="_blank" rel="noopener">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/rafaeldeacypreste" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/rafael-de-acypreste-b73b9b2b/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://rpubs.com/rafaeldeacypreste" target="_blank" rel="noopener">
+        <i class="fab fa-r-project"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/python.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    <script src="/js/bootstrap.bundle.min.6aed84840afc03ab4d5750157f69c120.js"></script>
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.b61a8f62b6e5c0cd322c8158c5b5dfb6.js"></script>
+
+    
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+
+</body>
+</html>

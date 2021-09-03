@@ -5,12 +5,20 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 03 Sep 2021 19:10:21 -0300</lastBuildDate>
     <image>
       <url>/media/icon_hu079f5f191f910f3be9bbdec4dba5765d_88394_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>2021 09 03 Manipulação De Tabelas Elaboração De Gráficos E 2a Lista De Exercícios</title>
+      <link>/post/2021-09-03-manipulacao-de-tabelas-elaboracao-de-graficos-e-2a-lista-de-exercicios/</link>
+      <pubDate>Fri, 03 Sep 2021 19:10:21 -0300</pubDate>
+      <guid>/post/2021-09-03-manipulacao-de-tabelas-elaboracao-de-graficos-e-2a-lista-de-exercicios/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

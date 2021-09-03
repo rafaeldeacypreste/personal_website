@@ -5,12 +5,753 @@
     <link>/r-projetos/</link>
       <atom:link href="/r-projetos/index.xml" rel="self" type="application/rss+xml" />
     <description>R-projetos</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 04 Jul 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 03 Sep 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/media/icon_hu079f5f191f910f3be9bbdec4dba5765d_88394_512x512_fill_lanczos_center_2.png</url>
       <title>R-projetos</title>
       <link>/r-projetos/</link>
     </image>
+    
+    <item>
+      <title>Manipulação de dados, gráficos e segunda lista de exercícios</title>
+      <link>/r-projetos/2a-lista/</link>
+      <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>/r-projetos/2a-lista/</guid>
+      <description>
+&lt;script src=&#34;/r-projetos/2a-lista/index.en_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/r-projetos/2a-lista/index.en_files/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/r-projetos/2a-lista/index.en_files/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introdução&#34;&gt;Introdução&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#manipulação-e-exportação-de-dados&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1&lt;/span&gt; Manipulação e exportação de dados&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#apresentação-típica&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.1&lt;/span&gt; Apresentação típica&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#transposta-da-apresentação-típica&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.2&lt;/span&gt; Transposta da apresentação típica&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#tidy-data&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.3&lt;/span&gt; Tidy data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#resumo-para-dados-organizados&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;1.4&lt;/span&gt; Resumo para dados organizados&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#elaboração-de-gráficos&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;2&lt;/span&gt; Elaboração de gráficos&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#compontentes-básicos-dos-gráficos&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3&lt;/span&gt; Compontentes básicos dos gráficos&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#mapeamentos-estéticos-variáveis&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.1&lt;/span&gt; Mapeamentos estéticos (variáveis)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#geometrias-geoms&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.2&lt;/span&gt; Geometrias (geoms)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#eixos-e-escalas&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.3&lt;/span&gt; Eixos e escalas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#temas&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.4&lt;/span&gt; Temas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#séries-de-tempo-e-casos-mais-avançados&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;3.5&lt;/span&gt; Séries de tempo e casos mais avançados&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exercícios-parte-ii&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4&lt;/span&gt; Exercícios parte II&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#manipulação-de-dados&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.1&lt;/span&gt; Manipulação de dados&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exportação-de-dados&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.2&lt;/span&gt; Exportação de dados&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#elaboração-de-gráficos-1&#34;&gt;&lt;span class=&#34;toc-section-number&#34;&gt;4.3&lt;/span&gt; Elaboração de gráficos&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#referências&#34;&gt;Referências&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;introdução&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Introdução&lt;/h1&gt;
+&lt;p&gt;Esta nota tem por objetivo exercitar o ferramental básico para manipular tabelas e elaborar gráficos para uma análise exploratória dos dados. São duas ações que devem caminhar juntas, especialmente porque dados efetivamente organizadas tornam a elaboração de gráficos um procedimento mais direto e simples.&lt;/p&gt;
+&lt;p&gt;Vale lembrar que tabelas devem ser sucintas e gráficos devem contar uma história da maneira mais simples possível. Portanto, a preocupação não deve ser com uma completude, certamente inalcançável.&lt;/p&gt;
+&lt;p&gt;Suas tabelas, gráficos e textos terão atingido a melhor versão quando não há mais nada que lhes possa ser retirado.&lt;/p&gt;
+&lt;!-- Conteúdo para a segunda lista --&gt;
+&lt;/div&gt;
+&lt;div id=&#34;manipulação-e-exportação-de-dados&#34; class=&#34;section level1&#34; number=&#34;1&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;1&lt;/span&gt; Manipulação e exportação de dados&lt;/h1&gt;
+&lt;p&gt;Nem sempre os dados importados ao &lt;code&gt;R&lt;/code&gt; vêm no formato ideal. Enquanto os pacotes &lt;code&gt;sidrar&lt;/code&gt; e &lt;code&gt;wid&lt;/code&gt; fornecem tabelas no formato convencionalmente denominado de &lt;em&gt;tidy data&lt;/em&gt;&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; &lt;span class=&#34;citation&#34;&gt;(&lt;a href=&#34;#ref-WickhamRStudio2014&#34; role=&#34;doc-biblioref&#34;&gt;Wickham 2014&lt;/a&gt;)&lt;/span&gt;, outras fontes de dados ou tabelas baixadas manualmente costumam não apresentar a devida consistência.&lt;/p&gt;
+&lt;p&gt;Em síntese, cada &lt;strong&gt;valor&lt;/strong&gt; (cada célula numa tabela do &lt;em&gt;Excel&lt;/em&gt;, por exemplo) pertence a uma &lt;span style=&#34;color: red;&#34;&gt; variável &lt;/span&gt; e a uma &lt;span style=&#34;color: blue;&#34;&gt; observação&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt; Variável&lt;/span&gt; contém valores que se referem a uma mesma característica ou atributo — em dados sobre mercado de trabalho, pode-se citar como exemplos região, data, taxa de desocupação. Nesse caso, cada variável deve ser representada por uma única coluna.&lt;/p&gt;
+&lt;p&gt;Cada &lt;span style=&#34;color: blue;&#34;&gt; observação&lt;/span&gt; (linha) contém todos os valores medidos sobre uma mesma unidade, configurando um único item entre os atributos (ou colunas) — um exemplo poderia ser a taxa de desocupação no Centro-Oeste no 1&lt;sup&gt;o&lt;/sup&gt; trimestre de 2020.&lt;/p&gt;
+&lt;p&gt;Os erros mais comuns são aqueles em que uma variável está espalhada em várias colunas. Ajustar esses dados passa a ser o primeiro passo para a análise exploratória.&lt;/p&gt;
+&lt;div id=&#34;apresentação-típica&#34; class=&#34;section level2&#34; number=&#34;1.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.1&lt;/span&gt; Apresentação típica&lt;/h2&gt;
+&lt;p&gt;Uma forma de apresentação típica de dados econômicos, mas que não estão no formato ideal é representada por&lt;/p&gt;
+&lt;table style=&#34;NAborder-bottom: 0; margin-left: auto; margin-right: auto;&#34; class=&#34;table&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Grande Região
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+1º trimestre 2016
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+1º trimestre 2020
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Nordeste
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+12.8
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+15.6
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Sul
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.5
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Centro-Oeste
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9.7
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.6
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;
+&lt;td style=&#34;padding: 0; &#34; colspan=&#34;100%&#34;&gt;
+&lt;span style=&#34;font-style: italic;&#34;&gt;Note: &lt;/span&gt; &lt;sup&gt;&lt;/sup&gt; Taxa de Desocupação (PNADC/T - IBGE)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;p&gt;em que se pode notar que há três variáveis (região, período e taxa de desocupação), mas que não estão divididos em colunas separadas.&lt;/p&gt;
+&lt;p&gt;No exemplo, o período deve constituir uma variável e, portanto, uma coluna. Entretanto, os dados para o período são utilizados erroneamente como nomes de colunas.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;transposta-da-apresentação-típica&#34; class=&#34;section level2&#34; number=&#34;1.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.2&lt;/span&gt; Transposta da apresentação típica&lt;/h2&gt;
+&lt;p&gt;Não é incomum utilizar-se a versão transposta da tabela apresentada acima.&lt;/p&gt;
+&lt;table style=&#34;NAborder-bottom: 0; margin-left: auto; margin-right: auto;&#34; class=&#34;table&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Trimestre
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Nordeste
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Sul
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Centro-Oeste
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1º trimestre 2016
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+12.8
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9.7
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1º trimestre 2020
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+15.6
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.6
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;
+&lt;td style=&#34;padding: 0; &#34; colspan=&#34;100%&#34;&gt;
+&lt;span style=&#34;font-style: italic;&#34;&gt;Note: &lt;/span&gt; &lt;sup&gt;&lt;/sup&gt; Taxa de Desocupação (PNADC/T - IBGE)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;p&gt;Nesse caso, as regiões estão erroneamente utilizadas como nomes das colunas.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tidy-data&#34; class=&#34;section level2&#34; number=&#34;1.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.3&lt;/span&gt; Tidy data&lt;/h2&gt;
+&lt;p&gt;O formato mais adequado para organização dos dados e elaboração de gráficos também é conhecido como formato &lt;span style=&#34;color: green;&#34;&gt; longer&lt;/span&gt;, em que se pode usar a função &lt;code&gt;pivot_longer&lt;/code&gt; do pacote &lt;code&gt;tidyverse&lt;/code&gt;. Para os dados apresentados acima, a organização é dada por&lt;/p&gt;
+&lt;table style=&#34;NAborder-bottom: 0; margin-left: auto; margin-right: auto;&#34; class=&#34;table&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Trimestre
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Grande Região
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Desocupação (%)
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1º trimestre 2016
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Nordeste
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+12.8
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1º trimestre 2016
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Sul
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.3
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1º trimestre 2016
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Centro-Oeste
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9.7
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1º trimestre 2020
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Nordeste
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+15.6
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1º trimestre 2020
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Sul
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.5
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1º trimestre 2020
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Centro-Oeste
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.6
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;
+&lt;td style=&#34;padding: 0; &#34; colspan=&#34;100%&#34;&gt;
+&lt;span style=&#34;font-style: italic;&#34;&gt;Note: &lt;/span&gt; &lt;sup&gt;&lt;/sup&gt; Taxa de Desocupação (PNADC/T - IBGE)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;p&gt;Mesmo que pareça estranho, há duas boas razões para organizar os dados assim:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Pode-se descrever relações funcionais entre &lt;span style=&#34;color: red;&#34;&gt; variáveis&lt;/span&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ex.: evolução da taxa de desocupação no tempo.&lt;/li&gt;
+&lt;li&gt;Melhor fazer entre colunas.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Pode-se fazer comparações entre grupos de &lt;span style=&#34;color: blue;&#34;&gt; observações&lt;/span&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ex.: como está o desemprego entre regiões?&lt;/li&gt;
+&lt;li&gt;Melhor fazer entre linhas.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;resumo-para-dados-organizados&#34; class=&#34;section level2&#34; number=&#34;1.4&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;1.4&lt;/span&gt; Resumo para dados organizados&lt;/h2&gt;
+&lt;p&gt;Para dados organizados, vale a seguinte regra de bolso:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Cada &lt;strong&gt;variável&lt;/strong&gt; forma uma coluna;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cada &lt;strong&gt;observação&lt;/strong&gt; forma uma linha; e&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cada unidade observacional forma uma &lt;strong&gt;tabela&lt;/strong&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Se quiser mais detalhes sobre o tema, é interessante consultar &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-WickhamRStudio2014&#34; role=&#34;doc-biblioref&#34;&gt;Wickham&lt;/a&gt; (&lt;a href=&#34;#ref-WickhamRStudio2014&#34; role=&#34;doc-biblioref&#34;&gt;2014&lt;/a&gt;)&lt;/span&gt;. Com os dados organizados, pode-se elaborar tabelas e gráficos de maneira correta e mais intuitiva.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;elaboração-de-gráficos&#34; class=&#34;section level1&#34; number=&#34;2&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;2&lt;/span&gt; Elaboração de gráficos&lt;/h1&gt;
+&lt;p&gt;Apresentar informações estatísticas por meio de gráficos pode ser uma ferramenta importante para melhorar o entendimento de informações complexas. Para isso, deve-se elaborar um gráfico eficiente.&lt;/p&gt;
+&lt;p&gt;Um gráfico é mais eficiente que o outro se sua informação pode ser decodificada pela maioria dos leitores de forma mais rápida ou mais fácil de acordo com &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Robbins2004&#34; role=&#34;doc-biblioref&#34;&gt;Robbins&lt;/a&gt; (&lt;a href=&#34;#ref-Robbins2004&#34; role=&#34;doc-biblioref&#34;&gt;2004&lt;/a&gt;)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Portanto, cuidados são necessários para que os gráficos não sejam ineficientes, confusos ou transmitam informações erradas. De maneira sintética, os gráficos podem seguir as seguintes diretrizes:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Chamar a atenção para o que é importante nos seus dados (as pessoas procuram os destaques e diferenças em primeiro lugar);&lt;/li&gt;
+&lt;li&gt;Simplificar e reduzir as informações periféricas; e&lt;/li&gt;
+&lt;li&gt;Identificar as hierarquias dos dados e refleti-las nos gráficos.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Todos esses passos devem ser disponibilizados ao público leitor demandando o mínimo de esforço para decodificação. Por isso, é também importante usar a linguagem mais simples possível.&lt;/p&gt;
+&lt;p&gt;Portanto, de maneira geral, busca-se remover informações redundantes, como cores, textos, elementos decorativos e etc. que não dizem respeito diretamente às suas informações. Em resumo, &lt;strong&gt;use o mínimo de tinta&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Feitas essas considerações inciais, seguem algumas rotinas realizadas para a apresentação de dados estatísticos econômicos com o pacote &lt;a href=&#34;https://ggplot2.tidyverse.org/&#34;&gt;&lt;code&gt;ggplot2&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Esse pacote permite apresentar dados seguindo uma “gramática de gráficos” , que “&lt;em&gt;makes ggplot2 very powerful because you are not limited to a set of pre-specified graphics, but you can create new graphics that are precisely tailored for your problem&lt;/em&gt;” &lt;span class=&#34;citation&#34;&gt;(&lt;a href=&#34;#ref-Wickham2015&#34; role=&#34;doc-biblioref&#34;&gt;Wickham 2015&lt;/a&gt;)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Em síntese, &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Wickham2015&#34; role=&#34;doc-biblioref&#34;&gt;Wickham&lt;/a&gt; (&lt;a href=&#34;#ref-Wickham2015&#34; role=&#34;doc-biblioref&#34;&gt;2015&lt;/a&gt;)&lt;/span&gt; explica essa gramática de gráficos como uma representação estatística que mapeia informações em atributos estéticos (cores, formatos, tamanhos) de objetos geométricos (pontos, linhas, barras) em um sistema específico de coordenadas.&lt;/p&gt;
+&lt;p&gt;Diferentes facetas podem ser usadas para representar, numa única imagem, diferentes subconjuntos de uma tabela. E é a combinação desses elementos que forma um gráfico.&lt;/p&gt;
+&lt;p&gt;Do ponto de vista mais concreto, em primeiro lugar, é necessário instalar (uma única vez) e carregar os pacotes abaixo para realizar as rotinas no &lt;code&gt;R&lt;/code&gt;&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# install.packages(&amp;quot;tidyverse&amp;quot;)    Instala o pacote tidyverse, por exemplo
+
+
+library(tidyverse)      # Organização das tabelas e elaboração de gráficos
+library(RColorBrewer)   # Paletas de cores para os gráficos
+library(viridis)        # Paletas de cores para os gráficos
+library(ggthemes)       # Interfaces gráficas adicionais
+library(scales)         # Ajuste de escala dos gráficos
+library(lubridate)      # Ferramenta para ajuste de datas
+library(zoo)            # Ferramenta também para ajuste de datas
+
+
+library(sidrar)         # Acessar dados do IBGE
+
+
+options(scipen = 999)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Por fim, lembre-se de que um bom processo de elaboração de gráficos exige que sua matéria prima esteja no formato ideal, com as tabelas devidamente organizadas.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;compontentes-básicos-dos-gráficos&#34; class=&#34;section level1&#34; number=&#34;3&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;3&lt;/span&gt; Compontentes básicos dos gráficos&lt;/h1&gt;
+&lt;p&gt;Todos os gráficos feitos com o &lt;code&gt;ggplot2&lt;/code&gt; têm seis componentes básicos:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Informações (tabela);&lt;/li&gt;
+&lt;li&gt;Mapeamentos estéticos (variáveis e outras propriedades visuais);&lt;/li&gt;
+&lt;li&gt;Camadas (formato que as informações serão apresentadas, transformações estatísticas e ajustes de posicionamentos);&lt;/li&gt;
+&lt;li&gt;Escalas para cada mapeamento estético (guias para ler os valores, normalmente explicados nas legendas);&lt;/li&gt;
+&lt;li&gt;Sistema de coordenadas; e&lt;/li&gt;
+&lt;li&gt;Especificação de facetas ou subconjuntos.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Os três primeiros elementos são normalmente suficientes para análises exploratórias dos dados, em que o objetivo é conhecer melhor os dados que foram coletados. Tratam-se de gráficos usados apenas pelo(a) pesquisador(a) e, em geral, são insuficientes para apresentação dos resultados.&lt;/p&gt;
+&lt;p&gt;Para fins desta nota, serão utilizados em quase todos os gráficos as informações relativas à taxa de desocupação da força de trabalho (Tabela 6397), ao rendimento médio real (Tabela 5437) e à média de horas habitualmente trabalhadas por semana (Tabela 6372) por grupos de idade entre o 1&lt;sup&gt;o&lt;/sup&gt; trimestre de 2016 e o 1&lt;sup&gt;o&lt;/sup&gt; trimestre de 2020. Todas as informações foram coletadas na Pesquisa Nacional por Amostra de Domicílios Contínua Trimestral (PNADC/T), realizada pelo &lt;a href=&#34;https://sidra.ibge.gov.br/pesquisa/pnadct/tabelas&#34;&gt;IBGE&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Os dados são baixados por meio do pacote &lt;code&gt;sidrar&lt;/code&gt;. Nesse caso, as tabelas são baixadas individualmente e, ao final, juntadas pelas categorias em comum. As informações para identificar os elementos das tabelas que queremos podem ser acessadas pela função &lt;code&gt;info_sidra()&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Tabela 6397 - Taxas de desocupação e de subutilização da força de trabalho,
+## na semana de referência, das pessoas de 14 anos ou mais de idade,
+## por grupos de idade
+
+# info_sidra(6397,wb = T)
+desocupacao &amp;lt;- get_sidra(
+  6397,
+  period   = &amp;quot;201601-202001&amp;quot;,  # Seleciona trimestres
+  geo      = &amp;quot;Region&amp;quot;,         # 5 Regiões Brasileiras
+  variable = c(4099),
+  format   = 2
+)
+
+tabela1 &amp;lt;- desocupacao %&amp;gt;%
+  rename(&amp;quot;Desocupacao&amp;quot; = Valor) %&amp;gt;%   # Renomeia a variável de interesse
+  select(`Grande Região`, Trimestre, `Grupo de idade`, Desocupacao)
+
+head(tabela1, n = 3) # Mostra as três primeiras linhas&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Grande Região         Trimestre Grupo de idade Desocupacao
+## 2         Norte 1º trimestre 2016          Total        10.5
+## 3         Norte 1º trimestre 2016   14 a 17 anos        24.4
+## 4         Norte 1º trimestre 2016   18 a 24 anos        23.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Tabela 5437 - Rendimento médio real, habitualmente recebido por mês e
+## efetivamente recebido no mês de referência, do trabalho principal e
+## de todos os trabalhos, por grupos de idade 
+
+# info_sidra(5437,wb = T)
+rendimento &amp;lt;- get_sidra(
+  5437,
+  period   = &amp;quot;201601-202001&amp;quot;,
+  geo      = &amp;quot;Region&amp;quot;,
+  variable = c(5932),
+  format   = 2
+)
+
+tabela2 &amp;lt;- rendimento %&amp;gt;%
+  rename(&amp;quot;Rendimento&amp;quot; = Valor) %&amp;gt;%
+  select(`Grande Região`, Trimestre, `Grupo de idade`, Rendimento)
+
+head(tabela2, n = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Grande Região         Trimestre Grupo de idade Rendimento
+## 2         Norte 1º trimestre 2016          Total       1799
+## 3         Norte 1º trimestre 2016   14 a 17 anos        534
+## 4         Norte 1º trimestre 2016   18 a 24 anos       1127&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Tabela 6372 - Média de horas habitualmente trabalhadas por semana e
+## efetivamente trabalhadas na semana de referência, no trabalho principal
+## e em todos os trabalhos, das pessoas de 14 anos ou mais de idade,
+## por grupos de idade
+
+#info_sidra(6372,wb = T)
+horas &amp;lt;- get_sidra(
+  6372,
+  period   = &amp;quot;201601-202001&amp;quot;,
+  geo      = c(&amp;quot;Region&amp;quot;),
+  variable = c(8186),
+  format   = 2
+)
+
+tabela3 &amp;lt;- horas %&amp;gt;%
+  rename(&amp;quot;Horas&amp;quot; = Valor) %&amp;gt;%
+  select(`Grande Região`, Trimestre, `Grupo de idade`, Horas)
+
+head(tabela3, n = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Grande Região         Trimestre Grupo de idade Horas
+## 2         Norte 1º trimestre 2016          Total  37.6
+## 3         Norte 1º trimestre 2016   14 a 17 anos  25.9
+## 4         Norte 1º trimestre 2016   18 a 24 anos  37.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Tabela com todos os dados agrupados por `Grande Região`,
+## `Trimestre` e `Grupo de Idade`
+
+emprego &amp;lt;- tabela1 %&amp;gt;%
+  left_join(tabela2) %&amp;gt;%
+  left_join(tabela3)
+
+head(emprego, n = 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Grande Região         Trimestre Grupo de idade Desocupacao Rendimento Horas
+## 1         Norte 1º trimestre 2016          Total        10.5       1799  37.6
+## 2         Norte 1º trimestre 2016   14 a 17 anos        24.4        534  25.9&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Portanto, a tabela chamada ``emprego’’ será a principal base para os gráficos.&lt;/p&gt;
+&lt;p&gt;Um gráfico simples e muito comum é o de &lt;em&gt;disperção&lt;/em&gt;, que é útil para relações entre duas variáveis quantitativas, como a relação entre horas trabalhadas e rendimento:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  # Gráfico de pontos
+ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point()&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-6&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-6-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3.1: Elaboração própria.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Note que o sinal de &lt;code&gt;+&lt;/code&gt; é usado para adicionar camadas ao gráfico como padrão do pacote. Uma elaboração mais completa dos gráficos envolve, normalmente, os seis componentes básicos e serão detalhados abaixo.&lt;/p&gt;
+&lt;div id=&#34;mapeamentos-estéticos-variáveis&#34; class=&#34;section level2&#34; number=&#34;3.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.1&lt;/span&gt; Mapeamentos estéticos (variáveis)&lt;/h2&gt;
+&lt;p&gt;Pode-se adicionar variáveis ao gráfico com a atribuição de cores (&lt;em&gt;colour&lt;/em&gt;) e formato (&lt;em&gt;shape&lt;/em&gt;) para variáveis categóricas e tamanho (&lt;em&gt;size&lt;/em&gt;) para variáveis contínuas, que serão acompanhados de legenda.&lt;/p&gt;
+&lt;p&gt;Estes elementos também podem ser utilizados de maneira cumulativa, contribuindo para uma visualização mais rápida.&lt;/p&gt;
+&lt;p&gt;Note-se que é interessante maximizar a densidade de dados no gráfico. Se você tem poucos dados, utilize pontos, formatos ou linhas maiores. Vá reduzindo as geometrias à medida que seu conjunto de dados aumente, como o exemplo abaixo.&lt;/p&gt;
+&lt;p&gt;Vale notar que as estéticas passadas para o termo &lt;code&gt;ggplot()&lt;/code&gt; valem para todas as camadas. As informações passadas como estéticas dos &lt;code&gt;geoms&lt;/code&gt; valem apenas para a geometria específica.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(emprego,
+       aes(x     = Horas,
+           y     = Rendimento,
+           shape = `Grupo de idade`)) + # Diferencia elementos pelo formato
+  geom_point(size = 2.3)                # Amplia a representação dos pontos &lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-7&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-7-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3.2: Elaboração própria.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Se a intenção é dar uma cor fixa para um determinado valor, usa-se o argumento fora do padrão &lt;code&gt;aes()&lt;/code&gt; e na geometria de interesse.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(emprego,
+       aes(x     = Horas,
+           y     = Rendimento,
+           shape = `Grupo de idade`)) +
+  geom_point(color = &amp;quot;red&amp;quot;,            # Adiciona uma cor a todas as informações
+             size  = 2.3)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-8&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-8-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3.3: Elaboração própria.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Por outro lado, se seus dados começarem a representar muitas observações distintas, deve-se espalhar as informações em distintos gráficos comparáveis.&lt;/p&gt;
+&lt;p&gt;Nesse caso, pode-se adicionar variáveis categóricas por meio de facetas, que dividem o gráfico em subconjuntos. A forma mais simples é de modo &lt;em&gt;wrapped&lt;/em&gt;, com o nome da variável precedido de um &lt;code&gt;~&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(emprego,
+       aes(x     = Horas,
+           y     = Rendimento,
+           color = `Grupo de idade`)) + # Diferencia elementos pelas cores
+  geom_point(shape = 1,                 # Formato fixo de círculo
+             size  = 3)+  
+  facet_wrap(~`Grande Região`)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-9&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-9-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3.4: Elaboração própria.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;geometrias-geoms&#34; class=&#34;section level2&#34; number=&#34;3.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.2&lt;/span&gt; Geometrias (geoms)&lt;/h2&gt;
+&lt;p&gt;O pacote também fornece algumas geometrias diferentes que podem ser adaptadas às características dos dados a serem apresentados. Elas representam o “tipo” de gráfico que se quer apresentar. Note que é possível usar mais de uma geometria.&lt;/p&gt;
+&lt;p&gt;Cada tipo de dado tem sua geometria mais adequada e a página &lt;a href=&#34;https://www.data-to-viz.com/&#34;&gt;&lt;em&gt;from data to vis&lt;/em&gt;&lt;/a&gt; apresenta um organograma didático sobre as melhores geometrias para sua necessidade.&lt;/p&gt;
+&lt;p&gt;Um primeiro exemplo sobre o uso múltiplo de geometrias consiste em adicionar uma linha de regressão linear com o respectivo intervalo de confiança para os dados:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(size  = 2.5,
+             alpha = 0.4)+      # Alpha indica transparência dos pontos
+  geom_smooth(method = &amp;quot;lm&amp;quot;)    # Adicion linha de regressão       &lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-10&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-10-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3.5: Elaboração própria.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Histogramas e polígonos de frequência podem ser interessantes para mostrar a distribuição de uma única variável numérica. O temanho dos intervalos pode ser estabelecido com o argumento &lt;code&gt;binwidth&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(emprego,
+       aes(x = Rendimento)) +
+  geom_histogram(fill = &amp;quot;blue&amp;quot;,
+                 binwidth = 200)  # Tamanho do intervalo
+
+ggplot(emprego,
+       aes(x = Rendimento)) +
+  geom_freqpoly(color = &amp;quot;red&amp;quot;,
+                size  = 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-11&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-11-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;50%&#34; /&gt;&lt;img src=&#34;/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-11-2.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;50%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3.6: Elaboração própria.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Variáveis categóricas são automaticamente dispostas em ordem alfabética, mas podem ser reorganizadas conforme alguma variável quantitativa de referência com a função &lt;code&gt;reorder()&lt;/code&gt;. Abaixo, um exemplo dessa alteração num &lt;em&gt;boxplot&lt;/em&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(emprego,
+       aes(x = reorder(`Grupo de idade`,
+                       Desocupacao),     # Critério para reordenar
+           y =  Desocupacao)) +
+  geom_boxplot()&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-12&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-12-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;576&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3.7: Elaboração própria.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;eixos-e-escalas&#34; class=&#34;section level2&#34; number=&#34;3.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.3&lt;/span&gt; Eixos e escalas&lt;/h2&gt;
+&lt;p&gt;Os eixos podem ser customizados com alterações dos nomes (&lt;em&gt;labels&lt;/em&gt;) e de seus tamanhos&lt;a href=&#34;#fn3&#34; class=&#34;footnote-ref&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt; de modo a ficaram mais intuitivos e explicativos ao leitor.&lt;/p&gt;
+&lt;p&gt;Para alterar nomes das regiões, pode-se usar a função &lt;code&gt;labs()&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(size = 2)+
+  labs(x = &amp;quot;Horas de Trabalho&amp;quot;,
+       y = &amp;quot;Renda habitual&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-13&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-13-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3.8: Elaboração própria.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;A área de exibição dos eixos pode ser ajustada pelas funções &lt;code&gt;xlim()&lt;/code&gt; e &lt;code&gt;ylim()&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(emprego,
+       aes(x      = `Grande Região`,
+           y      = Rendimento,
+           colour = `Grupo de idade`)) +
+  geom_jitter(width = 0.3) +   # Acrescenta variações para reduzir sobreposições
+  labs(
+    x      = NULL,
+    y      = NULL,
+    title  = &amp;quot;Renda por Região (R$)&amp;quot;,
+    colour = &amp;quot;Idade&amp;quot;           # Título da legenda
+  ) +
+  ylim(c(700, 3100))           # Limite ao eixo y&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 106 rows containing missing values (geom_point).&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-14&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-14-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3.9: Elaboração própria.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;As escalas também podem ser alteradas para padrões distintos de cores. Lembre-se de que a escolha de cores deve sempre ser feita de maneira intencional.&lt;/p&gt;
+&lt;p&gt;Pode-se usar as cores para distinguir variáveis &lt;em&gt;categóricas&lt;/em&gt;, cujos valores não podem ser manipulados algebricamente.&lt;/p&gt;
+&lt;p&gt;Nesse caso, deve-se utilizar uma escala de cores qualitativa, em que não existe relação de ordem ou destaque de uma cor em relação às demais. Um exemplo está em &lt;a href=&#34;https://colorbrewer2.org/#type=qualitative&amp;amp;scheme=Accent&amp;amp;n=3&#34;&gt;&lt;em&gt;Color Brewer&lt;/em&gt;&lt;/a&gt;. Há algumas escalas também disponíveis no ggplot2 como a apresentada na figura &lt;a href=&#34;#fig:paleta&#34;&gt;3.10&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Também é possível usar cores para &lt;em&gt;destacar&lt;/em&gt;, em que alguns poucos elementos realçados podem contribuir para a história que se quer representar. Isso pode ser feito com escalas de destaque está no livro de &lt;a href=&#34;https://clauswilke.com/dataviz/color-basics.html#color-as-a-tool-to-highlight&#34;&gt;Claus O. Wilke&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(aes(colour = `Grupo de idade`)) +
+  scale_y_log10() +                              # Escala do eixo y na base log_10
+  scale_colour_brewer(palette = &amp;quot;Set1&amp;quot;)          # Paleta de cores&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:paleta&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/r-projetos/2a-lista/index.en_files/figure-html/paleta-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;576&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3.10: Elaboração própria.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Pode-se também fazer uma mudança de coordenadas para melhorar a visualização ou adaptar nomes mais longos de variáveis:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  # Horas de trabalho no eixo horizontal
+ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(size = 2) +
+  labs(x = &amp;quot;Horas de Trabalho&amp;quot;,
+       y = &amp;quot;Renda habitual&amp;quot;)
+
+  # Horas de trabalho no eixo vertical
+ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(size = 2) +
+  labs(x = &amp;quot;Horas de Trabalho&amp;quot;,
+       y = &amp;quot;Renda habitual&amp;quot;) +
+  coord_flip()                  # Altera os eixos&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-15&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-15-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;50%&#34; /&gt;&lt;img src=&#34;/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-15-2.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;50%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3.11: Elaboração própria.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Por fim, o pacote também permite a visualização de mapas. A parte mais sensível é encontrar as coordenadas. Aqui, a apresentação será restrita a um mapa disponibilizado pelo pacote &lt;strong&gt;maps&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  # Download das coordenadas para formar o mapa do Brasil
+brasil &amp;lt;- map_data(&amp;quot;world&amp;quot;, &amp;quot;brazil&amp;quot;) %&amp;gt;%
+  select(lon = long, lat, group, id = subregion)
+
+
+ggplot(brasil,
+       aes(lon, lat)) +
+  geom_polygon(aes(group = group),
+               fill   = NA,        # Mapa sem preenchimento
+               colour = &amp;quot;black&amp;quot;) + # Cor das bordas
+  coord_quickmap()&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-16&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-16-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3.12: Elaboração própria.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;temas&#34; class=&#34;section level2&#34; number=&#34;3.4&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.4&lt;/span&gt; Temas&lt;/h2&gt;
+&lt;p&gt;Temas alteram as propriedades estéticas dos gráficos sem que sejam alteradas as formas como as informações são apresentadas em geometrias ou como os eixos são escalonados. Há alguns temas já prontos, tanto do pacote &lt;code&gt;ggplot2&lt;/code&gt;, quanto de extensões como o &lt;a href=&#34;https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/&#34;&gt;&lt;code&gt;ggthemes&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(emprego,
+       aes(x = Horas,
+           y = Rendimento)) +
+  geom_point(size  = 2,
+             alpha = 0.4)+
+  geom_smooth(method = &amp;quot;lm&amp;quot;)+
+  theme_stata()              # Escolhe um tema pré-organizado
+
+ggplot(emprego,
+       aes(x = Rendimento)) +
+  geom_freqpoly(color = &amp;quot;red&amp;quot;)+
+  theme_excel()              # Escolhe um tema pré-organizado&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-17&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-17-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;50%&#34; /&gt;&lt;img src=&#34;/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-17-2.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;50%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3.13: Elaboração própria.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;séries-de-tempo-e-casos-mais-avançados&#34; class=&#34;section level2&#34; number=&#34;3.5&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;3.5&lt;/span&gt; Séries de tempo e casos mais avançados&lt;/h2&gt;
+&lt;p&gt;Para séries de tempo, é interessante o uso de gráficos de linha, que ligam os pontos da esquerda para a direita, ou gráfico de trajeto, que liga os pontos conforme a ordem que aparecem na tabela.&lt;/p&gt;
+&lt;p&gt;A forma como o SIDRA disponibiliza as tabelas oferece datas em formato de caracteres, o que prejudica a representação contínua em um dos eixos. Para isso, precisa-se transformar a informação para formato de data. Como os dados são trimestrais, faremos a transformação usando os pacotes &lt;code&gt;tidyverse&lt;/code&gt; e &lt;a href=&#34;https://cran.r-project.org/web/packages/zoo/vignettes/zoo-quickref.pdf&#34;&gt;&lt;code&gt;zoo&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  # Ajuste para o formato de datas
+emprego_data &amp;lt;- emprego %&amp;gt;%
+  mutate(
+    Trimestre = str_replace(Trimestre, &amp;quot;º trimestre &amp;quot;, &amp;quot;-&amp;quot;), # Ajuste da escrita
+    Trimestre = as.yearqtr(Trimestre, format = &amp;quot;%q-%Y&amp;quot;)      # Conversão para o formato de data trimestral
+  )
+
+head(emprego_data, n = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Grande Região Trimestre Grupo de idade Desocupacao Rendimento Horas
+## 1         Norte   2016 Q1          Total        10.5       1799  37.6
+## 2         Norte   2016 Q1   14 a 17 anos        24.4        534  25.9
+## 3         Norte   2016 Q1   18 a 24 anos        23.2       1127  37.0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Por fim, desejam-se apenas os dados de desocupados agregados para o Brasil em ordem cronológica como exemplo. Isso pode ser feito por:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;emprego_data %&amp;gt;% 
+  filter(`Grupo de idade` == &amp;quot;Total&amp;quot;) %&amp;gt;%     # Seleciona Total 
+  ggplot(aes(x     = Trimestre,
+             y     = Desocupacao,
+             color = `Grande Região`)) +
+  geom_line(size = 1.25)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-19&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/r-projetos/2a-lista/index.en_files/figure-html/unnamed-chunk-19-1.png&#34; alt=&#34;Elaboração própria.&#34; width=&#34;576&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3.14: Elaboração própria.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exercícios-parte-ii&#34; class=&#34;section level1&#34; number=&#34;4&#34;&gt;
+&lt;h1&gt;&lt;span class=&#34;header-section-number&#34;&gt;4&lt;/span&gt; Exercícios parte II&lt;/h1&gt;
+&lt;p&gt;Com base no explicado acima e nas referências &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;Vale&lt;/a&gt; (&lt;a href=&#34;#ref-Vale2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;, seções 12, 14 e 15)&lt;/span&gt; e &lt;span class=&#34;citation&#34;&gt;&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;Saulo Guerra et al.&lt;/a&gt; (&lt;a href=&#34;#ref-SauloGuerra2021&#34; role=&#34;doc-biblioref&#34;&gt;2021&lt;/a&gt;, seções 4-6)&lt;/span&gt;, resolva os seguintes exercícios usando as funções do pacote &lt;code&gt;tidyverse&lt;/code&gt;.&lt;/p&gt;
+&lt;div id=&#34;manipulação-de-dados&#34; class=&#34;section level2&#34; number=&#34;4.1&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.1&lt;/span&gt; Manipulação de dados&lt;/h2&gt;
+&lt;p&gt;Utilize a tabela baixada do IBGE na &lt;a href=&#34;https://rafaeldeacypreste.netlify.app/r-projetos/1a-lista/&#34;&gt;lista anterior&lt;/a&gt; para as manipulações a seguir.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Impute a tabela baixada para outro objeto, excluindo as colunas menos importantes na análise, tais como a de “Unidade de Medida,” “Nível Territorial,” “Variável” e etc.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Renomeie a coluna de valores para um que seja mais intuitivo a respeito dos dados escolhidos. Não use expressões ou caracteres especiais.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Faça ao menos uma operação com a coluna dos dados baixados para alterar a unidade de medida e manter intuição econômica ao mesmo tempo.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Por meio das funções &lt;code&gt;group_by&lt;/code&gt; e &lt;code&gt;summarise&lt;/code&gt;, faça alguns cálculos com a variável numérica baixada agrupando por, pelo menos, outra coluna da tabela. Pode ser o cálculo da média, valores mínimos e máximos, desvio padrão e etc. Não é necessário atribuir a um novo objeto.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Filtre os dados relacionados apenas aos últimos dois períodos — ano, trimestre e etc. — disponíveis. Também não é necessário imputar a um novo objeto.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Desafio 1&lt;/strong&gt;: Use a função &lt;code&gt;pivot_wider&lt;/code&gt; para distribuir as informações da variável numérica em colunas de acordo com os distintos períodos de tempo filtrados na questão anterior.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Desafio 2&lt;/strong&gt;: A partir da tabela no formato &lt;em&gt;wider&lt;/em&gt;, retorne-a ao formato &lt;em&gt;longer&lt;/em&gt;, utilizando a função &lt;code&gt;pivot_longer&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Baixe outra tabela do IBGE com dados que apresentem atributos compatíveis com a tabela baixada na questão &lt;code&gt;3&lt;/code&gt; da lista anterior. Depois disso, use a função &lt;code&gt;left_join&lt;/code&gt; para juntar as duas tabelas. Certifique-se de que todas as colunas compatíveis foram lidas e devidamente acopladas.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;9.&lt;em&gt;Desafio 3&lt;/em&gt;: A partir das funções &lt;code&gt;str_replace&lt;/code&gt; e &lt;code&gt;as.yearqtr&lt;/code&gt; (pacote &lt;code&gt;zoo&lt;/code&gt;), transforme a coluna de data no formato de &lt;code&gt;Date&lt;/code&gt; ou equivalente.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exportação-de-dados&#34; class=&#34;section level2&#34; number=&#34;4.2&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.2&lt;/span&gt; Exportação de dados&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Exporte todos as tabelas geradas nos exercícios anteriores para o formato &lt;code&gt;.csv&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Exporte todos as tabelas geradas nos exercícios anteriores para o formato &lt;code&gt;.xlsx&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;elaboração-de-gráficos-1&#34; class=&#34;section level2&#34; number=&#34;4.3&#34;&gt;
+&lt;h2&gt;&lt;span class=&#34;header-section-number&#34;&gt;4.3&lt;/span&gt; Elaboração de gráficos&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Elabore um gráfico de pontos com os dados da tabela elaborada na questão &lt;code&gt;8&lt;/code&gt; acima.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Altere o formato dos pontos gráfico elaborado na questão acima para representar uma terceira variável.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Utilize as facetas para separar as informações por uma quarta variável. Se o formato (&lt;em&gt;shape&lt;/em&gt;) não se adaptar a uma variável contínua, mude o argumento de &lt;em&gt;shape&lt;/em&gt; para &lt;em&gt;colour&lt;/em&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Dê nome aos eixos e à legenda, título e informações extras (&lt;em&gt;caption&lt;/em&gt;) ao gráfico da questão anterior.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;span style=&#34;color: green;&#34;&gt; Parabéns por ter chegado até aqui! &lt;/span&gt; Espero que esses contatos inciais te motivem a continuar usando essa ferramenta potente para análise concreta da realidade concreta.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;referências&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Referências&lt;/h1&gt;
+&lt;div id=&#34;refs&#34; class=&#34;references csl-bib-body hanging-indent&#34;&gt;
+&lt;div id=&#34;ref-Robbins2004&#34; class=&#34;csl-entry&#34;&gt;
+Robbins, Naomi B. 2004. &lt;em&gt;&lt;span&gt;Creating More Effective Graphs&lt;/span&gt;&lt;/em&gt;. New Jersey - USA: Wiley-Interscience. &lt;a href=&#34;http://library1.nida.ac.th/termpaper6/sd/2554/19755.pdf&#34;&gt;http://library1.nida.ac.th/termpaper6/sd/2554/19755.pdf&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-SauloGuerra2021&#34; class=&#34;csl-entry&#34;&gt;
+Saulo Guerra, Paulo Felipe de Oliveira, Robert McDonnell, and Sillas Gonzaga. 2021. &lt;em&gt;&lt;span class=&#34;nocase&#34;&gt;Ci&lt;span class=&#34;nocase&#34;&gt;ê&lt;/span&gt;ncia de Dados com R - Introdu&lt;span class=&#34;nocase&#34;&gt;ç&lt;/span&gt;&lt;span class=&#34;nocase&#34;&gt;ã&lt;/span&gt;o&lt;/span&gt;&lt;/em&gt;. Instituto Brasileiro de Pesquisa e An&lt;span&gt;á&lt;/span&gt;lise de Dados. &lt;a href=&#34;http://sillasgonzaga.com/material/cdr/&#34;&gt;http://sillasgonzaga.com/material/cdr/&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-Vale2021&#34; class=&#34;csl-entry&#34;&gt;
+Vale, Vinícius A. 2021. &lt;span&gt;“&lt;span class=&#34;nocase&#34;&gt;Introdu&lt;span class=&#34;nocase&#34;&gt;ç&lt;/span&gt;&lt;span class=&#34;nocase&#34;&gt;ã&lt;/span&gt;o ao R&lt;/span&gt;.”&lt;/span&gt; &lt;a href=&#34;https://viniciusavale.com/IntroR/Intro-R.html&#34;&gt;https://viniciusavale.com/IntroR/Intro-R.html&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-WickhamRStudio2014&#34; class=&#34;csl-entry&#34;&gt;
+Wickham, Hadley. 2014. &lt;span&gt;“&lt;span&gt;Tidy Data&lt;/span&gt;.”&lt;/span&gt; &lt;em&gt;Journal of Statistical Software&lt;/em&gt; 59 (10): 1–23. &lt;a href=&#34;http://www.jstatsoft.org/&#34;&gt;http://www.jstatsoft.org/&lt;/a&gt;.
+&lt;/div&gt;
+&lt;div id=&#34;ref-Wickham2015&#34; class=&#34;csl-entry&#34;&gt;
+———. 2015. &lt;em&gt;&lt;span class=&#34;nocase&#34;&gt;Elegant Graphics for Data Analysis&lt;/span&gt;&lt;/em&gt;. &lt;a href=&#34;http://had.co.nz/ggplot2/book&#34;&gt;http://had.co.nz/ggplot2/book&lt;/a&gt;.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Em tradução livre, “informação organizada.”&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;Ainda que nem todos sejam utilizados nesta nota, sugere-se a consulta de informações adicionais dos pacotes para conhecer melhor suas respectivas funcionalidades.&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;A opção apresentada exclui as informações fora do intervalo. Para apenas aplicar um &lt;em&gt;zoom&lt;/em&gt; sem que dados sejam eliminados, deve-se usar a opção &lt;code&gt;coord_cartesian()&lt;/code&gt;.&lt;a href=&#34;#fnref3&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Aulas iniciais e primeira lista de exercícios</title>

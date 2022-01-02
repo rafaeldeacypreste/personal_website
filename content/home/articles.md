@@ -1,17 +1,18 @@
 ---
 # An instance of the Featured widget.
 # Documentation: https://wowchemy.com/docs/page-builder/
-widget: featured
+widget: pages
 
-active: false
+active: true
 
 # This file represents a page section.
 headless: true
 
 # Order that this section appears on the page.
-weight: 80
+weight: 70
 
-title: Featured Publications
+
+title: Journal Articles
 subtitle: ""
 
 content:
@@ -23,8 +24,9 @@ content:
   filters:
     author: ""
     category: ""
-    publication_type: ""
+    publication_type: "2"
     tag: ""
+    exclude_featured: true
   # Page order: descending (desc) or ascending (asc) date.
   order: desc
 
@@ -34,5 +36,10 @@ design:
   #   2 = Compact
   #   3 = Card
   #   4 = Citation (publication only)
-  view: 3
+  view: 2
 ---
+
+
+{{% callout note %}}
+Descubra rapidamente conteúdos relevantes com [filtrar publicações](./publication/).
+{{% /callout %}}

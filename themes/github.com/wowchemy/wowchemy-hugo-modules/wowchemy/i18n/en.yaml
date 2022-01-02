@@ -178,16 +178,16 @@
   translation: Journal article
 
 - id: pub_preprint
-  translation: Preprint
+  translation: Working Paper
 
 - id: pub_report
   translation: Report
 
 - id: pub_book
-  translation: Book
+  translation: Livro
 
 - id: pub_book_section
-  translation: Book section
+  translation: Capítulo de Livro
 
 - id: pub_thesis
   translation: Thesis

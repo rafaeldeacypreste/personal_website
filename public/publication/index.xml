@@ -5,12 +5,44 @@
     <link>/publication/</link>
       <atom:link href="/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 16 Dec 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/media/icon_hu079f5f191f910f3be9bbdec4dba5765d_88394_512x512_fill_lanczos_center_2.png</url>
       <title>Publications</title>
       <link>/publication/</link>
     </image>
+    
+    <item>
+      <title>A Vertically Integrated Approach to Increasing Returns and Cumulative Causation</title>
+      <link>/publication/vis-ssrn-2021/</link>
+      <pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>/publication/vis-ssrn-2021/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A questão da maquinaria em Ricardo, Marx e Wicksell</title>
+      <link>/publication/nova-economia-2021/</link>
+      <pubDate>Tue, 07 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>/publication/nova-economia-2021/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Direito à moradia e o poder judiciário: decisões que envolvem o MTST</title>
+      <link>/publication/direito-moradia-livro-2017/</link>
+      <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
+      <guid>/publication/direito-moradia-livro-2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ações de reintegração de posse contra o movimento dos trabalhadores sem teto: dicotomia entre propriedade e direito à moradia</title>
+      <link>/publication/revista-direito-cidade-2016/</link>
+      <pubDate>Tue, 20 Sep 2016 00:00:00 +0000</pubDate>
+      <guid>/publication/revista-direito-cidade-2016/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

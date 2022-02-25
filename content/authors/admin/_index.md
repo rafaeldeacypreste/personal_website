@@ -52,6 +52,6 @@ superuser: true
 title: Rafael de Acypreste
 ---
 
-Eu, Rafael de Acypreste, sou doutorando em Economia pela Universidade de Brasília, orientado pela professora Maria de Lourdes Rollemberg Mollo. Tenho pesquisado as relações entre inteligência artificial, automação em emprego. Venho me aprofundando em trabalhos ligados à Matriz de Insumo-Produto. Estou professor voluntário do Departamento de Economia da UnB.
+Eu, Rafael de Acypreste, sou doutor em Economia pela Universidade de Brasília, orientado pela professora Maria de Lourdes Rollemberg Mollo. Tenho pesquisado as relações entre automação e emprego. Venho me aprofundando em trabalhos ligados à Matriz de Insumo-Produto. Também tenho interesse na elaboração de materiais didáticos relacionados ao uso do R.
 
 {{< icon name="external-link-square-alt" pack="fas" >}} Acesse meu {{< staticref "http://lattes.cnpq.br/1770248625750446" "newtab" >}}Currículo Lattes{{< /staticref >}}.

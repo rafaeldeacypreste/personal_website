@@ -2,9 +2,9 @@
 bio: Meus interesses de pesquisa se concentram nas relações entre automação e emprego.
 education:
   courses:
-  - course: Doutorado em Economia Política (em andamento)
+  - course: Doutorado em Economia Política 
     institution: Universidade de Brasília
-    year: 2018-atual
+    year: 2018-2022
   - course: Mestrado em Direito
     institution: Universidade de Brasília
     year: 2014-2016
@@ -17,15 +17,15 @@ education:
 email: "rafaeldeacyprestemr@gmail.com"
 highlight_name: false
 interests:
-- Economia Matemática
+- Emprego
+- Desigualdade
 - Economia Marxista
-- Inteligência Artificial
-- Structural Economic Dyamics
+- Structural Economic Dynamics
 - Matriz Insumo-Produto
 organizations:
-- name: Departamento de Economia (FACE) - UnB
-  url: http://www.economia.unb.br/index.php/pos-graduacao
-role: Bolsista CAPES de doutorado em Economia
+- name: Departamento de Estradas de Rodagem do Distrito Federal
+  url: https://www.der.df.gov.br/
+role: Servidor Público
 social:
 - icon: envelope
   icon_pack: fas
